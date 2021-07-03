@@ -22,17 +22,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Update="Messages\MensagensAplicacao.Designer.cs">
+		<Compile Update="Messages\ApplicationMessage.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
-			<DependentUpon>MensagensAplicacao.resx</DependentUpon>
+			<DependentUpon>ApplicationMessage.resx</DependentUpon>
 		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Update="Messages\MensagensAplicacao.resx">
+		<EmbeddedResource Update="Messages\ApplicationMessage.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>MensagensAplicacao.Designer.cs</LastGenOutput>
+			<LastGenOutput>ApplicationMessage.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 	</ItemGroup>
 

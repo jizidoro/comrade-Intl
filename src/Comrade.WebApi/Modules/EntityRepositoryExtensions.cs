@@ -28,23 +28,10 @@ namespace Comrade.WebApi.Modules
             this IServiceCollection services,
             IConfiguration configuration)
         {
-            IFeatureManager featureManager = services
-                .BuildServiceProvider()
-                .GetRequiredService<IFeatureManager>();
-
-            var isEnabled = featureManager
-                .IsEnabledAsync(nameof(CustomFeature.SqlServer))
-                .ConfigureAwait(false)
-                .GetAwaiter()
-                .GetResult();
-
-            if (isEnabled)
-            {
-                services.AddScoped<IUnitOfWork, UnitOfWork>();
-                services.AddScoped<IAirplaneRepository, AirplaneRepository>();
-                services.AddScoped<IUserSystemRepository, UserSystemRepository>();
-                services.AddScoped<IVwUserSystemPermissionRepository, VwUserSystemPermissionRepository>();
-            }
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAirplaneRepository, AirplaneRepository>();
+            services.AddScoped<IUserSystemRepository, UserSystemRepository>();
+            services.AddScoped<IVwUserSystemPermissionRepository, VwUserSystemPermissionRepository>();
 
             return services;
         }

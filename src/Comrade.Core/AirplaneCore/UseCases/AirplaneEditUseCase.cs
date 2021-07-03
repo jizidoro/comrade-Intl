@@ -57,7 +57,7 @@ namespace Comrade.Core.AirplaneCore.UseCases
         private void HydrateValues(Airplane target, Airplane source)
         {
             target.Code = source.Code;
-            target.QuantidadePassageiro = source.QuantidadePassageiro;
+            target.PassengerQuantity = source.PassengerQuantity;
             target.Model = source.Model;
         }
     }

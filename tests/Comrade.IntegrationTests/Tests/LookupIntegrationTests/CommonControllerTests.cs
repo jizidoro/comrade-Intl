@@ -27,19 +27,6 @@ namespace Comrade.IntegrationTests.Tests.LookupIntegrationTests
         }
 
 
-        private CommonController GetCommonControllerDb()
-        {
-            var mapper = MapperHelper.ConfigMapper();
-
-            var serviceProvider = GetServiceProviderDb.Execute();
-
-            var context = serviceProvider.GetService<ComradeContext>();
-
-            var baUsuAppService = _userSystemInjectionAppService.GetUserSystemAppService(context, mapper);
-
-            return new CommonController(serviceProvider, baUsuAppService);
-        }
-
         private CommonController GetCommonControllerMemDb()
         {
             var mapper = MapperHelper.ConfigMapper();
@@ -51,19 +38,6 @@ namespace Comrade.IntegrationTests.Tests.LookupIntegrationTests
             var baUsuAppService = _userSystemInjectionAppService.GetUserSystemAppService(context, mapper);
 
             return new CommonController(serviceProvider, baUsuAppService);
-        }
-
-        [Fact(Skip = "local sql server")]
-        public async Task GetLookupUserSystemDb_Test()
-        {
-            var commonController = GetCommonControllerDb();
-            var result = await commonController.GetLookupUserSystem();
-
-            if (result is OkObjectResult okResult)
-            {
-                var actualResultValue = okResult.Value as ListResultDto<LookupDto>;
-                Assert.NotNull(actualResultValue);
-            }
         }
 
         [Fact]

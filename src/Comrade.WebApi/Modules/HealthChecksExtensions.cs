@@ -39,13 +39,19 @@ namespace Comrade.WebApi.Modules
                 .BuildServiceProvider()
                 .GetRequiredService<IFeatureManager>();
 
-            var isEnabled = featureManager
+            var healthChecksIsEnabled = featureManager
+                .IsEnabledAsync(nameof(CustomFeature.HealthChecks))
+                .ConfigureAwait(false)
+                .GetAwaiter()
+                .GetResult();
+
+            var sqlServerIsEnabled = featureManager
                 .IsEnabledAsync(nameof(CustomFeature.SqlServer))
                 .ConfigureAwait(false)
                 .GetAwaiter()
                 .GetResult();
 
-            if (isEnabled)
+            if (healthChecksIsEnabled)
             {
                 services.AddHealthChecks()
                     .AddDbContextCheck<ComradeContext>("ComradeContext")
@@ -54,8 +60,11 @@ namespace Comrade.WebApi.Modules
                 services.AddHealthChecksUI()
                     .AddInMemoryStorage();
 
-                healthChecks.AddSqlServer(configuration.GetValue<string>("PersistenceModule:DefaultConnection"),
-                    name: "sql-server", tags: new[] {"db", "data"});
+                if (sqlServerIsEnabled)
+                {
+                    healthChecks.AddSqlServer(configuration.GetValue<string>("PersistenceModule:DefaultConnection"),
+                        name: "sql-server", tags: new[] {"db", "data"});
+                }
             }
 
 

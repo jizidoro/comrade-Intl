@@ -26,6 +26,11 @@ namespace Comrade.WebApi.Modules.Common.FeatureFlags
         ErrorFilter,
 
         /// <summary>
+        ///     HealthChecks.
+        /// </summary>
+        HealthChecks,
+
+        /// <summary>
         ///     Use Swagger.
         /// </summary>
         Swagger,

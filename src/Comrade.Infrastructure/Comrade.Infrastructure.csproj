@@ -5,12 +5,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="SeedData\airplane.json" />
+    <None Remove="SeedData\autenticacao.json" />
     <None Remove="SeedData\Authentication.json" />
     <None Remove="SeedData\Sheets\basicSheet.xlsx" />
+    <None Remove="SeedData\userSystem.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="SeedData\airplane.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeedData\autenticacao.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="SeedData\Sheets\basicSheet.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeedData\userSystem.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

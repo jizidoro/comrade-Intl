@@ -18,7 +18,7 @@ namespace Comrade.Application.Dtos.AirplaneDtos
         public string Code { get; set; }
 
         public string Model { get; set; }
-        public int QuantidadePassageiro { get; set; }
+        public int PassengerQuantity { get; set; }
         public DateTime RegisterDate { get; set; }
     }
 }

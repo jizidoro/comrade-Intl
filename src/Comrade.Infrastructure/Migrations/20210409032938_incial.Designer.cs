@@ -46,7 +46,7 @@ namespace Comrade.Infrastructure.Migrations
                         .HasColumnType("varchar(255)")
                         .HasColumnName("AIRP_TX_MODELO");
 
-                    b.Property<int>("QuantidadePassageiro")
+                    b.Property<int>("PassengerQuantity")
                         .HasColumnType("int")
                         .HasColumnName("AIRP_QT_PASSAGEIRO");
 

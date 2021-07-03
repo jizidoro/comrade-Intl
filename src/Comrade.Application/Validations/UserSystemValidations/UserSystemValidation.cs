@@ -21,24 +21,24 @@ namespace Comrade.Application.Validations.UserSystemValidations
         protected void ValidateName()
         {
             RuleFor(v => v.Name)
-                .NotEmpty().WithMessage(MensagensAplicacao.CAMPO_OBRIGATORIO)
-                .MaximumLength(255).WithMessage(MensagensAplicacao.TAMANHO_ESPECIFICO_CAMPO)
+                .NotEmpty().WithMessage(ApplicationMessage.CAMPO_OBRIGATORIO)
+                .MaximumLength(255).WithMessage(ApplicationMessage.TAMANHO_ESPECIFICO_CAMPO)
                 .WithName("Name");
         }
 
         protected void ValidateEmail()
         {
             RuleFor(v => v.Email)
-                .MaximumLength(255).WithMessage(MensagensAplicacao.TAMANHO_ESPECIFICO_CAMPO)
+                .MaximumLength(255).WithMessage(ApplicationMessage.TAMANHO_ESPECIFICO_CAMPO)
                 .WithName("Email");
         }
 
         protected void PasswordValidation()
         {
             RuleFor(v => v.Password)
-                .NotEmpty().WithMessage(MensagensAplicacao.CAMPO_OBRIGATORIO)
-                .MinimumLength(4).WithMessage(MensagensAplicacao.TAMANHO_ESPECIFICO_CAMPO)
-                .MaximumLength(127).WithMessage(MensagensAplicacao.TAMANHO_ESPECIFICO_CAMPO)
+                .NotEmpty().WithMessage(ApplicationMessage.CAMPO_OBRIGATORIO)
+                .MinimumLength(4).WithMessage(ApplicationMessage.TAMANHO_ESPECIFICO_CAMPO)
+                .MaximumLength(127).WithMessage(ApplicationMessage.TAMANHO_ESPECIFICO_CAMPO)
                 .WithName("Password");
         }
 
@@ -46,8 +46,8 @@ namespace Comrade.Application.Validations.UserSystemValidations
         protected void ValidateRegistration()
         {
             RuleFor(v => v.Registration)
-                .NotEmpty().WithMessage(MensagensAplicacao.CAMPO_OBRIGATORIO)
-                .MaximumLength(255).WithMessage(MensagensAplicacao.TAMANHO_ESPECIFICO_CAMPO)
+                .NotEmpty().WithMessage(ApplicationMessage.CAMPO_OBRIGATORIO)
+                .MaximumLength(255).WithMessage(ApplicationMessage.TAMANHO_ESPECIFICO_CAMPO)
                 .WithName("Registration");
         }
     }

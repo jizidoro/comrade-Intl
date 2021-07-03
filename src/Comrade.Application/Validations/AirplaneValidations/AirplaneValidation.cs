@@ -21,25 +21,25 @@ namespace Comrade.Application.Validations.AirplaneValidations
         protected void ValidateCode()
         {
             RuleFor(v => v.Code)
-                .NotEmpty().WithMessage(MensagensAplicacao.CAMPO_OBRIGATORIO)
-                .MaximumLength(255).WithMessage(MensagensAplicacao.TAMANHO_ESPECIFICO_CAMPO)
+                .NotEmpty().WithMessage(ApplicationMessage.CAMPO_OBRIGATORIO)
+                .MaximumLength(255).WithMessage(ApplicationMessage.TAMANHO_ESPECIFICO_CAMPO)
                 .WithName("Code");
         }
 
         protected void ValidateModel()
         {
             RuleFor(v => v.Model)
-                .NotEmpty().WithMessage(MensagensAplicacao.CAMPO_OBRIGATORIO)
-                .MaximumLength(255).WithMessage(MensagensAplicacao.TAMANHO_ESPECIFICO_CAMPO)
+                .NotEmpty().WithMessage(ApplicationMessage.CAMPO_OBRIGATORIO)
+                .MaximumLength(255).WithMessage(ApplicationMessage.TAMANHO_ESPECIFICO_CAMPO)
                 .WithName("Model");
         }
 
-        protected void ValidateQuantidadePassageiro()
+        protected void ValidatePassengerQuantity()
         {
-            RuleFor(v => v.QuantidadePassageiro)
-                .NotEmpty().WithMessage(MensagensAplicacao.CAMPO_OBRIGATORIO)
-                .GreaterThanOrEqualTo(0).WithMessage(MensagensAplicacao.CAMPO_MAIOR_IGUAL_ZERO)
-                .WithName("QuantidadePassageiro");
+            RuleFor(v => v.PassengerQuantity)
+                .NotEmpty().WithMessage(ApplicationMessage.CAMPO_OBRIGATORIO)
+                .GreaterThanOrEqualTo(0).WithMessage(ApplicationMessage.CAMPO_MAIOR_IGUAL_ZERO)
+                .WithName("PassengerQuantity");
         }
     }
 }

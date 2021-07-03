@@ -57,7 +57,7 @@ namespace Comrade.WebApi
                 .AddCustomCors()
                 .AddProxy()
                 .AddCustomDataProtection();
-
+            
             services.AddAutoMapperSetup();
             services.AddLogging();
 

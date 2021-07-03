@@ -23,8 +23,8 @@ namespace Comrade.Domain.Models
         public string Model { get; set; }
 
         [Column("AIRP_QT_PASSAGEIRO", TypeName = "int")]
-        [Required(ErrorMessage = "QuantidadePassageiro is required")]
-        public int QuantidadePassageiro { get; set; }
+        [Required(ErrorMessage = "PassengerQuantity is required")]
+        public int PassengerQuantity { get; set; }
 
         [Column("AIRP_DT_REGISTRO", TypeName = "varchar")]
         [Required(ErrorMessage = "RegisterDate is required")]

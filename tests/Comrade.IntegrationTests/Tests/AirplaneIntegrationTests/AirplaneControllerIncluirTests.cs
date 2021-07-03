@@ -30,7 +30,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
             {
                 Code = "123",
                 Model = "234",
-                QuantidadePassageiro = 456
+                PassengerQuantity = 456
             };
 
             await using var context = new ComradeContext(options);
@@ -59,7 +59,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
             var testObject = new AirplaneCreateDto
             {
                 Code = "123",
-                QuantidadePassageiro = 456
+                PassengerQuantity = 456
             };
 
             await using var context = new ComradeContext(options);

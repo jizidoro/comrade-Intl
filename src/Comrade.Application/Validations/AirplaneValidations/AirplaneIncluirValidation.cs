@@ -12,7 +12,7 @@ namespace Comrade.Application.Validations.AirplaneValidations
         {
             ValidateCode();
             ValidateModel();
-            ValidateQuantidadePassageiro();
+            ValidatePassengerQuantity();
         }
     }
 }

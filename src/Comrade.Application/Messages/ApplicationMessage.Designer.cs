@@ -9,6 +9,9 @@
 //------------------------------------------------------------------------------
 
 namespace Comrade.Application.Messages {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -19,14 +22,14 @@ namespace Comrade.Application.Messages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class MensagensAplicacao {
+    public class ApplicationMessage {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal MensagensAplicacao() {
+        internal ApplicationMessage() {
         }
         
         /// <summary>
@@ -36,7 +39,7 @@ namespace Comrade.Application.Messages {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Comrade.Application.Messages.MensagensAplicacao", typeof(MensagensAplicacao).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("comrade.Application.Messages.ApplicationMessage", typeof(ApplicationMessage).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

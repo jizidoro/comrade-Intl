@@ -26,18 +26,8 @@ namespace Comrade.WebApi.Modules
             IFeatureManager featureManager = services
                 .BuildServiceProvider()
                 .GetRequiredService<IFeatureManager>();
-
-            var isEnabled = featureManager
-                .IsEnabledAsync(nameof(CustomFeature.SqlServer))
-                .ConfigureAwait(false)
-                .GetAwaiter()
-                .GetResult();
-
-
-            if (isEnabled)
-            {
-                services.AddDbContext<ComradeContext>(options => options.UseInMemoryDatabase("test_database"));
-            }
+            
+            services.AddDbContext<ComradeContext>(options => options.UseInMemoryDatabase("test_database"));
 
             return services;
         }

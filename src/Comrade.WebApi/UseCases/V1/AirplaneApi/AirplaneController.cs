@@ -8,9 +8,12 @@ using Comrade.Application.Dtos.AirplaneDtos;
 using Comrade.Application.Filters;
 using Comrade.Application.Interfaces;
 using Comrade.Application.Queries;
+using Comrade.Application.Utils;
 using Comrade.WebApi.Bases;
+using Comrade.WebApi.Modules.Common;
 using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.FeatureManagement.Mvc;
@@ -110,6 +113,8 @@ namespace Comrade.WebApi.UseCases.V1.AirplaneApi
 
         [HttpDelete]
         [Route("delete/{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ISingleResultDto<EntityDto>))]
+        [ApiConventionMethod(typeof(CustomApiConventions), nameof(CustomApiConventions.Delete))]
         public async Task<IActionResult> Delete(int id)
         {
             try
