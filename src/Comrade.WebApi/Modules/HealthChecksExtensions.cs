@@ -55,7 +55,7 @@ namespace Comrade.WebApi.Modules
                     .AddInMemoryStorage();
 
                 healthChecks.AddSqlServer(configuration.GetValue<string>("PersistenceModule:DefaultConnection"),
-                    name: "sqlserver", tags: new[] {"db", "data"});
+                    name: "sql-server", tags: new[] {"db", "data"});
             }
 
 

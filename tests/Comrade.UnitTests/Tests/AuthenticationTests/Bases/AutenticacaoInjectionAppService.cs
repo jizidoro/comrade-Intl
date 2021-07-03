@@ -2,7 +2,6 @@
 
 using Comrade.Application.Services;
 using Comrade.Infrastructure.DataAccess;
-using Comrade.Infrastructure.Repositories.Views;
 using Comrade.UnitTests.Helpers;
 
 #endregion

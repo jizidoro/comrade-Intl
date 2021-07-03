@@ -1,8 +1,6 @@
 ﻿#region
 
-using Comrade.Application.Interfaces;
 using Comrade.Application.Lookups;
-using Comrade.Application.Services;
 using Comrade.Core.Helpers.Interfaces;
 using Comrade.Domain.Extensions;
 using Comrade.Infrastructure.Bases;

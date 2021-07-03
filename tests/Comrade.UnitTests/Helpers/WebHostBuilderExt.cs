@@ -1,19 +1,8 @@
 ﻿#region
 
 using System;
-using Comrade.Application.Interfaces;
-using Comrade.Application.Lookups;
-using Comrade.Application.Services;
-using Comrade.Core.Helpers.Interfaces;
-using Comrade.Domain.Extensions;
-using Comrade.Infrastructure.Bases;
-using Comrade.WebApi.Modules;
-using Comrade.WebApi.Modules.Common;
-using Comrade.WebApi.Modules.Common.FeatureFlags;
-using Comrade.WebApi.Modules.Common.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 #endregion
