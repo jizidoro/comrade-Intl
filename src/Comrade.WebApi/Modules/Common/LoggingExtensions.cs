@@ -53,10 +53,8 @@ namespace comrade.WebApi.Modules.Common
             return services;
         }
 
-        public static void CreateLogMongoDb(LoggerProviderCollection providers, IConfigurationRoot configurationRoot)
+        public static void CreateLogMongoDb(LoggerProviderCollection providers)
         {
-            var connection = configurationRoot.GetValue<string>("ConnectionStrings:DefaultConnection");
-
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
                 .Enrich.With(new ApplicationDetailsEnricher())

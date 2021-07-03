@@ -50,8 +50,7 @@ namespace comrade.WebApi
                 .ConfigureAppConfiguration((hostContext, configApp) =>
                 {
                     configApp.AddCommandLine(args);
-                    var settings = configApp.Build();
-                    LoggingExtensions.CreateLogMongoDb(Providers, settings);
+                    LoggingExtensions.CreateLogMongoDb(Providers);
                 })
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); })
                 .UseSerilog(providers: Providers);
