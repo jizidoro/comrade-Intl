@@ -38,7 +38,7 @@ namespace comrade.WebApi.UseCases.V1.LoginApi
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<AuthenticationDto>(e));
+                return Ok(new SingleResultDto<EntityDto>(e));
             }
         }
 
@@ -53,7 +53,7 @@ namespace comrade.WebApi.UseCases.V1.LoginApi
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<AuthenticationDto>(e));
+                return Ok(new SingleResultDto<EntityDto>(e));
             }
         }
     }

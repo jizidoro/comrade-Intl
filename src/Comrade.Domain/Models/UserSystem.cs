@@ -32,7 +32,7 @@ namespace comrade.Domain.Models
 
         [Column("USSI_TX_MATRICULA", TypeName = "varchar")]
         [MaxLength(255)]
-        [Required(ErrorMessage = "MATRICULA is required")]
+        [Required(ErrorMessage = "Registration is required")]
         public string Registration { get; set; } // varchar(255), not null
 
         [Column("USSI_DT_REGISTRO", TypeName = "varchar")]

@@ -51,7 +51,7 @@ namespace comrade.WebApi.UseCases.V1.UserSystemApi
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<UserSystemDto>(e));
+                return Ok(new SingleResultDto<EntityDto>(e));
             }
         }
 
@@ -67,7 +67,7 @@ namespace comrade.WebApi.UseCases.V1.UserSystemApi
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<UserSystemDto>(e));
+                return Ok(new SingleResultDto<EntityDto>(e));
             }
         }
 
@@ -82,7 +82,7 @@ namespace comrade.WebApi.UseCases.V1.UserSystemApi
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<UserSystemDto>(e));
+                return Ok(new SingleResultDto<EntityDto>(e));
             }
         }
 
@@ -97,7 +97,7 @@ namespace comrade.WebApi.UseCases.V1.UserSystemApi
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<UserSystemDto>(e));
+                return Ok(new SingleResultDto<EntityDto>(e));
             }
         }
 
@@ -112,7 +112,7 @@ namespace comrade.WebApi.UseCases.V1.UserSystemApi
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<UserSystemDto>(e));
+                return Ok(new SingleResultDto<EntityDto>(e));
             }
         }
     }
