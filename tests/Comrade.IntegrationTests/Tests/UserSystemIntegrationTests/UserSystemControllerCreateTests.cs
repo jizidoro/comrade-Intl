@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 using comrade.Application.Bases;
 using comrade.Application.Dtos.UserSystemDtos;
 using comrade.Infrastructure.DataAccess;
-using comrade.UnitTests.Tests.UsuarioSistemaTests.Bases;
+using comrade.UnitTests.Tests.UserSystemTests.Bases;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
 #endregion
 
-namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
+namespace comrade.IntegrationTests.Tests.UserSystemIntegrationTests
 {
     public sealed class UserSystemControllerCreateTests
     {
@@ -22,7 +22,7 @@ namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
         public async Task UserSystemController_Create()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_memoria_create_user_sistema")
+                .UseInMemoryDatabase("test_database_UserSystemController_Create")
                 .Options;
 
 
@@ -45,10 +45,10 @@ namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
 
 
         [Fact]
-        public async Task UserSystemController_Create_Erro()
+        public async Task UserSystemController_Create_Error()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_memoria_create_user_sistema_erro")
+                .UseInMemoryDatabase("test_database_UserSystemController_Create_Error")
                 .Options;
 
             var testObject = new UserSystemCreateDto

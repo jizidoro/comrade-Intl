@@ -5,13 +5,13 @@ using comrade.Domain.Models;
 using comrade.Infrastructure.DataAccess;
 using comrade.Infrastructure.Repositories;
 using comrade.UnitTests.Helpers;
-using comrade.UnitTests.Tests.UsuarioSistemaTests.Bases;
+using comrade.UnitTests.Tests.UserSystemTests.Bases;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
 #endregion
 
-namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
+namespace comrade.IntegrationTests.Tests.UserSystemIntegrationTests
 {
     public class UserSystemContextTests
     {
@@ -21,7 +21,7 @@ namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
         public async Task UserSystem_Context()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_memoria_get_user_sistema_Respositorio")
+                .UseInMemoryDatabase("test_database_UserSystem_Context")
                 .Options;
 
             UserSystem userSystem = null;

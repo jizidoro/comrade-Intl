@@ -10,7 +10,7 @@ using comrade.Infrastructure.Repositories;
 
 #endregion
 
-namespace comrade.UnitTests.Tests.UsuarioSistemaTests.Bases
+namespace comrade.UnitTests.Tests.UserSystemTests.Bases
 {
     public sealed class UserSystemInjectionAppService
     {

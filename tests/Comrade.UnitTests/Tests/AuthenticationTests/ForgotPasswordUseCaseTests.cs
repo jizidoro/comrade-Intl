@@ -27,10 +27,10 @@ namespace comrade.UnitTests.Tests.AuthenticationTests
         }
 
         [Fact]
-        public async Task Test_ForgotPasswordUseCase()
+        public async Task ForgotPasswordUseCase_Test()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_memoria_forgot_password_usecase")
+                .UseInMemoryDatabase("test_database_ForgotPasswordUseCase_Test")
                 .Options;
 
 
@@ -50,17 +50,17 @@ namespace comrade.UnitTests.Tests.AuthenticationTests
             Utilities.InitializeDbForTests(context);
 
             var repository = new UserSystemRepository(context);
-            var retornoAntes = await repository.GetById(testObject.Id);
-            var passwordAntes = retornoAntes.Password;
+            var returnBefore = await repository.GetById(testObject.Id);
+            var passwordBefore = returnBefore.Password;
 
             var updatePasswordUseCase = _authenticationInjectionUseCase.GetForgotPasswordUseCase(context);
             var result = await updatePasswordUseCase.Execute(testObject);
             _output.WriteLine(result.Message);
 
-            var retornoDepois = await repository.GetById(testObject.Id);
-            var passwordDepois = retornoDepois.Password;
+            var returnAfter = await repository.GetById(testObject.Id);
+            var passwordAfter = returnAfter.Password;
 
-            Assert.NotEqual(passwordAntes, passwordDepois);
+            Assert.NotEqual(passwordBefore, passwordAfter);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
         public async Task AirplaneController_GetAll_Paginated()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_return_AirplaneController_GetAll_Paginated")
+                .UseInMemoryDatabase("test_database_AirplaneController_GetAll_Paginated")
                 .Options;
 
 

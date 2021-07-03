@@ -22,7 +22,7 @@ namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
         public async Task AirplaneController_Create()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_change_database_AirplaneController_Create")
+                .UseInMemoryDatabase("test_database_AirplaneController_Create")
                 .Options;
 
 
@@ -49,10 +49,10 @@ namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
         }
 
         [Fact]
-        public async Task AirplaneController_Create_Erro()
+        public async Task AirplaneController_Create_Error()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_change_database_AirplaneController_Create_Erro")
+                .UseInMemoryDatabase("test_database_AirplaneController_Create_Error")
                 .Options;
 
 

@@ -6,14 +6,14 @@ using comrade.Application.Dtos.UserSystemDtos;
 using comrade.Infrastructure.DataAccess;
 using comrade.Infrastructure.Repositories;
 using comrade.UnitTests.Helpers;
-using comrade.UnitTests.Tests.UsuarioSistemaTests.Bases;
+using comrade.UnitTests.Tests.UserSystemTests.Bases;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
 #endregion
 
-namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
+namespace comrade.IntegrationTests.Tests.UserSystemIntegrationTests
 {
     public class UserSystemControllerEditTests
     {
@@ -23,7 +23,7 @@ namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
         public async Task UserSystemController_Edit()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_memoria_edit_user_sistema")
+                .UseInMemoryDatabase("test_database_UserSystemController_Edit")
                 .Options;
 
             var changeName = "Novo Name";
@@ -64,10 +64,10 @@ namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
         }
 
         [Fact]
-        public async Task Edit_UserSystem_Erro()
+        public async Task Edit_UserSystem_Error()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_memoria_edit_user_sistema_Erro")
+                .UseInMemoryDatabase("test_database_Edit_UserSystem_Error")
                 .Options;
 
             var changeName = "Novo Name";

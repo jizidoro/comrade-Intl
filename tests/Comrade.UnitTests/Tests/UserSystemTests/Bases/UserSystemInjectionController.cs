@@ -6,7 +6,7 @@ using comrade.WebApi.UseCases.V1.UserSystemApi;
 
 #endregion
 
-namespace comrade.UnitTests.Tests.UsuarioSistemaTests.Bases
+namespace comrade.UnitTests.Tests.UserSystemTests.Bases
 {
     public class UserSystemInjectionController
     {

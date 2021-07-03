@@ -27,17 +27,17 @@ namespace comrade.UnitTests.Tests.AuthenticationTests
 
         [Theory]
         [ClassData(typeof(AuthenticationDtoTestData))]
-        public async Task Test_GenerateTokenLoginUseCase(int expected, AuthenticationDto testObjectEntrada)
+        public async Task GenerateTokenLoginUseCase_Test(int expected, AuthenticationDto testObjectInput)
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_memoria_token" + testObjectEntrada.Key)
+                .UseInMemoryDatabase("test_database_GenerateTokenLoginUseCase_Test" + testObjectInput.Key)
                 .Options;
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
             Utilities.InitializeDbForTests(context);
 
             var generateTokenLoginUseCase = _authenticationInjectionUseCase.GetGenerateTokenLoginUseCase(context);
-            var result = await generateTokenLoginUseCase.Execute(testObjectEntrada.Key, testObjectEntrada.Password);
+            var result = await generateTokenLoginUseCase.Execute(testObjectInput.Key, testObjectInput.Password);
             Assert.Equal(expected, result.Code);
         }
     }

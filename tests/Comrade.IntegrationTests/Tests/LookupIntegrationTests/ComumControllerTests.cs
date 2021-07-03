@@ -5,7 +5,7 @@ using comrade.Application.Bases;
 using comrade.Application.Lookups;
 using comrade.Infrastructure.DataAccess;
 using comrade.UnitTests.Helpers;
-using comrade.UnitTests.Tests.UsuarioSistemaTests.Bases;
+using comrade.UnitTests.Tests.UserSystemTests.Bases;
 using comrade.WebApi.UseCases.V1;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
@@ -55,11 +55,11 @@ namespace comrade.IntegrationTests.Tests.LookupIntegrationTests
             return new CommonController(serviceProvider, baUsuAppService);
         }
 
-        [Fact(Skip = "usa a instancia local do sqlserver")]
+        [Fact(Skip = "local sql server")]
         public async Task GetLookupUserSystemDb_Test()
         {
-            var comumController = GetCommonControllerDb();
-            var result = await comumController.GetLookupUserSystem();
+            var commonController = GetCommonControllerDb();
+            var result = await commonController.GetLookupUserSystem();
 
             if (result is OkObjectResult okResult)
             {
@@ -71,8 +71,8 @@ namespace comrade.IntegrationTests.Tests.LookupIntegrationTests
         [Fact]
         public async Task GetLookupUserSystemMemDb_Test()
         {
-            var comumController = GetCommonControllerMemDb();
-            var result = await comumController.GetLookupUserSystem();
+            var commonController = GetCommonControllerMemDb();
+            var result = await commonController.GetLookupUserSystem();
 
             if (result is OkObjectResult okResult)
             {

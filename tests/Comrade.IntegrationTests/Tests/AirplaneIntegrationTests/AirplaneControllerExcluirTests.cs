@@ -20,7 +20,7 @@ namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
         public async Task AirplaneController_Delete()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_return_AirplaneController_Delete")
+                .UseInMemoryDatabase("test_database_AirplaneController_Delete")
                 .Options;
 
 

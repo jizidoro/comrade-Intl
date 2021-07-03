@@ -22,7 +22,7 @@ namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
         public async Task AirplaneController_Get()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_return_AirplaneController_Get")
+                .UseInMemoryDatabase("test_database_AirplaneController_Get")
                 .Options;
 
 

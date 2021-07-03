@@ -5,14 +5,14 @@ using comrade.Application.Bases;
 using comrade.Application.Dtos.UserSystemDtos;
 using comrade.Infrastructure.DataAccess;
 using comrade.UnitTests.Helpers;
-using comrade.UnitTests.Tests.UsuarioSistemaTests.Bases;
+using comrade.UnitTests.Tests.UserSystemTests.Bases;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
 #endregion
 
-namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
+namespace comrade.IntegrationTests.Tests.UserSystemIntegrationTests
 {
     public class UserSystemControllerGetTests
     {
@@ -22,7 +22,7 @@ namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
         public async Task UserSystemController_Get()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_memoria_Get_user_sistema_Controller")
+                .UseInMemoryDatabase("test_database_UserSystemController_Get")
                 .Options;
 
             await using var context = new ComradeContext(options);

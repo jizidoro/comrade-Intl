@@ -4,13 +4,13 @@ using System.Threading.Tasks;
 using comrade.Infrastructure.DataAccess;
 using comrade.Infrastructure.Repositories;
 using comrade.UnitTests.Helpers;
-using comrade.UnitTests.Tests.UsuarioSistemaTests.Bases;
+using comrade.UnitTests.Tests.UserSystemTests.Bases;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
 #endregion
 
-namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
+namespace comrade.IntegrationTests.Tests.UserSystemIntegrationTests
 {
     public class UserSystemControllerDeleteTests
     {
@@ -20,7 +20,7 @@ namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
         public async Task UserSystemController_Delete()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_memoria_Delete_user_sistema")
+                .UseInMemoryDatabase("test_database_UserSystemController_Delete")
                 .Options;
 
             await using var context = new ComradeContext(options);
