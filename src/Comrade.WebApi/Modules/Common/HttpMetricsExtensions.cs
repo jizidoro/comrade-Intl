@@ -5,7 +5,7 @@ using Prometheus;
 
 #endregion
 
-namespace comrade.WebApi.Modules.Common
+namespace Comrade.WebApi.Modules.Common
 {
     /// <summary>
     ///     Http Metrics Extensions.

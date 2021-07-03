@@ -1,13 +1,13 @@
 ﻿#region
 
-using comrade.Core.Helpers.Interfaces;
-using comrade.Core.Helpers.Models.Results;
-using comrade.Core.Helpers.Models.Validations;
-using comrade.Domain.Models;
+using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Models.Results;
+using Comrade.Core.Helpers.Models.Validations;
+using Comrade.Domain.Models;
 
 #endregion
 
-namespace comrade.Core.UserSystemCore.Validations
+namespace Comrade.Core.UserSystemCore.Validations
 {
     public class UserSystemCreateValidation : EntityValidation<UserSystem>
     {

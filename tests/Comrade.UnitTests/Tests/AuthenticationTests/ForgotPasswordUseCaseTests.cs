@@ -1,19 +1,19 @@
 #region
 
 using System.Threading.Tasks;
-using comrade.Domain.Extensions;
-using comrade.Domain.Models;
-using comrade.Infrastructure.DataAccess;
-using comrade.Infrastructure.Repositories;
-using comrade.UnitTests.Helpers;
-using comrade.UnitTests.Tests.AuthenticationTests.Bases;
+using Comrade.Domain.Extensions;
+using Comrade.Domain.Models;
+using Comrade.Infrastructure.DataAccess;
+using Comrade.Infrastructure.Repositories;
+using Comrade.UnitTests.Helpers;
+using Comrade.UnitTests.Tests.AuthenticationTests.Bases;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 using Xunit.Abstractions;
 
 #endregion
 
-namespace comrade.UnitTests.Tests.AuthenticationTests
+namespace Comrade.UnitTests.Tests.AuthenticationTests
 {
     public sealed class ForgotPasswordUseCaseTests
 

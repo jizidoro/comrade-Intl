@@ -2,13 +2,13 @@
 
 using System;
 using System.Reflection;
-using comrade.Domain.Models;
-using comrade.Infrastructure.DataAccess;
-using comrade.Infrastructure.Extensions;
+using Comrade.Domain.Models;
+using Comrade.Infrastructure.DataAccess;
+using Comrade.Infrastructure.Extensions;
 
 #endregion
 
-namespace comrade.UnitTests.Helpers
+namespace Comrade.UnitTests.Helpers
 {
     public static class Utilities
     {

@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 
 #endregion
 
-namespace comrade.Domain.Extensions
+namespace Comrade.Domain.Extensions
 {
     public sealed class PasswordHasher : IPasswordHasher
     {

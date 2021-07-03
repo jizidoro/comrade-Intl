@@ -5,9 +5,9 @@ using System.Linq;
 using System.Net.Mime;
 using System.Text.Json;
 using System.Threading.Tasks;
-using comrade.Domain.Extensions;
-using comrade.Infrastructure.DataAccess;
-using comrade.WebApi.Modules.Common.FeatureFlags;
+using Comrade.Domain.Extensions;
+using Comrade.Infrastructure.DataAccess;
+using Comrade.WebApi.Modules.Common.FeatureFlags;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -19,7 +19,7 @@ using Microsoft.FeatureManagement;
 
 #endregion
 
-namespace comrade.WebApi.Modules
+namespace Comrade.WebApi.Modules
 {
     /// <summary>
     ///     HealthChecks Extensions.

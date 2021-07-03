@@ -1,11 +1,11 @@
 ﻿#region
 
 using System.Collections.Generic;
-using comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Interfaces;
 
 #endregion
 
-namespace comrade.Application.Utils
+namespace Comrade.Application.Utils
 {
     public interface IResultDto : IResult
     {

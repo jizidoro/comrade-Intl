@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 #endregion
 
-namespace comrade.Domain.CustomDataAnnotations
+namespace Comrade.Domain.CustomDataAnnotations
 {
     public class IdNotZeroValidation : ValidationAttribute
     {

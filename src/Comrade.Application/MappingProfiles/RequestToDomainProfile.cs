@@ -1,12 +1,12 @@
 ﻿#region
 
 using AutoMapper;
-using comrade.Application.Filters;
-using comrade.Application.Queries;
+using Comrade.Application.Filters;
+using Comrade.Application.Queries;
 
 #endregion
 
-namespace comrade.Application.MappingProfiles
+namespace Comrade.Application.MappingProfiles
 {
     public class RequestToDomainProfile : Profile
     {

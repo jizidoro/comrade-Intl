@@ -4,16 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using comrade.Application.Utils;
-using comrade.Core.Helpers.Interfaces;
+using Comrade.Application.Utils;
+using Comrade.Core.Helpers.Interfaces;
 using Comrade.Core.Helpers.Messages;
-using comrade.Core.Utils;
-using comrade.Domain.Bases;
-using comrade.Domain.Enums;
+using Comrade.Core.Utils;
+using Comrade.Domain.Bases;
+using Comrade.Domain.Enums;
 
 #endregion
 
-namespace comrade.Application.Bases
+namespace Comrade.Application.Bases
 {
     public class SingleResultDto<TDto> : ResultDto, ISingleResultDto<TDto>
         where TDto : Dto

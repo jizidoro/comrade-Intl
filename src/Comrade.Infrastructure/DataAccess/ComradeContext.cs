@@ -1,14 +1,14 @@
 #region
 
-using comrade.Domain.Models;
-using comrade.Domain.Models.Views;
-using comrade.Infrastructure.Mappings;
-using comrade.Infrastructure.Mappings.Views;
+using Comrade.Domain.Models;
+using Comrade.Domain.Models.Views;
+using Comrade.Infrastructure.Mappings;
+using Comrade.Infrastructure.Mappings.Views;
 using Microsoft.EntityFrameworkCore;
 
 #endregion
 
-namespace comrade.Infrastructure.DataAccess
+namespace Comrade.Infrastructure.DataAccess
 {
     public class ComradeContext : DbContext
     {

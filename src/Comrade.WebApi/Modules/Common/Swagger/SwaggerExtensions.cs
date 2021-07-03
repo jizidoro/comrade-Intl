@@ -2,7 +2,7 @@
 
 using System.IO;
 using System.Reflection;
-using comrade.WebApi.Modules.Common.FeatureFlags;
+using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -16,7 +16,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 #endregion
 
-namespace comrade.WebApi.Modules.Common.Swagger
+namespace Comrade.WebApi.Modules.Common.Swagger
 {
     /// <summary>
     ///     Swagger Extensions.
@@ -88,8 +88,7 @@ namespace comrade.WebApi.Modules.Common.Swagger
         public static IApplicationBuilder UseVersionedSwagger(
             this IApplicationBuilder app,
             IApiVersionDescriptionProvider provider,
-            IConfiguration configuration,
-            IWebHostEnvironment env)
+            IConfiguration configuration)
         {
             app.UseSwagger();
             app.UseSwaggerUI(

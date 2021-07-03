@@ -1,4 +1,4 @@
-﻿namespace comrade.Domain.Enums
+﻿namespace Comrade.Domain.Enums
 {
     public enum EnumResultadoAcao
     {

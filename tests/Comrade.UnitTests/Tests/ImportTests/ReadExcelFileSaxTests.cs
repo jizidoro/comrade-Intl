@@ -1,13 +1,13 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using comrade.Application.Imports.ImportFunctions;
-using comrade.UnitTests.Mocks;
+using Comrade.Application.Imports.ImportFunctions;
+using Comrade.UnitTests.Mocks;
 using Xunit;
 
 #endregion
 
-namespace comrade.UnitTests.Tests.ImportTests
+namespace Comrade.UnitTests.Tests.ImportTests
 {
     public class ReadExcelFileSaxTests
     {

@@ -1,11 +1,11 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using comrade.Core.Utils;
+using Comrade.Core.Utils;
 
 #endregion
 
-namespace comrade.Core.SecurityCore
+namespace Comrade.Core.SecurityCore
 {
     public interface IGenerateTokenLoginUseCase
     {

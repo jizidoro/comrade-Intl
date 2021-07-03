@@ -1,12 +1,12 @@
 ﻿#region
 
 using System;
-using comrade.Application.AutoMapper;
+using Comrade.Application.AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 
 #endregion
 
-namespace comrade.WebApi.Modules
+namespace Comrade.WebApi.Modules
 {
     public static class AutoMapperSetup
     {

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 #endregion
 
-namespace comrade.WebApi.Modules.Common
+namespace Comrade.WebApi.Modules.Common
 {
     /// <summary>
     ///     Exception Filter.

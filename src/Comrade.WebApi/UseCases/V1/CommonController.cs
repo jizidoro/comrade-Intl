@@ -2,20 +2,20 @@
 
 using System;
 using System.Threading.Tasks;
-using comrade.Application.Bases;
-using comrade.Application.Dtos.AirplaneDtos;
-using comrade.Application.Dtos.UserSystemDtos;
-using comrade.Application.Interfaces;
-using comrade.Application.Lookups;
-using comrade.Domain.Models;
-using comrade.WebApi.Modules.Common.FeatureFlags;
+using Comrade.Application.Bases;
+using Comrade.Application.Dtos.AirplaneDtos;
+using Comrade.Application.Dtos.UserSystemDtos;
+using Comrade.Application.Interfaces;
+using Comrade.Application.Lookups;
+using Comrade.Domain.Models;
+using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.FeatureManagement.Mvc;
 
 #endregion
 
-namespace comrade.WebApi.UseCases.V1
+namespace Comrade.WebApi.UseCases.V1
 {
     [FeatureGate(CustomFeature.Common)]
     [ApiVersion("1.0")]

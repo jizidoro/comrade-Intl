@@ -1,4 +1,4 @@
-﻿namespace comrade.Domain.Interfaces
+﻿namespace Comrade.Domain.Interfaces
 {
     public interface IEntity
     {

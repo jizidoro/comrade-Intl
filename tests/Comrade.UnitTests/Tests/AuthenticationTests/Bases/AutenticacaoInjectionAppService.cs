@@ -1,13 +1,13 @@
 ﻿#region
 
-using comrade.Application.Services;
-using comrade.Infrastructure.DataAccess;
-using comrade.Infrastructure.Repositories.Views;
-using comrade.UnitTests.Helpers;
+using Comrade.Application.Services;
+using Comrade.Infrastructure.DataAccess;
+using Comrade.Infrastructure.Repositories.Views;
+using Comrade.UnitTests.Helpers;
 
 #endregion
 
-namespace comrade.UnitTests.Tests.AuthenticationTests.Bases
+namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
 {
     public class AuthenticationInjectionAppService
     {

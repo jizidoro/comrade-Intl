@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using comrade.Domain.Bases;
-using comrade.Domain.Interfaces;
+using Comrade.Domain.Bases;
+using Comrade.Domain.Interfaces;
 
 #endregion
 
-namespace comrade.Core.Helpers.Interfaces
+namespace Comrade.Core.Helpers.Interfaces
 {
     public interface IRepository<TEntity> : IDisposable
         where TEntity : IEntity

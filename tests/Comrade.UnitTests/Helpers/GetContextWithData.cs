@@ -1,10 +1,10 @@
 ﻿#region
 
-using comrade.Infrastructure.DataAccess;
+using Comrade.Infrastructure.DataAccess;
 
 #endregion
 
-namespace comrade.UnitTests.Helpers
+namespace Comrade.UnitTests.Helpers
 {
     public class GetContextWithData
     {

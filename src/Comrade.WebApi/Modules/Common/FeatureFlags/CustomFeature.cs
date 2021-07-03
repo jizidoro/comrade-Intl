@@ -1,4 +1,4 @@
-namespace comrade.WebApi.Modules.Common.FeatureFlags
+namespace Comrade.WebApi.Modules.Common.FeatureFlags
 {
     /// <summary>
     ///     Features Flags Enum.

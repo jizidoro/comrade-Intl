@@ -1,14 +1,14 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Interfaces;
 using Comrade.Core.Helpers.Messages;
-using comrade.Core.Helpers.Models.Results;
-using comrade.Domain.Bases;
+using Comrade.Core.Helpers.Models.Results;
+using Comrade.Domain.Bases;
 
 #endregion
 
-namespace comrade.Core.Helpers.Models.Validations
+namespace Comrade.Core.Helpers.Models.Validations
 {
     public class EntityValidation<TEntity> : IEntityValidation<TEntity>
         where TEntity : Entity

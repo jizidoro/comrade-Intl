@@ -1,14 +1,14 @@
 ﻿#region
 
-using comrade.Infrastructure.DataAccess;
-using comrade.UnitTests.Helpers;
-using comrade.WebApi.UseCases.V1.AirplaneApi;
+using Comrade.Infrastructure.DataAccess;
+using Comrade.UnitTests.Helpers;
+using Comrade.WebApi.UseCases.V1.AirplaneApi;
 using Microsoft.Extensions.Logging;
 using Moq;
 
 #endregion
 
-namespace comrade.UnitTests.Tests.AirplaneTests.Bases
+namespace Comrade.UnitTests.Tests.AirplaneTests.Bases
 {
     public class AirplaneInjectionController
     {

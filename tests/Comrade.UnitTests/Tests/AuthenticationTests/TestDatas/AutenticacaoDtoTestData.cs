@@ -2,11 +2,11 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using comrade.Application.Dtos;
+using Comrade.Application.Dtos;
 
 #endregion
 
-namespace comrade.UnitTests.Tests.AuthenticationTests.TestDatas
+namespace Comrade.UnitTests.Tests.AuthenticationTests.TestDatas
 {
     internal class AuthenticationDtoTestData : IEnumerable<object[]>
     {

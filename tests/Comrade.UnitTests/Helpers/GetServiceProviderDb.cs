@@ -1,24 +1,25 @@
 ﻿#region
 
-using comrade.Application.Interfaces;
-using comrade.Application.Lookups;
-using comrade.Application.Services;
-using comrade.Core.Helpers.Interfaces;
-using comrade.Infrastructure.Bases;
-using comrade.WebApi.Modules;
-using comrade.WebApi.Modules.Common;
-using comrade.WebApi.Modules.Common.FeatureFlags;
-using comrade.WebApi.Modules.Common.Swagger;
+using Comrade.Application.Interfaces;
+using Comrade.Application.Lookups;
+using Comrade.Application.Services;
+using Comrade.Core.Helpers.Interfaces;
+using Comrade.Domain.Extensions;
+using Comrade.Infrastructure.Bases;
+using Comrade.WebApi.Modules;
+using Comrade.WebApi.Modules.Common;
+using Comrade.WebApi.Modules.Common.FeatureFlags;
+using Comrade.WebApi.Modules.Common.Swagger;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 #endregion
 
-namespace comrade.UnitTests.Helpers
+namespace Comrade.UnitTests.Helpers
 {
-    public class GetServiceProviderMemDb
+    public static class GetServiceProviderDb
     {
-        public ServiceProvider Execute()
+        public static ServiceProvider Execute()
         {
             var services = new ServiceCollection();
 
@@ -29,7 +30,7 @@ namespace comrade.UnitTests.Helpers
             services
                 .AddFeatureFlags(configuration)
                 .AddInvalidRequestLogging()
-                .AddSqlServerFake(configuration)
+                .AddSqlServer(configuration)
                 .AddEntityRepository(configuration)
                 .AddHealthChecks(configuration)
                 .AddAuthentication(configuration)
@@ -42,11 +43,13 @@ namespace comrade.UnitTests.Helpers
                 .AddCustomDataProtection();
 
             services.AddAutoMapperSetup();
-
             services.AddLogging();
 
             services.AddScoped(typeof(ILookupServiceApp<>), typeof(LookupServiceApp<>));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+            services.AddScoped<IPasswordHasher, PasswordHasher>();
+            services.AddScoped<HashingOptions>();
 
             return services.BuildServiceProvider();
         }

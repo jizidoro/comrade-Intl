@@ -1,14 +1,14 @@
 #region
 
 using System.Linq;
-using comrade.Core.Views.VBaUsuPermissaoCore;
-using comrade.Domain.Models.Views;
-using comrade.Infrastructure.DataAccess;
+using Comrade.Core.Views.VBaUsuPermissaoCore;
+using Comrade.Domain.Models.Views;
+using Comrade.Infrastructure.DataAccess;
 using Microsoft.EntityFrameworkCore;
 
 #endregion
 
-namespace comrade.Infrastructure.Repositories.Views
+namespace Comrade.Infrastructure.Repositories.Views
 {
     public class VwUserSystemPermissionRepository : IVwUserSystemPermissionRepository
     {

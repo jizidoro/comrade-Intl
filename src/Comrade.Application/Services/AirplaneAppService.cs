@@ -5,19 +5,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using comrade.Application.Bases;
-using comrade.Application.Dtos.AirplaneDtos;
-using comrade.Application.Filters;
-using comrade.Application.Interfaces;
-using comrade.Application.Utils;
-using comrade.Application.Validations.AirplaneValidations;
-using comrade.Core.AirplaneCore;
-using comrade.Core.AirplaneCore.UseCases;
-using comrade.Domain.Models;
+using Comrade.Application.Bases;
+using Comrade.Application.Dtos.AirplaneDtos;
+using Comrade.Application.Filters;
+using Comrade.Application.Interfaces;
+using Comrade.Application.Utils;
+using Comrade.Application.Validations.AirplaneValidations;
+using Comrade.Core.AirplaneCore;
+using Comrade.Core.AirplaneCore.UseCases;
+using Comrade.Domain.Models;
 
 #endregion
 
-namespace comrade.Application.Services
+namespace Comrade.Application.Services
 {
     public class AirplaneAppService : AppService, IAirplaneAppService
     {

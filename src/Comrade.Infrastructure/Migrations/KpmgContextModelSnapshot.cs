@@ -1,13 +1,13 @@
 ﻿#region
 
-using comrade.Infrastructure.DataAccess;
+using Comrade.Infrastructure.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 #endregion
 
-namespace comrade.Infrastructure.Migrations
+namespace Comrade.Infrastructure.Migrations
 {
     [DbContext(typeof(ComradeContext))]
     internal class ComradeContextModelSnapshot : ModelSnapshot

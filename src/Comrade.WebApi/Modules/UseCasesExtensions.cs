@@ -1,18 +1,18 @@
 #region
 
-using comrade.Application.Interfaces;
-using comrade.Application.Services;
-using comrade.Core.AirplaneCore.UseCases;
-using comrade.Core.AirplaneCore.Validations;
-using comrade.Core.SecurityCore.UseCases;
-using comrade.Core.SecurityCore.Validation;
-using comrade.Core.UserSystemCore.UseCases;
-using comrade.Core.UserSystemCore.Validations;
+using Comrade.Application.Interfaces;
+using Comrade.Application.Services;
+using Comrade.Core.AirplaneCore.UseCases;
+using Comrade.Core.AirplaneCore.Validations;
+using Comrade.Core.SecurityCore.UseCases;
+using Comrade.Core.SecurityCore.Validation;
+using Comrade.Core.UserSystemCore.UseCases;
+using Comrade.Core.UserSystemCore.Validations;
 using Microsoft.Extensions.DependencyInjection;
 
 #endregion
 
-namespace comrade.WebApi.Modules
+namespace Comrade.WebApi.Modules
 {
     /// <summary>
     ///     Adds Use Cases classes.

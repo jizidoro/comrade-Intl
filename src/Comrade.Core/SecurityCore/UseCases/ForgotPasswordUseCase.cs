@@ -2,17 +2,17 @@
 
 using System;
 using System.Threading.Tasks;
-using comrade.Core.Helpers.Bases;
-using comrade.Core.Helpers.Interfaces;
-using comrade.Core.Helpers.Models.Results;
-using comrade.Core.UserSystemCore;
-using comrade.Core.UserSystemCore.Validations;
-using comrade.Domain.Extensions;
-using comrade.Domain.Models;
+using Comrade.Core.Helpers.Bases;
+using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Models.Results;
+using Comrade.Core.UserSystemCore;
+using Comrade.Core.UserSystemCore.Validations;
+using Comrade.Domain.Extensions;
+using Comrade.Domain.Models;
 
 #endregion
 
-namespace comrade.Core.SecurityCore.UseCases
+namespace Comrade.Core.SecurityCore.UseCases
 {
     public class ForgotPasswordUseCase : Service
     {

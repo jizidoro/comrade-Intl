@@ -4,7 +4,7 @@ using System;
 
 #endregion
 
-namespace comrade.Domain.Attributes
+namespace Comrade.Domain.Attributes
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class EntityAttribute : Attribute

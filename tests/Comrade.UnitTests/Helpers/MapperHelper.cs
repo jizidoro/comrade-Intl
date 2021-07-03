@@ -1,12 +1,12 @@
 ﻿#region
 
 using AutoMapper;
-using comrade.Application.AutoMapper;
-using comrade.Application.MappingProfiles;
+using Comrade.Application.AutoMapper;
+using Comrade.Application.MappingProfiles;
 
 #endregion
 
-namespace comrade.UnitTests.Helpers
+namespace Comrade.UnitTests.Helpers
 {
     public class MapperHelper
     {

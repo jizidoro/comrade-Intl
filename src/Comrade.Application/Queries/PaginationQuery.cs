@@ -1,4 +1,4 @@
-﻿namespace comrade.Application.Queries
+﻿namespace Comrade.Application.Queries
 {
     public class PaginationQuery
     {

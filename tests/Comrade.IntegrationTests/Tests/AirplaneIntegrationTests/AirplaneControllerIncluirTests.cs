@@ -2,17 +2,17 @@
 
 using System.Linq;
 using System.Threading.Tasks;
-using comrade.Application.Bases;
-using comrade.Application.Dtos.AirplaneDtos;
-using comrade.Infrastructure.DataAccess;
-using comrade.UnitTests.Tests.AirplaneTests.Bases;
+using Comrade.Application.Bases;
+using Comrade.Application.Dtos.AirplaneDtos;
+using Comrade.Infrastructure.DataAccess;
+using Comrade.UnitTests.Tests.AirplaneTests.Bases;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
 #endregion
 
-namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
+namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
 {
     public sealed class AirplaneControllerCreateTests
     {

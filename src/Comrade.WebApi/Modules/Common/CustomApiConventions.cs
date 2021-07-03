@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 #endregion
 
-namespace comrade.WebApi.Modules.Common
+namespace Comrade.WebApi.Modules.Common
 {
     /// <summary>
     /// </summary>

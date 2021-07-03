@@ -1,4 +1,4 @@
-namespace comrade.Core.Helpers.Models.Dtos
+namespace Comrade.Core.Helpers.Models.Dtos
 {
     public class ErrorDto
     {

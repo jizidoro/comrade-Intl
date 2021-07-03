@@ -1,10 +1,10 @@
 ﻿#region
 
-using comrade.Domain.Interfaces;
+using Comrade.Domain.Interfaces;
 
 #endregion
 
-namespace comrade.Core.Helpers.Interfaces
+namespace Comrade.Core.Helpers.Interfaces
 {
     public interface ISingleResult<TEntity> : IResult
         where TEntity : IEntity

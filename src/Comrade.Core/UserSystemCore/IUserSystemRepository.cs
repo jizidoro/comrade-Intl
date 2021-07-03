@@ -1,13 +1,13 @@
 ﻿#region
 
 using System.Linq;
-using comrade.Core.Helpers.Interfaces;
-using comrade.Domain.Bases;
-using comrade.Domain.Models;
+using Comrade.Core.Helpers.Interfaces;
+using Comrade.Domain.Bases;
+using Comrade.Domain.Models;
 
 #endregion
 
-namespace comrade.Core.UserSystemCore
+namespace Comrade.Core.UserSystemCore
 {
     public interface IUserSystemRepository : IRepository<UserSystem>
     {

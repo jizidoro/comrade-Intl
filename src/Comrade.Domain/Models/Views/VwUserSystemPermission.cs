@@ -1,4 +1,4 @@
-namespace comrade.Domain.Models.Views
+namespace Comrade.Domain.Models.Views
 {
     public class VwUserSystemPermission
     {

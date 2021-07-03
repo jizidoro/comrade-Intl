@@ -9,7 +9,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 #endregion
 
-namespace comrade.WebApi.Modules.Common.Swagger
+namespace Comrade.WebApi.Modules.Common.Swagger
 {
     /// <summary>
     ///     Configures the Swagger generation options.

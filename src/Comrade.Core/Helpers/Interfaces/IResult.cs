@@ -1,4 +1,4 @@
-﻿namespace comrade.Core.Helpers.Interfaces
+﻿namespace Comrade.Core.Helpers.Interfaces
 {
     public interface IResult
     {

@@ -1,15 +1,15 @@
 #region
 
-using comrade.Application.Interfaces;
-using comrade.Application.Lookups;
-using comrade.Application.Services;
-using comrade.Core.Helpers.Interfaces;
-using comrade.Domain.Extensions;
-using comrade.Infrastructure.Bases;
-using comrade.WebApi.Modules;
-using comrade.WebApi.Modules.Common;
-using comrade.WebApi.Modules.Common.FeatureFlags;
-using comrade.WebApi.Modules.Common.Swagger;
+using Comrade.Application.Interfaces;
+using Comrade.Application.Lookups;
+using Comrade.Application.Services;
+using Comrade.Core.Helpers.Interfaces;
+using Comrade.Domain.Extensions;
+using Comrade.Infrastructure.Bases;
+using Comrade.WebApi.Modules;
+using Comrade.WebApi.Modules.Common;
+using Comrade.WebApi.Modules.Common.FeatureFlags;
+using Comrade.WebApi.Modules.Common.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -21,7 +21,7 @@ using Serilog;
 
 #endregion
 
-namespace comrade.WebApi
+namespace Comrade.WebApi
 {
     /// <summary>
     ///     Startup.
@@ -88,7 +88,7 @@ namespace comrade.WebApi
                 .UseCustomCors()
                 .UseCustomHttpMetrics()
                 .UseRouting()
-                .UseVersionedSwagger(provider, Configuration, env)
+                .UseVersionedSwagger(provider, Configuration)
                 .UseAuthentication()
                 .UseAuthorization()
                 .UseSerilogRequestLogging()

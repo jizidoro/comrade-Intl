@@ -1,11 +1,11 @@
 ﻿#region
 
 using System.ComponentModel.DataAnnotations;
-using comrade.Domain.Interfaces;
+using Comrade.Domain.Interfaces;
 
 #endregion
 
-namespace comrade.Domain.Bases
+namespace Comrade.Domain.Bases
 {
     public abstract class Entity : IEntity
     {

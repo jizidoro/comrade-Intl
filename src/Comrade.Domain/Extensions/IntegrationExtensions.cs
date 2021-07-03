@@ -4,7 +4,7 @@ using System.Text;
 
 #endregion
 
-namespace comrade.Domain.Extensions
+namespace Comrade.Domain.Extensions
 {
     /// <summary>
     ///     Provê funções auxiliares de integração com o Itec

@@ -3,13 +3,13 @@
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
-using comrade.Infrastructure.Extensions;
+using Comrade.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Http;
 using Moq;
 
 #endregion
 
-namespace comrade.UnitTests.Mocks
+namespace Comrade.UnitTests.Mocks
 {
     public class GetIFormFileMock
     {

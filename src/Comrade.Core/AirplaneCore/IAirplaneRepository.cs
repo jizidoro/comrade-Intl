@@ -1,12 +1,12 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using comrade.Core.Helpers.Interfaces;
-using comrade.Domain.Models;
+using Comrade.Core.Helpers.Interfaces;
+using Comrade.Domain.Models;
 
 #endregion
 
-namespace comrade.Core.AirplaneCore
+namespace Comrade.Core.AirplaneCore
 {
     public interface IAirplaneRepository : IRepository<Airplane>
     {

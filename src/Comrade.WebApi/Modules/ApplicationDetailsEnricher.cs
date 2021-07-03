@@ -6,7 +6,7 @@ using Serilog.Events;
 
 #endregion
 
-namespace comrade.WebApi.Modules
+namespace Comrade.WebApi.Modules
 {
     public class ApplicationDetailsEnricher : ILogEventEnricher
     {

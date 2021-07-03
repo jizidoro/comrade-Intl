@@ -1,12 +1,12 @@
 ﻿#region
 
-using comrade.Domain.Models;
+using Comrade.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 #endregion
 
-namespace comrade.Infrastructure.Mappings
+namespace Comrade.Infrastructure.Mappings
 {
     public class AirplaneConfiguration : IEntityTypeConfiguration<Airplane>
     {

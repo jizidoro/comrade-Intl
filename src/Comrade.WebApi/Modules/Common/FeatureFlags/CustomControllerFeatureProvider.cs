@@ -12,7 +12,7 @@ using Microsoft.FeatureManagement.Mvc;
 
 #endregion
 
-namespace comrade.WebApi.Modules.Common.FeatureFlags
+namespace Comrade.WebApi.Modules.Common.FeatureFlags
 {
     /// <summary>
     ///     Custom Controller Feature Provider.

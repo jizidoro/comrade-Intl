@@ -6,14 +6,14 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using comrade.Core.SecurityCore.Validation;
-using comrade.Core.Utils;
+using Comrade.Core.SecurityCore.Validation;
+using Comrade.Core.Utils;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 #endregion
 
-namespace comrade.Core.SecurityCore.UseCases
+namespace Comrade.Core.SecurityCore.UseCases
 {
     public class GenerateTokenLoginUseCase : IGenerateTokenLoginUseCase
     {

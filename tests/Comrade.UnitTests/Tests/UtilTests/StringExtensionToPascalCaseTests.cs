@@ -1,11 +1,11 @@
 ﻿#region
 
-using comrade.Application.Extensions;
+using Comrade.Application.Extensions;
 using Xunit;
 
 #endregion
 
-namespace comrade.UnitTests.Tests.UtilTests
+namespace Comrade.UnitTests.Tests.UtilTests
 {
     public class StringExtensionToPascalCaseTests
     {

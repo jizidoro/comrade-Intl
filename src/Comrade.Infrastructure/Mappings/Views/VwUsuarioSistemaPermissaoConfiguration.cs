@@ -1,12 +1,12 @@
 #region
 
-using comrade.Domain.Models.Views;
+using Comrade.Domain.Models.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 #endregion
 
-namespace comrade.Infrastructure.Mappings.Views
+namespace Comrade.Infrastructure.Mappings.Views
 {
     public class VwUserSystemPermissionConfiguration : IEntityTypeConfiguration<VwUserSystemPermission>
     {

@@ -1,12 +1,12 @@
 ﻿#region
 
 using Comrade.Core.Helpers.Messages;
-using comrade.Domain.Bases;
-using comrade.Domain.Enums;
+using Comrade.Domain.Bases;
+using Comrade.Domain.Enums;
 
 #endregion
 
-namespace comrade.Core.Helpers.Models.Results
+namespace Comrade.Core.Helpers.Models.Results
 {
     public class EditResult<TEntity> : SingleResult<TEntity>
         where TEntity : Entity

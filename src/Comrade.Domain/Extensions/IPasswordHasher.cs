@@ -1,4 +1,4 @@
-﻿namespace comrade.Domain.Extensions
+﻿namespace Comrade.Domain.Extensions
 {
     public interface IPasswordHasher
     {

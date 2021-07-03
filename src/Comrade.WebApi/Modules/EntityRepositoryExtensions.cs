@@ -1,20 +1,20 @@
 #region
 
-using comrade.Core.AirplaneCore;
-using comrade.Core.Helpers.Interfaces;
-using comrade.Core.UserSystemCore;
-using comrade.Core.Views.VBaUsuPermissaoCore;
-using comrade.Infrastructure.DataAccess;
-using comrade.Infrastructure.Repositories;
-using comrade.Infrastructure.Repositories.Views;
-using comrade.WebApi.Modules.Common.FeatureFlags;
+using Comrade.Core.AirplaneCore;
+using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.UserSystemCore;
+using Comrade.Core.Views.VBaUsuPermissaoCore;
+using Comrade.Infrastructure.DataAccess;
+using Comrade.Infrastructure.Repositories;
+using Comrade.Infrastructure.Repositories.Views;
+using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.FeatureManagement;
 
 #endregion
 
-namespace comrade.WebApi.Modules
+namespace Comrade.WebApi.Modules
 {
     /// <summary>
     ///     Persistence Extensions.

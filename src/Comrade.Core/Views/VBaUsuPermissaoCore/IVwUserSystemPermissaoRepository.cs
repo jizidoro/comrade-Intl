@@ -1,11 +1,11 @@
 ﻿#region
 
 using System.Linq;
-using comrade.Domain.Models.Views;
+using Comrade.Domain.Models.Views;
 
 #endregion
 
-namespace comrade.Core.Views.VBaUsuPermissaoCore
+namespace Comrade.Core.Views.VBaUsuPermissaoCore
 {
     public interface IVwUserSystemPermissionRepository
     {

@@ -1,4 +1,4 @@
-﻿namespace comrade.Domain.Bases
+﻿namespace Comrade.Domain.Bases
 {
     public class SortByDto
     {

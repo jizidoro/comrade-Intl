@@ -5,21 +5,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using comrade.Application.Bases;
-using comrade.Application.Dtos.UserSystemDtos;
-using comrade.Application.Filters;
-using comrade.Application.Interfaces;
-using comrade.Application.Lookups;
-using comrade.Application.Utils;
-using comrade.Application.Validations.UserSystemValidations;
-using comrade.Core.UserSystemCore;
-using comrade.Core.UserSystemCore.UseCases;
-using comrade.Domain.Bases;
-using comrade.Domain.Models;
+using Comrade.Application.Bases;
+using Comrade.Application.Dtos.UserSystemDtos;
+using Comrade.Application.Filters;
+using Comrade.Application.Interfaces;
+using Comrade.Application.Lookups;
+using Comrade.Application.Utils;
+using Comrade.Application.Validations.UserSystemValidations;
+using Comrade.Core.UserSystemCore;
+using Comrade.Core.UserSystemCore.UseCases;
+using Comrade.Domain.Bases;
+using Comrade.Domain.Models;
 
 #endregion
 
-namespace comrade.Application.Services
+namespace Comrade.Application.Services
 {
     public class UserSystemAppService : AppService, IUserSystemAppService
     {

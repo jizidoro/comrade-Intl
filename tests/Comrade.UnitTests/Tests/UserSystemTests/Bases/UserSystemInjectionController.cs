@@ -1,12 +1,12 @@
 ﻿#region
 
-using comrade.Infrastructure.DataAccess;
-using comrade.UnitTests.Helpers;
-using comrade.WebApi.UseCases.V1.UserSystemApi;
+using Comrade.Infrastructure.DataAccess;
+using Comrade.UnitTests.Helpers;
+using Comrade.WebApi.UseCases.V1.UserSystemApi;
 
 #endregion
 
-namespace comrade.UnitTests.Tests.UserSystemTests.Bases
+namespace Comrade.UnitTests.Tests.UserSystemTests.Bases
 {
     public class UserSystemInjectionController
     {

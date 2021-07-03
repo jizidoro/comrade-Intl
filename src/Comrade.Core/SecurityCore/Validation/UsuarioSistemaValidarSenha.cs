@@ -1,15 +1,15 @@
 ﻿#region
 
-using comrade.Core.Helpers.Interfaces;
-using comrade.Core.Helpers.Models.Results;
-using comrade.Core.Helpers.Models.Validations;
-using comrade.Core.UserSystemCore;
-using comrade.Domain.Extensions;
-using comrade.Domain.Models;
+using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Models.Results;
+using Comrade.Core.Helpers.Models.Validations;
+using Comrade.Core.UserSystemCore;
+using Comrade.Domain.Extensions;
+using Comrade.Domain.Models;
 
 #endregion
 
-namespace comrade.Core.SecurityCore.Validation
+namespace Comrade.Core.SecurityCore.Validation
 {
     public class UserSystemPasswordValidation : EntityValidation<UserSystem>
     {

@@ -1,16 +1,16 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using comrade.Domain.Models;
-using comrade.Infrastructure.DataAccess;
-using comrade.Infrastructure.Repositories;
-using comrade.UnitTests.Helpers;
+using Comrade.Domain.Models;
+using Comrade.Infrastructure.DataAccess;
+using Comrade.Infrastructure.Repositories;
+using Comrade.UnitTests.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
 #endregion
 
-namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
+namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
 {
     public class AirplaneContextTests
     {

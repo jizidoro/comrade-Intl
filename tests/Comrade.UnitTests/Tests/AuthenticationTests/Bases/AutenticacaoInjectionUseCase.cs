@@ -1,20 +1,20 @@
 ﻿#region
 
 using System.Collections.Generic;
-using comrade.Application.Services;
-using comrade.Core.SecurityCore.UseCases;
-using comrade.Core.SecurityCore.Validation;
-using comrade.Core.UserSystemCore.Validations;
-using comrade.Domain.Extensions;
-using comrade.Infrastructure.DataAccess;
-using comrade.Infrastructure.Repositories;
-using comrade.Infrastructure.Repositories.Views;
-using comrade.UnitTests.Helpers;
+using Comrade.Application.Services;
+using Comrade.Core.SecurityCore.UseCases;
+using Comrade.Core.SecurityCore.Validation;
+using Comrade.Core.UserSystemCore.Validations;
+using Comrade.Domain.Extensions;
+using Comrade.Infrastructure.DataAccess;
+using Comrade.Infrastructure.Repositories;
+using Comrade.Infrastructure.Repositories.Views;
+using Comrade.UnitTests.Helpers;
 using Microsoft.Extensions.Configuration;
 
 #endregion
 
-namespace comrade.UnitTests.Tests.AuthenticationTests.Bases
+namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
 {
     public sealed class AuthenticationInjectionUseCase
     {

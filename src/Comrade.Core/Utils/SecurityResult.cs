@@ -1,10 +1,10 @@
 ﻿#region
 
-using comrade.Domain.Enums;
+using Comrade.Domain.Enums;
 
 #endregion
 
-namespace comrade.Core.Utils
+namespace Comrade.Core.Utils
 {
     public class SecurityResult
     {

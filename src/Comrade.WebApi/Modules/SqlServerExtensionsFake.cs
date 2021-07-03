@@ -1,7 +1,7 @@
 #region
 
-using comrade.Infrastructure.DataAccess;
-using comrade.WebApi.Modules.Common.FeatureFlags;
+using Comrade.Infrastructure.DataAccess;
+using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,7 +9,7 @@ using Microsoft.FeatureManagement;
 
 #endregion
 
-namespace comrade.WebApi.Modules
+namespace Comrade.WebApi.Modules
 {
     /// <summary>
     ///     Persistence Extensions.

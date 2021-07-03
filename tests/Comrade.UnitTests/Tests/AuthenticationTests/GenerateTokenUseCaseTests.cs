@@ -1,18 +1,18 @@
 #region
 
 using System.Threading.Tasks;
-using comrade.Application.Dtos;
-using comrade.Infrastructure.DataAccess;
-using comrade.UnitTests.Helpers;
-using comrade.UnitTests.Tests.AuthenticationTests.Bases;
-using comrade.UnitTests.Tests.AuthenticationTests.TestDatas;
+using Comrade.Application.Dtos;
+using Comrade.Infrastructure.DataAccess;
+using Comrade.UnitTests.Helpers;
+using Comrade.UnitTests.Tests.AuthenticationTests.Bases;
+using Comrade.UnitTests.Tests.AuthenticationTests.TestDatas;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 using Xunit.Abstractions;
 
 #endregion
 
-namespace comrade.UnitTests.Tests.AuthenticationTests
+namespace Comrade.UnitTests.Tests.AuthenticationTests
 {
     public sealed class GenerateTokenUseCaseTests
 

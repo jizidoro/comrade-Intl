@@ -1,4 +1,4 @@
-﻿namespace comrade.Domain.Bases
+﻿namespace Comrade.Domain.Bases
 {
     public abstract class ValueObject<T> where T : ValueObject<T>
     {

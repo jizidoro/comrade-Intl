@@ -1,19 +1,19 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using comrade.Application.Bases;
-using comrade.Application.Dtos.UserSystemDtos;
-using comrade.Infrastructure.DataAccess;
-using comrade.Infrastructure.Repositories;
-using comrade.UnitTests.Helpers;
-using comrade.UnitTests.Tests.UserSystemTests.Bases;
+using Comrade.Application.Bases;
+using Comrade.Application.Dtos.UserSystemDtos;
+using Comrade.Infrastructure.DataAccess;
+using Comrade.Infrastructure.Repositories;
+using Comrade.UnitTests.Helpers;
+using Comrade.UnitTests.Tests.UserSystemTests.Bases;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
 #endregion
 
-namespace comrade.IntegrationTests.Tests.UserSystemIntegrationTests
+namespace Comrade.IntegrationTests.Tests.UserSystemIntegrationTests
 {
     public class UserSystemControllerEditTests
     {

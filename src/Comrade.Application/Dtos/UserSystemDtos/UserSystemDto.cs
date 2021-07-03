@@ -1,11 +1,11 @@
 ﻿#region
 
 using System;
-using comrade.Application.Bases;
+using Comrade.Application.Bases;
 
 #endregion
 
-namespace comrade.Application.Dtos.UserSystemDtos
+namespace Comrade.Application.Dtos.UserSystemDtos
 {
     public class UserSystemDto : EntityDto
     {

@@ -4,7 +4,7 @@ using System;
 
 #endregion
 
-namespace comrade.Domain
+namespace Comrade.Domain
 {
     /// <summary>
     ///     Domain Exception.

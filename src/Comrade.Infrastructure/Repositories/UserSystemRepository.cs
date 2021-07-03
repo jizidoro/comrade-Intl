@@ -2,15 +2,15 @@
 
 using System;
 using System.Linq;
-using comrade.Core.UserSystemCore;
-using comrade.Domain.Bases;
-using comrade.Domain.Models;
-using comrade.Infrastructure.Bases;
-using comrade.Infrastructure.DataAccess;
+using Comrade.Core.UserSystemCore;
+using Comrade.Domain.Bases;
+using Comrade.Domain.Models;
+using Comrade.Infrastructure.Bases;
+using Comrade.Infrastructure.DataAccess;
 
 #endregion
 
-namespace comrade.Infrastructure.Repositories
+namespace Comrade.Infrastructure.Repositories
 {
     public class UserSystemRepository : Repository<UserSystem>, IUserSystemRepository
     {

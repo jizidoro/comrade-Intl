@@ -2,16 +2,16 @@
 
 using System;
 using System.Threading.Tasks;
-using comrade.Core.Helpers.Bases;
-using comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Bases;
+using Comrade.Core.Helpers.Interfaces;
 using Comrade.Core.Helpers.Messages;
-using comrade.Core.Helpers.Models.Results;
-using comrade.Core.UserSystemCore.Validations;
-using comrade.Domain.Models;
+using Comrade.Core.Helpers.Models.Results;
+using Comrade.Core.UserSystemCore.Validations;
+using Comrade.Domain.Models;
 
 #endregion
 
-namespace comrade.Core.UserSystemCore.UseCases
+namespace Comrade.Core.UserSystemCore.UseCases
 {
     public class UserSystemDeleteUseCase : Service
     {

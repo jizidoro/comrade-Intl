@@ -6,7 +6,7 @@ using Microsoft.FeatureManagement;
 
 #endregion
 
-namespace comrade.WebApi.Modules.Common.FeatureFlags
+namespace Comrade.WebApi.Modules.Common.FeatureFlags
 {
     /// <summary>
     ///     Feature Flags Extension.

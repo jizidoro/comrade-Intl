@@ -1,10 +1,10 @@
 ﻿#region
 
-using comrade.Application.Bases;
+using Comrade.Application.Bases;
 
 #endregion
 
-namespace comrade.Application.Dtos
+namespace Comrade.Application.Dtos
 {
     public class AuthenticationDto : EntityDto
     {

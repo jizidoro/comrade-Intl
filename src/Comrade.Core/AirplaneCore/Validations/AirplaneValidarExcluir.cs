@@ -1,13 +1,13 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using comrade.Core.Helpers.Interfaces;
-using comrade.Core.Helpers.Models.Validations;
-using comrade.Domain.Models;
+using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Models.Validations;
+using Comrade.Domain.Models;
 
 #endregion
 
-namespace comrade.Core.AirplaneCore.Validations
+namespace Comrade.Core.AirplaneCore.Validations
 {
     public class AirplaneDeleteValidation : EntityValidation<Airplane>
     {

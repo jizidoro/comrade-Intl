@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 #endregion
 
-namespace comrade.Domain.Enums
+namespace Comrade.Domain.Enums
 {
     public static class EnumExtensions
     {

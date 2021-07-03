@@ -2,11 +2,11 @@
 
 using System;
 using System.Threading.Tasks;
-using comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Interfaces;
 
 #endregion
 
-namespace comrade.Infrastructure.DataAccess
+namespace Comrade.Infrastructure.DataAccess
 {
     public sealed class UnitOfWork : IUnitOfWork, IDisposable
     {

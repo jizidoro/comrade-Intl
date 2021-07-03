@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace comrade.Core.Utils
+namespace Comrade.Core.Utils
 {
     public class User
     {

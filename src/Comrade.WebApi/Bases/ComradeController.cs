@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 #endregion
 
-namespace comrade.WebApi.Bases
+namespace Comrade.WebApi.Bases
 {
     public class ComradeController : ControllerBase
     {

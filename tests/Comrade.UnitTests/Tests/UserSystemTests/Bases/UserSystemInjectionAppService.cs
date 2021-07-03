@@ -1,16 +1,16 @@
 ﻿#region
 
 using AutoMapper;
-using comrade.Application.Services;
-using comrade.Core.UserSystemCore.UseCases;
-using comrade.Core.UserSystemCore.Validations;
-using comrade.Domain.Extensions;
-using comrade.Infrastructure.DataAccess;
-using comrade.Infrastructure.Repositories;
+using Comrade.Application.Services;
+using Comrade.Core.UserSystemCore.UseCases;
+using Comrade.Core.UserSystemCore.Validations;
+using Comrade.Domain.Extensions;
+using Comrade.Infrastructure.DataAccess;
+using Comrade.Infrastructure.Repositories;
 
 #endregion
 
-namespace comrade.UnitTests.Tests.UserSystemTests.Bases
+namespace Comrade.UnitTests.Tests.UserSystemTests.Bases
 {
     public sealed class UserSystemInjectionAppService
     {

@@ -3,11 +3,11 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using comrade.Domain.Bases;
+using Comrade.Domain.Bases;
 
 #endregion
 
-namespace comrade.Domain.Models
+namespace Comrade.Domain.Models
 {
     [Table("AIRP_AIRPLANE")]
     public class Airplane : Entity

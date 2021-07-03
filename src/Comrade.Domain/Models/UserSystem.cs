@@ -3,11 +3,11 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using comrade.Domain.Bases;
+using Comrade.Domain.Bases;
 
 #endregion
 
-namespace comrade.Domain.Models
+namespace Comrade.Domain.Models
 {
     [Table("USSI_USUARIO_SISTEMA")]
     public class UserSystem : Entity

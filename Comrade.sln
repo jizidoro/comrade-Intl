@@ -19,17 +19,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{597E8C1B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "comrade.Application", "src\comrade.Application\comrade.Application.csproj", "{927BF290-C2E0-4C83-8135-B43AB74CFD99}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "comrade.WebApi", "src\comrade.WebApi\comrade.WebApi.csproj", "{0FB4B8DD-BF9B-4167-91FE-63CAA1FB3ECF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comrade.WebApi", "src\comrade.WebApi\Comrade.WebApi.csproj", "{0FB4B8DD-BF9B-4167-91FE-63CAA1FB3ECF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "comrade.Core", "src\comrade.Core\comrade.Core.csproj", "{83301418-BDE8-4DB9-BBD8-D5E7F9EF1954}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comrade.Core", "src\comrade.Core\Comrade.Core.csproj", "{83301418-BDE8-4DB9-BBD8-D5E7F9EF1954}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "comrade.Domain", "src\comrade.Domain\comrade.Domain.csproj", "{13FAEEEB-3857-4CE8-8C1E-0EC8BA1F838F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comrade.Domain", "src\comrade.Domain\Comrade.Domain.csproj", "{13FAEEEB-3857-4CE8-8C1E-0EC8BA1F838F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "comrade.Infrastructure", "src\comrade.Infrastructure\comrade.Infrastructure.csproj", "{EB7A09D4-BABB-4CC5-AF37-DAD9CA37D2EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comrade.Infrastructure", "src\comrade.Infrastructure\Comrade.Infrastructure.csproj", "{EB7A09D4-BABB-4CC5-AF37-DAD9CA37D2EB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "comrade.UnitTests", "tests\comrade.UnitTests\comrade.UnitTests.csproj", "{0A07755C-DDAA-4F3F-A802-612F9C11F7D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comrade.UnitTests", "tests\comrade.UnitTests\Comrade.UnitTests.csproj", "{0A07755C-DDAA-4F3F-A802-612F9C11F7D8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "comrade.IntegrationTests", "tests\comrade.IntegrationTests\comrade.IntegrationTests.csproj", "{DE69CD1F-3698-4B83-A773-B8DD5864820F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comrade.IntegrationTests", "tests\comrade.IntegrationTests\Comrade.IntegrationTests.csproj", "{DE69CD1F-3698-4B83-A773-B8DD5864820F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

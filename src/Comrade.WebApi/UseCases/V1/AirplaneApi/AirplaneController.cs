@@ -3,13 +3,13 @@
 using System;
 using System.Threading.Tasks;
 using AutoMapper;
-using comrade.Application.Bases;
-using comrade.Application.Dtos.AirplaneDtos;
-using comrade.Application.Filters;
-using comrade.Application.Interfaces;
-using comrade.Application.Queries;
-using comrade.WebApi.Bases;
-using comrade.WebApi.Modules.Common.FeatureFlags;
+using Comrade.Application.Bases;
+using Comrade.Application.Dtos.AirplaneDtos;
+using Comrade.Application.Filters;
+using Comrade.Application.Interfaces;
+using Comrade.Application.Queries;
+using Comrade.WebApi.Bases;
+using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -17,7 +17,7 @@ using Microsoft.FeatureManagement.Mvc;
 
 #endregion
 
-namespace comrade.WebApi.UseCases.V1.AirplaneApi
+namespace Comrade.WebApi.UseCases.V1.AirplaneApi
 {
     [Authorize]
     [FeatureGate(CustomFeature.Airplane)]

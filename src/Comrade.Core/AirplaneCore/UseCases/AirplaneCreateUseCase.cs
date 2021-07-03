@@ -2,16 +2,16 @@
 
 using System;
 using System.Threading.Tasks;
-using comrade.Core.AirplaneCore.Validations;
-using comrade.Core.Helpers.Bases;
-using comrade.Core.Helpers.Interfaces;
+using Comrade.Core.AirplaneCore.Validations;
+using Comrade.Core.Helpers.Bases;
+using Comrade.Core.Helpers.Interfaces;
 using Comrade.Core.Helpers.Messages;
-using comrade.Core.Helpers.Models.Results;
-using comrade.Domain.Models;
+using Comrade.Core.Helpers.Models.Results;
+using Comrade.Domain.Models;
 
 #endregion
 
-namespace comrade.Core.AirplaneCore.UseCases
+namespace Comrade.Core.AirplaneCore.UseCases
 {
     public class AirplaneCreateUseCase : Service
     {

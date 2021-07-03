@@ -15,7 +15,7 @@ using Serilog.Sinks.MSSqlServer;
 
 #endregion
 
-namespace comrade.WebApi.Modules.Common
+namespace Comrade.WebApi.Modules.Common
 {
     /// <summary>
     /// </summary>

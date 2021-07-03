@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using comrade.Core.Helpers.Interfaces;
-using comrade.Core.Helpers.Models.Results;
-using comrade.Domain.Interfaces;
+using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Models.Results;
+using Comrade.Domain.Interfaces;
 
 #endregion
 
-namespace comrade.Core.Helpers.Bases
+namespace Comrade.Core.Helpers.Bases
 {
     public class Service : IService
     {

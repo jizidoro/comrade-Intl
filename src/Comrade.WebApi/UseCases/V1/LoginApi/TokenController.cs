@@ -1,14 +1,14 @@
 #region
 
 using System.Threading.Tasks;
-using comrade.Application.Dtos;
-using comrade.Application.Interfaces;
+using Comrade.Application.Dtos;
+using Comrade.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 #endregion
 
-namespace comrade.WebApi.UseCases.V1.LoginApi
+namespace Comrade.WebApi.UseCases.V1.LoginApi
 {
     [AllowAnonymous]
     [ApiVersion("1.0")]

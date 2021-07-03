@@ -1,15 +1,15 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using comrade.Application.Bases;
-using comrade.Application.Dtos.UserSystemDtos;
-using comrade.Application.Filters;
-using comrade.Application.Lookups;
-using comrade.Application.Utils;
+using Comrade.Application.Bases;
+using Comrade.Application.Dtos.UserSystemDtos;
+using Comrade.Application.Filters;
+using Comrade.Application.Lookups;
+using Comrade.Application.Utils;
 
 #endregion
 
-namespace comrade.Application.Interfaces
+namespace Comrade.Application.Interfaces
 {
     public interface IUserSystemAppService : IAppService
     {

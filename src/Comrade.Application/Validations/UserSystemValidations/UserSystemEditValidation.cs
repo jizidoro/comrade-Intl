@@ -1,10 +1,10 @@
 ﻿#region
 
-using comrade.Application.Dtos.UserSystemDtos;
+using Comrade.Application.Dtos.UserSystemDtos;
 
 #endregion
 
-namespace comrade.Application.Validations.UserSystemValidations
+namespace Comrade.Application.Validations.UserSystemValidations
 {
     public class UserSystemEditValidation : UserSystemValidation<UserSystemEditDto>
     {

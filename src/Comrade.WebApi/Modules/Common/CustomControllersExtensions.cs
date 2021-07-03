@@ -2,14 +2,14 @@
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using comrade.WebApi.Modules.Common.FeatureFlags;
+using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.FeatureManagement;
 
 #endregion
 
-namespace comrade.WebApi.Modules.Common
+namespace Comrade.WebApi.Modules.Common
 {
     /// <summary>
     ///     Custom Controller Extensions.

@@ -3,18 +3,18 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using comrade.Core.AirplaneCore;
-using comrade.Core.Helpers.Interfaces;
+using Comrade.Core.AirplaneCore;
+using Comrade.Core.Helpers.Interfaces;
 using Comrade.Core.Helpers.Messages;
-using comrade.Core.Helpers.Models.Results;
-using comrade.Domain.Models;
-using comrade.Infrastructure.Bases;
-using comrade.Infrastructure.DataAccess;
+using Comrade.Core.Helpers.Models.Results;
+using Comrade.Domain.Models;
+using Comrade.Infrastructure.Bases;
+using Comrade.Infrastructure.DataAccess;
 using Microsoft.EntityFrameworkCore;
 
 #endregion
 
-namespace comrade.Infrastructure.Repositories
+namespace Comrade.Infrastructure.Repositories
 {
     public class AirplaneRepository : Repository<Airplane>, IAirplaneRepository
     {

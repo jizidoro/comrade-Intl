@@ -2,11 +2,11 @@
 
 using System.Linq;
 using System.Linq.Expressions;
-using comrade.Domain.Bases;
+using Comrade.Domain.Bases;
 
 #endregion
 
-namespace comrade.Infrastructure.Extensions
+namespace Comrade.Infrastructure.Extensions
 {
     public static class QueryableExtensions
     {

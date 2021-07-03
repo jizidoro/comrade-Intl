@@ -1,9 +1,9 @@
 #region
 
 using System.Text;
-using comrade.Core.SecurityCore;
-using comrade.Core.SecurityCore.UseCases;
-using comrade.WebApi.Modules.Common.FeatureFlags;
+using Comrade.Core.SecurityCore;
+using Comrade.Core.SecurityCore.UseCases;
+using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 
 #endregion
 
-namespace comrade.WebApi.Modules.Common
+namespace Comrade.WebApi.Modules.Common
 {
     /// <summary>
     ///     Authentication Extensions.

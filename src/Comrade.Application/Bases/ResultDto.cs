@@ -1,11 +1,11 @@
 ﻿#region
 
 using System.Collections.Generic;
-using comrade.Application.Utils;
+using Comrade.Application.Utils;
 
 #endregion
 
-namespace comrade.Application.Bases
+namespace Comrade.Application.Bases
 {
     public class ResultDto : IResultDto
     {

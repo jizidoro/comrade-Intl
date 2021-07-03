@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using comrade.Core.Helpers.Interfaces;
-using comrade.Domain.Bases;
-using comrade.Infrastructure.DataAccess;
+using Comrade.Core.Helpers.Interfaces;
+using Comrade.Domain.Bases;
+using Comrade.Infrastructure.DataAccess;
 using Microsoft.EntityFrameworkCore;
 
 #endregion
 
-namespace comrade.Infrastructure.Bases
+namespace Comrade.Infrastructure.Bases
 {
     public class Repository<TEntity> : IRepository<TEntity>
         where TEntity : Entity

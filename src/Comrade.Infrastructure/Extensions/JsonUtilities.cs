@@ -2,12 +2,12 @@
 
 using System.Collections.Generic;
 using System.IO;
-using comrade.Domain.Bases;
+using Comrade.Domain.Bases;
 using Newtonsoft.Json;
 
 #endregion
 
-namespace comrade.Infrastructure.Extensions
+namespace Comrade.Infrastructure.Extensions
 {
     public static class JsonUtilities
     {

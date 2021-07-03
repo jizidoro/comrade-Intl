@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 #endregion
 
-namespace comrade.WebApi.Modules.Common
+namespace Comrade.WebApi.Modules.Common
 {
     /// <summary>
     ///     Reverse Proxy Extensions.

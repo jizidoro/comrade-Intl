@@ -3,18 +3,18 @@
 using System;
 using System.Threading.Tasks;
 using AutoMapper;
-using comrade.Application.Bases;
-using comrade.Application.Dtos.UserSystemDtos;
-using comrade.Application.Filters;
-using comrade.Application.Interfaces;
-using comrade.Application.Queries;
-using comrade.WebApi.Modules.Common.FeatureFlags;
+using Comrade.Application.Bases;
+using Comrade.Application.Dtos.UserSystemDtos;
+using Comrade.Application.Filters;
+using Comrade.Application.Interfaces;
+using Comrade.Application.Queries;
+using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.FeatureManagement.Mvc;
 
 #endregion
 
-namespace comrade.WebApi.UseCases.V1.UserSystemApi
+namespace Comrade.WebApi.UseCases.V1.UserSystemApi
 {
     // [Authorize]
     [FeatureGate(CustomFeature.UserSystem)]

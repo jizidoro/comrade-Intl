@@ -1,7 +1,7 @@
 #region
 
 using System;
-using comrade.WebApi.Modules.Common;
+using Comrade.WebApi.Modules.Common;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -11,7 +11,7 @@ using Serilog.Extensions.Logging;
 
 #endregion
 
-namespace comrade.WebApi
+namespace Comrade.WebApi
 {
     /// <summary>
     /// </summary>

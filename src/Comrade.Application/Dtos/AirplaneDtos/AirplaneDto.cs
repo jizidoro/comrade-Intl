@@ -3,11 +3,11 @@
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using comrade.Application.Bases;
+using Comrade.Application.Bases;
 
 #endregion
 
-namespace comrade.Application.Dtos.AirplaneDtos
+namespace Comrade.Application.Dtos.AirplaneDtos
 {
     public class AirplaneDto : EntityDto
     {

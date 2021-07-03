@@ -1,10 +1,10 @@
 ﻿#region
 
-using comrade.Domain.Interfaces;
+using Comrade.Domain.Interfaces;
 
 #endregion
 
-namespace comrade.Domain.Bases
+namespace Comrade.Domain.Bases
 {
     public class LookupEntity : ILookupEntity
     {

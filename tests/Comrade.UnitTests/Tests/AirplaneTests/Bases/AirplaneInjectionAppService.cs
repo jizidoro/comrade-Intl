@@ -1,15 +1,15 @@
 ﻿#region
 
 using AutoMapper;
-using comrade.Application.Services;
-using comrade.Core.AirplaneCore.UseCases;
-using comrade.Core.AirplaneCore.Validations;
-using comrade.Infrastructure.DataAccess;
-using comrade.Infrastructure.Repositories;
+using Comrade.Application.Services;
+using Comrade.Core.AirplaneCore.UseCases;
+using Comrade.Core.AirplaneCore.Validations;
+using Comrade.Infrastructure.DataAccess;
+using Comrade.Infrastructure.Repositories;
 
 #endregion
 
-namespace comrade.UnitTests.Tests.AirplaneTests.Bases
+namespace Comrade.UnitTests.Tests.AirplaneTests.Bases
 {
     public sealed class AirplaneInjectionAppService
     {
