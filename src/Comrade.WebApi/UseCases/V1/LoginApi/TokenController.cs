@@ -16,10 +16,10 @@ namespace comrade.WebApi.UseCases.V1.LoginApi
     [ApiController]
     public class TokenController : ControllerBase
     {
-        private readonly IAthenticationAppService _authenticationAppService;
+        private readonly IAuthenticationAppService _authenticationAppService;
 
         public TokenController(
-            IAthenticationAppService authenticationAppService
+            IAuthenticationAppService authenticationAppService
         )
         {
             _authenticationAppService = authenticationAppService;
@@ -27,10 +27,10 @@ namespace comrade.WebApi.UseCases.V1.LoginApi
 
 
         [HttpPost]
-        [Route("token")]
-        public async Task<ActionResult> Token([FromBody] AthenticationDto dto)
+        [Route("generate-token")]
+        public async Task<ActionResult> GenerateToken([FromBody] AuthenticationDto dto)
         {
-            var result = await _authenticationAppService.GenerateTokenLoginUseCase(dto);
+            var result = await _authenticationAppService.GenerateToken(dto);
 
             return Ok(result);
         }

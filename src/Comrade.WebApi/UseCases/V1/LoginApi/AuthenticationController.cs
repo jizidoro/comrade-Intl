@@ -16,35 +16,35 @@ namespace comrade.WebApi.UseCases.V1.LoginApi
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    public class AthenticationController : ControllerBase
+    public class AuthenticationController : ControllerBase
     {
-        private readonly IAthenticationAppService _authenticationAppService;
+        private readonly IAuthenticationAppService _authenticationAppService;
 
-        public AthenticationController(
-            IAthenticationAppService authenticationAppService
+        public AuthenticationController(
+            IAuthenticationAppService authenticationAppService
         )
         {
             _authenticationAppService = authenticationAppService;
         }
 
         [HttpPost]
-        [Route("expirar-password")]
-        public async Task<IActionResult> ExpirarPassword([FromBody] AthenticationDto dto)
+        [Route("update-password")]
+        public async Task<IActionResult> UpdatePassword([FromBody] AuthenticationDto dto)
         {
             try
             {
-                var result = await _authenticationAppService.ExpirarPassword(dto);
+                var result = await _authenticationAppService.UpdatePassword(dto);
                 return Ok(result);
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<AthenticationDto>(e));
+                return Ok(new SingleResultDto<AuthenticationDto>(e));
             }
         }
 
         [HttpPost]
-        [Route("esquecer-password")]
-        public async Task<IActionResult> ForgotPassword([FromBody] AthenticationDto dto)
+        [Route("forgot-password")]
+        public async Task<IActionResult> ForgotPassword([FromBody] AuthenticationDto dto)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace comrade.WebApi.UseCases.V1.LoginApi
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<AthenticationDto>(e));
+                return Ok(new SingleResultDto<AuthenticationDto>(e));
             }
         }
     }

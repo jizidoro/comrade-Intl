@@ -1,6 +1,7 @@
 ﻿#region
 
 using comrade.Application.Interfaces;
+using comrade.Application.Lookups;
 using comrade.Application.Services;
 using comrade.Core.Helpers.Interfaces;
 using comrade.Infrastructure.Bases;
@@ -46,7 +47,7 @@ namespace comrade.UnitTests.Helpers
 
             services.AddScoped(typeof(ILookupServiceApp<>), typeof(LookupServiceApp<>));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            
+
             return services.BuildServiceProvider();
         }
     }

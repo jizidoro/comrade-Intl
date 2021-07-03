@@ -1,10 +1,12 @@
 ﻿#region
 
 using System.Threading.Tasks;
+using comrade.Application.Bases;
+using comrade.Application.Dtos.UserSystemDtos;
 using comrade.Infrastructure.DataAccess;
-using comrade.Infrastructure.Repositories;
 using comrade.UnitTests.Helpers;
 using comrade.UnitTests.Tests.UsuarioSistemaTests.Bases;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
@@ -12,15 +14,15 @@ using Xunit;
 
 namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
 {
-    public class UserSystemControllerDeleteTests
+    public class UserSystemControllerGetTests
     {
         private readonly UserSystemInjectionController _userSystemInjectionController = new();
 
         [Fact]
-        public async Task UserSystemController_Delete()
+        public async Task UserSystemController_Get()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_memoria_Delete_usuario_sistema")
+                .UseInMemoryDatabase("test_database_memoria_Get_user_sistema_Controller")
                 .Options;
 
             await using var context = new ComradeContext(options);
@@ -28,11 +30,15 @@ namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
             Utilities.InitializeDbForTests(context);
 
             var userSystemController = _userSystemInjectionController.GetUserSystemController(context);
-            _ = await userSystemController.Delete(1);
+            var result = await userSystemController.GetById(1);
 
-            var respository = new UserSystemRepository(context);
-            var usuario = await respository.GetById(1);
-            Assert.Null(usuario);
+            if (result is OkObjectResult okResult)
+            {
+                var actualResultValue = okResult.Value as SingleResultDto<UserSystemDto>;
+                Assert.NotNull(actualResultValue);
+                Assert.Equal(200, actualResultValue.Code);
+                Assert.NotNull(actualResultValue.Data);
+            }
         }
     }
 }

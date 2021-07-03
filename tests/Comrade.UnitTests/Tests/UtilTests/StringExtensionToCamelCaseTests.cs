@@ -12,10 +12,10 @@ namespace comrade.UnitTests.Tests.UtilTests
         [Fact]
         public void StringExtension_ToCamelCase()
         {
-            var teste = "Last in Line";
+            var testObject = "Last in Line";
             var objetivo = "lastInLine";
 
-            var restult = teste.ToCamelCase();
+            var restult = testObject.ToCamelCase();
 
             Assert.NotEmpty(restult);
             Assert.Equal(restult, objetivo);

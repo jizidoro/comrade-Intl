@@ -14,13 +14,13 @@ using comrade.Domain.Models;
 
 namespace comrade.Core.SecurityCore.UseCases
 {
-    public class UpdatePasswordExpiredUseCase : Service
+    public class UpdatePasswordUseCase : Service
     {
         private readonly IPasswordHasher _passwordHasher;
         private readonly IUserSystemRepository _repository;
         private readonly UserSystemEditValidation _userSystemEditValidation;
 
-        public UpdatePasswordExpiredUseCase(IUserSystemRepository repository,
+        public UpdatePasswordUseCase(IUserSystemRepository repository,
             UserSystemEditValidation userSystemEditValidation,
             IPasswordHasher passwordHasher, IUnitOfWork uow)
             : base(uow)

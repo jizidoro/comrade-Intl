@@ -6,7 +6,7 @@ using comrade.Application.Bases;
 
 namespace comrade.Application.Dtos
 {
-    public class AthenticationDto : EntityDto
+    public class AuthenticationDto : EntityDto
     {
         public string Key { get; set; }
         public string Password { get; set; }

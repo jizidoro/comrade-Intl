@@ -14,25 +14,23 @@ using comrade.Domain.Models;
 
 namespace comrade.Application.Services
 {
-    public class AthenticationAppService : AppService, IAthenticationAppService
+    public class AuthenticationAppService : AppService, IAuthenticationAppService
     {
-        private readonly UpdatePasswordExpiredUseCase _updatePasswordExpiredUseCase;
-        private readonly ForgotPasswordUseCase _esquecerPasswordUseCase;
+        private readonly ForgotPasswordUseCase _forgotPasswordUseCase;
         private readonly GenerateTokenLoginUseCase _generateTokenLoginUseCase;
-        private readonly IVwUserSystemPermissionRepository _vUserSystemPermissionRepository;
+        private readonly UpdatePasswordUseCase _updatePasswordUseCase;
 
-        public AthenticationAppService(IVwUserSystemPermissionRepository vUserSystemPermissionRepository,
-            UpdatePasswordExpiredUseCase updatePasswordExpiredUseCase,
-            GenerateTokenLoginUseCase generateTokenLoginUseCase, ForgotPasswordUseCase esquecerPasswordUseCase, IMapper mapper) :
+        public AuthenticationAppService(UpdatePasswordUseCase updatePasswordUseCase,
+            GenerateTokenLoginUseCase generateTokenLoginUseCase, ForgotPasswordUseCase forgotPasswordUseCase,
+            IMapper mapper) :
             base(mapper)
         {
-            _vUserSystemPermissionRepository = vUserSystemPermissionRepository;
-            _updatePasswordExpiredUseCase = updatePasswordExpiredUseCase;
-            _esquecerPasswordUseCase = esquecerPasswordUseCase;
+            _updatePasswordUseCase = updatePasswordUseCase;
+            _forgotPasswordUseCase = forgotPasswordUseCase;
             _generateTokenLoginUseCase = generateTokenLoginUseCase;
         }
 
-        public async Task<ISingleResultDto<UserDto>> GenerateTokenLoginUseCase(AthenticationDto dto)
+        public async Task<ISingleResultDto<UserDto>> GenerateToken(AuthenticationDto dto)
         {
             var result = await _generateTokenLoginUseCase.Execute(dto.Key, dto.Password);
 
@@ -49,11 +47,11 @@ namespace comrade.Application.Services
             return new SingleResultDto<UserDto>(result);
         }
 
-        public async Task<ISingleResultDto<EntityDto>> ForgotPassword(AthenticationDto dto)
+        public async Task<ISingleResultDto<EntityDto>> ForgotPassword(AuthenticationDto dto)
         {
             var evento = Mapper.Map<UserSystem>(dto);
 
-            var result = await _esquecerPasswordUseCase.Execute(evento);
+            var result = await _forgotPasswordUseCase.Execute(evento);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);
@@ -61,11 +59,11 @@ namespace comrade.Application.Services
             return resultDto;
         }
 
-        public async Task<ISingleResultDto<EntityDto>> ExpirarPassword(AthenticationDto dto)
+        public async Task<ISingleResultDto<EntityDto>> UpdatePassword(AuthenticationDto dto)
         {
             var evento = Mapper.Map<UserSystem>(dto);
 
-            var result = await _updatePasswordExpiredUseCase.Execute(evento);
+            var result = await _updatePasswordUseCase.Execute(evento);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);

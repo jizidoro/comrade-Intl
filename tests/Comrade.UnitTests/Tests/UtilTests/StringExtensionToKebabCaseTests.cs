@@ -12,10 +12,10 @@ namespace comrade.UnitTests.Tests.UtilTests
         [Fact]
         public void StringExtension_ToKebabCase()
         {
-            var teste = "Last in Line";
+            var testObject = "Last in Line";
             var objetivo = "last-in-line";
 
-            var restult = teste.ToKebabCase();
+            var restult = testObject.ToKebabCase();
 
             Assert.NotEmpty(restult);
             Assert.Equal(restult, objetivo);

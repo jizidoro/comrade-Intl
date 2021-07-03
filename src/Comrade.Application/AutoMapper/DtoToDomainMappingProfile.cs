@@ -16,7 +16,7 @@ namespace comrade.Application.AutoMapper
         {
             CreateMap<AirplaneCreateDto, Airplane>();
             CreateMap<UserSystemCreateDto, UserSystem>();
-            CreateMap<AthenticationDto, UserSystem>()
+            CreateMap<AuthenticationDto, UserSystem>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Key))
                 .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password));
         }

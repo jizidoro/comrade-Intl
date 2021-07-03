@@ -1,7 +1,6 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using comrade.Domain.Models;
 using comrade.Infrastructure.DataAccess;
 using comrade.Infrastructure.Repositories;
 using comrade.UnitTests.Helpers;
@@ -13,25 +12,27 @@ using Xunit;
 
 namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
 {
-    public class UserSystemContextTests
+    public class UserSystemControllerDeleteTests
     {
         private readonly UserSystemInjectionController _userSystemInjectionController = new();
 
         [Fact]
-        public async Task UserSystem_Context()
+        public async Task UserSystemController_Delete()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_memoria_obter_usuario_sistema_Respositorio")
+                .UseInMemoryDatabase("test_database_memoria_Delete_user_sistema")
                 .Options;
-
-            UserSystem userSystem = null;
 
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
             Utilities.InitializeDbForTests(context);
-            var repository = new UserSystemRepository(context);
-            userSystem = await repository.GetById(1);
-            Assert.NotNull(userSystem);
+
+            var userSystemController = _userSystemInjectionController.GetUserSystemController(context);
+            _ = await userSystemController.Delete(1);
+
+            var respository = new UserSystemRepository(context);
+            var user = await respository.GetById(1);
+            Assert.Null(user);
         }
     }
 }

@@ -12,10 +12,10 @@ namespace comrade.UnitTests.Tests.UtilTests
         [Fact]
         public void StringExtension_ToSnakeCase()
         {
-            var teste = "Last in Line";
+            var testObject = "Last in Line";
             var objetivo = "last_in_line";
 
-            var restult = teste.ToSnakeCase();
+            var restult = testObject.ToSnakeCase();
 
             Assert.NotEmpty(restult);
             Assert.Equal(restult, objetivo);

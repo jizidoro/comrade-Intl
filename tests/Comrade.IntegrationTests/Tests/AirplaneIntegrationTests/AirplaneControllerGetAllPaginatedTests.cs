@@ -15,15 +15,15 @@ using Xunit;
 
 namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
 {
-    public class AirplaneControllerGetAllPaginadoTests
+    public class AirplaneControllerGetAllPaginatedTests
     {
         private readonly AirplaneInjectionController _airplaneInjectionController = new();
 
         [Fact]
-        public async Task AirplaneController_GetAll_Paginado()
+        public async Task AirplaneController_GetAll_Paginated()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_return_AirplaneController_GetAll_Paginado")
+                .UseInMemoryDatabase("test_database_return_AirplaneController_GetAll_Paginated")
                 .Options;
 
 

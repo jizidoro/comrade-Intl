@@ -9,10 +9,10 @@ using comrade.Application.Utils;
 
 namespace comrade.Application.Interfaces
 {
-    public interface IAthenticationAppService : IAppService
+    public interface IAuthenticationAppService : IAppService
     {
-        Task<ISingleResultDto<UserDto>> GenerateTokenLoginUseCase(AthenticationDto dto);
-        Task<ISingleResultDto<EntityDto>> ForgotPassword(AthenticationDto dto);
-        Task<ISingleResultDto<EntityDto>> ExpirarPassword(AthenticationDto dto);
+        Task<ISingleResultDto<UserDto>> GenerateToken(AuthenticationDto dto);
+        Task<ISingleResultDto<EntityDto>> ForgotPassword(AuthenticationDto dto);
+        Task<ISingleResultDto<EntityDto>> UpdatePassword(AuthenticationDto dto);
     }
 }

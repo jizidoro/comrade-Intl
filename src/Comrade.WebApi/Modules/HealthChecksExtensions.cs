@@ -55,7 +55,7 @@ namespace comrade.WebApi.Modules
                     .AddInMemoryStorage();
 
                 healthChecks.AddSqlServer(configuration.GetValue<string>("PersistenceModule:DefaultConnection"),
-                    name: "sqlserver", tags: new string[] {"db", "data"});
+                    name: "sqlserver", tags: new[] {"db", "data"});
             }
 
 
@@ -88,7 +88,7 @@ namespace comrade.WebApi.Modules
 
         private static Task WriteResponse(HttpContext context, HealthReport result)
         {
-            var teste = JsonSerializer.Serialize(
+            var testObject = JsonSerializer.Serialize(
                 new
                 {
                     currentTime = DateTimeBrasilia.GetDateTimeBrasilia(),
@@ -101,7 +101,7 @@ namespace comrade.WebApi.Modules
                 });
 
             context.Response.ContentType = MediaTypeNames.Application.Json;
-            return context.Response.WriteAsync(teste);
+            return context.Response.WriteAsync(testObject);
         }
     }
 }

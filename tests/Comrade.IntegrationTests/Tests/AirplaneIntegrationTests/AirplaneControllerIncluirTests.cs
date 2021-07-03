@@ -26,7 +26,7 @@ namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
                 .Options;
 
 
-            var teste = new AirplaneCreateDto
+            var testObject = new AirplaneCreateDto
             {
                 Code = "123",
                 Model = "234",
@@ -36,7 +36,7 @@ namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
             var airplaneController = _airplaneInjectionController.GetAirplaneController(context);
-            var result = await airplaneController.Create(teste);
+            var result = await airplaneController.Create(testObject);
 
             if (result is OkObjectResult okResult)
             {
@@ -56,7 +56,7 @@ namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
                 .Options;
 
 
-            var teste = new AirplaneCreateDto
+            var testObject = new AirplaneCreateDto
             {
                 Code = "123",
                 QuantidadePassageiro = 456
@@ -65,7 +65,7 @@ namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
             var airplaneController = _airplaneInjectionController.GetAirplaneController(context);
-            var result = await airplaneController.Create(teste);
+            var result = await airplaneController.Create(testObject);
 
             if (result is OkObjectResult okResult)
             {

@@ -6,6 +6,7 @@ using comrade.Application.Bases;
 using comrade.Application.Dtos.AirplaneDtos;
 using comrade.Application.Dtos.UserSystemDtos;
 using comrade.Application.Interfaces;
+using comrade.Application.Lookups;
 using comrade.Domain.Models;
 using comrade.WebApi.Modules.Common.FeatureFlags;
 using Microsoft.AspNetCore.Mvc;
@@ -16,16 +17,16 @@ using Microsoft.FeatureManagement.Mvc;
 
 namespace comrade.WebApi.UseCases.V1
 {
-    [FeatureGate(CustomFeature.Comum)]
+    [FeatureGate(CustomFeature.Common)]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    public class ComumController : Controller
+    public class CommonController : Controller
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly IUserSystemAppService _userSystemAppService;
 
-        public ComumController(IServiceProvider serviceProvider, IUserSystemAppService userSystemAppService)
+        public CommonController(IServiceProvider serviceProvider, IUserSystemAppService userSystemAppService)
         {
             _serviceProvider = serviceProvider;
             _userSystemAppService = userSystemAppService;
@@ -33,7 +34,7 @@ namespace comrade.WebApi.UseCases.V1
 
 
         [HttpGet]
-        [Route("lookup-usuario-sistema")]
+        [Route("Lookup-user-sistema")]
         public async Task<IActionResult> GetLookupUserSystem()
         {
             try
@@ -51,7 +52,7 @@ namespace comrade.WebApi.UseCases.V1
         }
 
         [HttpGet]
-        [Route("lookup-usuario-sistema-por-name/{name}")]
+        [Route("lookup-user-sistema-por-name/{name}")]
         public async Task<IActionResult> GetLookupUserSystemByNone(string name)
         {
             try

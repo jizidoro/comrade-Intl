@@ -9,6 +9,7 @@ using comrade.Application.Bases;
 using comrade.Application.Dtos.UserSystemDtos;
 using comrade.Application.Filters;
 using comrade.Application.Interfaces;
+using comrade.Application.Lookups;
 using comrade.Application.Utils;
 using comrade.Application.Validations.UserSystemValidations;
 using comrade.Core.UserSystemCore;
@@ -22,9 +23,9 @@ namespace comrade.Application.Services
 {
     public class UserSystemAppService : AppService, IUserSystemAppService
     {
-        private readonly UserSystemEditUseCase _editUserSystemUseCase;
-        private readonly UserSystemDeleteUseCase _deleteUserSystemUseCase;
         private readonly UserSystemCreateUseCase _createUserSystemUseCase;
+        private readonly UserSystemDeleteUseCase _deleteUserSystemUseCase;
+        private readonly UserSystemEditUseCase _editUserSystemUseCase;
         private readonly IUserSystemRepository _repository;
 
         public UserSystemAppService(IUserSystemRepository repository,

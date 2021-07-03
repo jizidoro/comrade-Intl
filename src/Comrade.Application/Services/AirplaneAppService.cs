@@ -21,9 +21,9 @@ namespace comrade.Application.Services
 {
     public class AirplaneAppService : AppService, IAirplaneAppService
     {
-        private readonly AirplaneEditUseCase _editAirplaneUseCase;
-        private readonly AirplaneDeleteUseCase _deleteAirplaneUseCase;
         private readonly AirplaneCreateUseCase _createAirplaneUseCase;
+        private readonly AirplaneDeleteUseCase _deleteAirplaneUseCase;
+        private readonly AirplaneEditUseCase _editAirplaneUseCase;
         private readonly IAirplaneRepository _repository;
 
         public AirplaneAppService(IAirplaneRepository repository,

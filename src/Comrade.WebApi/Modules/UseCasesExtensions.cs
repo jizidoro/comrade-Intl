@@ -26,9 +26,9 @@ namespace comrade.WebApi.Modules
         /// <returns>The modified instance.</returns>
         public static IServiceCollection AddUseCases(this IServiceCollection services)
         {
-            #region Athentication
+            #region Authentication
 
-            services.AddScoped<IAthenticationAppService, AthenticationAppService>();
+            services.AddScoped<IAuthenticationAppService, AuthenticationAppService>();
 
             #endregion
 
@@ -56,7 +56,7 @@ namespace comrade.WebApi.Modules
             services.AddScoped<IUserSystemAppService, UserSystemAppService>();
 
             // Core - UseCases
-            services.AddScoped<UpdatePasswordExpiredUseCase>();
+            services.AddScoped<UpdatePasswordUseCase>();
             services.AddScoped<GenerateTokenLoginUseCase>();
             services.AddScoped<ForgotPasswordUseCase>();
             services.AddScoped<UserSystemForgotPasswordValidation>();

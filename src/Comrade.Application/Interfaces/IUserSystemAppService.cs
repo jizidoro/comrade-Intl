@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using comrade.Application.Bases;
 using comrade.Application.Dtos.UserSystemDtos;
 using comrade.Application.Filters;
+using comrade.Application.Lookups;
 using comrade.Application.Utils;
 
 #endregion

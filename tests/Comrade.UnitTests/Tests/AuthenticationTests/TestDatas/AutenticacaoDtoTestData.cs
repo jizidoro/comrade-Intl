@@ -6,9 +6,9 @@ using comrade.Application.Dtos;
 
 #endregion
 
-namespace comrade.UnitTests.Tests.AthenticationTests.TestDatas
+namespace comrade.UnitTests.Tests.AuthenticationTests.TestDatas
 {
-    internal class AthenticationDtoTestData : IEnumerable<object[]>
+    internal class AuthenticationDtoTestData : IEnumerable<object[]>
     {
         #region TestData
 
@@ -16,7 +16,7 @@ namespace comrade.UnitTests.Tests.AthenticationTests.TestDatas
         {
             yield return new object[]
             {
-                200, new AthenticationDto
+                200, new AuthenticationDto
                 {
                     Key = "1",
                     Password = "123456"
@@ -24,7 +24,7 @@ namespace comrade.UnitTests.Tests.AthenticationTests.TestDatas
             };
             yield return new object[]
             {
-                400, new AthenticationDto
+                400, new AuthenticationDto
                 {
                     Key = "",
                     Password = "123456"
@@ -32,7 +32,7 @@ namespace comrade.UnitTests.Tests.AthenticationTests.TestDatas
             };
             yield return new object[]
             {
-                1001, new AthenticationDto
+                1001, new AuthenticationDto
                 {
                     Key = "3",
                     Password = ""
@@ -40,7 +40,7 @@ namespace comrade.UnitTests.Tests.AthenticationTests.TestDatas
             };
             yield return new object[]
             {
-                1001, new AthenticationDto
+                1001, new AuthenticationDto
                 {
                     Key = "4",
                     Password = "1234567"

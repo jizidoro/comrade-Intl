@@ -64,31 +64,31 @@ namespace comrade.Core.SecurityCore.UseCases
                 return result;
             }
 
-            return new SecurityResult(400, "Erro na key do usuario");
+            return new SecurityResult(400, "Error");
         }
 
         private string GenerateToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:key"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var clains = new List<Claim>
+            var claims = new List<Claim>
             {
-                new(ClaimTypes.Name, user.Key),
-                new("Name", user.Name)
+                new("Key", user.Key),
+                new(ClaimTypes.Name, user.Name)
             };
 
             foreach (var role in user.Papeis)
             {
-                clains.Add(new Claim(ClaimTypes.Role, role));
+                claims.Add(new Claim(ClaimTypes.Role, role));
             }
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(clains),
+                Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = creds
+                SigningCredentials = credentials
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);

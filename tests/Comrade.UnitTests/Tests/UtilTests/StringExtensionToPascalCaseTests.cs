@@ -12,13 +12,13 @@ namespace comrade.UnitTests.Tests.UtilTests
         [Fact]
         public void StringExtension_ToPascalCase()
         {
-            var teste = "Last in Line";
+            var testObject = "Last in Line";
             var objetivo = "LastInLine";
 
-            var restult = teste.ToPascalCase();
+            var result = testObject.ToPascalCase();
 
-            Assert.NotEmpty(restult);
-            Assert.Equal(restult, objetivo);
+            Assert.NotEmpty(result);
+            Assert.Equal(result, objetivo);
         }
     }
 }

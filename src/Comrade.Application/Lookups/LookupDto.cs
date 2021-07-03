@@ -1,10 +1,11 @@
 ﻿#region
 
+using comrade.Application.Bases;
 using comrade.Application.Utils;
 
 #endregion
 
-namespace comrade.Application.Bases
+namespace comrade.Application.Lookups
 {
     public class LookupDto : EntityDto, ILookupDto
     {

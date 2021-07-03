@@ -35,7 +35,7 @@ namespace comrade.WebApi.UseCases.V1.UserSystemApi
 
 
         [HttpGet]
-        [Route("GetAll")]
+        [Route("get-all")]
         public async Task<IActionResult> GetAll([FromQuery] PaginationQuery? paginationQuery)
         {
             try
@@ -57,7 +57,7 @@ namespace comrade.WebApi.UseCases.V1.UserSystemApi
 
 
         [HttpGet]
-        [Route("GetById/{id:int}")]
+        [Route("get-by-id/{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
             try

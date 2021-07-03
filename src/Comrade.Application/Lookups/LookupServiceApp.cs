@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using comrade.Application.Bases;
-using comrade.Application.Interfaces;
 using comrade.Core.Helpers.Interfaces;
 using comrade.Domain.Bases;
 
 #endregion
 
-namespace comrade.Application.Services
+namespace comrade.Application.Lookups
 {
     public class LookupServiceApp<TEntity> : AppService, ILookupServiceApp<TEntity>
         where TEntity : Entity

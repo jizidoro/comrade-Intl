@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
@@ -74,7 +75,7 @@ namespace comrade.WebApi.Modules.Common
             {
                 AdditionalColumns = new Collection<SqlColumn>
                 {
-                    new SqlColumn("UserName", System.Data.SqlDbType.VarChar)
+                    new("UserName", SqlDbType.VarChar)
                 }
             };
 
@@ -83,7 +84,7 @@ namespace comrade.WebApi.Modules.Common
                 .Enrich.With(new ApplicationDetailsEnricher())
                 .Enrich.FromLogContext()
                 .WriteTo.MSSqlServer(connection,
-                    sinkOptions: new MSSqlServerSinkOptions()
+                    new MSSqlServerSinkOptions
                     {
                         AutoCreateSqlTable = true,
                         TableName = "LogAPIContagem"

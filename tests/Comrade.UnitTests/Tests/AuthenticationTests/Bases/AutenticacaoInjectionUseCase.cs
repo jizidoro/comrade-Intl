@@ -14,11 +14,11 @@ using Microsoft.Extensions.Configuration;
 
 #endregion
 
-namespace comrade.UnitTests.Tests.AthenticationTests.Bases
+namespace comrade.UnitTests.Tests.AuthenticationTests.Bases
 {
-    public sealed class AthenticationInjectionUseCase
+    public sealed class AuthenticationInjectionUseCase
     {
-        public UpdatePasswordExpiredUseCase GetUpdatePasswordExpiredUseCase(ComradeContext context)
+        public UpdatePasswordUseCase GetUpdatePasswordUseCase(ComradeContext context)
         {
             var uow = new UnitOfWork(context);
             var userSystemCoreRepository = new UserSystemRepository(context);
@@ -28,7 +28,7 @@ namespace comrade.UnitTests.Tests.AthenticationTests.Bases
                 );
             var passwordHasher = new PasswordHasher(new HashingOptions());
 
-            return new UpdatePasswordExpiredUseCase(userSystemCoreRepository,
+            return new UpdatePasswordUseCase(userSystemCoreRepository,
                 userSystemCoreEditValidation, passwordHasher, uow);
         }
 
@@ -76,19 +76,16 @@ namespace comrade.UnitTests.Tests.AthenticationTests.Bases
             return generateTokenLoginUseCase;
         }
 
-        private AthenticationAppService GetUserSystemAppService(ComradeContext context)
+        private AuthenticationAppService GetUserSystemAppService(ComradeContext context)
         {
-            var uow = new UnitOfWork(context);
-            var vUserSystemRepository = new VwUserSystemPermissionRepository(context);
             var mapper = MapperHelper.ConfigMapper();
 
-            var oterUpdatePasswordExpiredUseCase = GetUpdatePasswordExpiredUseCase(context);
-            var obterForgotPasswordUseCase = GetForgotPasswordUseCase(context);
-            var obterGenerateTokenLoginUseCaseUseCase = GetGenerateTokenLoginUseCase(context);
+            var getUpdatePasswordUseCase = GetUpdatePasswordUseCase(context);
+            var getForgotPasswordUseCase = GetForgotPasswordUseCase(context);
+            var getGenerateTokenLoginUseCaseUseCase = GetGenerateTokenLoginUseCase(context);
 
-            var authenticationAppService = new AthenticationAppService(vUserSystemRepository,
-                oterUpdatePasswordExpiredUseCase,
-                obterGenerateTokenLoginUseCaseUseCase, obterForgotPasswordUseCase, mapper);
+            var authenticationAppService = new AuthenticationAppService(getUpdatePasswordUseCase,
+                getGenerateTokenLoginUseCaseUseCase, getForgotPasswordUseCase, mapper);
             return authenticationAppService;
         }
     }

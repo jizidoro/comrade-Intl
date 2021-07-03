@@ -14,6 +14,5 @@ namespace comrade.Application.Bases
         }
 
         public IMapper Mapper { get; }
-
     }
 }

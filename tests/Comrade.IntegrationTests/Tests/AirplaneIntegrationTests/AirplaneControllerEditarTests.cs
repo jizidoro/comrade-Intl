@@ -23,17 +23,17 @@ namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
         public async Task AirplaneController_Edit()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_change_database_AirplaneController_Edit")
+                .UseInMemoryDatabase("test_database_AirplaneController_Edit")
                 .Options;
 
-            var alteracaoCode = "mudanca Code teste edit";
-            var alteracaoModel = "mudanca Model teste edit";
+            var changeCode = "Code testObject edit";
+            var changeModel = "Model testObject edit";
 
-            var teste = new AirplaneEditDto
+            var testObject = new AirplaneEditDto
             {
                 Id = 1,
-                Code = alteracaoCode,
-                Model = alteracaoModel,
+                Code = changeCode,
+                Model = changeModel,
                 QuantidadePassageiro = 6666
             };
 
@@ -41,7 +41,7 @@ namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
             await context.Database.EnsureCreatedAsync();
             Utilities.InitializeDbForTests(context);
             var airplaneController = _airplaneInjectionController.GetAirplaneController(context);
-            var result = await airplaneController.Edit(teste);
+            var result = await airplaneController.Edit(testObject);
 
             if (result is OkObjectResult okResult)
             {
@@ -53,24 +53,24 @@ namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
             var repository = new AirplaneRepository(context);
             var airplane = await repository.GetById(1);
             Assert.Equal(6666, airplane.QuantidadePassageiro);
-            Assert.Equal(alteracaoCode, airplane.Code);
-            Assert.Equal(alteracaoModel, airplane.Model);
+            Assert.Equal(changeCode, airplane.Code);
+            Assert.Equal(changeModel, airplane.Model);
         }
 
         [Fact]
-        public async Task AirplaneController_Edit_Erro()
+        public async Task AirplaneController_Edit_Error()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_change_database_AirplaneController_Edit_Erro")
+                .UseInMemoryDatabase("test_database_AirplaneController_Edit_Error")
                 .Options;
 
-            var alteracaoCode = "mudanca Code teste edit";
-            var alteracaoModel = "mudanca Model teste edit";
+            var changeCode = "Code testObject edit";
+            var changeModel = "Model testObject edit";
 
-            var teste = new AirplaneEditDto
+            var testObject = new AirplaneEditDto
             {
                 Id = 1,
-                Code = alteracaoCode,
+                Code = changeCode,
                 QuantidadePassageiro = 6666
             };
 
@@ -78,7 +78,7 @@ namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
             await context.Database.EnsureCreatedAsync();
             Utilities.InitializeDbForTests(context);
             var airplaneController = _airplaneInjectionController.GetAirplaneController(context);
-            var result = await airplaneController.Edit(teste);
+            var result = await airplaneController.Edit(testObject);
 
             if (result is OkObjectResult okResult)
             {
@@ -90,8 +90,8 @@ namespace comrade.IntegrationTests.Tests.AirplaneIntegrationTests
             var repository = new AirplaneRepository(context);
             var airplane = await repository.GetById(1);
             Assert.NotEqual(6666, airplane.QuantidadePassageiro);
-            Assert.NotEqual(alteracaoCode, airplane.Code);
-            Assert.NotEqual(alteracaoModel, airplane.Model);
+            Assert.NotEqual(changeCode, airplane.Code);
+            Assert.NotEqual(changeModel, airplane.Model);
         }
     }
 }

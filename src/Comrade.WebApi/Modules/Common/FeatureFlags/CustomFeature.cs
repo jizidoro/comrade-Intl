@@ -16,9 +16,9 @@ namespace comrade.WebApi.Modules.Common.FeatureFlags
         UserSystem,
 
         /// <summary>
-        ///     Get Comum.
+        ///     Get Common.
         /// </summary>
-        Comum,
+        Common,
 
         /// <summary>
         ///     Filter errors out.

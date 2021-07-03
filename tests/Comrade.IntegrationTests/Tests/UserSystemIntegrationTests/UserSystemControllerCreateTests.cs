@@ -22,14 +22,14 @@ namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
         public async Task UserSystemController_Create()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_memoria_create_usuario_sistema")
+                .UseInMemoryDatabase("test_database_memoria_create_user_sistema")
                 .Options;
 
 
-            var teste = new UserSystemCreateDto
+            var testObject = new UserSystemCreateDto
             {
                 Name = "111",
-                Email = "777@teste",
+                Email = "777@testObject",
                 Password = "123456",
                 Situacao = true,
                 Registration = "123"
@@ -39,7 +39,7 @@ namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
             var userSystemController = _userSystemInjectionController.GetUserSystemController(context);
-            _ = await userSystemController.Create(teste);
+            _ = await userSystemController.Create(testObject);
             Assert.Equal(1, context.UserSystems.Count());
         }
 
@@ -48,12 +48,12 @@ namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
         public async Task UserSystemController_Create_Erro()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_memoria_create_usuario_sistema_erro")
+                .UseInMemoryDatabase("test_database_memoria_create_user_sistema_erro")
                 .Options;
 
-            var teste = new UserSystemCreateDto
+            var testObject = new UserSystemCreateDto
             {
-                Email = "777@teste",
+                Email = "777@testObject",
                 Password = "123456",
                 Situacao = true,
                 Registration = "123"
@@ -62,7 +62,7 @@ namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
             var userSystemController = _userSystemInjectionController.GetUserSystemController(context);
-            var result = await userSystemController.Create(teste);
+            var result = await userSystemController.Create(testObject);
 
             if (result is OkObjectResult okObjectResult)
             {

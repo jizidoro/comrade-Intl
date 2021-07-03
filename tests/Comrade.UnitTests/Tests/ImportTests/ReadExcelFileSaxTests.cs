@@ -11,12 +11,12 @@ namespace comrade.UnitTests.Tests.ImportTests
 {
     public class ReadExcelFileSaxTests
     {
-        private readonly GetIFormFileMock _obterIFormFileMock = new();
+        private readonly GetIFormFileMock _getIFormFileMock = new();
 
         [Fact]
         public async Task ReadExcelFileSaxTest()
         {
-            var arquivo = await _obterIFormFileMock.Execute();
+            var arquivo = await _getIFormFileMock.Execute();
 
             var result = ReadExcelFileSax.Execute(arquivo);
 

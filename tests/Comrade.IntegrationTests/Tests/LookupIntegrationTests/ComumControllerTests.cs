@@ -2,6 +2,7 @@
 
 using System.Threading.Tasks;
 using comrade.Application.Bases;
+using comrade.Application.Lookups;
 using comrade.Infrastructure.DataAccess;
 using comrade.UnitTests.Helpers;
 using comrade.UnitTests.Tests.UsuarioSistemaTests.Bases;
@@ -15,49 +16,49 @@ using Xunit.Abstractions;
 
 namespace comrade.IntegrationTests.Tests.LookupIntegrationTests
 {
-    public sealed class ComumControllerTests
+    public sealed class CommonControllerTests
     {
-        private readonly GetServiceProviderDb _obterServiceProviderDb = new();
-        private readonly GetServiceProviderMemDb _obterServiceProviderMemDb = new();
+        private readonly GetServiceProviderDb _getServiceProviderDb = new();
+        private readonly GetServiceProviderMemDb _getServiceProviderMemDb = new();
         private readonly ITestOutputHelper _output;
         private readonly UserSystemInjectionAppService _userSystemInjectionAppService = new();
 
-        public ComumControllerTests(ITestOutputHelper output)
+        public CommonControllerTests(ITestOutputHelper output)
         {
             _output = output;
         }
 
 
-        private ComumController GetComumControllerDb()
+        private CommonController GetCommonControllerDb()
         {
             var mapper = MapperHelper.ConfigMapper();
 
-            var serviceProvider = _obterServiceProviderDb.Execute();
+            var serviceProvider = _getServiceProviderDb.Execute();
 
             var context = serviceProvider.GetService<ComradeContext>();
 
             var baUsuAppService = _userSystemInjectionAppService.GetUserSystemAppService(context, mapper);
 
-            return new ComumController(serviceProvider, baUsuAppService);
+            return new CommonController(serviceProvider, baUsuAppService);
         }
 
-        private ComumController GetComumControllerMemDb()
+        private CommonController GetCommonControllerMemDb()
         {
             var mapper = MapperHelper.ConfigMapper();
 
-            var serviceProvider = _obterServiceProviderMemDb.Execute();
+            var serviceProvider = _getServiceProviderMemDb.Execute();
 
             var context = serviceProvider.GetService<ComradeContext>();
 
             var baUsuAppService = _userSystemInjectionAppService.GetUserSystemAppService(context, mapper);
 
-            return new ComumController(serviceProvider, baUsuAppService);
+            return new CommonController(serviceProvider, baUsuAppService);
         }
 
         [Fact(Skip = "usa a instancia local do sqlserver")]
         public async Task GetLookupUserSystemDb_Test()
         {
-            var comumController = GetComumControllerDb();
+            var comumController = GetCommonControllerDb();
             var result = await comumController.GetLookupUserSystem();
 
             if (result is OkObjectResult okResult)
@@ -70,7 +71,7 @@ namespace comrade.IntegrationTests.Tests.LookupIntegrationTests
         [Fact]
         public async Task GetLookupUserSystemMemDb_Test()
         {
-            var comumController = GetComumControllerMemDb();
+            var comumController = GetCommonControllerMemDb();
             var result = await comumController.GetLookupUserSystem();
 
             if (result is OkObjectResult okResult)

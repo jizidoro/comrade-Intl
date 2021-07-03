@@ -5,6 +5,7 @@ using comrade.Application.Bases;
 using comrade.Application.Dtos;
 using comrade.Application.Dtos.AirplaneDtos;
 using comrade.Application.Dtos.UserSystemDtos;
+using comrade.Application.Lookups;
 using comrade.Domain.Bases;
 using comrade.Domain.Models;
 
@@ -25,7 +26,7 @@ namespace comrade.Application.AutoMapper
             CreateMap<UserSystem, UserSystemEditDto>();
             CreateMap<UserSystem, UserSystemDto>();
 
-            CreateMap<UserSystem, AthenticationDto>()
+            CreateMap<UserSystem, AuthenticationDto>()
                 .ForMember(dest => dest.Key, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password));
         }

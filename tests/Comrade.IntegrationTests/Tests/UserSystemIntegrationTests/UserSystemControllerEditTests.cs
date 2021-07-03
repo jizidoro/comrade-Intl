@@ -23,29 +23,29 @@ namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
         public async Task UserSystemController_Edit()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_memoria_edit_usuario_sistema")
+                .UseInMemoryDatabase("test_database_memoria_edit_user_sistema")
                 .Options;
 
-            var alteracaoName = "Novo Name";
-            var alteracaoEmail = "novo@email.com";
-            var alteracaoPassword = "NovaPassword";
-            var alteracaoRegistration = "NovaRegistration";
+            var changeName = "Novo Name";
+            var changeEmail = "novo@email.com";
+            var changePassword = "NovaPassword";
+            var changeRegistration = "NovaRegistration";
 
-            var teste = new UserSystemEditDto
+            var testObject = new UserSystemEditDto
             {
                 Id = 1,
-                Name = alteracaoName,
-                Email = alteracaoEmail,
-                Password = alteracaoPassword,
+                Name = changeName,
+                Email = changeEmail,
+                Password = changePassword,
                 Situacao = false,
-                Registration = alteracaoRegistration
+                Registration = changeRegistration
             };
 
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
             Utilities.InitializeDbForTests(context);
             var userSystemController = _userSystemInjectionController.GetUserSystemController(context);
-            var result = await userSystemController.Edit(teste);
+            var result = await userSystemController.Edit(testObject);
 
             if (result is OkObjectResult okObjectResult)
             {
@@ -55,29 +55,29 @@ namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
             }
 
             var repository = new UserSystemRepository(context);
-            var usuario = await repository.GetById(1);
-            Assert.Equal(alteracaoName, usuario.Name);
-            Assert.Equal(alteracaoEmail, usuario.Email);
-            // Assert.Equal(alteracaoPassword, usuario.Password);
-            Assert.Equal(alteracaoRegistration, usuario.Registration);
-            Assert.False(usuario.Situacao);
+            var user = await repository.GetById(1);
+            Assert.Equal(changeName, user.Name);
+            Assert.Equal(changeEmail, user.Email);
+            // Assert.Equal(changePassword, user.Password);
+            Assert.Equal(changeRegistration, user.Registration);
+            Assert.False(user.Situacao);
         }
 
         [Fact]
         public async Task Edit_UserSystem_Erro()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_memoria_edit_usuario_sistema_Erro")
+                .UseInMemoryDatabase("test_database_memoria_edit_user_sistema_Erro")
                 .Options;
 
-            var alteracaoName = "Novo Name";
-            var alteracaoEmail = "novo@email.com";
-            var alteracaoRegistration = "NovaRegistration";
+            var changeName = "Novo Name";
+            var changeEmail = "novo@email.com";
+            var changeRegistration = "NovaRegistration";
 
-            var teste = new UserSystemEditDto
+            var testObject = new UserSystemEditDto
             {
                 Id = 1,
-                Name = alteracaoName,
+                Name = changeName,
                 Situacao = false
             };
 
@@ -86,7 +86,7 @@ namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
             Utilities.InitializeDbForTests(context);
 
             var userSystemController = _userSystemInjectionController.GetUserSystemController(context);
-            var result = await userSystemController.Edit(teste);
+            var result = await userSystemController.Edit(testObject);
 
             if (result is OkObjectResult okObjectResult)
             {
@@ -96,11 +96,11 @@ namespace comrade.IntegrationTests.Tests.UsuarioSistemaIntegrationTests
             }
 
             var repository = new UserSystemRepository(context);
-            var usuario = await repository.GetById(1);
-            Assert.NotEqual(alteracaoName, usuario.Name);
-            Assert.NotEqual(alteracaoEmail, usuario.Email);
-            Assert.NotEqual(alteracaoRegistration, usuario.Registration);
-            Assert.True(usuario.Situacao);
+            var user = await repository.GetById(1);
+            Assert.NotEqual(changeName, user.Name);
+            Assert.NotEqual(changeEmail, user.Email);
+            Assert.NotEqual(changeRegistration, user.Registration);
+            Assert.True(user.Situacao);
         }
     }
 }

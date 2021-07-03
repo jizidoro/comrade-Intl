@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="SeedData\Athentication.json" />
+    <None Remove="SeedData\Authentication.json" />
     <None Remove="SeedData\Sheets\basicSheet.xlsx" />
   </ItemGroup>
 

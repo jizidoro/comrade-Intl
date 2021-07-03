@@ -6,38 +6,38 @@ using comrade.Domain.Models;
 using comrade.Infrastructure.DataAccess;
 using comrade.Infrastructure.Repositories;
 using comrade.UnitTests.Helpers;
-using comrade.UnitTests.Tests.AthenticationTests.Bases;
+using comrade.UnitTests.Tests.AuthenticationTests.Bases;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 using Xunit.Abstractions;
 
 #endregion
 
-namespace comrade.UnitTests.Tests.AthenticationTests
+namespace comrade.UnitTests.Tests.AuthenticationTests
 {
-    public sealed class UpdatePasswordExpiredUseCaseTests
+    public sealed class UpdatePasswordUseCaseTests
     {
-        private readonly AthenticationInjectionUseCase _authenticationInjectionUseCase = new();
+        private readonly AuthenticationInjectionUseCase _authenticationInjectionUseCase = new();
         private readonly ITestOutputHelper _output;
 
-        public UpdatePasswordExpiredUseCaseTests(ITestOutputHelper output)
+        public UpdatePasswordUseCaseTests(ITestOutputHelper output)
         {
             _output = output;
         }
 
         [Fact]
-        public async Task Test_UpdatePasswordExpiredUseCase()
+        public async Task Test_UpdatePasswordUseCase()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_memoria_update_password_expired_usecase")
                 .Options;
 
 
-            var teste = new UserSystem
+            var testObject = new UserSystem
             {
                 Id = 1,
                 Name = "111",
-                Email = "777@teste",
+                Email = "777@testObject",
                 Password = "100.SdwfwU4tDWbBkLlBNd7Vcg==.cGEYFjBRNpLrCxzYNIbSdnbbY1zFvBHcyIslMTSmwy8=",
                 Situacao = true,
                 Registration = "123",
@@ -49,15 +49,15 @@ namespace comrade.UnitTests.Tests.AthenticationTests
             Utilities.InitializeDbForTests(context);
 
             var repository = new UserSystemRepository(context);
-            var retornoAntes = await repository.GetById(teste.Id);
+            var retornoAntes = await repository.GetById(testObject.Id);
             var passwordAntes = retornoAntes.Password;
 
-            var updatePasswordExpiredUseCase =
-                _authenticationInjectionUseCase.GetUpdatePasswordExpiredUseCase(context);
-            var result = await updatePasswordExpiredUseCase.Execute(teste);
+            var updatePasswordUseCase =
+                _authenticationInjectionUseCase.GetUpdatePasswordUseCase(context);
+            var result = await updatePasswordUseCase.Execute(testObject);
             _output.WriteLine(result.Message);
 
-            var retornoDepois = await repository.GetById(teste.Id);
+            var retornoDepois = await repository.GetById(testObject.Id);
             var passwordDepois = retornoDepois.Password;
 
             Assert.NotEqual(passwordAntes, passwordDepois);
