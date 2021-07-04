@@ -20,14 +20,12 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_Airplane_Context")
                 .Options;
-
-            Airplane airplane;
-
+            
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
             Utilities.InitializeDbForTests(context);
             var repository = new AirplaneRepository(context);
-            airplane = await repository.GetById(1);
+            var airplane = await repository.GetById(1);
             Assert.NotNull(airplane);
         }
     }

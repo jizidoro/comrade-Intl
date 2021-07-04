@@ -2,7 +2,9 @@
 
 using System;
 using System.Linq;
+using System.Reflection;
 using Comrade.Domain.Models;
+using Comrade.Infrastructure.Extensions;
 using Comrade.Infrastructure.Mappings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,24 +15,38 @@ namespace Comrade.Infrastructure.DataAccess
 {
     public static class ComradeContextFake
     {
-        public static void AddDataFakeContext(IServiceCollection serviceCollection)
+        private const string JsonPath = "Comrade.Infrastructure.SeedData";
+        private static readonly object _syncLock = new object();
+
+        public static bool AddDataFakeContext(IServiceCollection serviceCollection)
         {
             var context = serviceCollection.BuildServiceProvider()
                 .GetService<ComradeContext>();
 
-            var result = context?.Airplanes.Count();
+            var assembly = Assembly.GetAssembly(typeof(JsonUtilities));
 
-
-            context?.Airplanes.Add(new Airplane()
+            if (context != null && context.Airplanes.Any())
             {
-                Code = "Test",
-                Model = "Test",
-                PassengerQuantity = 666,
-                RegisterDate = DateTime.UtcNow,
-            });
+                return true;
+            }
 
+            lock (_syncLock)
+            {
+                if (context != null && assembly is not null)
+                {
+                    context.Airplanes.AddRange(
+                        JsonUtilities.GetListFromJson<Airplane>(
+                            assembly.GetManifestResourceStream($"{JsonPath}.airplane.json")));
 
-            context?.SaveChanges();
+                    context.SystemUsers.AddRange(
+                        JsonUtilities.GetListFromJson<SystemUser>(
+                            assembly.GetManifestResourceStream($"{JsonPath}.systemUser.json")));
+
+                    context?.SaveChanges();
+                }
+            }
+
+            return true;
         }
     }
 }

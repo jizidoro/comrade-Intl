@@ -1,7 +1,9 @@
 #region
 
+using Comrade.Application.Dtos.AirplaneDtos;
 using Comrade.Application.Interfaces;
 using Comrade.Application.Services;
+using Comrade.Application.Validations.AirplaneValidations;
 using Comrade.Core.AirplaneCore.UseCases;
 using Comrade.Core.AirplaneCore.Validations;
 using Comrade.Core.SecurityCore;
@@ -9,7 +11,11 @@ using Comrade.Core.SecurityCore.UseCases;
 using Comrade.Core.SecurityCore.Validation;
 using Comrade.Core.SystemUserCore.UseCases;
 using Comrade.Core.SystemUserCore.Validations;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using AirplaneCreateValidation = Comrade.Core.AirplaneCore.Validations.AirplaneCreateValidation;
+using AirplaneDeleteValidation = Comrade.Core.AirplaneCore.Validations.AirplaneDeleteValidation;
+using AirplaneEditValidation = Comrade.Core.AirplaneCore.Validations.AirplaneEditValidation;
 
 #endregion
 
@@ -27,6 +33,9 @@ namespace Comrade.WebApi.Modules
         /// <returns>The modified instance.</returns>
         public static IServiceCollection AddUseCases(this IServiceCollection services)
         {
+
+            services.AddScoped<IValidator, AirplaneValidation<AirplaneCreateDto>>();
+
             #region Authentication
 
             services.AddScoped<IAuthenticationAppService, AuthenticationAppService>();
