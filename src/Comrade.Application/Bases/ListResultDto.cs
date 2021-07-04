@@ -1,13 +1,13 @@
 ﻿#region
 
 using System.Collections.Generic;
-using Comrade.Application.Utils;
+using comrade.Application.Utils;
 using Comrade.Core.Helpers.Messages;
 using Comrade.Domain.Enums;
 
 #endregion
 
-namespace Comrade.Application.Bases
+namespace comrade.Application.Bases
 {
     public class ListResultDto<T> : ResultDto, IListResultDto<T>
         where T : Dto

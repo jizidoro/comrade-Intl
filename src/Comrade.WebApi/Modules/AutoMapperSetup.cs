@@ -1,7 +1,7 @@
 ﻿#region
 
 using System;
-using Comrade.Application.AutoMapper;
+using comrade.Application.AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 
 #endregion

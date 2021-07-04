@@ -1,9 +1,9 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using Comrade.Application.Bases;
-using Comrade.Application.Dtos.UserSystemDtos;
-using Comrade.Application.Queries;
+using comrade.Application.Bases;
+using comrade.Application.Dtos.UserSystemDtos;
+using comrade.Application.Queries;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.UserSystemTests.Bases;

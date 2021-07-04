@@ -1,4 +1,4 @@
-﻿namespace Comrade.Application.Filters
+﻿namespace comrade.Application.Filters
 {
     public class PaginationFilter
     {

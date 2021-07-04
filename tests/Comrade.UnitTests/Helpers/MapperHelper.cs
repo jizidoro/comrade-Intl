@@ -1,8 +1,8 @@
 ﻿#region
 
 using AutoMapper;
-using Comrade.Application.AutoMapper;
-using Comrade.Application.MappingProfiles;
+using comrade.Application.AutoMapper;
+using comrade.Application.MappingProfiles;
 
 #endregion
 

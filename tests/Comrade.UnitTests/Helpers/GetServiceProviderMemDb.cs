@@ -1,6 +1,6 @@
 ﻿#region
 
-using Comrade.Application.Lookups;
+using comrade.Application.Lookups;
 using Comrade.Core.Helpers.Interfaces;
 using Comrade.Domain.Extensions;
 using Comrade.Infrastructure.Bases;
@@ -28,8 +28,8 @@ namespace Comrade.UnitTests.Helpers
             services
                 .AddFeatureFlags(configuration)
                 .AddInvalidRequestLogging()
-                .AddSqlServerFake(configuration)
-                .AddEntityRepository(configuration)
+                .AddSqlServerFake()
+                .AddEntityRepository()
                 .AddHealthChecks(configuration)
                 .AddAuthentication(configuration)
                 .AddVersioning()

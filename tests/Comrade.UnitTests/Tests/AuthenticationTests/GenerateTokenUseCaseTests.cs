@@ -1,7 +1,7 @@
 #region
 
 using System.Threading.Tasks;
-using Comrade.Application.Dtos;
+using comrade.Application.Dtos;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.AuthenticationTests.Bases;

@@ -1,14 +1,14 @@
 ﻿#region
 
 using AutoMapper;
-using Comrade.Application.Dtos;
-using Comrade.Application.Dtos.AirplaneDtos;
-using Comrade.Application.Dtos.UserSystemDtos;
+using comrade.Application.Dtos;
+using comrade.Application.Dtos.AirplaneDtos;
+using comrade.Application.Dtos.UserSystemDtos;
 using Comrade.Domain.Models;
 
 #endregion
 
-namespace Comrade.Application.AutoMapper
+namespace comrade.Application.AutoMapper
 {
     public class DtoToDomainMappingProfile : Profile
     {

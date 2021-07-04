@@ -7,10 +7,7 @@ using Comrade.Core.Views.VBaUsuPermissaoCore;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.Infrastructure.Repositories;
 using Comrade.Infrastructure.Repositories.Views;
-using Comrade.WebApi.Modules.Common.FeatureFlags;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.FeatureManagement;
 
 #endregion
 
@@ -25,8 +22,7 @@ namespace Comrade.WebApi.Modules
         ///     Add Persistence dependencies varying on configuration.
         /// </summary>
         public static IServiceCollection AddEntityRepository(
-            this IServiceCollection services,
-            IConfiguration configuration)
+            this IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAirplaneRepository, AirplaneRepository>();

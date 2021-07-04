@@ -8,7 +8,7 @@ using Comrade.Domain.Bases;
 
 #endregion
 
-namespace Comrade.Application.Lookups
+namespace comrade.Application.Lookups
 {
     public interface ILookupServiceApp<TEntity>
         where TEntity : Entity

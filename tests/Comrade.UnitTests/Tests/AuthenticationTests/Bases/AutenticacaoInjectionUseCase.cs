@@ -1,7 +1,7 @@
 ﻿#region
 
 using System.Collections.Generic;
-using Comrade.Application.Services;
+using comrade.Application.Services;
 using Comrade.Core.SecurityCore.UseCases;
 using Comrade.Core.SecurityCore.Validation;
 using Comrade.Core.UserSystemCore.Validations;

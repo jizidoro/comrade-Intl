@@ -1,7 +1,7 @@
 #region
 
-using Comrade.Application.Interfaces;
-using Comrade.Application.Services;
+using comrade.Application.Interfaces;
+using comrade.Application.Services;
 using Comrade.Core.AirplaneCore.UseCases;
 using Comrade.Core.AirplaneCore.Validations;
 using Comrade.Core.SecurityCore.UseCases;

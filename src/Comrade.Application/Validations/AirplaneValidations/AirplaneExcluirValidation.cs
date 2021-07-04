@@ -1,10 +1,10 @@
 ﻿#region
 
-using Comrade.Application.Dtos.AirplaneDtos;
+using comrade.Application.Dtos.AirplaneDtos;
 
 #endregion
 
-namespace Comrade.Application.Validations.AirplaneValidations
+namespace comrade.Application.Validations.AirplaneValidations
 {
     public class AirplaneDeleteValidation : AirplaneValidation<AirplaneDeleteDto>
     {

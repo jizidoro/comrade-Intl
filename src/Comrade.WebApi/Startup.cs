@@ -1,8 +1,6 @@
 #region
 
-using Comrade.Application.Interfaces;
-using Comrade.Application.Lookups;
-using Comrade.Application.Services;
+using comrade.Application.Lookups;
 using Comrade.Core.Helpers.Interfaces;
 using Comrade.Domain.Extensions;
 using Comrade.Infrastructure.Bases;
@@ -47,7 +45,7 @@ namespace Comrade.WebApi
                 .AddFeatureFlags(Configuration)
                 .AddInvalidRequestLogging()
                 .AddSqlServer(Configuration)
-                .AddEntityRepository(Configuration)
+                .AddEntityRepository()
                 .AddHealthChecks(Configuration)
                 .AddAuthentication(Configuration)
                 .AddVersioning()
@@ -57,7 +55,7 @@ namespace Comrade.WebApi
                 .AddCustomCors()
                 .AddProxy()
                 .AddCustomDataProtection();
-            
+
             services.AddAutoMapperSetup();
             services.AddLogging();
 

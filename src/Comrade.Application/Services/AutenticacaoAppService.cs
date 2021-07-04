@@ -2,17 +2,16 @@
 
 using System.Threading.Tasks;
 using AutoMapper;
-using Comrade.Application.Bases;
-using Comrade.Application.Dtos;
-using Comrade.Application.Interfaces;
-using Comrade.Application.Utils;
+using comrade.Application.Bases;
+using comrade.Application.Dtos;
+using comrade.Application.Interfaces;
+using comrade.Application.Utils;
 using Comrade.Core.SecurityCore.UseCases;
-using Comrade.Core.Views.VBaUsuPermissaoCore;
 using Comrade.Domain.Models;
 
 #endregion
 
-namespace Comrade.Application.Services
+namespace comrade.Application.Services
 {
     public class AuthenticationAppService : AppService, IAuthenticationAppService
     {

@@ -1,13 +1,13 @@
 ﻿#region
 
-using Comrade.Application.Bases;
-using Comrade.Application.Dtos.UserSystemDtos;
-using Comrade.Application.Messages;
+using comrade.Application.Bases;
+using comrade.Application.Dtos.UserSystemDtos;
+using comrade.Application.Messages;
 using FluentValidation;
 
 #endregion
 
-namespace Comrade.Application.Validations.UserSystemValidations
+namespace comrade.Application.Validations.UserSystemValidations
 {
     public class UserSystemValidation<TDto> : DtoValidation<TDto>
         where TDto : UserSystemDto

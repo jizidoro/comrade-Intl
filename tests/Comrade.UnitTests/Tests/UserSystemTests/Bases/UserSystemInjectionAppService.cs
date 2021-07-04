@@ -1,7 +1,7 @@
 ﻿#region
 
 using AutoMapper;
-using Comrade.Application.Services;
+using comrade.Application.Services;
 using Comrade.Core.UserSystemCore.UseCases;
 using Comrade.Core.UserSystemCore.Validations;
 using Comrade.Domain.Extensions;

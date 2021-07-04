@@ -1,4 +1,4 @@
-﻿namespace Comrade.Application.Dtos.UserSystemDtos
+﻿namespace comrade.Application.Dtos.UserSystemDtos
 {
     public class UserSystemEditDto : UserSystemCreateDto
     {

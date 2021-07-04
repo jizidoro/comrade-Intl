@@ -1,4 +1,4 @@
-﻿namespace Comrade.Application.Dtos.AirplaneDtos
+﻿namespace comrade.Application.Dtos.AirplaneDtos
 {
     public class AirplaneDeleteDto : AirplaneDto
     {

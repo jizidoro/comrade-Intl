@@ -1,8 +1,8 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using Comrade.Application.Bases;
-using Comrade.Application.Lookups;
+using comrade.Application.Bases;
+using comrade.Application.Lookups;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.UserSystemTests.Bases;

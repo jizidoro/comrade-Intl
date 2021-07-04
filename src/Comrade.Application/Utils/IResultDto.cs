@@ -5,7 +5,7 @@ using Comrade.Core.Helpers.Interfaces;
 
 #endregion
 
-namespace Comrade.Application.Utils
+namespace comrade.Application.Utils
 {
     public interface IResultDto : IResult
     {

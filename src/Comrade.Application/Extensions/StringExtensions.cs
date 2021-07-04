@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 #endregion
 
-namespace Comrade.Application.Extensions
+namespace comrade.Application.Extensions
 {
     public static class StringExtension
     {

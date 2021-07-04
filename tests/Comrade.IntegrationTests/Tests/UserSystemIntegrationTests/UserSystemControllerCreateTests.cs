@@ -2,8 +2,8 @@
 
 using System.Linq;
 using System.Threading.Tasks;
-using Comrade.Application.Bases;
-using Comrade.Application.Dtos.UserSystemDtos;
+using comrade.Application.Bases;
+using comrade.Application.Dtos.UserSystemDtos;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.Tests.UserSystemTests.Bases;
 using Microsoft.AspNetCore.Mvc;

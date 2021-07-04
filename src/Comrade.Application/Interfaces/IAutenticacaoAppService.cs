@@ -1,13 +1,13 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using Comrade.Application.Bases;
-using Comrade.Application.Dtos;
-using Comrade.Application.Utils;
+using comrade.Application.Bases;
+using comrade.Application.Dtos;
+using comrade.Application.Utils;
 
 #endregion
 
-namespace Comrade.Application.Interfaces
+namespace comrade.Application.Interfaces
 {
     public interface IAuthenticationAppService : IAppService
     {

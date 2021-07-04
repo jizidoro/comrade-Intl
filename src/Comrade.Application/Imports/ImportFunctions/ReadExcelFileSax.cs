@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Http;
 
 #endregion
 
-namespace Comrade.Application.Imports.ImportFunctions
+namespace comrade.Application.Imports.ImportFunctions
 {
     public static class ReadExcelFileSax
     {

@@ -102,9 +102,13 @@ namespace Comrade.WebApi.Modules.Common.Swagger
                         string basePath = configuration["ASPNETCORE_BASEPATH"];
 
                         if (!string.IsNullOrEmpty(basePath))
+                        {
                             swaggerEndpoint = $"{basePath}/swagger/{description.GroupName}/swagger.json";
+                        }
                         else
+                        {
                             swaggerEndpoint = $"/swagger/{description.GroupName}/swagger.json";
+                        }
 
                         options.SwaggerEndpoint(swaggerEndpoint, description.GroupName.ToUpperInvariant());
                     }

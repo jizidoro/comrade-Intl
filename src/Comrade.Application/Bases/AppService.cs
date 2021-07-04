@@ -4,7 +4,7 @@ using AutoMapper;
 
 #endregion
 
-namespace Comrade.Application.Bases
+namespace comrade.Application.Bases
 {
     public class AppService
     {

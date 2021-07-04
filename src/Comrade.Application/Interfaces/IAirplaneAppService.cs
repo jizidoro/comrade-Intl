@@ -1,14 +1,14 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using Comrade.Application.Bases;
-using Comrade.Application.Dtos.AirplaneDtos;
-using Comrade.Application.Filters;
-using Comrade.Application.Utils;
+using comrade.Application.Bases;
+using comrade.Application.Dtos.AirplaneDtos;
+using comrade.Application.Filters;
+using comrade.Application.Utils;
 
 #endregion
 
-namespace Comrade.Application.Interfaces
+namespace comrade.Application.Interfaces
 {
     public interface IAirplaneAppService : IAppService
     {

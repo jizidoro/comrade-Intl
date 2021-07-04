@@ -1,14 +1,14 @@
 ﻿#region
 
 using System.Collections.Generic;
-using Comrade.Application.Filters;
-using Comrade.Application.Utils;
+using comrade.Application.Filters;
+using comrade.Application.Utils;
 using Comrade.Core.Helpers.Messages;
 using Comrade.Domain.Enums;
 
 #endregion
 
-namespace Comrade.Application.Bases
+namespace comrade.Application.Bases
 {
     public class PageResultDto<T> : ResultDto, IPageResultDto<T>
         where T : Dto

@@ -1,7 +1,7 @@
 ﻿#region
 
 using AutoMapper;
-using Comrade.Application.Services;
+using comrade.Application.Services;
 using Comrade.Core.AirplaneCore.UseCases;
 using Comrade.Core.AirplaneCore.Validations;
 using Comrade.Infrastructure.DataAccess;

@@ -7,13 +7,13 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Comrade.Application.Bases;
+using comrade.Application.Bases;
 using Comrade.Core.Helpers.Interfaces;
 using Comrade.Domain.Bases;
 
 #endregion
 
-namespace Comrade.Application.Lookups
+namespace comrade.Application.Lookups
 {
     public class LookupServiceApp<TEntity> : AppService, ILookupServiceApp<TEntity>
         where TEntity : Entity

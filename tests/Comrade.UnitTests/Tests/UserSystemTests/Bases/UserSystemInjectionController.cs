@@ -2,7 +2,7 @@
 
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.Helpers;
-using Comrade.WebApi.UseCases.V1.UserSystemApi;
+using Comrade.WebApi.UseCases.V2.UserSystemApi;
 
 #endregion
 
