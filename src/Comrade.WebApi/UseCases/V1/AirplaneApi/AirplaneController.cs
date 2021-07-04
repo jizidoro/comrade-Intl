@@ -3,12 +3,12 @@
 using System;
 using System.Threading.Tasks;
 using AutoMapper;
+using Comrade.Application.BaseInterfaces;
 using Comrade.Application.Bases;
 using Comrade.Application.Dtos.AirplaneDtos;
 using Comrade.Application.Filters;
 using Comrade.Application.Interfaces;
 using Comrade.Application.Queries;
-using Comrade.Application.Utils;
 using Comrade.WebApi.Bases;
 using Comrade.WebApi.Modules.Common;
 using Comrade.WebApi.Modules.Common.FeatureFlags;

@@ -1,4 +1,4 @@
-﻿namespace Comrade.Application.Utils
+﻿namespace Comrade.Application.BaseInterfaces
 {
     public interface ILookupDto
     {

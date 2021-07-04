@@ -1,7 +1,7 @@
 ﻿#region
 
 using System.Collections.Generic;
-using Comrade.Application.Utils;
+using Comrade.Application.BaseInterfaces;
 
 #endregion
 
@@ -12,6 +12,6 @@ namespace Comrade.Application.Bases
         public int Code { get; set; }
         public bool Success { get; set; }
         public string Message { get; set; }
-        public IList<string> Mensagens { get; set; }
+        public IList<string> Messages { get; set; }
     }
 }

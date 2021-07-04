@@ -6,8 +6,11 @@
 
 	<ItemGroup>
 		<Compile Remove="EventSourcedNormalizers\**" />
+		<Compile Remove="Imports\ImportMappings\**" />
 		<EmbeddedResource Remove="EventSourcedNormalizers\**" />
+		<EmbeddedResource Remove="Imports\ImportMappings\**" />
 		<None Remove="EventSourcedNormalizers\**" />
+		<None Remove="Imports\ImportMappings\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -34,10 +37,6 @@
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>ApplicationMessage.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Imports\ImportMappings\" />
 	</ItemGroup>
 
 </Project>

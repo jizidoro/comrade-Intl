@@ -1,11 +1,11 @@
 ﻿#region
 
 using System.Threading.Tasks;
+using Comrade.Application.BaseInterfaces;
 using Comrade.Application.Bases;
 using Comrade.Application.Dtos.SystemUserDtos;
 using Comrade.Application.Filters;
 using Comrade.Application.Lookups;
-using Comrade.Application.Utils;
 
 #endregion
 

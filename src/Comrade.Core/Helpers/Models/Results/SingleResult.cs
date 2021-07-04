@@ -27,11 +27,11 @@ namespace Comrade.Core.Helpers.Models.Results
             Message = message;
         }
 
-        public SingleResult(IEnumerable<string> mensagens)
+        public SingleResult(IEnumerable<string> messages)
         {
             Code = (int) EnumResultadoAcao.ErroValidacaoNegocio;
             Success = false;
-            Mensagens = mensagens;
+            Messages = messages;
         }
 
 
@@ -57,7 +57,7 @@ namespace Comrade.Core.Helpers.Models.Results
             Data = data;
         }
 
-        public IEnumerable<string> Mensagens { get; set; }
+        public IEnumerable<string> Messages { get; set; }
 
         public int Code { get; set; }
         public bool Success { get; set; }

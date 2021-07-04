@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using Comrade.Application.Utils;
+using Comrade.Application.BaseInterfaces;
 using Comrade.Core.Helpers.Interfaces;
 using Comrade.Core.Helpers.Messages;
 using Comrade.Core.Utils;
@@ -54,7 +54,7 @@ namespace Comrade.Application.Bases
         {
             Code = (int) EnumResultadoAcao.ErroValidacaoNegocio;
             Success = false;
-            Mensagens = listErrors.ToList();
+            Messages = listErrors.ToList();
         }
 
         public SingleResultDto(IResult result)

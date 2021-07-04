@@ -5,9 +5,9 @@ using Comrade.Application.Bases;
 
 #endregion
 
-namespace Comrade.Application.Utils
+namespace Comrade.Application.BaseInterfaces
 {
-    public interface IPageResultDto<TDto> : IResultDto
+    public interface IListResultDto<TDto> : IResultDto
         where TDto : Dto
     {
         IList<TDto> Data { get; set; }

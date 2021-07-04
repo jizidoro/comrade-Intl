@@ -1,8 +1,8 @@
 ﻿#region
 
 using System.Collections.Generic;
+using Comrade.Application.BaseInterfaces;
 using Comrade.Application.Filters;
-using Comrade.Application.Utils;
 using Comrade.Core.Helpers.Messages;
 using Comrade.Domain.Enums;
 

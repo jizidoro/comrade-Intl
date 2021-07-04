@@ -2,10 +2,10 @@
 
 using System.Threading.Tasks;
 using AutoMapper;
+using Comrade.Application.BaseInterfaces;
 using Comrade.Application.Bases;
 using Comrade.Application.Dtos;
 using Comrade.Application.Interfaces;
-using Comrade.Application.Utils;
 using Comrade.Core.SecurityCore.UseCases;
 using Comrade.Domain.Models;
 

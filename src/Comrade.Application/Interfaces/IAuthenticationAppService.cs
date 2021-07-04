@@ -1,9 +1,9 @@
 ﻿#region
 
 using System.Threading.Tasks;
+using Comrade.Application.BaseInterfaces;
 using Comrade.Application.Bases;
 using Comrade.Application.Dtos;
-using Comrade.Application.Utils;
 
 #endregion
 

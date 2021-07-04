@@ -1,6 +1,6 @@
 ﻿#region
 
-using Comrade.Application.Utils;
+using Comrade.Application.BaseInterfaces;
 
 #endregion
 

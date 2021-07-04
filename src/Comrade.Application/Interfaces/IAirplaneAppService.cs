@@ -1,10 +1,10 @@
 ﻿#region
 
 using System.Threading.Tasks;
+using Comrade.Application.BaseInterfaces;
 using Comrade.Application.Bases;
 using Comrade.Application.Dtos.AirplaneDtos;
 using Comrade.Application.Filters;
-using Comrade.Application.Utils;
 
 #endregion
 

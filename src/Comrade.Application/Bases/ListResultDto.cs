@@ -1,7 +1,7 @@
 ﻿#region
 
 using System.Collections.Generic;
-using Comrade.Application.Utils;
+using Comrade.Application.BaseInterfaces;
 using Comrade.Core.Helpers.Messages;
 using Comrade.Domain.Enums;
 
