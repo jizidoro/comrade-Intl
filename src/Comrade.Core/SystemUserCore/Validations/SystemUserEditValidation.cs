@@ -1,0 +1,33 @@
+﻿#region
+
+using System.Threading.Tasks;
+using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Models.Validations;
+using Comrade.Domain.Models;
+
+#endregion
+
+namespace Comrade.Core.SystemUserCore.Validations
+{
+    public class SystemUserEditValidation : EntityValidation<SystemUser>
+    {
+        private readonly ISystemUserRepository _repository;
+
+        public SystemUserEditValidation(ISystemUserRepository repository)
+            : base(repository)
+        {
+            _repository = repository;
+        }
+
+        public async Task<ISingleResult<SystemUser>> Execute(SystemUser entity)
+        {
+            var recordExists = await RecordExists(entity.Id);
+            if (!recordExists.Success)
+            {
+                return recordExists;
+            }
+
+            return recordExists;
+        }
+    }
+}
