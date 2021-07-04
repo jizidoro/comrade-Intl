@@ -1,7 +1,7 @@
 ﻿#region
 
 using AutoMapper;
-using comrade.Application.Services;
+using Comrade.Application.Services;
 using Comrade.Core.AirplaneCore.UseCases;
 using Comrade.Core.AirplaneCore.Validations;
 using Comrade.Infrastructure.DataAccess;
@@ -18,14 +18,14 @@ namespace Comrade.UnitTests.Tests.AirplaneTests.Bases
             var uow = new UnitOfWork(context);
             var airplaneRepository = new AirplaneRepository(context);
 
-            var airplaneValidateCodeRepetido = new AirplaneValidateCodeRepetido(airplaneRepository);
+            var airplaneValidateCodeRepeated = new AirplaneValidateCodeRepeated(airplaneRepository);
 
 
             var airplaneEditValidation =
-                new AirplaneEditValidation(airplaneRepository, airplaneValidateCodeRepetido);
+                new AirplaneEditValidation(airplaneRepository, airplaneValidateCodeRepeated);
             var airplaneDeleteValidation = new AirplaneDeleteValidation(airplaneRepository);
             var airplaneCreateValidation =
-                new AirplaneCreateValidation(airplaneRepository, airplaneValidateCodeRepetido);
+                new AirplaneCreateValidation(airplaneRepository, airplaneValidateCodeRepeated);
             var airplaneCreateUseCase = new AirplaneCreateUseCase(airplaneRepository, airplaneCreateValidation, uow);
             var airplaneDeleteUseCase = new AirplaneDeleteUseCase(airplaneRepository, airplaneDeleteValidation, uow);
             var airplaneEditUseCase = new AirplaneEditUseCase(airplaneRepository, airplaneEditValidation, uow);

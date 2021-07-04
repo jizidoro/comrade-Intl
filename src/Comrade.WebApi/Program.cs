@@ -24,10 +24,7 @@ namespace Comrade.WebApi
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            BsonDefaults.GuidRepresentation = GuidRepresentation.Standard;
-
             var hostBuilder = CreateHostBuilder(args).Build();
-
             try
             {
                 Log.Information("Starting up");
@@ -50,7 +47,6 @@ namespace Comrade.WebApi
                 .ConfigureAppConfiguration((hostContext, configApp) =>
                 {
                     configApp.AddCommandLine(args);
-                    LoggingExtensions.CreateLogMongoDb(Providers);
                 })
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); })
                 .UseSerilog(providers: Providers);

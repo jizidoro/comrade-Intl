@@ -142,7 +142,7 @@ namespace Comrade.Core.Helpers.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Registro já existe com mesmo codigo, por favor informe outro codigo..
+        ///   Looks up a localized string similar to Registro já existe com mesmo code, por favor informe outro code..
         /// </summary>
         public static string MSG08 {
             get {

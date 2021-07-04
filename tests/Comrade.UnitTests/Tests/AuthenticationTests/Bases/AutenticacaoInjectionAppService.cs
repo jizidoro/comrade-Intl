@@ -1,6 +1,6 @@
 ﻿#region
 
-using comrade.Application.Services;
+using Comrade.Application.Services;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.Helpers;
 

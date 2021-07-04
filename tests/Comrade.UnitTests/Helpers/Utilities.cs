@@ -28,9 +28,9 @@ namespace Comrade.UnitTests.Helpers
                         JsonUtilities.GetListFromJson<Airplane>(
                             assembly.GetManifestResourceStream($"{JsonPath}.airplane.json")));
 
-                    db.UserSystems.AddRange(
-                        JsonUtilities.GetListFromJson<UserSystem>(
-                            assembly.GetManifestResourceStream($"{JsonPath}.userSystem.json")));
+                    db.SystemUsers.AddRange(
+                        JsonUtilities.GetListFromJson<SystemUser>(
+                            assembly.GetManifestResourceStream($"{JsonPath}.systemUser.json")));
                 }
 
                 db.SaveChanges();

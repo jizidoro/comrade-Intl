@@ -1,11 +1,11 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using comrade.Application.Bases;
-using comrade.Application.Lookups;
+using Comrade.Application.Bases;
+using Comrade.Application.Lookups;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.Helpers;
-using Comrade.UnitTests.Tests.UserSystemTests.Bases;
+using Comrade.UnitTests.Tests.SystemUserTests.Bases;
 using Comrade.WebApi.UseCases.V1;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,7 +19,7 @@ namespace Comrade.IntegrationTests.Tests.LookupIntegrationTests
     public sealed class CommonControllerTests
     {
         private readonly ITestOutputHelper _output;
-        private readonly UserSystemInjectionAppService _userSystemInjectionAppService = new();
+        private readonly SystemUserInjectionAppService _systemUserInjectionAppService = new();
 
         public CommonControllerTests(ITestOutputHelper output)
         {
@@ -35,16 +35,16 @@ namespace Comrade.IntegrationTests.Tests.LookupIntegrationTests
 
             var context = serviceProvider.GetService<ComradeContext>();
 
-            var baUsuAppService = _userSystemInjectionAppService.GetUserSystemAppService(context, mapper);
+            var baUsuAppService = _systemUserInjectionAppService.GetSystemUserAppService(context, mapper);
 
             return new CommonController(serviceProvider, baUsuAppService);
         }
 
         [Fact]
-        public async Task GetLookupUserSystemMemDb_Test()
+        public async Task GetLookupSystemUserMemDb_Test()
         {
             var commonController = GetCommonControllerMemDb();
-            var result = await commonController.GetLookupUserSystem();
+            var result = await commonController.GetLookupSystemUser();
 
             if (result is OkObjectResult okResult)
             {

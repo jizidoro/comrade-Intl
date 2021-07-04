@@ -4,7 +4,7 @@ using FluentValidation;
 
 #endregion
 
-namespace comrade.Application.Bases
+namespace Comrade.Application.Bases
 {
     public class DtoValidation<TDto> : AbstractValidator<TDto>
         where TDto : EntityDto

@@ -1,8 +1,4 @@
-#region
-
 using System;
-
-#endregion
 
 namespace Comrade.ComponentTests
 {
@@ -10,18 +6,13 @@ namespace Comrade.ComponentTests
     /// </summary>
     public sealed class CustomWebApplicationFactoryFixture : IDisposable
     {
-        public CustomWebApplicationFactoryFixture()
-        {
-            CustomWebApplicationFactory = new CustomWebApplicationFactory();
-        }
+        public CustomWebApplicationFactoryFixture() =>
+            this.CustomWebApplicationFactory = new CustomWebApplicationFactory();
 
         /// <summary>
         /// </summary>
         public CustomWebApplicationFactory CustomWebApplicationFactory { get; }
 
-        public void Dispose()
-        {
-            CustomWebApplicationFactory?.Dispose();
-        }
+        public void Dispose() => this.CustomWebApplicationFactory?.Dispose();
     }
 }

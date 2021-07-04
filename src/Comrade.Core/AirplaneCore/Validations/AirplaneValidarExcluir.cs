@@ -21,13 +21,13 @@ namespace Comrade.Core.AirplaneCore.Validations
 
         public async Task<ISingleResult<Airplane>> Execute(int id)
         {
-            var registroExiste = await RegistroExiste(id);
-            if (!registroExiste.Success)
+            var recordExists = await RecordExists(id);
+            if (!recordExists.Success)
             {
-                return registroExiste;
+                return recordExists;
             }
 
-            return registroExiste;
+            return recordExists;
         }
     }
 }

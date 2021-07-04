@@ -1,42 +1,32 @@
 #region
 
+using System;
 using Comrade.Domain.Models;
-using Comrade.Domain.Models.Views;
 using Comrade.Infrastructure.Mappings;
-using Comrade.Infrastructure.Mappings.Views;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 #endregion
 
 namespace Comrade.Infrastructure.DataAccess
 {
-    public class ComradeContext : DbContext
+    public static class ComradeContextFake
     {
-        private const string JsonPath = "Comrade.Infrastructure.SeedData";
+        public static void AddDataFakeContext(IServiceCollection serviceCollection) {
 
-        public ComradeContext(DbContextOptions<ComradeContext> options)
-            : base(options)
-        {
-        }
+            var context = serviceCollection.BuildServiceProvider()
+                .GetService<ComradeContext>();
 
-        // Tabelas
-        public DbSet<Airplane> Airplanes { get; set; }
-        public DbSet<UserSystem> UserSystems { get; set; }
+            context?.Airplanes.Add(new Airplane()
+            {
+                Id = 70,
+                Code = "Test",
+                Model = "Test",
+                PassengerQuantity = 666,
+                RegisterDate = DateTime.UtcNow,
+            });
 
-        // Views
-        public DbSet<VwUserSystemPermission> VUserSystemPermissoes { get; set; }
-
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-
-            // Tabelas
-            modelBuilder.ApplyConfiguration(new AirplaneConfiguration());
-            modelBuilder.ApplyConfiguration(new UserSystemConfiguration());
-
-            // Views
-            modelBuilder.ApplyConfiguration(new VwUserSystemPermissionConfiguration());
+            context?.SaveChanges();
         }
     }
 }

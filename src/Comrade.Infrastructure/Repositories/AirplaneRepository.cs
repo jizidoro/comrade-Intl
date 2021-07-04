@@ -27,10 +27,10 @@ namespace Comrade.Infrastructure.Repositories
                        throw new ArgumentNullException(nameof(context));
         }
 
-        public async Task<ISingleResult<Airplane>> RegistroCodeRepetido(int id, string codigo)
+        public async Task<ISingleResult<Airplane>> RegistroCodeRepeated(int id, string code)
         {
             var existe = await Db.Airplanes
-                .Where(p => p.Id != id && p.Code.Equals(codigo))
+                .Where(p => p.Id != id && p.Code.Equals(code))
                 .AnyAsync();
 
             return existe ? new SingleResult<Airplane>(BusinessMessage.MSG08) : new SingleResult<Airplane>();

@@ -3,7 +3,7 @@
 using Comrade.Core.Helpers.Interfaces;
 using Comrade.Core.Helpers.Models.Results;
 using Comrade.Core.Helpers.Models.Validations;
-using Comrade.Core.UserSystemCore;
+using Comrade.Core.SystemUserCore;
 using Comrade.Domain.Extensions;
 using Comrade.Domain.Models;
 
@@ -11,22 +11,22 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.SecurityCore.Validation
 {
-    public class UserSystemPasswordValidation : EntityValidation<UserSystem>
+    public class SystemUserPasswordValidation : EntityValidation<SystemUser>
     {
         private readonly IPasswordHasher _passwordHasher;
-        private readonly IUserSystemRepository _userSystemRepository;
+        private readonly ISystemUserRepository _systemUserRepository;
 
-        public UserSystemPasswordValidation(IUserSystemRepository userSystemRepository,
+        public SystemUserPasswordValidation(ISystemUserRepository systemUserRepository,
             IPasswordHasher passwordHasher)
-            : base(userSystemRepository)
+            : base(systemUserRepository)
         {
-            _userSystemRepository = userSystemRepository;
+            _systemUserRepository = systemUserRepository;
             _passwordHasher = passwordHasher;
         }
 
-        public ISingleResult<UserSystem> Execute(int key, string password)
+        public ISingleResult<SystemUser> Execute(int key, string password)
         {
-            var usuSelecionado = _userSystemRepository.GetById(key).Result;
+            var usuSelecionado = _systemUserRepository.GetById(key).Result;
             var keyValida = usuSelecionado != null;
 
             if (keyValida)
@@ -35,15 +35,15 @@ namespace Comrade.Core.SecurityCore.Validation
 
                 if (!passwordValida.Verified)
                 {
-                    return new SingleResult<UserSystem>(1001, "Usuário ou password informados não são válidos");
+                    return new SingleResult<SystemUser>(1001, "Usuário ou password informados não são válidos");
                 }
 
 
-                return new SingleResult<UserSystem>(usuSelecionado);
+                return new SingleResult<SystemUser>(usuSelecionado);
             }
 
 
-            return new SingleResult<UserSystem>(1001, "Usuário ou password informados não são válidos");
+            return new SingleResult<SystemUser>(1001, "Usuário ou password informados não são válidos");
         }
     }
 }

@@ -33,7 +33,7 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests
                 .Options;
 
 
-            var testObject = new UserSystem
+            var testObject = new SystemUser
             {
                 Id = 1,
                 Name = "111",
@@ -48,7 +48,7 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests
             await context.Database.EnsureCreatedAsync();
             Utilities.InitializeDbForTests(context);
 
-            var repository = new UserSystemRepository(context);
+            var repository = new SystemUserRepository(context);
             var returnBefore = await repository.GetById(testObject.Id);
             var passwordBefore = returnBefore.Password;
 

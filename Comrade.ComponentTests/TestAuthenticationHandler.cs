@@ -1,13 +1,9 @@
-#region
-
 using System.Security.Claims;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-
-#endregion
 
 namespace Comrade.ComponentTests
 {
@@ -33,13 +29,13 @@ namespace Comrade.ComponentTests
         {
             Claim[] claims =
             {
-                new(ClaimTypes.NameIdentifier, "test"), new(ClaimTypes.Name, "test"),
-                new("id", "92b93e37-0995-4849-a7ed-149e8706d8ef")
+                new Claim(ClaimTypes.NameIdentifier, "test"), new Claim(ClaimTypes.Name, "test"),
+                new Claim("id", "92b93e37-0995-4849-a7ed-149e8706d8ef")
             };
 
-            ClaimsIdentity identity = new(claims, Scheme.Name);
-            ClaimsPrincipal principal = new(identity);
-            AuthenticationTicket ticket = new(principal, Scheme.Name);
+            ClaimsIdentity identity = new ClaimsIdentity(claims, this.Scheme.Name);
+            ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+            AuthenticationTicket ticket = new AuthenticationTicket(principal, this.Scheme.Name);
 
             return await Task.FromResult(AuthenticateResult.Success(ticket));
         }

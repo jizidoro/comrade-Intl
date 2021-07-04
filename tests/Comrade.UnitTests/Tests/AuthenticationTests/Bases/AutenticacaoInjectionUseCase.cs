@@ -1,14 +1,13 @@
 ﻿#region
 
 using System.Collections.Generic;
-using comrade.Application.Services;
+using Comrade.Application.Services;
 using Comrade.Core.SecurityCore.UseCases;
 using Comrade.Core.SecurityCore.Validation;
-using Comrade.Core.UserSystemCore.Validations;
+using Comrade.Core.SystemUserCore.Validations;
 using Comrade.Domain.Extensions;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.Infrastructure.Repositories;
-using Comrade.Infrastructure.Repositories.Views;
 using Comrade.UnitTests.Helpers;
 using Microsoft.Extensions.Configuration;
 
@@ -21,28 +20,28 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
         public UpdatePasswordUseCase GetUpdatePasswordUseCase(ComradeContext context)
         {
             var uow = new UnitOfWork(context);
-            var userSystemCoreRepository = new UserSystemRepository(context);
+            var systemUserCoreRepository = new SystemUserRepository(context);
 
-            var userSystemCoreEditValidation =
-                new UserSystemEditValidation(userSystemCoreRepository
+            var systemUserCoreEditValidation =
+                new SystemUserEditValidation(systemUserCoreRepository
                 );
             var passwordHasher = new PasswordHasher(new HashingOptions());
 
-            return new UpdatePasswordUseCase(userSystemCoreRepository,
-                userSystemCoreEditValidation, passwordHasher, uow);
+            return new UpdatePasswordUseCase(systemUserCoreRepository,
+                systemUserCoreEditValidation, passwordHasher, uow);
         }
 
         public ForgotPasswordUseCase GetForgotPasswordUseCase(ComradeContext context)
         {
             var uow = new UnitOfWork(context);
-            var userSystemCoreRepository = new UserSystemRepository(context);
-            var userSystemEditValidation = new UserSystemEditValidation(userSystemCoreRepository);
-            var userSystemForgotPasswordValidation =
-                new UserSystemForgotPasswordValidation(userSystemCoreRepository, userSystemEditValidation
+            var systemUserCoreRepository = new SystemUserRepository(context);
+            var systemUserEditValidation = new SystemUserEditValidation(systemUserCoreRepository);
+            var systemUserForgotPasswordValidation =
+                new SystemUserForgotPasswordValidation(systemUserCoreRepository, systemUserEditValidation
                 );
             var passwordHasher = new PasswordHasher(new HashingOptions());
 
-            return new ForgotPasswordUseCase(userSystemCoreRepository, userSystemForgotPasswordValidation,
+            return new ForgotPasswordUseCase(systemUserCoreRepository, systemUserForgotPasswordValidation,
                 passwordHasher, uow);
         }
 
@@ -59,24 +58,23 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
 
 
             var uow = new UnitOfWork(context);
-            var userSystemCoreRepository = new UserSystemRepository(context);
+            var systemUserCoreRepository = new SystemUserRepository(context);
 
             var passwordHasher = new PasswordHasher(new HashingOptions());
 
-            var userSystemPasswordValidation =
-                new UserSystemPasswordValidation(userSystemCoreRepository, passwordHasher);
-            var vUserSystemPermissionRepository =
-                new VwUserSystemPermissionRepository(context);
+            var systemUserPasswordValidation =
+                new SystemUserPasswordValidation(systemUserCoreRepository, passwordHasher);
+
             var generateTokenLoginUseCase =
                 new GenerateTokenLoginUseCase
                 (
                     configuration,
-                    userSystemPasswordValidation
+                    systemUserPasswordValidation
                 );
             return generateTokenLoginUseCase;
         }
 
-        private AuthenticationAppService GetUserSystemAppService(ComradeContext context)
+        private AuthenticationAppService GetSystemUserAppService(ComradeContext context)
         {
             var mapper = MapperHelper.ConfigMapper();
 

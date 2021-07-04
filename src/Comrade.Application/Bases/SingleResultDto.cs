@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using comrade.Application.Utils;
+using Comrade.Application.Utils;
 using Comrade.Core.Helpers.Interfaces;
 using Comrade.Core.Helpers.Messages;
 using Comrade.Core.Utils;
@@ -13,7 +13,7 @@ using Comrade.Domain.Enums;
 
 #endregion
 
-namespace comrade.Application.Bases
+namespace Comrade.Application.Bases
 {
     public class SingleResultDto<TDto> : ResultDto, ISingleResultDto<TDto>
         where TDto : Dto
@@ -64,9 +64,9 @@ namespace comrade.Application.Bases
             Message = result.Message;
         }
 
-        public SingleResultDto(int codigo, bool success, string message)
+        public SingleResultDto(int code, bool success, string message)
         {
-            Code = codigo;
+            Code = code;
             Success = success;
             Message = message;
         }

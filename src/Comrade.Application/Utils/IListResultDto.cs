@@ -1,11 +1,11 @@
 ﻿#region
 
 using System.Collections.Generic;
-using comrade.Application.Bases;
+using Comrade.Application.Bases;
 
 #endregion
 
-namespace comrade.Application.Utils
+namespace Comrade.Application.Utils
 {
     public interface IListResultDto<TDto> : IResultDto
         where TDto : Dto

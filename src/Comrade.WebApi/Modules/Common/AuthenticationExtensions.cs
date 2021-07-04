@@ -4,6 +4,7 @@ using System.Text;
 using Comrade.Core.SecurityCore;
 using Comrade.Core.SecurityCore.UseCases;
 using Comrade.WebApi.Modules.Common.FeatureFlags;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,25 +37,39 @@ namespace Comrade.WebApi.Modules.Common
                 .GetAwaiter()
                 .GetResult();
 
-            services.AddScoped<IGenerateTokenLoginUseCase, GenerateTokenLoginUseCase>();
-
-            services.AddAuthentication(x =>
-                {
-                    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                })
-                .AddJwtBearer(x =>
-                {
-                    x.RequireHttpsMetadata = false;
-                    x.SaveToken = true;
-                    x.TokenValidationParameters = new TokenValidationParameters
+            if (isEnabled)
+            {
+                services.AddScoped<IGenerateTokenLoginUseCase, GenerateTokenLoginUseCase>();
+                services.AddAuthentication(x =>
                     {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["jwt:key"])),
-                        ValidateIssuer = false,
-                        ValidateAudience = false
-                    };
-                });
+                        x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                        x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                    })
+                    .AddJwtBearer(x =>
+                    {
+                        x.RequireHttpsMetadata = false;
+                        x.SaveToken = true;
+                        x.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            ValidateIssuerSigningKey = true,
+                            IssuerSigningKey =
+                                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["jwt:key"])),
+                            ValidateIssuer = false,
+                            ValidateAudience = false
+                        };
+                    });
+            }
+            else
+            {
+                services.AddScoped<IUserService, TestUserService>();
+
+                services.AddAuthentication(x =>
+                {
+                    x.DefaultAuthenticateScheme = "Test";
+                    x.DefaultChallengeScheme = "Test";
+                }).AddScheme<AuthenticationSchemeOptions, TestAuthenticationHandler>(
+                    "Test", options => { });
+            }
 
 
             return services;

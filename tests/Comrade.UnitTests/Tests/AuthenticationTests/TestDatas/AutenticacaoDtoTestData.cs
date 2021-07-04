@@ -2,7 +2,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using comrade.Application.Dtos;
+using Comrade.Application.Dtos;
 
 #endregion
 

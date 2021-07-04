@@ -21,7 +21,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
                 .UseInMemoryDatabase("test_database_Airplane_Context")
                 .Options;
 
-            Airplane airplane = null;
+            Airplane airplane;
 
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();

@@ -1,7 +1,7 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using comrade.Application.Imports.ImportFunctions;
+using Comrade.Application.Imports.ImportFunctions;
 using Comrade.UnitTests.Mocks;
 using Xunit;
 

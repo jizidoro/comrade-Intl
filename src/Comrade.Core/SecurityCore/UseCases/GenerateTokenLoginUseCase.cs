@@ -18,16 +18,16 @@ namespace Comrade.Core.SecurityCore.UseCases
     public class GenerateTokenLoginUseCase : IGenerateTokenLoginUseCase
     {
         private readonly IConfiguration _configuration;
-        private readonly UserSystemPasswordValidation _userSystemPasswordValidation;
+        private readonly SystemUserPasswordValidation _systemUserPasswordValidation;
 
 
         public GenerateTokenLoginUseCase(
             IConfiguration configuration,
-            UserSystemPasswordValidation userSystemPasswordValidation
+            SystemUserPasswordValidation systemUserPasswordValidation
         )
         {
             _configuration = configuration;
-            _userSystemPasswordValidation = userSystemPasswordValidation;
+            _systemUserPasswordValidation = systemUserPasswordValidation;
         }
 
         public async Task<SecurityResult> Execute(string key, string password)
@@ -37,7 +37,7 @@ namespace Comrade.Core.SecurityCore.UseCases
             {
                 var result = await Task.Run(() =>
                 {
-                    var resultPassword = _userSystemPasswordValidation.Execute(number, password);
+                    var resultPassword = _systemUserPasswordValidation.Execute(number, password);
 
 
                     if (resultPassword.Success)

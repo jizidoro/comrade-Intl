@@ -3,12 +3,12 @@
 using System;
 using System.Threading.Tasks;
 using AutoMapper;
-using comrade.Application.Bases;
-using comrade.Application.Dtos.AirplaneDtos;
-using comrade.Application.Filters;
-using comrade.Application.Interfaces;
-using comrade.Application.Queries;
-using comrade.Application.Utils;
+using Comrade.Application.Bases;
+using Comrade.Application.Dtos.AirplaneDtos;
+using Comrade.Application.Filters;
+using Comrade.Application.Interfaces;
+using Comrade.Application.Queries;
+using Comrade.Application.Utils;
 using Comrade.WebApi.Bases;
 using Comrade.WebApi.Modules.Common;
 using Comrade.WebApi.Modules.Common.FeatureFlags;
@@ -22,7 +22,7 @@ using Microsoft.FeatureManagement.Mvc;
 
 namespace Comrade.WebApi.UseCases.V1.AirplaneApi
 {
-    [Authorize]
+    // [Authorize]
     [FeatureGate(CustomFeature.Airplane)]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]

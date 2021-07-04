@@ -1,9 +1,9 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using comrade.Application.Bases;
-using comrade.Application.Dtos.AirplaneDtos;
-using comrade.Application.Queries;
+using Comrade.Application.Bases;
+using Comrade.Application.Dtos.AirplaneDtos;
+using Comrade.Application.Queries;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.AirplaneTests.Bases;

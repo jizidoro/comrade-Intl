@@ -1,11 +1,11 @@
 ﻿#region
 
 using AutoMapper;
-using comrade.Application.MappingProfiles;
+using Comrade.Application.MappingProfiles;
 
 #endregion
 
-namespace comrade.Application.AutoMapper
+namespace Comrade.Application.AutoMapper
 {
     public class AutoMapperConfig
     {

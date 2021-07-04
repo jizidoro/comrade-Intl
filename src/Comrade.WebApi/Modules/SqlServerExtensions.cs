@@ -1,5 +1,7 @@
 #region
 
+using System;
+using Comrade.Domain.Models;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Microsoft.EntityFrameworkCore;
@@ -38,6 +40,11 @@ namespace Comrade.WebApi.Modules
                 services.AddDbContext<ComradeContext>(
                     options => options.UseSqlServer(
                         configuration.GetValue<string>("PersistenceModule:DefaultConnection")));
+            }
+            else
+            {
+                services.AddDbContext<ComradeContext>(options => options.UseInMemoryDatabase("test_database"));
+                ComradeContextFake.AddDataFakeContext(services);
             }
 
             return services;

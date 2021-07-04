@@ -1,13 +1,13 @@
 ﻿#region
 
 using System.Collections.Generic;
-using comrade.Application.Utils;
+using Comrade.Application.Utils;
 using Comrade.Core.Helpers.Messages;
 using Comrade.Domain.Enums;
 
 #endregion
 
-namespace comrade.Application.Bases
+namespace Comrade.Application.Bases
 {
     public class ListResultDto<T> : ResultDto, IListResultDto<T>
         where T : Dto
@@ -24,9 +24,9 @@ namespace comrade.Application.Bases
             Message = data == null ? BusinessMessage.ResourceManager.GetString("MSG04") : string.Empty;
         }
 
-        public ListResultDto(int codigo, string menssagem)
+        public ListResultDto(int code, string menssagem)
         {
-            Code = codigo;
+            Code = code;
             Success = false;
             Message = menssagem;
         }

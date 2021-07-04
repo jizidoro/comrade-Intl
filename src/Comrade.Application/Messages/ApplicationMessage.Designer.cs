@@ -8,7 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace comrade.Application.Messages {
+namespace Comrade.Application.Messages {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -36,7 +39,7 @@ namespace comrade.Application.Messages {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("comrade.Application.Messages.ApplicationMessage", typeof(ApplicationMessage).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Comrade.Application.Messages.ApplicationMessage", typeof(ApplicationMessage).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

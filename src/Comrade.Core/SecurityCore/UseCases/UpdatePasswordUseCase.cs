@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Comrade.Core.Helpers.Bases;
 using Comrade.Core.Helpers.Interfaces;
 using Comrade.Core.Helpers.Models.Results;
-using Comrade.Core.UserSystemCore;
-using Comrade.Core.UserSystemCore.Validations;
+using Comrade.Core.SystemUserCore;
+using Comrade.Core.SystemUserCore.Validations;
 using Comrade.Domain.Extensions;
 using Comrade.Domain.Models;
 
@@ -17,24 +17,24 @@ namespace Comrade.Core.SecurityCore.UseCases
     public class UpdatePasswordUseCase : Service
     {
         private readonly IPasswordHasher _passwordHasher;
-        private readonly IUserSystemRepository _repository;
-        private readonly UserSystemEditValidation _userSystemEditValidation;
+        private readonly ISystemUserRepository _repository;
+        private readonly SystemUserEditValidation _systemUserEditValidation;
 
-        public UpdatePasswordUseCase(IUserSystemRepository repository,
-            UserSystemEditValidation userSystemEditValidation,
+        public UpdatePasswordUseCase(ISystemUserRepository repository,
+            SystemUserEditValidation systemUserEditValidation,
             IPasswordHasher passwordHasher, IUnitOfWork uow)
             : base(uow)
         {
             _repository = repository;
-            _userSystemEditValidation = userSystemEditValidation;
+            _systemUserEditValidation = systemUserEditValidation;
             _passwordHasher = passwordHasher;
         }
 
-        public async Task<ISingleResult<UserSystem>> Execute(UserSystem entity)
+        public async Task<ISingleResult<SystemUser>> Execute(SystemUser entity)
         {
             try
             {
-                var result = await _userSystemEditValidation.Execute(entity);
+                var result = await _systemUserEditValidation.Execute(entity);
                 if (!result.Success) return result;
 
                 var obj = result.Data;
@@ -47,13 +47,13 @@ namespace Comrade.Core.SecurityCore.UseCases
             }
             catch (Exception ex)
             {
-                return new SingleResult<UserSystem>(ex);
+                return new SingleResult<SystemUser>(ex);
             }
 
-            return new EditResult<UserSystem>();
+            return new EditResult<SystemUser>();
         }
 
-        private void HydrateValues(UserSystem target, UserSystem source)
+        private void HydrateValues(SystemUser target, SystemUser source)
         {
             target.Password = _passwordHasher.Hash(source.Password);
         }

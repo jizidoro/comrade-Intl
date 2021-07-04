@@ -59,7 +59,7 @@ namespace Comrade.Infrastructure.Migrations
                 b.ToTable("AIRP_AIRPLANE");
             });
 
-            modelBuilder.Entity("Comrade.Domain.Models.UserSystem", b =>
+            modelBuilder.Entity("Comrade.Domain.Models.SystemUser", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -114,9 +114,9 @@ namespace Comrade.Infrastructure.Migrations
                 b.ToTable("USSI_USUARIO_SISTEMA");
             });
 
-            modelBuilder.Entity("Comrade.Domain.Models.Views.VwUserSystemPermission", b =>
+            modelBuilder.Entity("Comrade.Domain.Models.Views.VwSystemUserPermission", b =>
             {
-                b.Property<int>("SqUserSystem")
+                b.Property<int>("SqSystemUser")
                     .HasColumnType("int")
                     .HasColumnName("USSI_SQ_USUARIO_SISTEMA");
 

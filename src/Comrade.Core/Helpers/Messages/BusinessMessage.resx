@@ -139,7 +139,7 @@
     <value>Ocorreu um erro ao tentar salvar o registro no banco de dados, caso o problema persista, por favor entrar em contato com o suporte.</value>
   </data>
   <data name="MSG08" xml:space="preserve">
-    <value>Registro já existe com mesmo codigo, por favor informe outro codigo.</value>
+    <value>Registro já existe com mesmo code, por favor informe outro code.</value>
   </data>
   <data name="MSG09" xml:space="preserve">
     <value>Code do cargo invalido.</value>

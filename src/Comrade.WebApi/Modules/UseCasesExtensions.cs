@@ -1,13 +1,13 @@
 #region
 
-using comrade.Application.Interfaces;
-using comrade.Application.Services;
+using Comrade.Application.Interfaces;
+using Comrade.Application.Services;
 using Comrade.Core.AirplaneCore.UseCases;
 using Comrade.Core.AirplaneCore.Validations;
 using Comrade.Core.SecurityCore.UseCases;
 using Comrade.Core.SecurityCore.Validation;
-using Comrade.Core.UserSystemCore.UseCases;
-using Comrade.Core.UserSystemCore.Validations;
+using Comrade.Core.SystemUserCore.UseCases;
+using Comrade.Core.SystemUserCore.Validations;
 using Microsoft.Extensions.DependencyInjection;
 
 #endregion
@@ -46,29 +46,29 @@ namespace Comrade.WebApi.Modules
             services.AddScoped<AirplaneEditValidation>();
             services.AddScoped<AirplaneDeleteValidation>();
             services.AddScoped<AirplaneCreateValidation>();
-            services.AddScoped<AirplaneValidateCodeRepetido>();
+            services.AddScoped<AirplaneValidateCodeRepeated>();
 
             #endregion
 
-            #region UserSystem
+            #region SystemUser
 
             // Application - Services
-            services.AddScoped<IUserSystemAppService, UserSystemAppService>();
+            services.AddScoped<ISystemUserAppService, SystemUserAppService>();
 
             // Core - UseCases
             services.AddScoped<UpdatePasswordUseCase>();
             services.AddScoped<GenerateTokenLoginUseCase>();
             services.AddScoped<ForgotPasswordUseCase>();
-            services.AddScoped<UserSystemForgotPasswordValidation>();
-            services.AddScoped<UserSystemPasswordValidation>();
-            services.AddScoped<UserSystemEditUseCase>();
-            services.AddScoped<UserSystemCreateUseCase>();
-            services.AddScoped<UserSystemDeleteUseCase>();
+            services.AddScoped<SystemUserForgotPasswordValidation>();
+            services.AddScoped<SystemUserPasswordValidation>();
+            services.AddScoped<SystemUserEditUseCase>();
+            services.AddScoped<SystemUserCreateUseCase>();
+            services.AddScoped<SystemUserDeleteUseCase>();
 
             // Core - Validations
-            services.AddScoped<UserSystemEditValidation>();
-            services.AddScoped<UserSystemDeleteValidation>();
-            services.AddScoped<UserSystemCreateValidation>();
+            services.AddScoped<SystemUserEditValidation>();
+            services.AddScoped<SystemUserDeleteValidation>();
+            services.AddScoped<SystemUserCreateValidation>();
 
             #endregion
 

@@ -1,8 +1,8 @@
 #region
 
 using System.Threading.Tasks;
-using comrade.Application.Dtos;
-using comrade.Application.Interfaces;
+using Comrade.Application.Dtos;
+using Comrade.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

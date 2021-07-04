@@ -2,16 +2,16 @@
 
 using System.Threading.Tasks;
 using AutoMapper;
-using comrade.Application.Bases;
-using comrade.Application.Dtos;
-using comrade.Application.Interfaces;
-using comrade.Application.Utils;
+using Comrade.Application.Bases;
+using Comrade.Application.Dtos;
+using Comrade.Application.Interfaces;
+using Comrade.Application.Utils;
 using Comrade.Core.SecurityCore.UseCases;
 using Comrade.Domain.Models;
 
 #endregion
 
-namespace comrade.Application.Services
+namespace Comrade.Application.Services
 {
     public class AuthenticationAppService : AppService, IAuthenticationAppService
     {
@@ -48,7 +48,7 @@ namespace comrade.Application.Services
 
         public async Task<ISingleResultDto<EntityDto>> ForgotPassword(AuthenticationDto dto)
         {
-            var evento = Mapper.Map<UserSystem>(dto);
+            var evento = Mapper.Map<SystemUser>(dto);
 
             var result = await _forgotPasswordUseCase.Execute(evento);
 
@@ -60,7 +60,7 @@ namespace comrade.Application.Services
 
         public async Task<ISingleResultDto<EntityDto>> UpdatePassword(AuthenticationDto dto)
         {
-            var evento = Mapper.Map<UserSystem>(dto);
+            var evento = Mapper.Map<SystemUser>(dto);
 
             var result = await _updatePasswordUseCase.Execute(evento);
 

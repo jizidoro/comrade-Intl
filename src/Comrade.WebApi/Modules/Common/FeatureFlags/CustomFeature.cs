@@ -11,9 +11,9 @@ namespace Comrade.WebApi.Modules.Common.FeatureFlags
         Airplane,
 
         /// <summary>
-        ///     Get UserSystem.
+        ///     Get SystemUser.
         /// </summary>
-        UserSystem,
+        SystemUser,
 
         /// <summary>
         ///     Get Common.

@@ -10,6 +10,6 @@ namespace Comrade.Core.AirplaneCore
 {
     public interface IAirplaneRepository : IRepository<Airplane>
     {
-        Task<ISingleResult<Airplane>> RegistroCodeRepetido(int id, string codigo);
+        Task<ISingleResult<Airplane>> RegistroCodeRepeated(int id, string code);
     }
 }

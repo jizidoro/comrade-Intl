@@ -1,4 +1,4 @@
-﻿namespace comrade.Application.Utils
+﻿namespace Comrade.Application.Utils
 {
     public interface IEntityDto
     {

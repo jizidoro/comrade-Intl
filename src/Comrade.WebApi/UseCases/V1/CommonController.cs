@@ -2,11 +2,10 @@
 
 using System;
 using System.Threading.Tasks;
-using comrade.Application.Bases;
-using comrade.Application.Dtos.AirplaneDtos;
-using comrade.Application.Dtos.UserSystemDtos;
-using comrade.Application.Interfaces;
-using comrade.Application.Lookups;
+using Comrade.Application.Bases;
+using Comrade.Application.Dtos.AirplaneDtos;
+using Comrade.Application.Interfaces;
+using Comrade.Application.Lookups;
 using Comrade.Domain.Models;
 using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Microsoft.AspNetCore.Mvc;
@@ -24,22 +23,22 @@ namespace Comrade.WebApi.UseCases.V1
     public class CommonController : Controller
     {
         private readonly IServiceProvider _serviceProvider;
-        private readonly IUserSystemAppService _userSystemAppService;
+        private readonly ISystemUserAppService _systemUserAppService;
 
-        public CommonController(IServiceProvider serviceProvider, IUserSystemAppService userSystemAppService)
+        public CommonController(IServiceProvider serviceProvider, ISystemUserAppService systemUserAppService)
         {
             _serviceProvider = serviceProvider;
-            _userSystemAppService = userSystemAppService;
+            _systemUserAppService = systemUserAppService;
         }
 
 
         [HttpGet]
-        [Route("Lookup-user-sistema")]
-        public async Task<IActionResult> GetLookupUserSystem()
+        [Route("lookup-system-user")]
+        public async Task<IActionResult> GetLookupSystemUser()
         {
             try
             {
-                var service = _serviceProvider.GetService<ILookupServiceApp<UserSystem>>();
+                var service = _serviceProvider.GetService<ILookupServiceApp<SystemUser>>();
 
                 var result = await service?.GetLookup()!;
 
@@ -47,22 +46,22 @@ namespace Comrade.WebApi.UseCases.V1
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<AirplaneDto>(e));
+                return Ok(new SingleResultDto<EntityDto>(e));
             }
         }
 
         [HttpGet]
-        [Route("lookup-user-sistema-por-name/{name}")]
-        public async Task<IActionResult> GetLookupUserSystemByNone(string name)
+        [Route("lookup-system-user-by-name/{name}")]
+        public async Task<IActionResult> GetLookupSystemUserByNone(string name)
         {
             try
             {
-                var result = await _userSystemAppService.FindByName(name);
+                var result = await _systemUserAppService.FindByName(name);
                 return Ok(result);
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<UserSystemDto>(e));
+                return Ok(new SingleResultDto<EntityDto>(e));
             }
         }
     }

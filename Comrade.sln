@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Infrastructure", "5 - I
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{597E8C1B-7401-4A6E-8857-46D5A273FD82}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "comrade.Application", "src\comrade.Application\comrade.Application.csproj", "{927BF290-C2E0-4C83-8135-B43AB74CFD99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comrade.Application", "src\comrade.Application\Comrade.Application.csproj", "{927BF290-C2E0-4C83-8135-B43AB74CFD99}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comrade.WebApi", "src\comrade.WebApi\Comrade.WebApi.csproj", "{0FB4B8DD-BF9B-4167-91FE-63CAA1FB3ECF}"
 EndProject
@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comrade.UnitTests", "tests\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comrade.IntegrationTests", "tests\comrade.IntegrationTests\Comrade.IntegrationTests.csproj", "{DE69CD1F-3698-4B83-A773-B8DD5864820F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comrade.ComponentTests", "Comrade.ComponentTests\Comrade.ComponentTests.csproj", "{11E31D20-4B3B-44D3-8454-DA65B4C55BBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comrade.ComponentTests", "Comrade.ComponentTests\Comrade.ComponentTests.csproj", "{11E31D20-4B3B-44D3-8454-DA65B4C55BBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

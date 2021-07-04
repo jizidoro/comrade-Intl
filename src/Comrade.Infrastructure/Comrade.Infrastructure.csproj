@@ -9,7 +9,6 @@
     <None Remove="SeedData\autenticacao.json" />
     <None Remove="SeedData\Authentication.json" />
     <None Remove="SeedData\Sheets\basicSheet.xlsx" />
-    <None Remove="SeedData\userSystem.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,9 +19,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="SeedData\Sheets\basicSheet.xlsx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SeedData\userSystem.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
@@ -55,6 +51,11 @@
     <None Update="Migrations\20210409032938_incial_Up.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Mappings\Views\" />
+    <Folder Include="Repositories\Views\" />
   </ItemGroup>
 
 </Project>

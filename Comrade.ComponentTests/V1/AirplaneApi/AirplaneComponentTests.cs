@@ -5,6 +5,11 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Comrade.Infrastructure.DataAccess;
+using Comrade.UnitTests.Helpers;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.TestHost;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Xunit;
@@ -13,14 +18,11 @@ using Xunit;
 
 namespace Comrade.ComponentTests.V1.AirplaneApi
 {
+    [Collection("WebApi Collection")]
     public class AirplaneComponentTests
     {
         private readonly CustomWebApplicationFactoryFixture _fixture;
-
-        public AirplaneComponentTests(CustomWebApplicationFactoryFixture fixture)
-        {
-            _fixture = fixture;
-        }
+        public AirplaneComponentTests(CustomWebApplicationFactoryFixture fixture) => _fixture = fixture;
 
         [Fact]
         public async Task GetAccountsReturnsList()
@@ -30,7 +32,7 @@ namespace Comrade.ComponentTests.V1.AirplaneApi
                 .CreateClient();
 
             HttpResponseMessage actualResponse = await client
-                .GetAsync("/api/v1/Accounts/")
+                .GetAsync("/api/v1/airplane/get-all")
                 .ConfigureAwait(false);
 
             string actualResponseString = await actualResponse.Content
@@ -44,12 +46,12 @@ namespace Comrade.ComponentTests.V1.AirplaneApi
             JObject jsonResponse = await JObject.LoadAsync(reader)
                 .ConfigureAwait(false);
 
-            Assert.Equal(JTokenType.String, jsonResponse["accounts"]![0]!["accountId"]!.Type);
-            Assert.Equal(JTokenType.Integer, jsonResponse["accounts"]![0]!["currentBalance"]!.Type);
-
-            Assert.True(Guid.TryParse(jsonResponse["accounts"]![0]!["accountId"]!.Value<string>(), out var _));
-            Assert.True(decimal.TryParse(jsonResponse["accounts"]![0]!["currentBalance"]!.Value<string>(),
+            Assert.Equal(JTokenType.String, jsonResponse["data"]![0]!["model"]!.Type);
+            Assert.Equal(JTokenType.Integer, jsonResponse["data"]![0]!["passengerQuantity"]!.Type);
+            
+            Assert.True(decimal.TryParse(jsonResponse["data"]![0]!["passengerQuantity"]!.Value<string>(),
                 out var _));
         }
     }
 }
+

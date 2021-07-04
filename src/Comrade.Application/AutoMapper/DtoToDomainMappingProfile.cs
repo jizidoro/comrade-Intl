@@ -1,22 +1,22 @@
 ﻿#region
 
 using AutoMapper;
-using comrade.Application.Dtos;
-using comrade.Application.Dtos.AirplaneDtos;
-using comrade.Application.Dtos.UserSystemDtos;
+using Comrade.Application.Dtos;
+using Comrade.Application.Dtos.AirplaneDtos;
+using Comrade.Application.Dtos.SystemUserDtos;
 using Comrade.Domain.Models;
 
 #endregion
 
-namespace comrade.Application.AutoMapper
+namespace Comrade.Application.AutoMapper
 {
     public class DtoToDomainMappingProfile : Profile
     {
         public DtoToDomainMappingProfile()
         {
             CreateMap<AirplaneCreateDto, Airplane>();
-            CreateMap<UserSystemCreateDto, UserSystem>();
-            CreateMap<AuthenticationDto, UserSystem>()
+            CreateMap<SystemUserCreateDto, SystemUser>();
+            CreateMap<AuthenticationDto, SystemUser>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Key))
                 .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password));
         }

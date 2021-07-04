@@ -20,7 +20,7 @@ namespace Comrade.Core.Helpers.Models.Validations
             _repository = repository;
         }
 
-        public async Task<ISingleResult<TEntity>> RegistroExiste(int id, params string[] includes)
+        public async Task<ISingleResult<TEntity>> RecordExists(int id, params string[] includes)
         {
             var entity = await _repository.GetById(id, includes);
             if (entity == null) return new SingleResult<TEntity>(BusinessMessage.MSG04);
@@ -28,9 +28,9 @@ namespace Comrade.Core.Helpers.Models.Validations
             return new SingleResult<TEntity>(entity);
         }
 
-        public async Task<ISingleResult<TEntity>> RegistroComMesmoCode(int id, string codigo)
+        public async Task<ISingleResult<TEntity>> RegisterWithSameCode (int id, string code)
         {
-            var result = await _repository.ValueExists(id, codigo);
+            var result = await _repository.ValueExists(id, code);
             if (result) return new SingleResult<TEntity>(BusinessMessage.MSG08);
 
             return new SingleResult<TEntity>();

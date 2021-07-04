@@ -35,9 +35,9 @@ namespace Comrade.Core.Helpers.Models.Results
         }
 
 
-        public SingleResult(int codigo, string message)
+        public SingleResult(int code, string message)
         {
-            Code = codigo;
+            Code = code;
             Success = false;
             Message = message;
         }

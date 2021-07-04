@@ -2,11 +2,9 @@
 
 using Comrade.Core.AirplaneCore;
 using Comrade.Core.Helpers.Interfaces;
-using Comrade.Core.UserSystemCore;
-using Comrade.Core.Views.VBaUsuPermissaoCore;
+using Comrade.Core.SystemUserCore;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.Infrastructure.Repositories;
-using Comrade.Infrastructure.Repositories.Views;
 using Microsoft.Extensions.DependencyInjection;
 
 #endregion
@@ -26,8 +24,7 @@ namespace Comrade.WebApi.Modules
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAirplaneRepository, AirplaneRepository>();
-            services.AddScoped<IUserSystemRepository, UserSystemRepository>();
-            services.AddScoped<IVwUserSystemPermissionRepository, VwUserSystemPermissionRepository>();
+            services.AddScoped<ISystemUserRepository, SystemUserRepository>();
 
             return services;
         }

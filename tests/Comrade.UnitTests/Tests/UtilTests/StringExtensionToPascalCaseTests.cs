@@ -1,6 +1,6 @@
 ﻿#region
 
-using comrade.Application.Extensions;
+using Comrade.Application.Extensions;
 using Xunit;
 
 #endregion
