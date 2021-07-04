@@ -1,8 +1,10 @@
 #region
 
 using System.Text;
+using Comrade.Application.Interfaces;
 using Comrade.Core.SecurityCore;
 using Comrade.Core.SecurityCore.UseCases;
+using Comrade.Infrastructure.ExternalAuthentication;
 using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -59,18 +61,6 @@ namespace Comrade.WebApi.Modules.Common
                         };
                     });
             }
-            else
-            {
-                services.AddScoped<IUserService, TestUserService>();
-
-                services.AddAuthentication(x =>
-                {
-                    x.DefaultAuthenticateScheme = "Test";
-                    x.DefaultChallengeScheme = "Test";
-                }).AddScheme<AuthenticationSchemeOptions, TestAuthenticationHandler>(
-                    "Test", options => { });
-            }
-
 
             return services;
         }

@@ -20,4 +20,5 @@ namespace Comrade.Application.Interfaces
         Task<ISingleResultDto<EntityDto>> Edit(SystemUserEditDto dto);
         Task<ISingleResultDto<EntityDto>> Delete(int id);
     }
+
 }
