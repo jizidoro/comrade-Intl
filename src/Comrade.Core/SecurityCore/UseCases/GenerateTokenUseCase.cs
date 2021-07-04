@@ -26,7 +26,7 @@ namespace Comrade.Core.SecurityCore.UseCases
             _configuration = configuration;
         }
 
-        public string Execute(User user)
+        public string Execute(TokenUser tokenUser)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:key"]));
@@ -34,11 +34,11 @@ namespace Comrade.Core.SecurityCore.UseCases
 
             var claims = new List<Claim>
             {
-                new("Key", user.Key),
-                new(ClaimTypes.Name, user.Name)
+                new("Key", tokenUser.Key),
+                new(ClaimTypes.Name, tokenUser.Name)
             };
 
-            foreach (var role in user.Roles)
+            foreach (var role in tokenUser.Roles)
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }

@@ -9,6 +9,6 @@ namespace Comrade.Core.SecurityCore
 {
     public interface IGenerateTokenUseCase
     {
-        string Execute(User user);
+        string Execute(TokenUser tokenUser);
     }
 }

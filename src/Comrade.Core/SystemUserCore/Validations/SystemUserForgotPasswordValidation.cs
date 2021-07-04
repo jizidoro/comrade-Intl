@@ -28,7 +28,7 @@ namespace Comrade.Core.SystemUserCore.Validations
 
             if (!recordExists.Success)
             {
-                return new SingleResult<SystemUser>(1001, "User não existe");
+                return new SingleResult<SystemUser>(1001, "TokenUser não existe");
             }
 
 

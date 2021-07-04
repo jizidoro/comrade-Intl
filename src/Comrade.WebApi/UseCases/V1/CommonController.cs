@@ -33,7 +33,7 @@ namespace Comrade.WebApi.UseCases.V1
 
 
         [HttpGet]
-        [Route("lookup-system-user")]
+        [Route("lookup-system-tokenUser")]
         public async Task<IActionResult> GetLookupSystemUser()
         {
             try
@@ -51,7 +51,7 @@ namespace Comrade.WebApi.UseCases.V1
         }
 
         [HttpGet]
-        [Route("lookup-system-user-by-name/{name}")]
+        [Route("lookup-system-tokenUser-by-name/{name}")]
         public async Task<IActionResult> GetLookupSystemUserByNone(string name)
         {
             try

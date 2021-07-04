@@ -8,9 +8,9 @@ namespace Comrade.Core.Utils
 {
     public class SecurityResult
     {
-        public SecurityResult(User user)
+        public SecurityResult(TokenUser tokenUser)
         {
-            User = user;
+            TokenUser = tokenUser;
             Code = (int) EnumResultadoAcao.Success;
             Success = true;
         }
@@ -22,7 +22,7 @@ namespace Comrade.Core.Utils
             Success = false;
         }
 
-        public User User { get; set; }
+        public TokenUser TokenUser { get; set; }
         public bool Success { get; set; }
         public int Code { get; set; }
         public string ErrorMessage { get; set; }

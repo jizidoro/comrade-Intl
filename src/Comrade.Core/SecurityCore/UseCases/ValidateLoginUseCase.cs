@@ -44,7 +44,7 @@ namespace Comrade.Core.SecurityCore.UseCases
 
                         var profile = "Role";
 
-                        var user = new User
+                        var user = new TokenUser
                         {
                             Key = key,
                             Name = selectedUser.Name,

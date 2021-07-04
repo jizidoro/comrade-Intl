@@ -22,17 +22,15 @@ namespace Comrade.Domain.Extensions
 
         public string Hash(string password)
         {
-            using (var algorithm = new Rfc2898DeriveBytes(
+            using var algorithm = new Rfc2898DeriveBytes(
                 password,
                 SaltSize,
                 Options.Iterations,
-                HashAlgorithmName.SHA512))
-            {
-                var key = Convert.ToBase64String(algorithm.GetBytes(KeySize));
-                var salt = Convert.ToBase64String(algorithm.Salt);
+                HashAlgorithmName.SHA512);
+            var key = Convert.ToBase64String(algorithm.GetBytes(KeySize));
+            var salt = Convert.ToBase64String(algorithm.Salt);
 
-                return $"{Options.Iterations}.{salt}.{key}";
-            }
+            return $"{Options.Iterations}.{salt}.{key}";
         }
 
         public (bool Verified, bool NeedsUpgrade) Check(string hash, string password)
@@ -51,18 +49,16 @@ namespace Comrade.Domain.Extensions
 
             var needsUpgrade = iterations != Options.Iterations;
 
-            using (var algorithm = new Rfc2898DeriveBytes(
+            using var algorithm = new Rfc2898DeriveBytes(
                 password,
                 salt,
                 iterations,
-                HashAlgorithmName.SHA512))
-            {
-                var keyToCheck = algorithm.GetBytes(KeySize);
+                HashAlgorithmName.SHA512);
+            var keyToCheck = algorithm.GetBytes(KeySize);
 
-                var verified = keyToCheck.SequenceEqual(key);
+            var verified = keyToCheck.SequenceEqual(key);
 
-                return (verified, needsUpgrade);
-            }
+            return (verified, needsUpgrade);
         }
     }
 }

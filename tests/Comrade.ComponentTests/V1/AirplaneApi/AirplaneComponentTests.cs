@@ -1,14 +1,19 @@
 ﻿#region
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Comrade.Core.SecurityCore.UseCases;
+using Comrade.Core.Utils;
 using Comrade.Infrastructure.DataAccess;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Xunit;
@@ -30,6 +35,10 @@ namespace Comrade.ComponentTests.V1.AirplaneApi
                 .CustomWebApplicationFactory
                 .CreateClient();
 
+            var token = GenerateFakeToken.Execute();
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
             HttpResponseMessage actualResponse = await client
                 .GetAsync("/api/v1/airplane/get-all")
                 .ConfigureAwait(false);
@@ -47,10 +56,11 @@ namespace Comrade.ComponentTests.V1.AirplaneApi
 
             Assert.Equal(JTokenType.String, jsonResponse["data"]![0]!["model"]!.Type);
             Assert.Equal(JTokenType.Integer, jsonResponse["data"]![0]!["passengerQuantity"]!.Type);
-            
-            Assert.True(decimal.TryParse(jsonResponse["data"]![0]!["passengerQuantity"]!.Value<string>(),
+
+            Assert.True(int.TryParse(jsonResponse["data"]![0]!["passengerQuantity"]!.Value<string>(),
                 out var _));
         }
+
+
     }
 }
-

@@ -58,7 +58,7 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
             var user = await repository.GetById(1);
             Assert.Equal(changeName, user.Name);
             Assert.Equal(changeEmail, user.Email);
-            // Assert.Equal(changePassword, user.Password);
+            // Assert.Equal(changePassword, tokenUser.Password);
             Assert.Equal(changeRegistration, user.Registration);
             Assert.False(user.Situacao);
         }

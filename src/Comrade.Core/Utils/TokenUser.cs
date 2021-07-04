@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Comrade.Core.Utils
 {
-    public class User
+    public class TokenUser
     {
         public string Key { get; set; }
         public string Name { get; set; }

@@ -16,7 +16,8 @@ namespace Comrade.ComponentTests
                 config.AddInMemoryCollection(
                     new Dictionary<string, string>
                     {
-                        ["FeatureManagement:SQLServer"] = "false"
+                        ["FeatureManagement:SQLServer"] = "false",
+                        ["JWT:Key"] = "afsdkjasjflxswafsdklk434orqiwup3457u-34oewir4irroqwiffv48mfs"
                     });
             });
     }
