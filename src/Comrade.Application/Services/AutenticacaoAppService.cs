@@ -6,6 +6,7 @@ using Comrade.Application.BaseInterfaces;
 using Comrade.Application.Bases;
 using Comrade.Application.Dtos;
 using Comrade.Application.Interfaces;
+using Comrade.Core.SecurityCore;
 using Comrade.Core.SecurityCore.UseCases;
 using Comrade.Domain.Models;
 
@@ -15,23 +16,23 @@ namespace Comrade.Application.Services
 {
     public class AuthenticationAppService : AppService, IAuthenticationAppService
     {
-        private readonly ForgotPasswordUseCase _forgotPasswordUseCase;
-        private readonly GenerateTokenLoginUseCase _generateTokenLoginUseCase;
-        private readonly UpdatePasswordUseCase _updatePasswordUseCase;
+        private readonly IForgotPasswordUseCase _forgotPasswordUseCase;
+        private readonly IValidateLoginUseCase _validateLoginUseCase;
+        private readonly IUpdatePasswordUseCase _updatePasswordUseCase;
 
-        public AuthenticationAppService(UpdatePasswordUseCase updatePasswordUseCase,
-            GenerateTokenLoginUseCase generateTokenLoginUseCase, ForgotPasswordUseCase forgotPasswordUseCase,
+        public AuthenticationAppService(IUpdatePasswordUseCase updatePasswordUseCase,
+            IValidateLoginUseCase validateLoginUseCase, IForgotPasswordUseCase forgotPasswordUseCase,
             IMapper mapper) :
             base(mapper)
         {
             _updatePasswordUseCase = updatePasswordUseCase;
             _forgotPasswordUseCase = forgotPasswordUseCase;
-            _generateTokenLoginUseCase = generateTokenLoginUseCase;
+            _validateLoginUseCase = validateLoginUseCase;
         }
 
         public async Task<ISingleResultDto<UserDto>> GenerateToken(AuthenticationDto dto)
         {
-            var result = await _generateTokenLoginUseCase.Execute(dto.Key, dto.Password);
+            var result = await _validateLoginUseCase.Execute(dto.Key, dto.Password);
 
             if (result.Success)
             {

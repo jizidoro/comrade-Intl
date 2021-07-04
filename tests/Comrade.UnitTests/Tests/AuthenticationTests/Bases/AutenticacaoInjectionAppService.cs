@@ -20,11 +20,11 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
                 _authenticationInjectionUseCase.GetUpdatePasswordUseCase(context);
             var getForgotPasswordUseCase =
                 _authenticationInjectionUseCase.GetForgotPasswordUseCase(context);
-            var getGenerateTokenLoginUseCaseUseCase =
-                _authenticationInjectionUseCase.GetGenerateTokenLoginUseCase(context);
+            var getValidateLoginUseCaseUseCase =
+                _authenticationInjectionUseCase.GetValidateLoginUseCase(context);
 
             var authenticationAppService = new AuthenticationAppService(getUpdatePasswordUseCase,
-                getGenerateTokenLoginUseCaseUseCase, getForgotPasswordUseCase, mapper);
+                getValidateLoginUseCaseUseCase, getForgotPasswordUseCase, mapper);
             return authenticationAppService;
         }
     }

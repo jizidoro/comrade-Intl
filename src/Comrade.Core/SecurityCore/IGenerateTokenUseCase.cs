@@ -7,8 +7,8 @@ using Comrade.Core.Utils;
 
 namespace Comrade.Core.SecurityCore
 {
-    public interface IGenerateTokenLoginUseCase
+    public interface IGenerateTokenUseCase
     {
-        Task<SecurityResult> Execute(string key, string password);
+        string Execute(User user);
     }
 }

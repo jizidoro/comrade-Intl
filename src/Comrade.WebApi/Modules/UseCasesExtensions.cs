@@ -4,6 +4,7 @@ using Comrade.Application.Interfaces;
 using Comrade.Application.Services;
 using Comrade.Core.AirplaneCore.UseCases;
 using Comrade.Core.AirplaneCore.Validations;
+using Comrade.Core.SecurityCore;
 using Comrade.Core.SecurityCore.UseCases;
 using Comrade.Core.SecurityCore.Validation;
 using Comrade.Core.SystemUserCore.UseCases;
@@ -29,6 +30,11 @@ namespace Comrade.WebApi.Modules
             #region Authentication
 
             services.AddScoped<IAuthenticationAppService, AuthenticationAppService>();
+
+            services.AddScoped<IUpdatePasswordUseCase, UpdatePasswordUseCase>();
+            services.AddScoped<IValidateLoginUseCase, ValidateLoginUseCase>();
+            services.AddScoped<IForgotPasswordUseCase, ForgotPasswordUseCase>();
+            services.AddScoped<IGenerateTokenUseCase, GenerateTokenUseCase>();
 
             #endregion
 
@@ -56,9 +62,7 @@ namespace Comrade.WebApi.Modules
             services.AddScoped<ISystemUserAppService, SystemUserAppService>();
 
             // Core - UseCases
-            services.AddScoped<UpdatePasswordUseCase>();
-            services.AddScoped<GenerateTokenLoginUseCase>();
-            services.AddScoped<ForgotPasswordUseCase>();
+
             services.AddScoped<SystemUserForgotPasswordValidation>();
             services.AddScoped<SystemUserPasswordValidation>();
             services.AddScoped<SystemUserEditUseCase>();

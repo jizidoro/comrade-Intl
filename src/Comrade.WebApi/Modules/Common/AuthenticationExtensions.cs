@@ -4,7 +4,6 @@ using System.Text;
 using Comrade.Application.Interfaces;
 using Comrade.Core.SecurityCore;
 using Comrade.Core.SecurityCore.UseCases;
-using Comrade.Infrastructure.ExternalAuthentication;
 using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -41,7 +40,7 @@ namespace Comrade.WebApi.Modules.Common
 
             if (isEnabled)
             {
-                services.AddScoped<IGenerateTokenLoginUseCase, GenerateTokenLoginUseCase>();
+                services.AddScoped<IValidateLoginUseCase, ValidateLoginUseCase>();
                 services.AddAuthentication(x =>
                     {
                         x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

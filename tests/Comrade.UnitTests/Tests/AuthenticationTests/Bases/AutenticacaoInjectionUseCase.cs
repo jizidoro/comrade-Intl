@@ -45,7 +45,7 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
                 passwordHasher, uow);
         }
 
-        public GenerateTokenLoginUseCase GetGenerateTokenLoginUseCase(ComradeContext context)
+        public ValidateLoginUseCase GetValidateLoginUseCase(ComradeContext context)
         {
             var myConfiguration = new Dictionary<string, string>
             {
@@ -56,9 +56,8 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
                 .AddInMemoryCollection(myConfiguration)
                 .Build();
 
-
-            var uow = new UnitOfWork(context);
             var systemUserCoreRepository = new SystemUserRepository(context);
+            var generateTokenUseCase = new GenerateTokenUseCase(configuration);
 
             var passwordHasher = new PasswordHasher(new HashingOptions());
 
@@ -66,10 +65,10 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
                 new SystemUserPasswordValidation(systemUserCoreRepository, passwordHasher);
 
             var generateTokenLoginUseCase =
-                new GenerateTokenLoginUseCase
+                new ValidateLoginUseCase
                 (
-                    configuration,
-                    systemUserPasswordValidation
+                    systemUserPasswordValidation,
+                    generateTokenUseCase
                 );
             return generateTokenLoginUseCase;
         }
@@ -80,10 +79,10 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
 
             var getUpdatePasswordUseCase = GetUpdatePasswordUseCase(context);
             var getForgotPasswordUseCase = GetForgotPasswordUseCase(context);
-            var getGenerateTokenLoginUseCaseUseCase = GetGenerateTokenLoginUseCase(context);
+            var getValidateLoginUseCaseUseCase = GetValidateLoginUseCase(context);
 
             var authenticationAppService = new AuthenticationAppService(getUpdatePasswordUseCase,
-                getGenerateTokenLoginUseCaseUseCase, getForgotPasswordUseCase, mapper);
+                getValidateLoginUseCaseUseCase, getForgotPasswordUseCase, mapper);
             return authenticationAppService;
         }
     }
