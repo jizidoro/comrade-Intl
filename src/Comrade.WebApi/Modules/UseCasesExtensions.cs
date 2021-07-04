@@ -52,7 +52,7 @@ namespace Comrade.WebApi.Modules
             services.AddScoped<AirplaneEditValidation>();
             services.AddScoped<AirplaneDeleteValidation>();
             services.AddScoped<AirplaneCreateValidation>();
-            services.AddScoped<AirplaneValidateCodeRepeated>();
+            services.AddScoped<AirplaneValidateSameCode>();
 
             #endregion
 

@@ -48,7 +48,7 @@ namespace Comrade.Core.AirplaneCore.UseCases
             }
             catch (Exception ex)
             {
-                return new SingleResult<Airplane>(ex);
+                return new EditResult<Airplane>(ex);
             }
 
             return new EditResult<Airplane>();

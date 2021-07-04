@@ -36,11 +36,11 @@ namespace Comrade.Core.SystemUserCore.UseCases
 
                 _repository.Remove(id);
 
-                var success = await Commit();
+                _ = await Commit();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return new SingleResult<SystemUser>(BusinessMessage.MSG07);
+                return new DeleteResult<SystemUser>(ex);
             }
 
             return new DeleteResult<SystemUser>();

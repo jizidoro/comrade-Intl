@@ -18,14 +18,14 @@ namespace Comrade.UnitTests.Tests.AirplaneTests.Bases
             var uow = new UnitOfWork(context);
             var airplaneRepository = new AirplaneRepository(context);
 
-            var airplaneValidateCodeRepeated = new AirplaneValidateCodeRepeated(airplaneRepository);
+            var airplaneValidateSameCode = new AirplaneValidateSameCode(airplaneRepository);
 
 
             var airplaneEditValidation =
-                new AirplaneEditValidation(airplaneRepository, airplaneValidateCodeRepeated);
+                new AirplaneEditValidation(airplaneRepository, airplaneValidateSameCode);
             var airplaneDeleteValidation = new AirplaneDeleteValidation(airplaneRepository);
             var airplaneCreateValidation =
-                new AirplaneCreateValidation(airplaneRepository, airplaneValidateCodeRepeated);
+                new AirplaneCreateValidation(airplaneRepository, airplaneValidateSameCode);
             var airplaneCreateUseCase = new AirplaneCreateUseCase(airplaneRepository, airplaneCreateValidation, uow);
             var airplaneDeleteUseCase = new AirplaneDeleteUseCase(airplaneRepository, airplaneDeleteValidation, uow);
             var airplaneEditUseCase = new AirplaneEditUseCase(airplaneRepository, airplaneEditValidation, uow);

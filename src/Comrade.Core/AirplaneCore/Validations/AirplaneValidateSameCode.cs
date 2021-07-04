@@ -9,11 +9,11 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.AirplaneCore.Validations
 {
-    public class AirplaneValidateCodeRepeated : EntityValidation<Airplane>
+    public class AirplaneValidateSameCode : EntityValidation<Airplane>
     {
         private readonly IAirplaneRepository _repository;
 
-        public AirplaneValidateCodeRepeated(IAirplaneRepository repository)
+        public AirplaneValidateSameCode(IAirplaneRepository repository)
             : base(repository)
         {
             _repository = repository;
@@ -21,7 +21,7 @@ namespace Comrade.Core.AirplaneCore.Validations
 
         public async Task<ISingleResult<Airplane>> Execute(Airplane entity)
         {
-            var result = await _repository.RegistroCodeRepeated(entity.Id, entity.Code);
+            var result = await _repository.ValidateSameCode(entity.Id, entity.Code);
 
             return result;
         }

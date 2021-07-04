@@ -9,6 +9,7 @@
     <None Remove="SeedData\autenticacao.json" />
     <None Remove="SeedData\Authentication.json" />
     <None Remove="SeedData\Sheets\basicSheet.xlsx" />
+    <None Remove="SeedData\systemUser.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +20,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="SeedData\Sheets\basicSheet.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeedData\systemUser.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

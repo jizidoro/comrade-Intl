@@ -1,36 +1,36 @@
 #region
 
 using System;
+using System.Linq;
 using Comrade.Domain.Models;
 using Comrade.Infrastructure.Mappings;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 #endregion
 
 namespace Comrade.Infrastructure.DataAccess
 {
-    public class ComradeContext : DbContext
+    public static class ComradeContextFake
     {
-        private const string JsonPath = "Comrade.Infrastructure.SeedData";
-
-        public ComradeContext(DbContextOptions<ComradeContext> options)
-            : base(options)
+        public static void AddDataFakeContext(IServiceCollection serviceCollection)
         {
-        }
+            var context = serviceCollection.BuildServiceProvider()
+                .GetService<ComradeContext>();
 
-        // Tabelas
-        public DbSet<Airplane> Airplanes { get; set; }
-        public DbSet<SystemUser> SystemUsers { get; set; }
-        
+            var result = context?.Airplanes.Count();
 
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
+            context?.Airplanes.Add(new Airplane()
+            {
+                Code = "Test",
+                Model = "Test",
+                PassengerQuantity = 666,
+                RegisterDate = DateTime.UtcNow,
+            });
 
-            // Tabelas
-            modelBuilder.ApplyConfiguration(new AirplaneConfiguration());
-            modelBuilder.ApplyConfiguration(new SystemUserConfiguration());
+
+            context?.SaveChanges();
         }
     }
 }

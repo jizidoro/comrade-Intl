@@ -55,7 +55,7 @@ namespace Comrade.Core.SystemUserCore.UseCases
                 return new SingleResult<SystemUser>(BusinessMessage.MSG07);
             }
 
-            return new CreateResult<SystemUser>(entity);
+            return new CreateResult<SystemUser>();
         }
     }
 }

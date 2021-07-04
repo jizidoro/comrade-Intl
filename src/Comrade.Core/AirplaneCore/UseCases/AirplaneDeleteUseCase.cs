@@ -35,14 +35,14 @@ namespace Comrade.Core.AirplaneCore.UseCases
 
                 _repository.Remove(id);
 
-                var success = await Commit();
+                _ = await Commit();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return new SingleResult<Airplane>(BusinessMessage.MSG07);
+                return new DeleteResult<Airplane>(ex);
             }
 
-            return new DeleteResult<Airplane>();
+            return new DeleteResult<Airplane>(true, BusinessMessage.ResourceManager.GetString("MSG03"));
         }
     }
 }

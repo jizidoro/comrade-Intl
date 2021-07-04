@@ -1,5 +1,6 @@
 ﻿#region
 
+using System;
 using Comrade.Core.Helpers.Messages;
 using Comrade.Domain.Bases;
 using Comrade.Domain.Enums;
@@ -8,29 +9,29 @@ using Comrade.Domain.Enums;
 
 namespace Comrade.Core.Helpers.Models.Results
 {
-    public class CreateResult<TEntity> : SingleResult<TEntity>
+    public class DeleteResult<TEntity> : SingleResult<TEntity>
         where TEntity : Entity
     {
-        public CreateResult(TEntity data)
+        public DeleteResult()
         {
             Code = (int) EnumResultadoAcao.Success;
             Success = true;
-            Message = BusinessMessage.ResourceManager.GetString("MSG01");
-            Data = data;
+            Message = BusinessMessage.ResourceManager.GetString("MSG03");
         }
 
-        public CreateResult(bool success, string message)
+        public DeleteResult(bool success, string message)
         {
             Code = success ? (int) EnumResultadoAcao.Success : (int) EnumResultadoAcao.ErroNaoEncontrado;
             Success = success;
             Message = message;
         }
 
-        public CreateResult(string message)
+        public DeleteResult(Exception ex)
         {
-            Code = (int) EnumResultadoAcao.ErroNaoEncontrado;
+            Code = (int) EnumResultadoAcao.ErroServidor;
             Success = false;
-            Message = message;
+            ExceptionMessage = ex.Message;
+            Message = BusinessMessage.ResourceManager.GetString("MSG07");
         }
     }
 }

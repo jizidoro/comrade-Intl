@@ -44,7 +44,7 @@ namespace Comrade.Core.SystemUserCore.UseCases
 
                 _repository.Update(obj);
 
-                var success = await Commit();
+                _ = await Commit();
             }
             catch (Exception ex)
             {

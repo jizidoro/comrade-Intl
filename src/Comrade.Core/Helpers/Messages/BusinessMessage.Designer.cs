@@ -61,15 +61,6 @@ namespace Comrade.Core.Helpers.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name não existe no banco..
-        /// </summary>
-        public static string BAUSU0001 {
-            get {
-                return ResourceManager.GetString("BAUSU0001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Não atingiu o número minimo de caracteres..
         /// </summary>
         public static string LKUP2001 {

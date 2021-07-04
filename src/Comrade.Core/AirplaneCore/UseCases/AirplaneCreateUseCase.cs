@@ -42,14 +42,14 @@ namespace Comrade.Core.AirplaneCore.UseCases
                     TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"));
                 await _repository.Add(entity);
 
-                var success = await Commit();
+                _ = await Commit();
             }
-            catch (Exception)
+            catch (Exception ex) 
             {
-                return new SingleResult<Airplane>(BusinessMessage.MSG07);
+                return new CreateResult<Airplane>(ex);
             }
 
-            return new CreateResult<Airplane>(entity);
+            return new CreateResult<Airplane>(true, BusinessMessage.ResourceManager.GetString("MSG01"));
         }
     }
 }

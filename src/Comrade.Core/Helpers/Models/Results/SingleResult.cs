@@ -46,7 +46,8 @@ namespace Comrade.Core.Helpers.Models.Results
         {
             Code = (int) EnumResultadoAcao.ErroServidor;
             Success = false;
-            Message = BusinessMessage.ResourceManager.GetString("MSG07");
+            Message = ex.Message;
+            ExceptionMessage = ex.Message;
         }
 
         public SingleResult(TEntity data)
@@ -61,6 +62,7 @@ namespace Comrade.Core.Helpers.Models.Results
 
         public int Code { get; set; }
         public bool Success { get; set; }
+        public string ExceptionMessage { get; set; }
         public string Message { get; set; }
         public TEntity Data { get; set; }
     }

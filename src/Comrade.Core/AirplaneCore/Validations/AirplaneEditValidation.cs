@@ -11,28 +11,32 @@ namespace Comrade.Core.AirplaneCore.Validations
 {
     public class AirplaneEditValidation : EntityValidation<Airplane>
     {
-        private readonly AirplaneValidateCodeRepeated _airplaneValidateCodeRepeated;
+        private readonly AirplaneValidateSameCode _airplaneValidateSameCode;
         private readonly IAirplaneRepository _repository;
 
         public AirplaneEditValidation(IAirplaneRepository repository,
-            AirplaneValidateCodeRepeated airplaneValidateCodeRepeated)
+            AirplaneValidateSameCode airplaneValidateSameCode)
             : base(repository)
         {
             _repository = repository;
-            _airplaneValidateCodeRepeated = airplaneValidateCodeRepeated;
+            _airplaneValidateSameCode = airplaneValidateSameCode;
         }
 
         public async Task<ISingleResult<Airplane>> Execute(Airplane entity)
         {
             var recordExists = await RecordExists(entity.Id);
-            if (!recordExists.Success) return recordExists;
+            if (!recordExists.Success)
+            {
+                return recordExists;
+            }
 
-            var registroCodeRepeated = await _airplaneValidateCodeRepeated.Execute(entity);
-            if (!registroCodeRepeated.Success) return registroCodeRepeated;
+            var registerSameCode = await _airplaneValidateSameCode.Execute(entity);
+            if (!registerSameCode.Success)
+            {
+                return registerSameCode;
+            }
 
-            registroCodeRepeated.Data = recordExists.Data;
-
-            return registroCodeRepeated;
+            return recordExists;
         }
     }
 }

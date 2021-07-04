@@ -43,14 +43,14 @@ namespace Comrade.Core.SecurityCore.UseCases
 
                 _repository.Update(obj);
 
-                var success = await Commit();
+                _ = await Commit();
             }
             catch (Exception ex)
             {
                 return new SingleResult<SystemUser>(ex);
             }
 
-            return new EditResult<SystemUser>();
+            return new SingleResult<SystemUser>(entity);
         }
 
         private void HydrateValues(SystemUser target, SystemUser source)

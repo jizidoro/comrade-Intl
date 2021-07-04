@@ -144,9 +144,6 @@
   <data name="MSG09" xml:space="preserve">
     <value>Code do cargo invalido.</value>
   </data>
-  <data name="BAUSU0001" xml:space="preserve">
-    <value>Name não existe no banco.</value>
-  </data>
   <data name="LKUP2001" xml:space="preserve">
     <value>Não atingiu o número minimo de caracteres.</value>
   </data>
