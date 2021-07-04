@@ -78,12 +78,12 @@ namespace Comrade.Infrastructure.Bases
 
         public virtual async Task<bool> ValueExists(int id, string value)
         {
-            var existe = await GetAll()
+            var exists = await GetAll()
                 .Where(p => p.Id != id
                             && p.Value == value)
                 .AnyAsync();
 
-            return existe;
+            return exists;
         }
 
         public virtual async Task<bool> ChildrenExists(int id, Expression<Func<TEntity, bool>> predicate,
@@ -92,12 +92,12 @@ namespace Comrade.Infrastructure.Bases
             var query = GetAll();
             if (!string.IsNullOrEmpty(include)) query = query.Include(include);
 
-            var existe = await query
+            var exists = await query
                 .Where(p => p.Id == id)
                 .Where(predicate)
                 .AnyAsync();
 
-            return existe;
+            return exists;
         }
 
         public virtual Task<bool> GetAllChildren(int id, Expression<Func<TEntity, bool>> predicate,
@@ -118,11 +118,11 @@ namespace Comrade.Infrastructure.Bases
         {
             var query = GetAll();
 
-            var existe = await query
+            var exists = await query
                 .Where(predicate)
                 .AnyAsync();
 
-            return !existe;
+            return !exists;
         }
 
         public virtual IQueryable<TEntity> GetAll()

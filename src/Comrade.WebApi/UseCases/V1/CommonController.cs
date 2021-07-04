@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Comrade.Application.Bases;
 using Comrade.Application.Dtos.AirplaneDtos;
@@ -33,7 +34,7 @@ namespace Comrade.WebApi.UseCases.V1
 
 
         [HttpGet]
-        [Route("lookup-system-tokenUser")]
+        [Route("lookup-system-user")]
         public async Task<IActionResult> GetLookupSystemUser()
         {
             try
@@ -51,7 +52,26 @@ namespace Comrade.WebApi.UseCases.V1
         }
 
         [HttpGet]
-        [Route("lookup-system-tokenUser-by-name/{name}")]
+        [Route("lookup-predicate-system-user-by-name/{name}")]
+        public async Task<IActionResult> GetLookupPredicateSystemUserByNone(string name)
+        {
+            try
+            {
+                var service = _serviceProvider.GetService<ILookupServiceApp<SystemUser>>();
+
+                Expression<Func<SystemUser, bool>> expression = x => x.Name.Contains(name);
+                var result = await service?.GetLookup(expression)!;
+
+                return Ok(new ListResultDto<LookupDto>(result));
+            }
+            catch (Exception e)
+            {
+                return Ok(new SingleResultDto<EntityDto>(e));
+            }
+        }
+
+        [HttpGet]
+        [Route("lookup-system-user-by-name/{name}")]
         public async Task<IActionResult> GetLookupSystemUserByNone(string name)
         {
             try

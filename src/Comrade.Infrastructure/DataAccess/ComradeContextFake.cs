@@ -16,7 +16,7 @@ namespace Comrade.Infrastructure.DataAccess
     public static class ComradeContextFake
     {
         private const string JsonPath = "Comrade.Infrastructure.SeedData";
-        private static readonly object _syncLock = new object();
+        private static readonly object SyncLock = new object();
 
         public static bool AddDataFakeContext(IServiceCollection serviceCollection)
         {
@@ -30,7 +30,7 @@ namespace Comrade.Infrastructure.DataAccess
                 return true;
             }
 
-            lock (_syncLock)
+            lock (SyncLock)
             {
                 if (context != null && assembly is not null)
                 {

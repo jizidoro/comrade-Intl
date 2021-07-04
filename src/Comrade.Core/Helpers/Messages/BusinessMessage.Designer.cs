@@ -115,7 +115,7 @@ namespace Comrade.Core.Helpers.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Registro já existe para a Unidade, Data e Hora informados. Registro não foi salvo..
+        ///   Looks up a localized string similar to Registro já exists para a Unidade, Data e Hora informados. Registro não foi salvo..
         /// </summary>
         public static string MSG06 {
             get {
@@ -133,7 +133,7 @@ namespace Comrade.Core.Helpers.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Registro já existe com mesmo code, por favor informe outro code..
+        ///   Looks up a localized string similar to Registro já exists com mesmo code, por favor informe outro code..
         /// </summary>
         public static string MSG08 {
             get {

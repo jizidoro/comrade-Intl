@@ -50,6 +50,38 @@ namespace Comrade.IntegrationTests.Tests.LookupIntegrationTests
             {
                 var actualResultValue = okResult.Value as ListResultDto<LookupDto>;
                 Assert.NotNull(actualResultValue);
+                Assert.NotNull(actualResultValue.Data);
+                Assert.Equal(4,actualResultValue.Data.Count);
+            }
+        }
+
+        [Fact]
+        public async Task GetLookupSystemUserPredicateMemDb_Test()
+        {
+            var commonController = GetCommonControllerMemDb();
+            var result = await commonController.GetLookupPredicateSystemUserByNone("aa");
+
+            if (result is OkObjectResult okResult)
+            {
+                var actualResultValue = okResult.Value as ListResultDto<LookupDto>;
+                Assert.NotNull(actualResultValue);
+                Assert.NotNull(actualResultValue.Data);
+                Assert.Equal(1, actualResultValue.Data.Count);
+            }
+        }
+
+        [Fact]
+        public async Task GetLookupSystemUserByNone_Test()
+        {
+            var commonController = GetCommonControllerMemDb();
+            var result = await commonController.GetLookupSystemUserByNone("aa");
+
+            if (result is OkObjectResult okResult)
+            {
+                var actualResultValue = okResult.Value as ListResultDto<LookupDto>;
+                Assert.NotNull(actualResultValue);
+                Assert.NotNull(actualResultValue.Data);
+                Assert.Equal(1, actualResultValue.Data.Count);
             }
         }
     }
