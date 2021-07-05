@@ -33,6 +33,15 @@ namespace Comrade.Infrastructure.Bases
             GC.SuppressFinalize(this);
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed && disposing)
+            {
+                Db.Dispose();
+            }
+
+            _disposed = true;
+        }
 
         public virtual async Task Add(TEntity obj)
         {
@@ -196,14 +205,6 @@ namespace Comrade.Infrastructure.Bases
                 .Select(s => new LookupEntity {Key = s.Key, Value = s.Value});
         }
 
-        private void Dispose(bool disposing)
-        {
-            if (!_disposed && disposing)
-            {
-                Db.Dispose();
-            }
 
-            _disposed = true;
-        }
     }
 }
