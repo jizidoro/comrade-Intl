@@ -22,15 +22,15 @@ namespace Comrade.Application.Services
 {
     public class AirplaneAppService : AppService, IAirplaneAppService
     {
-        private readonly AirplaneCreateUseCase _createAirplaneUseCase;
-        private readonly AirplaneDeleteUseCase _deleteAirplaneUseCase;
-        private readonly AirplaneEditUseCase _editAirplaneUseCase;
+        private readonly IAirplaneCreateUseCase _createAirplaneUseCase;
+        private readonly IAirplaneDeleteUseCase _deleteAirplaneUseCase;
+        private readonly IAirplaneEditUseCase _editAirplaneUseCase;
         private readonly IAirplaneRepository _repository;
 
         public AirplaneAppService(IAirplaneRepository repository,
-            AirplaneEditUseCase editAirplaneUseCase,
-            AirplaneCreateUseCase createAirplaneUseCase,
-            AirplaneDeleteUseCase deleteAirplaneUseCase,
+            IAirplaneEditUseCase editAirplaneUseCase,
+            IAirplaneCreateUseCase createAirplaneUseCase,
+            IAirplaneDeleteUseCase deleteAirplaneUseCase,
             IMapper mapper)
             : base(mapper)
         {

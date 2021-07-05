@@ -12,7 +12,7 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.SystemUserCore.UseCases
 {
-    public class SystemUserEditUseCase : Service
+    public class SystemUserEditUseCase : Service, ISystemUserEditUseCase
     {
         private readonly ISystemUserRepository _repository;
         private readonly SystemUserEditValidation _systemUserEditValidation;

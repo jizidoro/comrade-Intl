@@ -23,15 +23,15 @@ namespace Comrade.Application.Services
 {
     public class SystemUserAppService : AppService, ISystemUserAppService
     {
-        private readonly SystemUserCreateUseCase _createSystemUserUseCase;
-        private readonly SystemUserDeleteUseCase _deleteSystemUserUseCase;
-        private readonly SystemUserEditUseCase _editSystemUserUseCase;
+        private readonly ISystemUserCreateUseCase _createSystemUserUseCase;
+        private readonly ISystemUserDeleteUseCase _deleteSystemUserUseCase;
+        private readonly ISystemUserEditUseCase _editSystemUserUseCase;
         private readonly ISystemUserRepository _repository;
 
         public SystemUserAppService(ISystemUserRepository repository,
-            SystemUserEditUseCase editSystemUserUseCase,
-            SystemUserCreateUseCase createSystemUserUseCase,
-            SystemUserDeleteUseCase deleteSystemUserUseCase,
+            ISystemUserEditUseCase editSystemUserUseCase,
+            ISystemUserCreateUseCase createSystemUserUseCase,
+            ISystemUserDeleteUseCase deleteSystemUserUseCase,
             IMapper mapper)
             : base(mapper)
         {

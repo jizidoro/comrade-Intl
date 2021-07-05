@@ -15,7 +15,7 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.AirplaneCore.UseCases
 {
-    public class AirplaneCreateUseCase : Service
+    public class AirplaneCreateUseCase : Service, IAirplaneCreateUseCase
     {
         private readonly AirplaneCreateValidation _airplaneCreateValidation;
         private readonly IAirplaneRepository _repository;
