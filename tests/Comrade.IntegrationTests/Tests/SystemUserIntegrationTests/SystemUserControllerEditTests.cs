@@ -55,7 +55,7 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
 
             var repository = new SystemUserRepository(context);
             var user = await repository.GetById(1);
-            Assert.Equal(changeName, user.Name);
+            Assert.Equal(changeName, user!.Name);
             Assert.Equal(changeEmail, user.Email);
             // Assert.Equal(changePassword, tokenUser.Password);
             Assert.Equal(changeRegistration, user.Registration);
@@ -94,7 +94,7 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
 
             var repository = new SystemUserRepository(context);
             var user = await repository.GetById(1);
-            Assert.NotEqual(changeName, user.Name);
+            Assert.NotEqual(changeName, user!.Name);
             Assert.NotEqual(changeEmail, user.Email);
             Assert.NotEqual(changeRegistration, user.Registration);
         }

@@ -44,14 +44,14 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests
 
             var repository = new SystemUserRepository(context);
             var returnBefore = await repository.GetById(testObject.Id);
-            var passwordBefore = returnBefore.Password;
+            var passwordBefore = returnBefore!.Password;
 
             var updatePasswordUseCase = _authenticationInjectionUseCase.GetForgotPasswordUseCase(context);
             var result = await updatePasswordUseCase.Execute(testObject);
             _output.WriteLine(result.Message);
 
             var returnAfter = await repository.GetById(testObject.Id);
-            var passwordAfter = returnAfter.Password;
+            var passwordAfter = returnAfter!.Password;
 
             Assert.NotEqual(passwordBefore, passwordAfter);
         }

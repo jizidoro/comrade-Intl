@@ -27,35 +27,20 @@ namespace Comrade.Infrastructure.Bases
             _dbSet = _db.Set<TEntity>();
         }
 
-        public virtual async Task Add(TEntity obj)
-        {
-            await _dbSet.AddAsync(obj).ConfigureAwait(false);
-        }
+        public virtual async Task Add(TEntity obj) => await _dbSet.AddAsync(obj).ConfigureAwait(false);
 
-        public virtual void Update(TEntity obj)
-        {
-            _dbSet.Update(obj);
-        }
+        public virtual void Update(TEntity obj) => _dbSet.Update(obj);
 
-        public virtual void Remove(int id)
-        {
-            _dbSet.Remove(_dbSet.Find(id));
-        }
+        public virtual void Remove(int id) => _dbSet.Remove(_dbSet.Find(id));
 
-        public virtual async Task<TEntity?> GetById(int id)
-        {
-            return await GetById(id, null, includes: null).ConfigureAwait(false);
-        }
+        public virtual async Task<TEntity?> GetById(int id) =>
+            await GetById(id, null, includes: null).ConfigureAwait(false);
 
-        public virtual async Task<TEntity?> GetById(int id, params string[] includes)
-        {
-            return await GetById(id, null, includes).ConfigureAwait(false);
-        }
+        public virtual async Task<TEntity?> GetById(int id, params string[] includes) =>
+            await GetById(id, null, includes).ConfigureAwait(false);
 
-        public virtual async Task<TEntity?> GetById(int id, Expression<Func<TEntity, TEntity>> projection)
-        {
-            return await GetById(id, projection, null).ConfigureAwait(false);
-        }
+        public virtual async Task<TEntity?> GetById(int id, Expression<Func<TEntity, TEntity>> projection) =>
+            await GetById(id, projection, null).ConfigureAwait(false);
 
         public virtual async Task<TEntity?> GetById(int id, Expression<Func<TEntity, TEntity>>? projection,
             params string[]? includes)
@@ -72,10 +57,8 @@ namespace Comrade.Infrastructure.Bases
             return await query.FirstOrDefaultAsync().ConfigureAwait(false);
         }
 
-        public virtual async Task<TEntity> GetByValue(string value)
-        {
-            return await GetByValue(value, null).ConfigureAwait(false);
-        }
+        public virtual async Task<TEntity> GetByValue(string value) =>
+            await GetByValue(value, null).ConfigureAwait(false);
 
         public virtual async Task<TEntity> GetByValue(string value, Expression<Func<TEntity, TEntity>>? projection)
         {
@@ -97,34 +80,6 @@ namespace Comrade.Infrastructure.Bases
             return exists;
         }
 
-        public virtual async Task<bool> ChildrenExists(int id, Expression<Func<TEntity, bool>> predicate,
-            string? include = null)
-        {
-            var query = GetAll();
-            if (!string.IsNullOrEmpty(include)) query = query.Include(include);
-
-            var exists = await query
-                .Where(p => p.Id == id)
-                .Where(predicate)
-                .AnyAsync().ConfigureAwait(false);
-
-            return exists;
-        }
-
-        public virtual Task<bool> GetAllChildren(int id, Expression<Func<TEntity, bool>> predicate,
-            string? include = null)
-        {
-            var query = GetAll();
-
-            if (!string.IsNullOrEmpty(include)) query = query.Include(include);
-
-            var allChild = query
-                .Where(p => p.Id == id)
-                .Where(predicate).AnyAsync();
-
-            return allChild;
-        }
-
         public virtual async Task<bool> IsUnique(Expression<Func<TEntity, bool>> predicate)
         {
             var query = GetAll();
@@ -136,26 +91,15 @@ namespace Comrade.Infrastructure.Bases
             return !exists;
         }
 
-        public virtual IQueryable<TEntity> GetAll()
-        {
-            return _dbSet;
-        }
+        public virtual IQueryable<TEntity> GetAll() => _dbSet;
 
+        public virtual IQueryable<TEntity> GetAllAsNoTracking() => _dbSet.AsNoTracking();
 
-        public virtual IQueryable<TEntity> GetAllAsNoTracking()
-        {
-            return _dbSet.AsNoTracking();
-        }
+        public IEnumerable<TEntity> GetAllAsNoTracking(Expression<Func<TEntity, TEntity>> projection) =>
+            _dbSet.AsNoTracking().Select(projection);
 
-        public IEnumerable<TEntity> GetAllAsNoTracking(Expression<Func<TEntity, TEntity>> projection)
-        {
-            return _dbSet.AsNoTracking().Select(projection);
-        }
-
-        public async Task<TEntity> GetByPredicate(Expression<Func<TEntity, bool>> predicate)
-        {
-            return await _dbSet.SingleOrDefaultAsync(predicate).ConfigureAwait(false);
-        }
+        public async Task<TEntity> GetByPredicate(Expression<Func<TEntity, bool>> predicate) =>
+            await _dbSet.SingleOrDefaultAsync(predicate).ConfigureAwait(false);
 
         public virtual IQueryable<LookupEntity> GetLookup()
         {

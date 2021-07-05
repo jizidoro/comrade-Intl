@@ -44,7 +44,7 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests
 
             var repository = new SystemUserRepository(context);
             var returnBefore = await repository.GetById(testObject.Id);
-            var passwordBefore = returnBefore.Password;
+            var passwordBefore = returnBefore!.Password;
 
             var updatePasswordUseCase =
                 _authenticationInjectionUseCase.GetUpdatePasswordUseCase(context);
@@ -52,7 +52,7 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests
             _output.WriteLine(result.Message);
 
             var returnAfter = await repository.GetById(testObject.Id);
-            var passwordAfter = returnAfter.Password;
+            var passwordAfter = returnAfter!.Password;
 
             Assert.NotEqual(passwordBefore, passwordAfter);
         }

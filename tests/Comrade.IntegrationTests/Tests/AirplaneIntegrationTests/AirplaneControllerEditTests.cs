@@ -52,7 +52,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
 
             var repository = new AirplaneRepository(context);
             var airplane = await repository.GetById(1);
-            Assert.Equal(6666, airplane.PassengerQuantity);
+            Assert.Equal(6666, airplane!.PassengerQuantity);
             Assert.Equal(changeCode, airplane.Code);
             Assert.Equal(changeModel, airplane.Model);
         }
@@ -89,7 +89,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
 
             var repository = new AirplaneRepository(context);
             var airplane = await repository.GetById(1);
-            Assert.NotEqual(6666, airplane.PassengerQuantity);
+            Assert.NotEqual(6666, airplane!.PassengerQuantity);
             Assert.NotEqual(changeCode, airplane.Code);
             Assert.NotEqual(changeModel, airplane.Model);
         }
