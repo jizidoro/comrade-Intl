@@ -8,6 +8,7 @@ using Comrade.Core.Helpers.Bases;
 using Comrade.Core.Helpers.Interfaces;
 using Comrade.Core.Helpers.Messages;
 using Comrade.Core.Helpers.Models.Results;
+using Comrade.Domain.Extensions;
 using Comrade.Domain.Models;
 
 #endregion
@@ -39,8 +40,7 @@ namespace Comrade.Core.AirplaneCore.UseCases
 
                 var validate = await _airplaneCreateValidation.Execute(entity).ConfigureAwait(false);
                 if (!validate.Success) return validate;
-                entity.RegisterDate = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow,
-                    TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"));
+                entity.RegisterDate = DateTimeBrasilia.GetDateTimeBrasilia();
                 await _repository.Add(entity).ConfigureAwait(false);
 
                 _ = await Commit().ConfigureAwait(false);

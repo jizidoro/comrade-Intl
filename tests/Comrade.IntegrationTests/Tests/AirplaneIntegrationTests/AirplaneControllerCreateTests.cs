@@ -45,7 +45,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
                 Assert.Equal(200, actualResultValue?.Code);
             }
 
-            Assert.Equal(1, context.Airplanes!.Count());
+            Assert.Equal(1, context.Airplanes.Count());
         }
 
         [Fact]
@@ -74,7 +74,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
                 Assert.Equal(400, actualResultValue?.Code);
             }
 
-            Assert.Equal(0, context.Airplanes!.Count());
+            Assert.Equal(0, context.Airplanes.Count());
         }
     }
 }

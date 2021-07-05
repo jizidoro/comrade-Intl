@@ -17,25 +17,24 @@ namespace Comrade.Infrastructure.DataAccess
         {
             _context = context;
         }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
+        
         public async Task<bool> Commit()
         {
             return await _context.SaveChangesAsync().ConfigureAwait(false) > 0;
         }
 
-        /// <inheritdoc />
-        public async Task<int> Save()
+        public async Task<int> AffectedRows()
         {
             var affectedRows = await _context
                 .SaveChangesAsync()
                 .ConfigureAwait(false);
             return affectedRows;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         private void Dispose(bool disposing)

@@ -26,11 +26,11 @@ namespace Comrade.UnitTests.Helpers
                 {
                     var airplanes = assembly.GetManifestResourceStream($"{JsonPath}.airplane.json");
                     var oto = JsonUtilities.GetListFromJson<Airplane>(airplanes);
-                    db.Airplanes!.AddRange(oto!);
+                    db.Airplanes.AddRange(oto!);
 
                     var systemUsers = assembly.GetManifestResourceStream($"{JsonPath}.systemUser.json");
                     var oto2 = JsonUtilities.GetListFromJson<SystemUser>(systemUsers);
-                    db.SystemUsers!.AddRange(oto2!);
+                    db.SystemUsers.AddRange(oto2!);
                 }
 
                 db.SaveChanges();

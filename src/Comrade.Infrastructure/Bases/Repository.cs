@@ -17,35 +17,29 @@ namespace Comrade.Infrastructure.Bases
     public class Repository<TEntity> : IRepository<TEntity>
         where TEntity : Entity
     {
-        protected readonly ComradeContext Db;
-        protected readonly DbSet<TEntity> DbSet;
+        private readonly ComradeContext _db;
+        private readonly DbSet<TEntity> _dbSet;
         private bool _disposed;
 
         public Repository(ComradeContext context)
         {
-            Db = context;
-            DbSet = Db.Set<TEntity>();
+            _db = context;
+            _dbSet = _db.Set<TEntity>();
         }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposed && disposing)
-            {
-                Db.Dispose();
-            }
-
-            _disposed = true;
-        }
-
+        
         public virtual async Task Add(TEntity obj)
         {
-            await DbSet.AddAsync(obj).ConfigureAwait(false);
+            await _dbSet.AddAsync(obj).ConfigureAwait(false);
+        }
+
+        public virtual void Update(TEntity obj)
+        {
+            _dbSet.Update(obj);
+        }
+
+        public virtual void Remove(int id)
+        {
+            _dbSet.Remove(_dbSet.Find(id));
         }
 
         public virtual async Task<TEntity> GetById(int id)
@@ -144,7 +138,7 @@ namespace Comrade.Infrastructure.Bases
 
         public virtual IQueryable<TEntity> GetAll()
         {
-            return DbSet;
+            return _dbSet;
         }
 
 
@@ -159,52 +153,55 @@ namespace Comrade.Infrastructure.Bases
             return query;
         }
 
-        public virtual void Update(TEntity obj)
-        {
-            DbSet.Update(obj);
-        }
-
-        public virtual void Remove(int id)
-        {
-            DbSet.Remove(DbSet.Find(id));
-        }
-
-        public async Task<int> SaveChanges()
-        {
-            return await Db.SaveChangesAsync().ConfigureAwait(false);
-        }
-
         public virtual IQueryable<TEntity> GetAllAsNoTracking()
         {
-            return DbSet.AsNoTracking();
+            return _dbSet.AsNoTracking();
         }
 
         public IEnumerable<TEntity> GetAllAsNoTracking(Expression<Func<TEntity, TEntity>> projection)
         {
-            return DbSet.AsNoTracking().Select(projection);
+            return _dbSet.AsNoTracking().Select(projection);
         }
 
         public async Task<TEntity> GetByPredicate(Expression<Func<TEntity, bool>> predicate)
         {
-            return await DbSet.SingleOrDefaultAsync(predicate).ConfigureAwait(false);
+            return await _dbSet.SingleOrDefaultAsync(predicate).ConfigureAwait(false);
         }
 
         public virtual IQueryable<LookupEntity> GetLookup()
         {
-            return DbSet
+            return _dbSet
                 .Take(100)
                 .Select(s => new LookupEntity {Key = s.Key, Value = s.Value});
         }
 
         public IQueryable<LookupEntity> GetLookup(Expression<Func<TEntity, bool>> predicate)
         {
-            return DbSet
+            return _dbSet
                 .AsNoTracking()
                 .Take(100)
                 .Where(predicate)
                 .Select(s => new LookupEntity {Key = s.Key, Value = s.Value});
         }
 
+        #region Dispose
 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed && disposing)
+            {
+                _db.Dispose();
+            }
+
+            _disposed = true;
+        }
+
+        #endregion
     }
 }

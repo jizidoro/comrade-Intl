@@ -39,7 +39,7 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
             await context.Database.EnsureCreatedAsync();
             var systemUserController = _systemUserInjectionController.GetSystemUserController(context);
             _ = await systemUserController.Create(testObject);
-            Assert.Equal(1, context.SystemUsers!.Count());
+            Assert.Equal(1, context.SystemUsers.Count());
         }
 
 
@@ -69,7 +69,7 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
                 Assert.Equal(400, actualResultValue?.Code);
             }
 
-            Assert.False(context.SystemUsers!.Any());
+            Assert.False(context.SystemUsers.Any());
         }
     }
 }

@@ -16,6 +16,8 @@ namespace Comrade.Core.Helpers.Interfaces
         where TEntity : IEntity
     {
         Task Add(TEntity obj);
+        void Update(TEntity obj);
+        void Remove(int id);
         Task<TEntity> GetById(int id);
         Task<TEntity> GetById(int id, params string[] includes);
         Task<TEntity> GetById(int id, Expression<Func<TEntity, TEntity>> projection);
@@ -32,9 +34,6 @@ namespace Comrade.Core.Helpers.Interfaces
         IQueryable<TEntity> GetAllAsNoTracking();
         IEnumerable<TEntity> GetAllAsNoTracking(Expression<Func<TEntity, TEntity>> projection);
         Task<bool> GetAllChildren(int id, Expression<Func<TEntity, bool>> predicate, string? include = null);
-        void Update(TEntity obj);
-        void Remove(int id);
-        Task<int> SaveChanges();
         Task<TEntity> GetByPredicate(Expression<Func<TEntity, bool>> predicate);
     }
 }
