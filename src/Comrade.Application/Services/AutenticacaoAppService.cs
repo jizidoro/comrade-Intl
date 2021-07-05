@@ -41,7 +41,7 @@ namespace Comrade.Application.Services
 
             var token = new UserDto
             {
-                Token = result.TokenUser?.Token
+                Token = result.TokenUser!.Token
             };
 
             return new SingleResultDto<UserDto>(token);

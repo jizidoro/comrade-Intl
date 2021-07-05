@@ -59,7 +59,6 @@ namespace Comrade.Core.SystemUserCore.UseCases
             target.Name = source.Name;
             target.Email = source.Email;
             target.Registration = source.Registration;
-            target.Situacao = source.Situacao;
         }
     }
 }

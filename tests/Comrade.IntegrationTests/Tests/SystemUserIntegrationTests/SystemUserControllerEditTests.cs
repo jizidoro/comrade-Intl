@@ -37,7 +37,6 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
                 Name = changeName,
                 Email = changeEmail,
                 Password = changePassword,
-                Situacao = false,
                 Registration = changeRegistration
             };
 
@@ -60,7 +59,6 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
             Assert.Equal(changeEmail, user.Email);
             // Assert.Equal(changePassword, tokenUser.Password);
             Assert.Equal(changeRegistration, user.Registration);
-            Assert.False(user.Situacao);
         }
 
         [Fact]
@@ -78,7 +76,6 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
             {
                 Id = 1,
                 Name = changeName,
-                Situacao = false
             };
 
             await using var context = new ComradeContext(options);
@@ -100,7 +97,6 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
             Assert.NotEqual(changeName, user.Name);
             Assert.NotEqual(changeEmail, user.Email);
             Assert.NotEqual(changeRegistration, user.Registration);
-            Assert.True(user.Situacao);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿#region
 
+using AutoMapper;
 using Comrade.Application.Services;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.Helpers;
@@ -12,10 +13,8 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
     {
         private readonly AuthenticationInjectionUseCase _authenticationInjectionUseCase = new();
 
-        public AuthenticationAppService GetAuthenticationAppServiceService(ComradeContext context)
+        public AuthenticationAppService GetAuthenticationAppService(ComradeContext context, IMapper mapper)
         {
-            var mapper = MapperHelper.ConfigMapper();
-
             var getUpdatePasswordUseCase =
                 _authenticationInjectionUseCase.GetUpdatePasswordUseCase(context);
             var getForgotPasswordUseCase =

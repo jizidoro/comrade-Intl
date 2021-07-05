@@ -31,7 +31,6 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
                 Name = "111",
                 Email = "777@testObject",
                 Password = "123456",
-                Situacao = true,
                 Registration = "123"
             };
 
@@ -55,7 +54,6 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
             {
                 Email = "777@testObject",
                 Password = "123456",
-                Situacao = true,
                 Registration = "123"
             };
 

@@ -27,8 +27,7 @@ namespace Comrade.Infrastructure.Repositories
         public IQueryable<LookupEntity>? FindByName(string name)
         {
             var result = Db.SystemUsers!
-                .Where(x => x.Situacao &&
-                            x.Name.Contains(name)).Take(30)
+                .Where(x => x.Name.Contains(name)).Take(30)
                 .OrderBy(x => x.Name)
                 .Select(s => new LookupEntity {Key = s.Id, Value = s.Name});
 
