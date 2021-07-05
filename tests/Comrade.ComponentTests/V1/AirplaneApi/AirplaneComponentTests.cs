@@ -50,7 +50,7 @@ namespace Comrade.ComponentTests.V1.AirplaneApi
             Assert.Equal(HttpStatusCode.OK, actualResponse.StatusCode);
 
             using StringReader stringReader = new(actualResponseString);
-            using JsonTextReader reader = new(stringReader) {DateParseHandling = DateParseHandling.Name};
+            using JsonTextReader reader = new(stringReader) {DateParseHandling = DateParseHandling.None};
             JObject jsonResponse = await JObject.LoadAsync(reader)
                 .ConfigureAwait(false);
 
