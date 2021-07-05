@@ -37,9 +37,8 @@ namespace Comrade.WebApi.Modules
 
             if (isEnabled)
             {
-                services.AddDbContext<ComradeContext>(
-                    options => options.UseSqlServer(
-                        configuration.GetValue<string>("PersistenceModule:DefaultConnection")));
+                services.AddDbContext<ComradeContext>(options =>
+                    options.UseSqlServer(configuration.GetValue<string>("PersistenceModule:DefaultConnection")));
             }
             else
             {

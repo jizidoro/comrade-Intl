@@ -40,11 +40,6 @@ namespace Comrade.WebApi.Modules.Common
                     options.OutputFormatters.RemoveType<TextOutputFormatter>();
                     options.OutputFormatters.RemoveType<StreamOutputFormatter>();
                     options.RespectBrowserAcceptHeader = true;
-
-                    if (isErrorFilterEnabled)
-                    {
-                        options.Filters.Add(new ExceptionFilter());
-                    }
                 })
                 .AddJsonOptions(options =>
                 {

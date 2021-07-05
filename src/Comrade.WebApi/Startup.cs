@@ -43,7 +43,6 @@ namespace Comrade.WebApi
         {
             services
                 .AddFeatureFlags(Configuration)
-                .AddInvalidRequestLogging()
                 .AddSqlServer(Configuration)
                 .AddEntityRepository()
                 .AddHealthChecks(Configuration)

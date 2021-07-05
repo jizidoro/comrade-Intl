@@ -21,38 +21,6 @@ namespace Comrade.WebApi.Modules.Common
     /// </summary>
     public static class LoggingExtensions
     {
-        /// <summary>
-        /// </summary>
-        /// <param name="services"></param>
-        /// <returns></returns>
-        public static IServiceCollection AddInvalidRequestLogging(this IServiceCollection services)
-        {
-            services.Configure<ApiBehaviorOptions>(o =>
-            {
-                o.InvalidModelStateResponseFactory = actionContext =>
-                {
-                    var logger = actionContext
-                        .HttpContext
-                        .RequestServices
-                        .GetRequiredService<ILogger<Startup>>();
-
-                    List<string> errors = actionContext.ModelState
-                        .Values
-                        .SelectMany(x => x.Errors)
-                        .Select(x => x.ErrorMessage)
-                        .ToList();
-
-                    string jsonModelState = JsonSerializer.Serialize(errors);
-                    logger.LogWarning("Invalid request.", jsonModelState);
-
-                    ValidationProblemDetails problemDetails = new(actionContext.ModelState);
-                    return new BadRequestObjectResult(problemDetails);
-                };
-            });
-
-            return services;
-        }
-
         public static void CreateLogMongoDb(LoggerProviderCollection providers)
         {
             Log.Logger = new LoggerConfiguration()

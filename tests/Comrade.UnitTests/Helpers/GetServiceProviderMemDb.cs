@@ -27,7 +27,6 @@ namespace Comrade.UnitTests.Helpers
 
             services
                 .AddFeatureFlags(configuration)
-                .AddInvalidRequestLogging()
                 .AddSqlServer(configuration)
                 .AddEntityRepository()
                 .AddHealthChecks(configuration)
