@@ -45,5 +45,28 @@ namespace Comrade.UnitTests.Tests.AirplaneTests
 
             Assert.Equal(expected, result.Code);
         }
+
+        [Fact]
+        public async Task AirplaneCreateUseCase_Test_Error()
+        {
+            var options = new DbContextOptionsBuilder<ComradeContext>()
+                .UseSqlServer("error")
+                .Options;
+
+            var testObject = new Airplane
+            {
+                Id = 1,
+                Code = "123",
+                Model = "234",
+                PassengerQuantity = 456
+            };
+
+            await using var context = new ComradeContext(options);
+
+            var airplaneCreateUseCase = _airplaneInjectionUseCase.GetAirplaneCreateUseCase(context);
+            var result = await airplaneCreateUseCase.Execute(testObject);
+
+            Assert.Equal(500, result.Code);
+        }
     }
 }
