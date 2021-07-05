@@ -61,12 +61,13 @@ namespace Comrade.Core.Helpers.Models.Results
             Data = data;
         }
 
+        public string? ExceptionMessage { get; set; }
+        public IEnumerable<string>? Messages { get; set; }
+
 
         public int Code { get; set; }
         public bool Success { get; set; }
-        public string? ExceptionMessage { get; set; }
         public string? Message { get; set; }
-        public IEnumerable<string>? Messages { get; set; }
         public TEntity? Data { get; set; }
     }
 }

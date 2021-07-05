@@ -5,7 +5,6 @@ using System.Reflection;
 using Comrade.Domain.Models;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.Infrastructure.Extensions;
-using Microsoft.Extensions.Configuration.Json;
 
 #endregion
 

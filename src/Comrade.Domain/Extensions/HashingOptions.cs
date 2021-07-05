@@ -1,7 +1,5 @@
 ﻿#region
 
-using System;
-
 #endregion
 
 namespace Comrade.Domain.Extensions
@@ -12,12 +10,12 @@ namespace Comrade.Domain.Extensions
 
         public static implicit operator HashingOptions(int v)
         {
-            return new HashingOptions();
+            return new();
         }
 
         public static HashingOptions ToHashingOptions()
         {
-            return new HashingOptions();
+            return new();
         }
     }
 }

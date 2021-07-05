@@ -1,11 +1,8 @@
 ﻿#region
 
-using Comrade.Application.Services;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.Helpers;
 using Comrade.WebApi.UseCases.V1.LoginApi;
-using Microsoft.Extensions.Logging;
-using Moq;
 
 #endregion
 

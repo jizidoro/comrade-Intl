@@ -43,7 +43,8 @@ namespace Comrade.Core.AirplaneCore.UseCases
                 return new DeleteResult<Airplane>(ex);
             }
 
-            return new DeleteResult<Airplane>(true, BusinessMessage.ResourceManager.GetString("MSG03",CultureInfo.CurrentCulture));
+            return new DeleteResult<Airplane>(true,
+                BusinessMessage.ResourceManager.GetString("MSG03", CultureInfo.CurrentCulture));
         }
     }
 }

@@ -3,7 +3,6 @@
 using AutoMapper;
 using Comrade.Application.Services;
 using Comrade.Infrastructure.DataAccess;
-using Comrade.UnitTests.Helpers;
 
 #endregion
 

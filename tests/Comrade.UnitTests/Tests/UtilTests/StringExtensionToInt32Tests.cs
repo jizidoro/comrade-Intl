@@ -13,10 +13,10 @@ namespace Comrade.UnitTests.Tests.UtilTests
         public void StringExtension_ToInt32()
         {
             var testObject = "55";
-            int goal = 55;
+            var goal = 55;
 
             var result = testObject.ToInt32();
-            
+
             Assert.Equal(goal, result);
         }
     }

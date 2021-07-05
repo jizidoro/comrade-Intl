@@ -20,18 +20,8 @@ namespace Comrade.Infrastructure.DataAccess
 
         public void Dispose()
         {
-            this.Dispose(true);
+            Dispose(true);
             GC.SuppressFinalize(this);
-        }
-
-        private void Dispose(bool disposing)
-        {
-            if (!this._disposed && disposing)
-            {
-                this._context.Dispose();
-            }
-
-            this._disposed = true;
         }
 
         public async Task<bool> Commit()
@@ -42,10 +32,20 @@ namespace Comrade.Infrastructure.DataAccess
         /// <inheritdoc />
         public async Task<int> Save()
         {
-            int affectedRows = await this._context
+            var affectedRows = await _context
                 .SaveChangesAsync()
                 .ConfigureAwait(false);
             return affectedRows;
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (!_disposed && disposing)
+            {
+                _context.Dispose();
+            }
+
+            _disposed = true;
         }
     }
 }

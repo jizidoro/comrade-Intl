@@ -29,18 +29,8 @@ namespace Comrade.Infrastructure.Bases
 
         public void Dispose()
         {
-            this.Dispose(true);
+            Dispose(true);
             GC.SuppressFinalize(this);
-        }
-
-        private void Dispose(bool disposing)
-        {
-            if (!this._disposed && disposing)
-            {
-                this.Db.Dispose();
-            }
-
-            this._disposed = true;
         }
 
 
@@ -204,6 +194,16 @@ namespace Comrade.Infrastructure.Bases
                 .Take(100)
                 .Where(predicate)
                 .Select(s => new LookupEntity {Key = s.Key, Value = s.Value});
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (!_disposed && disposing)
+            {
+                Db.Dispose();
+            }
+
+            _disposed = true;
         }
     }
 }

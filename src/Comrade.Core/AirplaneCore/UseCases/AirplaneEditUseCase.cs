@@ -35,7 +35,7 @@ namespace Comrade.Core.AirplaneCore.UseCases
                     return isValid;
                 }
 
-                var result = await _airplaneEditValidation.Execute(entity).ConfigureAwait(false); 
+                var result = await _airplaneEditValidation.Execute(entity).ConfigureAwait(false);
                 if (!result.Success) return result;
 
                 var obj = result.Data!;

@@ -1,7 +1,6 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using Comrade.Domain.Models;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.Infrastructure.Repositories;
 using Comrade.UnitTests.Helpers;
@@ -23,7 +22,7 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_SystemUser_Context")
                 .Options;
-            
+
 
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();

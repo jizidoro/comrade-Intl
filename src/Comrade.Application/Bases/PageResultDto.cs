@@ -19,7 +19,9 @@ namespace Comrade.Application.Bases
             Data = data;
             Code = data == null ? (int) EnumResponse.ErrorNotFound : (int) EnumResponse.Success;
             Success = data != null;
-            Message = data == null ? BusinessMessage.ResourceManager.GetString("MSG04", CultureInfo.CurrentCulture) : string.Empty;
+            Message = data == null
+                ? BusinessMessage.ResourceManager.GetString("MSG04", CultureInfo.CurrentCulture)
+                : string.Empty;
         }
 
         public PageResultDto(PaginationFilter pagination, IList<T> data)
@@ -31,7 +33,9 @@ namespace Comrade.Application.Bases
             PreviusPage = pagination.PageNumber > 1 ? pagination.PageNumber - 1 : null;
             Code = data == null ? (int) EnumResponse.ErrorNotFound : (int) EnumResponse.Success;
             Success = data != null;
-            Message = data == null ? BusinessMessage.ResourceManager.GetString("MSG04",CultureInfo.CurrentCulture) : string.Empty;
+            Message = data == null
+                ? BusinessMessage.ResourceManager.GetString("MSG04", CultureInfo.CurrentCulture)
+                : string.Empty;
         }
 
         public int? PageNumber { get; set; }

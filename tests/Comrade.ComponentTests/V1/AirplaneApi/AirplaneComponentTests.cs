@@ -1,19 +1,10 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Comrade.Core.SecurityCore.UseCases;
-using Comrade.Core.Utils;
-using Comrade.Infrastructure.DataAccess;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Xunit;
@@ -26,7 +17,11 @@ namespace Comrade.ComponentTests.V1.AirplaneApi
     public class AirplaneComponentTests
     {
         private readonly CustomWebApplicationFactoryFixture _fixture;
-        public AirplaneComponentTests(CustomWebApplicationFactoryFixture fixture) => _fixture = fixture;
+
+        public AirplaneComponentTests(CustomWebApplicationFactoryFixture fixture)
+        {
+            _fixture = fixture;
+        }
 
         [Fact]
         public async Task GetAccountsReturnsList()
@@ -60,7 +55,5 @@ namespace Comrade.ComponentTests.V1.AirplaneApi
             Assert.True(int.TryParse(jsonResponse["data"]![0]!["passengerQuantity"]!.Value<string>(),
                 out var _));
         }
-
-
     }
 }

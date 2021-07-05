@@ -1,6 +1,5 @@
 #region
 
-using System;
 using Comrade.Domain.Models;
 using Comrade.Infrastructure.Mappings;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +18,6 @@ namespace Comrade.Infrastructure.DataAccess
         // Tables
         public DbSet<Airplane>? Airplanes { get; set; }
         public DbSet<SystemUser>? SystemUsers { get; set; }
-        
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

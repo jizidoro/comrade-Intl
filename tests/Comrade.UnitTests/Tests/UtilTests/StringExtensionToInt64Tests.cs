@@ -16,7 +16,7 @@ namespace Comrade.UnitTests.Tests.UtilTests
             long goal = 556;
 
             var result = testObject.ToInt64();
-            
+
             Assert.Equal(goal, result);
         }
     }

@@ -7,7 +7,6 @@ using Comrade.Application.Bases;
 using Comrade.Application.Dtos;
 using Comrade.Application.Interfaces;
 using Comrade.Core.SecurityCore;
-using Comrade.Core.SecurityCore.UseCases;
 using Comrade.Domain.Models;
 
 #endregion
@@ -17,8 +16,8 @@ namespace Comrade.Application.Services
     public class AuthenticationAppService : AppService, IAuthenticationAppService
     {
         private readonly IForgotPasswordUseCase _forgotPasswordUseCase;
-        private readonly IValidateLoginUseCase _validateLoginUseCase;
         private readonly IUpdatePasswordUseCase _updatePasswordUseCase;
+        private readonly IValidateLoginUseCase _validateLoginUseCase;
 
         public AuthenticationAppService(IUpdatePasswordUseCase updatePasswordUseCase,
             IValidateLoginUseCase validateLoginUseCase, IForgotPasswordUseCase forgotPasswordUseCase,

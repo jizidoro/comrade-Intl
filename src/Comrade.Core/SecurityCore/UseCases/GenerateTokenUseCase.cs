@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
-using Comrade.Core.SecurityCore.Validation;
 using Comrade.Core.Utils;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -18,7 +16,7 @@ namespace Comrade.Core.SecurityCore.UseCases
     public class GenerateTokenUseCase : IGenerateTokenUseCase
     {
         private readonly IConfiguration _configuration;
-        
+
         public GenerateTokenUseCase(
             IConfiguration configuration
         )

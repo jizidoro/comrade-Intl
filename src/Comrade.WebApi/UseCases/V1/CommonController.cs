@@ -4,7 +4,6 @@ using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Comrade.Application.Bases;
-using Comrade.Application.Dtos.AirplaneDtos;
 using Comrade.Application.Interfaces;
 using Comrade.Application.Lookups;
 using Comrade.Domain.Models;

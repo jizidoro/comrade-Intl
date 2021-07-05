@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿#region
+
 using Comrade.UnitTests.Helpers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.Configuration;
 using Xunit;
+
+#endregion
 
 namespace Comrade.IntegrationTests.Tests
 {
@@ -27,7 +29,6 @@ namespace Comrade.IntegrationTests.Tests
 
             Assert.NotEmpty(responseString);
             Assert.NotNull(responseString);
-
         }
     }
 }

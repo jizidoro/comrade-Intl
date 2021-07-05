@@ -24,15 +24,10 @@ namespace Comrade.Application.Bases
         {
             Code = data == null ? (int) EnumResponse.ErrorNotFound : (int) EnumResponse.Success;
             Success = data != null;
-            Message = data == null ? BusinessMessage.ResourceManager.GetString("MSG04", CultureInfo.CurrentCulture) : string.Empty;
+            Message = data == null
+                ? BusinessMessage.ResourceManager.GetString("MSG04", CultureInfo.CurrentCulture)
+                : string.Empty;
             Data = data;
-        }
-
-        public SingleResultDto()
-        {
-            Code = (int) EnumResponse.ErrorBusinessValidation;
-            Success = false;
-            Message = BusinessMessage.ResourceManager.GetString("MSG04", CultureInfo.CurrentCulture);
         }
 
         public SingleResultDto(ValidationResult validationResult)
@@ -73,15 +68,9 @@ namespace Comrade.Application.Bases
             Message = result.Message;
         }
 
-        public SingleResultDto(int code, bool success, string message)
-        {
-            Code = code;
-            Success = success;
-            Message = message;
-        }
+        public ValidationResult? ValidationResult { get; }
 
         public TDto? Data { get; private set; }
-        public ValidationResult? ValidationResult { get; private set; }
 
         public void SetData<TEntity>(ISingleResult<TEntity> result, IMapper mapper)
             where TEntity : Entity

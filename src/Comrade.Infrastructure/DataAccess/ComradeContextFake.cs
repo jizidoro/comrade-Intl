@@ -1,12 +1,9 @@
 #region
 
-using System;
 using System.Linq;
 using System.Reflection;
 using Comrade.Domain.Models;
 using Comrade.Infrastructure.Extensions;
-using Comrade.Infrastructure.Mappings;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 #endregion
@@ -16,7 +13,7 @@ namespace Comrade.Infrastructure.DataAccess
     public static class ComradeContextFake
     {
         private const string JsonPath = "Comrade.Infrastructure.SeedData";
-        private static readonly object SyncLock = new object();
+        private static readonly object SyncLock = new();
 
         public static bool AddDataFakeContext(IServiceCollection serviceCollection)
         {

@@ -45,12 +45,13 @@ namespace Comrade.Core.AirplaneCore.UseCases
 
                 _ = await Commit().ConfigureAwait(false);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return new CreateResult<Airplane>(ex);
             }
 
-            return new CreateResult<Airplane>(true, BusinessMessage.ResourceManager.GetString("MSG01",CultureInfo.CurrentCulture));
+            return new CreateResult<Airplane>(true,
+                BusinessMessage.ResourceManager.GetString("MSG01", CultureInfo.CurrentCulture));
         }
     }
 }

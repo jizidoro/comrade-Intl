@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿#region
+
+using System.Collections.Generic;
 using Comrade.Core.SecurityCore.UseCases;
 using Comrade.Core.Utils;
 using Microsoft.Extensions.Configuration;
+
+#endregion
 
 namespace Comrade.ComponentTests
 {
@@ -20,7 +24,7 @@ namespace Comrade.ComponentTests
 
             var generateTokenUseCase = new GenerateTokenUseCase(configuration);
 
-            var roles = new List<string>()
+            var roles = new List<string>
             {
                 "Test"
             };

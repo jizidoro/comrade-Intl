@@ -1,16 +1,9 @@
 ﻿#region
 
-using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 using Comrade.Core.SecurityCore.Validation;
 using Comrade.Core.Utils;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 
 #endregion
 
@@ -18,8 +11,8 @@ namespace Comrade.Core.SecurityCore.UseCases
 {
     public class ValidateLoginUseCase : IValidateLoginUseCase
     {
-        private readonly SystemUserPasswordValidation _systemUserPasswordValidation;
         private readonly IGenerateTokenUseCase _generateToken;
+        private readonly SystemUserPasswordValidation _systemUserPasswordValidation;
 
 
         public ValidateLoginUseCase(
@@ -43,7 +36,7 @@ namespace Comrade.Core.SecurityCore.UseCases
                     {
                         var selectedUser = resultPassword.Data!;
 
-                        var profile = new List<string>(){ "Role" };
+                        var profile = new List<string> {"Role"};
 
                         var user = new TokenUser(key, selectedUser.Name, "", profile);
 

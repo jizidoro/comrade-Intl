@@ -75,7 +75,7 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
             var testObject = new SystemUserEditDto
             {
                 Id = 1,
-                Name = changeName,
+                Name = changeName
             };
 
             await using var context = new ComradeContext(options);

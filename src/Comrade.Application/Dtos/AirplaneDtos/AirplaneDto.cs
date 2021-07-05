@@ -11,7 +11,6 @@ namespace Comrade.Application.Dtos.AirplaneDtos
 {
     public class AirplaneDto : EntityDto
     {
-
         [DisplayName("Code")]
         [Required(ErrorMessage = "Please enter a Code")]
         public string? Code { get; set; }

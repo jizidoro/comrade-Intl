@@ -1,11 +1,9 @@
 #region
 
 using System.Text;
-using Comrade.Application.Interfaces;
 using Comrade.Core.SecurityCore;
 using Comrade.Core.SecurityCore.UseCases;
 using Comrade.WebApi.Modules.Common.FeatureFlags;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

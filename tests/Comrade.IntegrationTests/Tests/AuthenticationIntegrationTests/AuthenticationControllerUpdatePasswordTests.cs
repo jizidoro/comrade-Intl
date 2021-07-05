@@ -1,7 +1,5 @@
 #region
 
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using Comrade.Application.Bases;
 using Comrade.Application.Dtos;
@@ -31,7 +29,7 @@ namespace Comrade.IntegrationTests.Tests.AuthenticationIntegrationTests
             var testObject = new AuthenticationDto
             {
                 Key = "1",
-                Password = "123456",
+                Password = "123456"
             };
 
             await using var context = new ComradeContext(options);
@@ -47,7 +45,6 @@ namespace Comrade.IntegrationTests.Tests.AuthenticationIntegrationTests
                 Assert.NotNull(actualResultValue);
                 Assert.Equal(200, actualResultValue?.Code);
             }
-            
         }
     }
 }

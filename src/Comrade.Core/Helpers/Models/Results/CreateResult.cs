@@ -17,7 +17,7 @@ namespace Comrade.Core.Helpers.Models.Results
         {
             Code = (int) EnumResponse.Success;
             Success = true;
-            Message = BusinessMessage.ResourceManager.GetString("MSG01",CultureInfo.CurrentCulture);
+            Message = BusinessMessage.ResourceManager.GetString("MSG01", CultureInfo.CurrentCulture);
         }
 
         public CreateResult(bool success, string? message)
@@ -29,7 +29,7 @@ namespace Comrade.Core.Helpers.Models.Results
 
         public CreateResult(Exception ex)
         {
-            Code = (int)EnumResponse.ErrorServer;
+            Code = (int) EnumResponse.ErrorServer;
             Success = false;
             ExceptionMessage = ex.Message;
             Message = BusinessMessage.ResourceManager.GetString("MSG07", CultureInfo.CurrentCulture);
