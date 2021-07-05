@@ -26,7 +26,7 @@ namespace Comrade.Infrastructure.Bases
             _db = context;
             _dbSet = _db.Set<TEntity>();
         }
-        
+
         public virtual async Task Add(TEntity obj)
         {
             await _dbSet.AddAsync(obj).ConfigureAwait(false);
@@ -42,22 +42,22 @@ namespace Comrade.Infrastructure.Bases
             _dbSet.Remove(_dbSet.Find(id));
         }
 
-        public virtual async Task<TEntity> GetById(int id)
+        public virtual async Task<TEntity?> GetById(int id)
         {
             return await GetById(id, null, includes: null).ConfigureAwait(false);
         }
 
-        public virtual async Task<TEntity> GetById(int id, params string[] includes)
+        public virtual async Task<TEntity?> GetById(int id, params string[] includes)
         {
             return await GetById(id, null, includes).ConfigureAwait(false);
         }
 
-        public virtual async Task<TEntity> GetById(int id, Expression<Func<TEntity, TEntity>> projection)
+        public virtual async Task<TEntity?> GetById(int id, Expression<Func<TEntity, TEntity>> projection)
         {
             return await GetById(id, projection, null).ConfigureAwait(false);
         }
 
-        public virtual async Task<TEntity> GetById(int id, Expression<Func<TEntity, TEntity>>? projection,
+        public virtual async Task<TEntity?> GetById(int id, Expression<Func<TEntity, TEntity>>? projection,
             params string[]? includes)
         {
             var query = GetAll();
@@ -142,17 +142,6 @@ namespace Comrade.Infrastructure.Bases
         }
 
 
-        public virtual IQueryable<TEntity> GetLookupQuery(Expression<Func<TEntity, TEntity>> projection)
-        {
-            var query = GetAll();
-            if (projection != null)
-            {
-                query = query.Select(projection);
-            }
-
-            return query;
-        }
-
         public virtual IQueryable<TEntity> GetAllAsNoTracking()
         {
             return _dbSet.AsNoTracking();
@@ -182,6 +171,16 @@ namespace Comrade.Infrastructure.Bases
                 .Take(100)
                 .Where(predicate)
                 .Select(s => new LookupEntity {Key = s.Key, Value = s.Value});
+        }
+
+
+        public virtual IQueryable<TEntity> GetLookupQuery(Expression<Func<TEntity, TEntity>> projection)
+        {
+            var query = GetAll();
+
+            query = query.Select(projection);
+
+            return query;
         }
 
         #region Dispose

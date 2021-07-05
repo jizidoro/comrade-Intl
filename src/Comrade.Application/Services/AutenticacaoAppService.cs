@@ -48,9 +48,9 @@ namespace Comrade.Application.Services
 
         public async Task<ISingleResultDto<EntityDto>> ForgotPassword(AuthenticationDto dto)
         {
-            var evento = Mapper.Map<SystemUser>(dto);
+            var mappedObject = Mapper.Map<SystemUser>(dto);
 
-            var result = await _forgotPasswordUseCase.Execute(evento).ConfigureAwait(false);
+            var result = await _forgotPasswordUseCase.Execute(mappedObject).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);
@@ -60,9 +60,9 @@ namespace Comrade.Application.Services
 
         public async Task<ISingleResultDto<EntityDto>> UpdatePassword(AuthenticationDto dto)
         {
-            var evento = Mapper.Map<SystemUser>(dto);
+            var mappedObject = Mapper.Map<SystemUser>(dto);
 
-            var result = await _updatePasswordUseCase.Execute(evento).ConfigureAwait(false);
+            var result = await _updatePasswordUseCase.Execute(mappedObject).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);

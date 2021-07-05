@@ -18,10 +18,10 @@ namespace Comrade.Core.Helpers.Interfaces
         Task Add(TEntity obj);
         void Update(TEntity obj);
         void Remove(int id);
-        Task<TEntity> GetById(int id);
-        Task<TEntity> GetById(int id, params string[] includes);
-        Task<TEntity> GetById(int id, Expression<Func<TEntity, TEntity>> projection);
-        Task<TEntity> GetById(int id, Expression<Func<TEntity, TEntity>>? projection, params string[]? includes);
+        Task<TEntity?> GetById(int id);
+        Task<TEntity?> GetById(int id, params string[] includes);
+        Task<TEntity?> GetById(int id, Expression<Func<TEntity, TEntity>> projection);
+        Task<TEntity?> GetById(int id, Expression<Func<TEntity, TEntity>>? projection, params string[]? includes);
         Task<TEntity> GetByValue(string value);
         Task<TEntity> GetByValue(string value, Expression<Func<TEntity, TEntity>>? projection);
         Task<bool> ValueExists(int id, string value);

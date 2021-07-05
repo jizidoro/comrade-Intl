@@ -46,7 +46,7 @@ namespace Comrade.Application.Services
             List<SystemUserDto> list;
             if (paginationFilter == null)
             {
-                list = await Task.Run(() => _repository.GetAll()
+                list = await Task.Run(() => _repository.GetAllAsNoTracking()
                     .ProjectTo<SystemUserDto>(Mapper.ConfigurationProvider)
                     .ToList()).ConfigureAwait(false);
 
@@ -55,7 +55,7 @@ namespace Comrade.Application.Services
 
             var skip = (paginationFilter.PageNumber - 1) * paginationFilter.PageSize;
 
-            list = await Task.Run(() => _repository.GetAll().Skip(skip).Take(paginationFilter.PageSize)
+            list = await Task.Run(() => _repository.GetAllAsNoTracking().Skip(skip).Take(paginationFilter.PageSize)
                 .ProjectTo<SystemUserDto>(Mapper.ConfigurationProvider)
                 .ToList()).ConfigureAwait(false);
 
@@ -105,9 +105,9 @@ namespace Comrade.Application.Services
                 return new SingleResultDto<EntityDto>(listErrors);
             }
 
-            var evento = Mapper.Map<SystemUser>(dto);
+            var mappedObject = Mapper.Map<SystemUser>(dto);
 
-            var result = await _createSystemUserUseCase.Execute(evento).ConfigureAwait(false);
+            var result = await _createSystemUserUseCase.Execute(mappedObject).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);
@@ -127,9 +127,9 @@ namespace Comrade.Application.Services
                 return new SingleResultDto<EntityDto>(listErrors);
             }
 
-            var evento = Mapper.Map<SystemUser>(dto);
+            var mappedObject = Mapper.Map<SystemUser>(dto);
 
-            var result = await _editSystemUserUseCase.Execute(evento).ConfigureAwait(false);
+            var result = await _editSystemUserUseCase.Execute(mappedObject).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);

@@ -44,7 +44,7 @@ namespace Comrade.Application.Services
             List<AirplaneDto> list;
             if (paginationFilter == null)
             {
-                list = await Task.Run(() => _repository.GetAll()
+                list = await Task.Run(() => _repository.GetAllAsNoTracking()
                     .ProjectTo<AirplaneDto>(Mapper.ConfigurationProvider)
                     .ToList()).ConfigureAwait(false);
 
@@ -53,7 +53,7 @@ namespace Comrade.Application.Services
 
             var skip = (paginationFilter.PageNumber - 1) * paginationFilter.PageSize;
 
-            list = await Task.Run(() => _repository.GetAll().Skip(skip).Take(paginationFilter.PageSize)
+            list = await Task.Run(() => _repository.GetAllAsNoTracking().Skip(skip).Take(paginationFilter.PageSize)
                 .ProjectTo<AirplaneDto>(Mapper.ConfigurationProvider)
                 .ToList()).ConfigureAwait(false);
 
@@ -78,9 +78,9 @@ namespace Comrade.Application.Services
                 return new SingleResultDto<EntityDto>(results);
             }
 
-            var evento = Mapper.Map<Airplane>(dto);
+            var mappedObject = Mapper.Map<Airplane>(dto);
 
-            var result = await _createAirplaneUseCase.Execute(evento).ConfigureAwait(false);
+            var result = await _createAirplaneUseCase.Execute(mappedObject).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);
@@ -100,9 +100,9 @@ namespace Comrade.Application.Services
                 return new SingleResultDto<EntityDto>(listErrors);
             }
 
-            var evento = Mapper.Map<Airplane>(dto);
+            var mappedObject = Mapper.Map<Airplane>(dto);
 
-            var result = await _editAirplaneUseCase.Execute(evento).ConfigureAwait(false);
+            var result = await _editAirplaneUseCase.Execute(mappedObject).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);
