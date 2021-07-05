@@ -27,13 +27,5 @@ namespace Comrade.Core.Helpers.Models.Validations
 
             return new SingleResult<TEntity>(entity);
         }
-
-        public async Task<ISingleResult<TEntity>> RegisterWithSameCode(int id, string code)
-        {
-            var result = await _repository.ValueExists(id, code).ConfigureAwait(false);
-            if (result) return new SingleResult<TEntity>(BusinessMessage.MSG08);
-
-            return new SingleResult<TEntity>();
-        }
     }
 }

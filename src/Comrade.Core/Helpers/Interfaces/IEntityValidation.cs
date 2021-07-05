@@ -11,7 +11,6 @@ namespace Comrade.Core.Helpers.Interfaces
         where TEntity : IEntity
     {
         Task<ISingleResult<TEntity>> RecordExists(int id, params string[] includes);
-
-        Task<ISingleResult<TEntity>> RegisterWithSameCode(int id, string code);
+        
     }
 }
