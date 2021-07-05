@@ -38,9 +38,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="Dockerfile" />
-		<None Remove="entrypoint.sh" />
-		<None Remove="key-40a7862b-8b22-41a0-a02b-49d4ca005738.xml" />
+		<Name Remove="Dockerfile" />
+		<Name Remove="entrypoint.sh" />
+		<Name Remove="key-40a7862b-8b22-41a0-a02b-49d4ca005738.xml" />
 	</ItemGroup>
 
 	<ItemGroup>

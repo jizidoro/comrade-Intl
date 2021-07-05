@@ -56,7 +56,7 @@ namespace Comrade.IntegrationTests.Tests.LookupIntegrationTests
         public async Task GetLookupSystemUserPredicateMemDb_Test()
         {
             var commonController = GetCommonControllerMemDb();
-            var result = await commonController.GetLookupPredicateSystemUserByNone("aa");
+            var result = await commonController.GetLookupPredicateSystemUserByName("aa");
 
             if (result is OkObjectResult okResult)
             {
@@ -68,10 +68,10 @@ namespace Comrade.IntegrationTests.Tests.LookupIntegrationTests
         }
 
         [Fact]
-        public async Task GetLookupSystemUserByNone_Test()
+        public async Task GetLookupSystemUserByName_Test()
         {
             var commonController = GetCommonControllerMemDb();
-            var result = await commonController.GetLookupSystemUserByNone("aa");
+            var result = await commonController.GetLookupSystemUserByName("aa");
 
             if (result is OkObjectResult okResult)
             {

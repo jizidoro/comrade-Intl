@@ -53,7 +53,7 @@ namespace Comrade.WebApi.UseCases.V1
 
         [HttpGet]
         [Route("lookup-predicate-system-user-by-name/{name}")]
-        public async Task<IActionResult> GetLookupPredicateSystemUserByNone(string name)
+        public async Task<IActionResult> GetLookupPredicateSystemUserByName(string name)
         {
             try
             {
@@ -72,7 +72,7 @@ namespace Comrade.WebApi.UseCases.V1
 
         [HttpGet]
         [Route("lookup-system-user-by-name/{name}")]
-        public async Task<IActionResult> GetLookupSystemUserByNone(string name)
+        public async Task<IActionResult> GetLookupSystemUserByName(string name)
         {
             try
             {

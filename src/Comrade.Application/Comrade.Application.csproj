@@ -23,8 +23,8 @@
 		<Compile Remove="Spreadsheets\ImportMappings\**" />
 		<EmbeddedResource Remove="EventSourcedNormalizers\**" />
 		<EmbeddedResource Remove="Spreadsheets\ImportMappings\**" />
-		<None Remove="EventSourcedNormalizers\**" />
-		<None Remove="Spreadsheets\ImportMappings\**" />
+		<Name Remove="EventSourcedNormalizers\**" />
+		<Name Remove="Spreadsheets\ImportMappings\**" />
 	</ItemGroup>
 
 	<ItemGroup>

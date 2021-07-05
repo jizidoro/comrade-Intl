@@ -12,8 +12,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="Helpers\appsettings.Development.json" />
-		<None Remove="Helpers\appsettings.json" />
+		<Name Remove="Helpers\appsettings.Development.json" />
+		<Name Remove="Helpers\appsettings.json" />
 	</ItemGroup>
 
 	<ItemGroup>
