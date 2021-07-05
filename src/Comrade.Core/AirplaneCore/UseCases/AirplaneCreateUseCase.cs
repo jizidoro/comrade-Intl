@@ -30,25 +30,18 @@ namespace Comrade.Core.AirplaneCore.UseCases
 
         public async Task<ISingleResult<Airplane>> Execute(Airplane entity)
         {
-            try
+            var isValid = ValidateEntity(entity);
+            if (!isValid.Success)
             {
-                var isValid = ValidateEntity(entity);
-                if (!isValid.Success)
-                {
-                    return isValid;
-                }
-
-                var validate = await _airplaneCreateValidation.Execute(entity).ConfigureAwait(false);
-                if (!validate.Success) return validate;
-                entity.RegisterDate = DateTimeBrasilia.GetDateTimeBrasilia();
-                await _repository.Add(entity).ConfigureAwait(false);
-
-                _ = await Commit().ConfigureAwait(false);
+                return isValid;
             }
-            catch (Exception ex)
-            {
-                return new CreateResult<Airplane>(ex);
-            }
+
+            var validate = await _airplaneCreateValidation.Execute(entity).ConfigureAwait(false);
+            if (!validate.Success) return validate;
+            entity.RegisterDate = DateTimeBrasilia.GetDateTimeBrasilia();
+            await _repository.Add(entity).ConfigureAwait(false);
+
+            _ = await Commit().ConfigureAwait(false);
 
             return new CreateResult<Airplane>(true,
                 BusinessMessage.ResourceManager.GetString("MSG01", CultureInfo.CurrentCulture));

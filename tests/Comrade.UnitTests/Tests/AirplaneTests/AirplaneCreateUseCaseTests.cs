@@ -1,5 +1,6 @@
 #region
 
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Comrade.Domain.Extensions;
@@ -64,9 +65,15 @@ namespace Comrade.UnitTests.Tests.AirplaneTests
             await using var context = new ComradeContext(options);
 
             var airplaneCreateUseCase = _airplaneInjectionUseCase.GetAirplaneCreateUseCase(context);
-            var result = await airplaneCreateUseCase.Execute(testObject);
-
-            Assert.Equal(500, result.Code);
+            try
+            {
+                var result = await airplaneCreateUseCase.Execute(testObject);
+                Assert.True(false);
+            }
+            catch (Exception e)
+            {
+                Assert.NotEmpty(e.Message);
+            }
         }
     }
 }

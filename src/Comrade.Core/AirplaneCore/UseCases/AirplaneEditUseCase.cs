@@ -1,10 +1,12 @@
 ﻿#region
 
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using Comrade.Core.AirplaneCore.Validations;
 using Comrade.Core.Helpers.Bases;
 using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Messages;
 using Comrade.Core.Helpers.Models.Results;
 using Comrade.Domain.Models;
 
@@ -27,31 +29,25 @@ namespace Comrade.Core.AirplaneCore.UseCases
 
         public async Task<ISingleResult<Airplane>> Execute(Airplane entity)
         {
-            try
+            var isValid = ValidateEntity(entity);
+            if (!isValid.Success)
             {
-                var isValid = ValidateEntity(entity);
-                if (!isValid.Success)
-                {
-                    return isValid;
-                }
-
-                var result = await _airplaneEditValidation.Execute(entity).ConfigureAwait(false);
-                if (!result.Success) return result;
-
-                var obj = result.Data!;
-
-                HydrateValues(obj, entity);
-
-                _repository.Update(obj);
-
-                _ = await Commit().ConfigureAwait(false);
-            }
-            catch (Exception ex)
-            {
-                return new EditResult<Airplane>(ex);
+                return isValid;
             }
 
-            return new EditResult<Airplane>();
+            var result = await _airplaneEditValidation.Execute(entity).ConfigureAwait(false);
+            if (!result.Success) return result;
+
+            var obj = result.Data!;
+
+            HydrateValues(obj, entity);
+
+            _repository.Update(obj);
+
+            _ = await Commit().ConfigureAwait(false);
+
+            return new EditResult<Airplane>(true,
+                BusinessMessage.ResourceManager.GetString("MSG02", CultureInfo.CurrentCulture));
         }
 
         private static void HydrateValues(Airplane target, Airplane source)

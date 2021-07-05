@@ -28,19 +28,12 @@ namespace Comrade.Core.SystemUserCore.UseCases
 
         public async Task<ISingleResult<SystemUser>> Execute(int id)
         {
-            try
-            {
-                var validate = await _systemUserDeleteValidation.Execute(id).ConfigureAwait(false);
-                if (!validate.Success) return validate;
+            var validate = await _systemUserDeleteValidation.Execute(id).ConfigureAwait(false);
+            if (!validate.Success) return validate;
 
-                _repository.Remove(id);
+            _repository.Remove(id);
 
-                _ = await Commit().ConfigureAwait(false);
-            }
-            catch (Exception ex)
-            {
-                return new DeleteResult<SystemUser>(ex);
-            }
+            _ = await Commit().ConfigureAwait(false);
 
             return new DeleteResult<SystemUser>();
         }

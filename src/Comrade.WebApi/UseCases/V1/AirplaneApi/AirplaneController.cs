@@ -43,6 +43,9 @@ namespace Comrade.WebApi.UseCases.V1.AirplaneApi
 
         [HttpGet]
         [Route("get-all")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(SingleResultDto<EntityDto>), StatusCodes.Status500InternalServerError)]
+        [ProducesDefaultResponseType]
         public async Task<IActionResult> GetAll([FromQuery] PaginationQuery? paginationQuery)
         {
             try
@@ -58,7 +61,7 @@ namespace Comrade.WebApi.UseCases.V1.AirplaneApi
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<EntityDto>(e));
+                return StatusCode(StatusCodes.Status500InternalServerError, new SingleResultDto<EntityDto>(e));
             }
         }
 
@@ -68,6 +71,9 @@ namespace Comrade.WebApi.UseCases.V1.AirplaneApi
         /// <param name="id"></param>
         [HttpGet]
         [Route("get-by-id/{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(SingleResultDto<EntityDto>), StatusCodes.Status500InternalServerError)]
+        [ProducesDefaultResponseType]
         public async Task<IActionResult> GetById(int id)
         {
             try
@@ -77,12 +83,15 @@ namespace Comrade.WebApi.UseCases.V1.AirplaneApi
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<EntityDto>(e));
+                return StatusCode(StatusCodes.Status500InternalServerError, new SingleResultDto<EntityDto>(e));
             }
         }
 
         [Route("create")]
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(SingleResultDto<EntityDto>), StatusCodes.Status500InternalServerError)]
+        [ProducesDefaultResponseType]
         public async Task<IActionResult> Create([FromBody] AirplaneCreateDto dto)
         {
             try
@@ -92,12 +101,15 @@ namespace Comrade.WebApi.UseCases.V1.AirplaneApi
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<EntityDto>(e));
+                return StatusCode(StatusCodes.Status500InternalServerError, new SingleResultDto<EntityDto>(e));
             }
         }
 
         [HttpPut]
         [Route("edit")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(SingleResultDto<EntityDto>), StatusCodes.Status500InternalServerError)]
+        [ProducesDefaultResponseType]
         public async Task<IActionResult> Edit([FromBody] AirplaneEditDto dto)
         {
             try
@@ -107,14 +119,15 @@ namespace Comrade.WebApi.UseCases.V1.AirplaneApi
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<EntityDto>(e));
+                return StatusCode(StatusCodes.Status500InternalServerError, new SingleResultDto<EntityDto>(e));
             }
         }
 
         [HttpDelete]
         [Route("delete/{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ISingleResultDto<EntityDto>))]
-        [ApiConventionMethod(typeof(CustomApiConventions), nameof(CustomApiConventions.Delete))]
+        [ProducesResponseType(typeof(SingleResultDto<EntityDto>), StatusCodes.Status500InternalServerError)]
+        [ProducesDefaultResponseType]
         public async Task<IActionResult> Delete(int id)
         {
             try
@@ -124,7 +137,7 @@ namespace Comrade.WebApi.UseCases.V1.AirplaneApi
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<EntityDto>(e));
+                return StatusCode(StatusCodes.Status500InternalServerError, new SingleResultDto<EntityDto>(e));
             }
         }
     }

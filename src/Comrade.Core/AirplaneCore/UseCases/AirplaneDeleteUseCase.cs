@@ -29,19 +29,12 @@ namespace Comrade.Core.AirplaneCore.UseCases
 
         public async Task<ISingleResult<Airplane>> Execute(int id)
         {
-            try
-            {
-                var validate = await _airplaneDeleteValidation.Execute(id).ConfigureAwait(false);
-                if (!validate.Success) return validate;
+            var validate = await _airplaneDeleteValidation.Execute(id).ConfigureAwait(false);
+            if (!validate.Success) return validate;
 
-                _repository.Remove(id);
+            _repository.Remove(id);
 
-                _ = await Commit().ConfigureAwait(false);
-            }
-            catch (Exception ex)
-            {
-                return new DeleteResult<Airplane>(ex);
-            }
+            _ = await Commit().ConfigureAwait(false);
 
             return new DeleteResult<Airplane>(true,
                 BusinessMessage.ResourceManager.GetString("MSG03", CultureInfo.CurrentCulture));

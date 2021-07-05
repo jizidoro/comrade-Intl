@@ -27,29 +27,22 @@ namespace Comrade.Core.SystemUserCore.UseCases
 
         public async Task<ISingleResult<SystemUser>> Execute(SystemUser entity)
         {
-            try
+            var isValid = ValidateEntity(entity);
+            if (!isValid.Success)
             {
-                var isValid = ValidateEntity(entity);
-                if (!isValid.Success)
-                {
-                    return isValid;
-                }
-
-                var result = await _systemUserEditValidation.Execute(entity).ConfigureAwait(false);
-                if (!result.Success) return result;
-
-                var obj = result.Data!;
-
-                HydrateValues(obj, entity);
-
-                _repository.Update(obj);
-
-                _ = await Commit().ConfigureAwait(false);
+                return isValid;
             }
-            catch (Exception ex)
-            {
-                return new SingleResult<SystemUser>(ex);
-            }
+
+            var result = await _systemUserEditValidation.Execute(entity).ConfigureAwait(false);
+            if (!result.Success) return result;
+
+            var obj = result.Data!;
+
+            HydrateValues(obj, entity);
+
+            _repository.Update(obj);
+
+            _ = await Commit().ConfigureAwait(false);
 
             return new EditResult<SystemUser>();
         }

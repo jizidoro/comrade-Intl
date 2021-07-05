@@ -6,6 +6,7 @@ using Comrade.Application.Bases;
 using Comrade.Application.Dtos;
 using Comrade.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 #endregion
@@ -29,6 +30,9 @@ namespace Comrade.WebApi.UseCases.V1.LoginApi
 
         [HttpPost]
         [Route("update-password")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(SingleResultDto<EntityDto>), StatusCodes.Status500InternalServerError)]
+        [ProducesDefaultResponseType]
         public async Task<IActionResult> UpdatePassword([FromBody] AuthenticationDto dto)
         {
             try
@@ -38,12 +42,15 @@ namespace Comrade.WebApi.UseCases.V1.LoginApi
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<EntityDto>(e));
+                return StatusCode(StatusCodes.Status500InternalServerError, new SingleResultDto<EntityDto>(e));
             }
         }
 
         [HttpPost]
         [Route("forgot-password")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(SingleResultDto<EntityDto>), StatusCodes.Status500InternalServerError)]
+        [ProducesDefaultResponseType]
         public async Task<IActionResult> ForgotPassword([FromBody] AuthenticationDto dto)
         {
             try
@@ -53,7 +60,7 @@ namespace Comrade.WebApi.UseCases.V1.LoginApi
             }
             catch (Exception e)
             {
-                return Ok(new SingleResultDto<EntityDto>(e));
+                return StatusCode(StatusCodes.Status500InternalServerError, new SingleResultDto<EntityDto>(e));
             }
         }
     }

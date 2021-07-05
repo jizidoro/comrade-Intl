@@ -43,14 +43,6 @@ namespace Comrade.Core.Helpers.Models.Results
             Message = message;
         }
 
-        public SingleResult(Exception ex)
-        {
-            Code = (int) EnumResponse.ErrorServer;
-            Success = false;
-            Message = ex.Message;
-            ExceptionMessage = ex.Message;
-        }
-
         public SingleResult(TEntity? data)
         {
             Code = data == null ? (int) EnumResponse.ErrorNotFound : (int) EnumResponse.Success;

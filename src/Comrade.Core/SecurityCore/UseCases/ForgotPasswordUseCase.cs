@@ -32,24 +32,17 @@ namespace Comrade.Core.SecurityCore.UseCases
 
         public async Task<ISingleResult<SystemUser>> Execute(SystemUser entity)
         {
-            try
-            {
-                var result = _systemUserForgotPasswordValidation.Execute(entity);
-                if (!result.Success) return result;
+            var result = _systemUserForgotPasswordValidation.Execute(entity);
+            if (!result.Success) return result;
 
-                var obj = result.Data!;
+            var obj = result.Data!;
 
-                HydrateValues(obj);
+            HydrateValues(obj);
 
-                _repository.Update(obj);
+            _repository.Update(obj);
 
-                _ = await Commit().ConfigureAwait(false);
-            }
-            catch (Exception ex)
-            {
-                return new SingleResult<SystemUser>(ex);
-            }
-
+            _ = await Commit().ConfigureAwait(false);
+            
             return new EditResult<SystemUser>();
         }
 

@@ -26,13 +26,5 @@ namespace Comrade.Core.Helpers.Models.Results
             Success = success;
             Message = message;
         }
-
-        public CreateResult(Exception ex)
-        {
-            Code = (int) EnumResponse.ErrorServer;
-            Success = false;
-            ExceptionMessage = ex.Message;
-            Message = BusinessMessage.ResourceManager.GetString("MSG07", CultureInfo.CurrentCulture);
-        }
     }
 }

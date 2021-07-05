@@ -29,29 +29,22 @@ namespace Comrade.Core.SystemUserCore.UseCases
 
         public async Task<ISingleResult<SystemUser>> Execute(SystemUser entity)
         {
-            try
+            var isValid = ValidateEntity(entity);
+            if (!isValid.Success)
             {
-                var isValid = ValidateEntity(entity);
-                if (!isValid.Success)
-                {
-                    return isValid;
-                }
-
-                var validate = SystemUserCreateValidation.Execute(entity);
-                if (!validate.Success) return validate;
-
-                entity.Password = _passwordHasher.Hash(entity.Password);
-                entity.RegisterDate = DateTimeBrasilia.GetDateTimeBrasilia();
-
-                await _repository.Add(entity).ConfigureAwait(false);
-
-                _ = await Commit().ConfigureAwait(false);
-            }
-            catch (Exception)
-            {
-                return new SingleResult<SystemUser>(BusinessMessage.MSG07);
+                return isValid;
             }
 
+            var validate = SystemUserCreateValidation.Execute(entity);
+            if (!validate.Success) return validate;
+
+            entity.Password = _passwordHasher.Hash(entity.Password);
+            entity.RegisterDate = DateTimeBrasilia.GetDateTimeBrasilia();
+
+            await _repository.Add(entity).ConfigureAwait(false);
+
+            _ = await Commit().ConfigureAwait(false);
+            
             return new CreateResult<SystemUser>();
         }
     }
