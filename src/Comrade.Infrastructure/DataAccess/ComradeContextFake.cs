@@ -39,6 +39,11 @@ namespace Comrade.Infrastructure.DataAccess
                     var oto2 = JsonUtilities.GetListFromJson<SystemUser>(systemUsers);
                     context.SystemUsers!.AddRange(oto2!);
 
+                    if (context.Airplanes!.Any())
+                    {
+                        return true;
+                    }
+
                     context.SaveChanges();
                 }
             }

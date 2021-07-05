@@ -10,9 +10,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Name Remove="SeedData\Sheets\basicSheet.xlsx" />
-		<Name Remove="SeedData\airplane.json" />
-		<Name Remove="SeedData\systemUser.json" />
+		<None Remove="SeedData\Sheets\basicSheet.xlsx" />
+		<None Remove="SeedData\airplane.json" />
+		<None Remove="SeedData\systemUser.json" />
 	</ItemGroup>
 
 	<ItemGroup>

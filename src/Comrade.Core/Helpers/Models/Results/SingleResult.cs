@@ -63,8 +63,6 @@ namespace Comrade.Core.Helpers.Models.Results
 
         public string? ExceptionMessage { get; set; }
         public IEnumerable<string>? Messages { get; set; }
-
-
         public int Code { get; set; }
         public bool Success { get; set; }
         public string? Message { get; set; }

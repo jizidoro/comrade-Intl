@@ -35,7 +35,7 @@ namespace Comrade.Domain.Models
         [Column("AIRP_TX_MODELO", TypeName = "varchar")]
         [MaxLength(255)]
         [Required(ErrorMessage = "Model is required")]
-        public string Model { get; set; }
+        public string? Model { get; set; }
 
         [Column("AIRP_QT_PASSAGEIRO", TypeName = "int")]
         [Required(ErrorMessage = "PassengerQuantity is required")]
