@@ -46,7 +46,7 @@ namespace Comrade.WebApi.UseCases.V2.SystemUserApi
                     paginationFilter = _mapper.Map<PaginationQuery, PaginationFilter>(paginationQuery);
                 }
 
-                var result = await _systemUserAppService.GetAll(paginationFilter);
+                var result = await _systemUserAppService.GetAll(paginationFilter).ConfigureAwait(false);
                 return Ok(result);
             }
             catch (Exception e)
@@ -62,7 +62,7 @@ namespace Comrade.WebApi.UseCases.V2.SystemUserApi
         {
             try
             {
-                var result = await _systemUserAppService.GetById(id);
+                var result = await _systemUserAppService.GetById(id).ConfigureAwait(false);
                 return Ok(result);
             }
             catch (Exception e)
@@ -77,7 +77,7 @@ namespace Comrade.WebApi.UseCases.V2.SystemUserApi
         {
             try
             {
-                var result = await _systemUserAppService.Create(dto);
+                var result = await _systemUserAppService.Create(dto).ConfigureAwait(false);
                 return Ok(result);
             }
             catch (Exception e)
@@ -92,7 +92,7 @@ namespace Comrade.WebApi.UseCases.V2.SystemUserApi
         {
             try
             {
-                var result = await _systemUserAppService.Edit(dto);
+                var result = await _systemUserAppService.Edit(dto).ConfigureAwait(false);
                 return Ok(result);
             }
             catch (Exception e)
@@ -107,7 +107,7 @@ namespace Comrade.WebApi.UseCases.V2.SystemUserApi
         {
             try
             {
-                var result = await _systemUserAppService.Delete(id);
+                var result = await _systemUserAppService.Delete(id).ConfigureAwait(false);
                 return Ok(result);
             }
             catch (Exception e)

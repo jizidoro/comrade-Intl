@@ -39,7 +39,7 @@ namespace Comrade.Infrastructure.DataAccess
                     var oto2 = JsonUtilities.GetListFromJson<SystemUser>(systemUsers);
                     context.SystemUsers!.AddRange(oto2!);
 
-                    context?.SaveChanges();
+                    context.SaveChanges();
                 }
             }
 

@@ -1,5 +1,6 @@
 ﻿#region
 
+using System.Globalization;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +13,7 @@ namespace Comrade.WebApi.Bases
         [NonAction]
         protected int? GetUserId()
         {
-            return User != null ? int.Parse(User.Claims.First(i => i.Type == "Key").Value) : 0;
+            return User != null ? int.Parse(User.Claims.First(i => i.Type == "Key").Value, CultureInfo.CurrentCulture) : 0;
         }
     }
 }

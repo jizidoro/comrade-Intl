@@ -30,7 +30,7 @@ namespace Comrade.WebApi.UseCases.V1.LoginApi
         [Route("generate-token")]
         public async Task<ActionResult> GenerateToken([FromBody] AuthenticationDto dto)
         {
-            var result = await _authenticationAppService.GenerateToken(dto);
+            var result = await _authenticationAppService.GenerateToken(dto).ConfigureAwait(false);
 
             return Ok(result);
         }

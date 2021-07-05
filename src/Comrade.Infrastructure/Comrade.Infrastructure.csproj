@@ -2,38 +2,24 @@
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
-		<NoWarn>$(NoWarn);S3881;CA1002;CA1014;CA1062;CA1812;1591</NoWarn>
+		<NoWarn>$(NoWarn);CA1002;CA1014;CA1062;1591</NoWarn>
 		<Nullable>enable</Nullable>
 		<NullableReferenceTypes>true</NullableReferenceTypes>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NeutralLanguage>en</NeutralLanguage>
 		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!-- Code Analyzers -->
-		<PackageReference Include="SonarAnalyzer.CSharp" Version="8.25.0.33663">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-		</PackageReference>
-	</ItemGroup>
-
-	<ItemGroup>
-		<Name Remove="SeedData\airplane.json" />
-		<Name Remove="SeedData\autenticacao.json" />
-		<Name Remove="SeedData\Authentication.json" />
 		<Name Remove="SeedData\Sheets\basicSheet.xlsx" />
+		<Name Remove="SeedData\airplane.json" />
 		<Name Remove="SeedData\systemUser.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="SeedData\airplane.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="SeedData\autenticacao.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</EmbeddedResource>
 		<EmbeddedResource Include="SeedData\Sheets\basicSheet.xlsx">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="SeedData\airplane.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="SeedData\systemUser.json">
@@ -57,6 +43,10 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="5.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="SonarAnalyzer.CSharp" Version="8.25.0.33663">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup>

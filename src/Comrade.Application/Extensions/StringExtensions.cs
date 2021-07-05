@@ -19,9 +19,9 @@ namespace Comrade.Application.Extensions
                 new CultureInfo("pt-BR", false)
                     .TextInfo
                     .ToTitleCase(
-                        string.Join(" ", pattern.Matches(source)).ToLower()
+                        string.Join(" ", pattern.Matches(source)).ToLower(CultureInfo.CurrentCulture)
                     )
-                    .Replace(@" ", "")
+                    .Replace(@" ", "", StringComparison.CurrentCulture)
                     .Select((x, i) => i == 0 ? char.ToLower(x, CultureInfo.CurrentCulture) : x)
                     .ToArray()
             );
@@ -46,9 +46,9 @@ namespace Comrade.Application.Extensions
                 new CultureInfo("pt-BR", false)
                     .TextInfo
                     .ToTitleCase(
-                        string.Join(" ", pattern.Matches(source)).ToLower()
+                        string.Join(" ", pattern.Matches(source)).ToLower(CultureInfo.CurrentCulture)
                     )
-                    .Replace(@" ", "")
+                    .Replace(@" ", "", StringComparison.CurrentCulture)
                     .Select((x, i) => i == 0 ? char.ToUpper(x, CultureInfo.CurrentCulture) : x)
                     .ToArray()
             );

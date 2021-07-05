@@ -1,6 +1,7 @@
 ﻿#region
 
 using System.Collections.Generic;
+using System.Globalization;
 using Comrade.Application.BaseInterfaces;
 using Comrade.Core.Helpers.Messages;
 using Comrade.Domain.Enums;
@@ -17,7 +18,9 @@ namespace Comrade.Application.Bases
             Data = data;
             Code = data == null ? (int) EnumResponse.ErrorNotFound : (int) EnumResponse.Success;
             Success = data != null;
-            Message = data == null ? BusinessMessage.ResourceManager.GetString("MSG04") : string.Empty;
+            Message = data == null
+                ? BusinessMessage.ResourceManager.GetString("MSG04", CultureInfo.CurrentCulture)
+                : string.Empty;
         }
 
         public IList<T>? Data { get; set; }

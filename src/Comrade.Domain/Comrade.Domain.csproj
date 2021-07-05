@@ -5,13 +5,19 @@
 		<NoWarn>$(NoWarn);CA1014;CA1062;1591</NoWarn>
 		<Nullable>enable</Nullable>
 		<NullableReferenceTypes>true</NullableReferenceTypes>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NeutralLanguage>en</NeutralLanguage>
 		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<Folder Include="Models\Views\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="SonarAnalyzer.CSharp" Version="8.25.0.33663">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
 	</ItemGroup>
 
 </Project>

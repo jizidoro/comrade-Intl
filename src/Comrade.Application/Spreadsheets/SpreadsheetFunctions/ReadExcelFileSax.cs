@@ -18,81 +18,74 @@ namespace Comrade.Application.Spreadsheets.SpreadsheetFunctions
     {
         public static List<Dictionary<string, string>> Execute(IFormFile fileImport)
         {
-            try
-            {
-                using var streamFile = fileImport.OpenReadStream();
-                using var spreadsheetDocument = SpreadsheetDocument.Open(streamFile, false);
-                var workbookPart = spreadsheetDocument.WorkbookPart;
+            using var streamFile = fileImport.OpenReadStream();
+            using var spreadsheetDocument = SpreadsheetDocument.Open(streamFile, false);
+            var workbookPart = spreadsheetDocument.WorkbookPart;
 
-                var lineData = new List<Dictionary<string, string>>();
+            var lineData = new List<Dictionary<string, string>>();
 
-                if (workbookPart != null)
-                    foreach (var worksheetPart in workbookPart.WorksheetParts)
+            if (workbookPart != null)
+                foreach (var worksheetPart in workbookPart.WorksheetParts)
+                {
+                    var lineInfo = new Dictionary<string, string>();
+                    var reader = OpenXmlReader.Create(worksheetPart);
+                    while (reader.Read())
                     {
-                        var lineInfo = new Dictionary<string, string>();
-                        var reader = OpenXmlReader.Create(worksheetPart);
-                        while (reader.Read())
+                        if (reader.ElementType == typeof(Row))
                         {
-                            if (reader.ElementType == typeof(Row))
-                            {
-                                reader.ReadFirstChild();
+                            reader.ReadFirstChild();
 
-                                do
+                            do
+                            {
+                                if (reader.ElementType == typeof(Cell))
                                 {
-                                    if (reader.ElementType == typeof(Cell))
+                                    var cell = (Cell) reader.LoadCurrentElement()!;
+
+                                    string? cellValue;
+
+                                    if (cell.DataType != null && cell.DataType == CellValues.SharedString)
                                     {
-                                        var cell = (Cell) reader.LoadCurrentElement()!;
+                                        var cellPosition = cell.CellValue!.InnerText.ToInt32();
 
-                                        string? cellValue;
+                                        var ssi = workbookPart.SharedStringTablePart?.SharedStringTable
+                                            .Elements<SharedStringItem>()
+                                            .ElementAt(cellPosition);
 
-                                        if (cell.DataType != null && cell.DataType == CellValues.SharedString)
-                                        {
-                                            var cellPosition = cell.CellValue!.InnerText.ToInt32();
-
-                                            var ssi = workbookPart.SharedStringTablePart?.SharedStringTable
-                                                .Elements<SharedStringItem>()
-                                                .ElementAt(cellPosition);
-
-                                            cellValue = ssi?.Text?.Text;
-                                        }
-                                        else
-                                        {
-                                            cellValue = cell?.CellValue?.InnerText;
-                                        }
-
-                                        var infoCell = cell?.CellReference;
-
-                                        var column = Regex.Replace(infoCell!, @"[\d-]", string.Empty);
-                                        if (cellValue != null)
-                                        {
-                                            lineInfo.Add(column, cellValue);
-                                        }
+                                        cellValue = ssi?.Text?.Text;
                                     }
-                                } while (reader.ReadNextSibling());
-                            }
+                                    else
+                                    {
+                                        cellValue = cell?.CellValue?.InnerText;
+                                    }
 
-                            if (lineInfo.Count > 0)
-                            {
-                                var content = lineInfo.Select(x => x.Value != null).Any();
+                                    var infoCell = cell?.CellReference;
 
-                                if (content)
-                                {
-                                    lineData.Add(lineInfo);
-                                    lineInfo = new Dictionary<string, string>();
+                                    var column = Regex.Replace(infoCell!, @"[\d-]", string.Empty);
+                                    if (cellValue != null)
+                                    {
+                                        lineInfo.Add(column, cellValue);
+                                    }
                                 }
-                            }
+                            } while (reader.ReadNextSibling());
                         }
 
-                        reader.Dispose();
+                        if (lineInfo.Count > 0)
+                        {
+                            var content = lineInfo.Select(x => x.Value != null).Any();
+
+                            if (content)
+                            {
+                                lineData.Add(lineInfo);
+                                lineInfo = new Dictionary<string, string>();
+                            }
+                        }
                     }
 
-                streamFile.Close();
-                return lineData;
-            }
-            catch (Exception)
-            {
-                return new List<Dictionary<string, string>>();
-            }
+                    reader.Dispose();
+                }
+
+            streamFile.Close();
+            return lineData;
         }
     }
 }

@@ -53,7 +53,7 @@ namespace Comrade.WebApi.UseCases.V1.AirplaneApi
                     paginationFilter = _mapper.Map<PaginationQuery, PaginationFilter>(paginationQuery);
                 }
 
-                var result = await _airplaneAppService.GetAll(paginationFilter);
+                var result = await _airplaneAppService.GetAll(paginationFilter).ConfigureAwait(false);
                 return Ok(result);
             }
             catch (Exception e)
@@ -72,7 +72,7 @@ namespace Comrade.WebApi.UseCases.V1.AirplaneApi
         {
             try
             {
-                var result = await _airplaneAppService.GetById(id);
+                var result = await _airplaneAppService.GetById(id).ConfigureAwait(false);
                 return Ok(result);
             }
             catch (Exception e)
@@ -87,7 +87,7 @@ namespace Comrade.WebApi.UseCases.V1.AirplaneApi
         {
             try
             {
-                var result = await _airplaneAppService.Create(dto);
+                var result = await _airplaneAppService.Create(dto).ConfigureAwait(false);
                 return Ok(result);
             }
             catch (Exception e)
@@ -102,7 +102,7 @@ namespace Comrade.WebApi.UseCases.V1.AirplaneApi
         {
             try
             {
-                var result = await _airplaneAppService.Edit(dto);
+                var result = await _airplaneAppService.Edit(dto).ConfigureAwait(false);
                 return Ok(result);
             }
             catch (Exception e)
@@ -119,7 +119,7 @@ namespace Comrade.WebApi.UseCases.V1.AirplaneApi
         {
             try
             {
-                var result = await _airplaneAppService.Delete(id);
+                var result = await _airplaneAppService.Delete(id).ConfigureAwait(false);
                 return Ok(result);
             }
             catch (Exception e)

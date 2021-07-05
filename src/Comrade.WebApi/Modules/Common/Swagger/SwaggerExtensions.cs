@@ -1,8 +1,10 @@
 #region
 
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Comrade.WebApi.Modules.Common.FeatureFlags;
+using DocumentFormat.OpenXml.Office2010.ExcelAc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
@@ -74,7 +76,7 @@ namespace Comrade.WebApi.Modules.Common.Swagger
                                             Type = ReferenceType.SecurityScheme, Id = "Bearer"
                                         }
                                     },
-                                    new string[] { }
+                                    new List<string>()
                                 }
                             });
                         });

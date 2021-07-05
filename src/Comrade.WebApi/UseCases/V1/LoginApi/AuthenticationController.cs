@@ -33,7 +33,7 @@ namespace Comrade.WebApi.UseCases.V1.LoginApi
         {
             try
             {
-                var result = await _authenticationAppService.UpdatePassword(dto);
+                var result = await _authenticationAppService.UpdatePassword(dto).ConfigureAwait(false);
                 return Ok(result);
             }
             catch (Exception e)
@@ -48,7 +48,7 @@ namespace Comrade.WebApi.UseCases.V1.LoginApi
         {
             try
             {
-                var result = await _authenticationAppService.ForgotPassword(dto);
+                var result = await _authenticationAppService.ForgotPassword(dto).ConfigureAwait(false);
                 return Ok(result);
             }
             catch (Exception e)
