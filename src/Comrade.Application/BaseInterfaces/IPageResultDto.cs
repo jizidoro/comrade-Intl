@@ -10,6 +10,6 @@ namespace Comrade.Application.BaseInterfaces
     public interface IPageResultDto<TDto> : IResultDto
         where TDto : Dto
     {
-        IList<TDto> Data { get; set; }
+        IList<TDto>? Data { get; set; }
     }
 }

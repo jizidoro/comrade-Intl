@@ -29,9 +29,9 @@ namespace Comrade.Infrastructure.Repositories
 
         public async Task<ISingleResult<Airplane>> ValidateSameCode(int id, string code)
         {
-            var exists = await Db.Airplanes
-                .Where(p => p.Id != id && p.Code.Equals(code))
-                .AnyAsync();
+            var exists = await Db.Airplanes!
+                .Where(p => p.Id != id && p.Code.Equals(code, StringComparison.Ordinal))
+                .AnyAsync().ConfigureAwait(false);
 
             return exists ? new SingleResult<Airplane>(BusinessMessage.MSG08) : new SingleResult<Airplane>();
         }

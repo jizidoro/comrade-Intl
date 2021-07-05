@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using Comrade.Core.AirplaneCore.Validations;
 using Comrade.Core.Helpers.Bases;
@@ -30,26 +31,26 @@ namespace Comrade.Core.AirplaneCore.UseCases
         {
             try
             {
-                var isValid = ValidateEntidade(entity);
+                var isValid = ValidateEntity(entity);
                 if (!isValid.Success)
                 {
                     return isValid;
                 }
 
-                var validate = await _airplaneCreateValidation.Execute(entity);
+                var validate = await _airplaneCreateValidation.Execute(entity).ConfigureAwait(false);
                 if (!validate.Success) return validate;
                 entity.RegisterDate = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow,
                     TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"));
-                await _repository.Add(entity);
+                await _repository.Add(entity).ConfigureAwait(false);
 
-                _ = await Commit();
+                _ = await Commit().ConfigureAwait(false);
             }
             catch (Exception ex) 
             {
                 return new CreateResult<Airplane>(ex);
             }
 
-            return new CreateResult<Airplane>(true, BusinessMessage.ResourceManager.GetString("MSG01"));
+            return new CreateResult<Airplane>(true, BusinessMessage.ResourceManager.GetString("MSG01",CultureInfo.CurrentCulture));
         }
     }
 }

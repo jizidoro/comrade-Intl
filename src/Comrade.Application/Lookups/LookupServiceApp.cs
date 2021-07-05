@@ -30,7 +30,7 @@ namespace Comrade.Application.Lookups
         {
             var list = await Task.Run(() => _repository.GetLookup()
                 .ProjectTo<LookupDto>(Mapper.ConfigurationProvider)
-                .ToList());
+                .ToList()).ConfigureAwait(false);
 
             if (list != null)
             {
@@ -44,7 +44,7 @@ namespace Comrade.Application.Lookups
         {
             var list = await Task.Run(() => _repository.GetLookup(predicate)
                 .ProjectTo<LookupDto>(Mapper.ConfigurationProvider)
-                .ToList());
+                .ToList()).ConfigureAwait(false);
 
             return list;
         }

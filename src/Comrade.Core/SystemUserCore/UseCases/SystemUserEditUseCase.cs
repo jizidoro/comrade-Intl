@@ -29,22 +29,22 @@ namespace Comrade.Core.SystemUserCore.UseCases
         {
             try
             {
-                var isValid = ValidateEntidade(entity);
+                var isValid = ValidateEntity(entity);
                 if (!isValid.Success)
                 {
                     return isValid;
                 }
 
-                var result = await _systemUserEditValidation.Execute(entity);
+                var result = await _systemUserEditValidation.Execute(entity).ConfigureAwait(false);
                 if (!result.Success) return result;
 
-                var obj = result.Data;
+                var obj = result.Data!;
 
                 HydrateValues(obj, entity);
 
                 _repository.Update(obj);
 
-                _ = await Commit();
+                _ = await Commit().ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -54,7 +54,7 @@ namespace Comrade.Core.SystemUserCore.UseCases
             return new EditResult<SystemUser>();
         }
 
-        private void HydrateValues(SystemUser target, SystemUser source)
+        private static void HydrateValues(SystemUser target, SystemUser source)
         {
             target.Name = source.Name;
             target.Email = source.Email;

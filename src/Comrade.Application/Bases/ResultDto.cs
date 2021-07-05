@@ -11,7 +11,8 @@ namespace Comrade.Application.Bases
     {
         public int Code { get; set; }
         public bool Success { get; set; }
-        public string Message { get; set; }
-        public IList<string> Messages { get; set; }
+        public string? ExceptionMessage { get; set; }
+        public string? Message { get; set; } = "";
+        public IList<string>? Messages { get; set; }
     }
 }

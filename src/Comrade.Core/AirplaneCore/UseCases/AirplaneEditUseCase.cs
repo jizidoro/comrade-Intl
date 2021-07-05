@@ -29,22 +29,22 @@ namespace Comrade.Core.AirplaneCore.UseCases
         {
             try
             {
-                var isValid = ValidateEntidade(entity);
+                var isValid = ValidateEntity(entity);
                 if (!isValid.Success)
                 {
                     return isValid;
                 }
 
-                var result = await _airplaneEditValidation.Execute(entity);
+                var result = await _airplaneEditValidation.Execute(entity).ConfigureAwait(false); 
                 if (!result.Success) return result;
 
-                var obj = result.Data;
+                var obj = result.Data!;
 
                 HydrateValues(obj, entity);
 
                 _repository.Update(obj);
 
-                _ = await Commit();
+                _ = await Commit().ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -54,7 +54,7 @@ namespace Comrade.Core.AirplaneCore.UseCases
             return new EditResult<Airplane>();
         }
 
-        private void HydrateValues(Airplane target, Airplane source)
+        private static void HydrateValues(Airplane target, Airplane source)
         {
             target.Code = source.Code;
             target.PassengerQuantity = source.PassengerQuantity;

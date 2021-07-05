@@ -31,12 +31,12 @@ namespace Comrade.Core.SystemUserCore.UseCases
         {
             try
             {
-                var validate = await _systemUserDeleteValidation.Execute(id);
+                var validate = await _systemUserDeleteValidation.Execute(id).ConfigureAwait(false);
                 if (!validate.Success) return validate;
 
                 _repository.Remove(id);
 
-                _ = await Commit();
+                _ = await Commit().ConfigureAwait(false);
             }
             catch (Exception ex)
             {

@@ -20,15 +20,13 @@ namespace Comrade.ComponentTests
 
             var generateTokenUseCase = new GenerateTokenUseCase(configuration);
 
-            var user = new TokenUser()
+            var roles = new List<string>()
             {
-                Key = "1",
-                Name = "Test",
-                Roles = new List<string>()
-                {
-                    "Test"
-                }
+                "Test"
             };
+
+            var user = new TokenUser("1", "Test", "", roles);
+
 
             var token = generateTokenUseCase.Execute(user);
             return token;

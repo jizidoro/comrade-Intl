@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Comrade.Core.Helpers.Interfaces;
 using Comrade.Core.Helpers.Messages;
 using Comrade.Domain.Enums;
@@ -16,20 +17,20 @@ namespace Comrade.Core.Helpers.Models.Results
     {
         public SingleResult()
         {
-            Code = (int) EnumResultadoAcao.Success;
+            Code = (int) EnumResponse.Success;
             Success = true;
         }
 
         public SingleResult(string message)
         {
-            Code = (int) EnumResultadoAcao.ErroValidacaoNegocio;
+            Code = (int) EnumResponse.ErrorBusinessValidation;
             Success = false;
             Message = message;
         }
 
         public SingleResult(IEnumerable<string> messages)
         {
-            Code = (int) EnumResultadoAcao.ErroValidacaoNegocio;
+            Code = (int) EnumResponse.ErrorBusinessValidation;
             Success = false;
             Messages = messages;
         }
@@ -44,26 +45,28 @@ namespace Comrade.Core.Helpers.Models.Results
 
         public SingleResult(Exception ex)
         {
-            Code = (int) EnumResultadoAcao.ErroServidor;
+            Code = (int) EnumResponse.ErrorServer;
             Success = false;
             Message = ex.Message;
             ExceptionMessage = ex.Message;
         }
 
-        public SingleResult(TEntity data)
+        public SingleResult(TEntity? data)
         {
-            Code = data == null ? (int) EnumResultadoAcao.ErroNaoEncontrado : (int) EnumResultadoAcao.Success;
+            Code = data == null ? (int) EnumResponse.ErrorNotFound : (int) EnumResponse.Success;
             Success = data != null;
-            Message = data == null ? BusinessMessage.ResourceManager.GetString("MSG04") : string.Empty;
+            Message = data == null
+                ? BusinessMessage.ResourceManager.GetString("MSG04", CultureInfo.CurrentCulture)
+                : string.Empty;
             Data = data;
         }
 
-        public IEnumerable<string> Messages { get; set; }
 
         public int Code { get; set; }
         public bool Success { get; set; }
-        public string ExceptionMessage { get; set; }
-        public string Message { get; set; }
-        public TEntity Data { get; set; }
+        public string? ExceptionMessage { get; set; }
+        public string? Message { get; set; }
+        public IEnumerable<string>? Messages { get; set; }
+        public TEntity? Data { get; set; }
     }
 }

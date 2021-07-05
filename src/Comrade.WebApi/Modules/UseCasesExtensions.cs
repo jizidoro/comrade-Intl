@@ -33,9 +33,6 @@ namespace Comrade.WebApi.Modules
         /// <returns>The modified instance.</returns>
         public static IServiceCollection AddUseCases(this IServiceCollection services)
         {
-
-            services.AddScoped<IValidator, AirplaneValidation<AirplaneCreateDto>>();
-
             #region Authentication
 
             services.AddScoped<IAuthenticationAppService, AuthenticationAppService>();

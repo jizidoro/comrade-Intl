@@ -34,16 +34,16 @@ namespace Comrade.Core.SecurityCore.UseCases
         {
             try
             {
-                var result = await _systemUserEditValidation.Execute(entity);
+                var result = await _systemUserEditValidation.Execute(entity).ConfigureAwait(false);
                 if (!result.Success) return result;
 
-                var obj = result.Data;
+                var obj = result.Data!;
 
                 HydrateValues(obj, entity);
 
                 _repository.Update(obj);
 
-                _ = await Commit();
+                _ = await Commit().ConfigureAwait(false);
             }
             catch (Exception ex)
             {

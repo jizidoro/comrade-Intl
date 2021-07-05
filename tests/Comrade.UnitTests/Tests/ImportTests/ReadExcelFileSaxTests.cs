@@ -1,7 +1,7 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using Comrade.Application.Imports.ImportFunctions;
+using Comrade.Application.Spreadsheets.SpreadsheetFunctions;
 using Comrade.UnitTests.Mocks;
 using Xunit;
 
@@ -16,9 +16,9 @@ namespace Comrade.UnitTests.Tests.ImportTests
         [Fact]
         public async Task ReadExcelFileSaxTest()
         {
-            var arquivo = await _getIFormFileMock.Execute();
+            var file = await _getIFormFileMock.Execute();
 
-            var result = ReadExcelFileSax.Execute(arquivo);
+            var result = ReadExcelFileSax.Execute(file);
 
             Assert.NotEmpty(result);
             Assert.Equal(10, result.Count);

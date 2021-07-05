@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using Comrade.Core.AirplaneCore.Validations;
 using Comrade.Core.Helpers.Bases;
@@ -30,19 +31,19 @@ namespace Comrade.Core.AirplaneCore.UseCases
         {
             try
             {
-                var validate = await _airplaneDeleteValidation.Execute(id);
+                var validate = await _airplaneDeleteValidation.Execute(id).ConfigureAwait(false);
                 if (!validate.Success) return validate;
 
                 _repository.Remove(id);
 
-                _ = await Commit();
+                _ = await Commit().ConfigureAwait(false);
             }
             catch (Exception ex)
             {
                 return new DeleteResult<Airplane>(ex);
             }
 
-            return new DeleteResult<Airplane>(true, BusinessMessage.ResourceManager.GetString("MSG03"));
+            return new DeleteResult<Airplane>(true, BusinessMessage.ResourceManager.GetString("MSG03",CultureInfo.CurrentCulture));
         }
     }
 }

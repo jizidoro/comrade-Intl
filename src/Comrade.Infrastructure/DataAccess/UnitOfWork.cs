@@ -18,31 +18,34 @@ namespace Comrade.Infrastructure.DataAccess
             _context = context;
         }
 
-        /// <inheritdoc />
         public void Dispose()
         {
-            Dispose(true);
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (!this._disposed && disposing)
+            {
+                this._context.Dispose();
+            }
+
+            this._disposed = true;
         }
 
         public async Task<bool> Commit()
         {
-            return await _context.SaveChangesAsync() > 0;
+            return await _context.SaveChangesAsync().ConfigureAwait(false) > 0;
         }
 
         /// <inheritdoc />
         public async Task<int> Save()
         {
-            var affectedRows = await _context
+            int affectedRows = await this._context
                 .SaveChangesAsync()
                 .ConfigureAwait(false);
             return affectedRows;
-        }
-
-        private void Dispose(bool disposing)
-        {
-            if (!_disposed && disposing) _context.Dispose();
-
-            _disposed = true;
         }
     }
 }

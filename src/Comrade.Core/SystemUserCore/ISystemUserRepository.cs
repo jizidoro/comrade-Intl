@@ -11,6 +11,6 @@ namespace Comrade.Core.SystemUserCore
 {
     public interface ISystemUserRepository : IRepository<SystemUser>
     {
-        IQueryable<LookupEntity> FindByName(string name);
+        IQueryable<LookupEntity>? FindByName(string name);
     }
 }

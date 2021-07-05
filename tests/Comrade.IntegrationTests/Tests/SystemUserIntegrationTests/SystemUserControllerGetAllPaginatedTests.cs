@@ -38,9 +38,9 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
             {
                 var actualResultValue = okObjectResult.Value as PageResultDto<SystemUserDto>;
                 Assert.NotNull(actualResultValue);
-                Assert.Equal(200, actualResultValue.Code);
-                Assert.NotNull(actualResultValue.Data);
-                Assert.Equal(3, actualResultValue.Data.Count);
+                Assert.Equal(200, actualResultValue?.Code);
+                Assert.NotNull(actualResultValue?.Data);
+                Assert.Equal(3, actualResultValue?.Data?.Count);
             }
         }
     }

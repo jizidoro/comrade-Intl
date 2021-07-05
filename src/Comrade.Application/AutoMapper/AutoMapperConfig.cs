@@ -7,7 +7,7 @@ using Comrade.Application.MappingProfiles;
 
 namespace Comrade.Application.AutoMapper
 {
-    public class AutoMapperConfig
+    public static class AutoMapperConfig
     {
         public static MapperConfiguration RegisterMappings()
         {

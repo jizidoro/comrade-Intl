@@ -47,7 +47,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
             {
                 var actualResultValue = okResult.Value as SingleResultDto<EntityDto>;
                 Assert.NotNull(actualResultValue);
-                Assert.Equal(200, actualResultValue.Code);
+                Assert.Equal(200, actualResultValue?.Code);
             }
 
             var repository = new AirplaneRepository(context);
@@ -84,7 +84,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
             {
                 var actualResultValue = okResult.Value as SingleResultDto<EntityDto>;
                 Assert.NotNull(actualResultValue);
-                Assert.Equal(400, actualResultValue.Code);
+                Assert.Equal(400, actualResultValue?.Code);
             }
 
             var repository = new AirplaneRepository(context);

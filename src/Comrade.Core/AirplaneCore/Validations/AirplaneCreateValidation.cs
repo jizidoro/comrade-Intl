@@ -24,7 +24,7 @@ namespace Comrade.Core.AirplaneCore.Validations
 
         public async Task<ISingleResult<Airplane>> Execute(Airplane entity)
         {
-            return await _airplaneValidateSameCode.Execute(entity);
+            return await _airplaneValidateSameCode.Execute(entity).ConfigureAwait(false);
         }
     }
 }

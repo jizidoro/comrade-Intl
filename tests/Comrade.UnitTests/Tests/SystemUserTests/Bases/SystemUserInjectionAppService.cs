@@ -23,10 +23,9 @@ namespace Comrade.UnitTests.Tests.SystemUserTests.Bases
             var systemUserEditValidation =
                 new SystemUserEditValidation(systemUserRepository);
             var systemUserDeleteValidation = new SystemUserDeleteValidation(systemUserRepository);
-            var systemUserCreateValidation =
-                new SystemUserCreateValidation(systemUserRepository);
+
             var systemUserCreateUseCase =
-                new SystemUserCreateUseCase(systemUserRepository, systemUserCreateValidation, passwordHasher,
+                new SystemUserCreateUseCase(systemUserRepository, passwordHasher,
                     uow);
             var systemUserDeleteUseCase =
                 new SystemUserDeleteUseCase(systemUserRepository, systemUserDeleteValidation, uow);

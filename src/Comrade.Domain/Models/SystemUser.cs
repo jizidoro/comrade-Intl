@@ -12,6 +12,18 @@ namespace Comrade.Domain.Models
     [Table("USSI_USUARIO_SISTEMA")]
     public class SystemUser : Entity
     {
+        public SystemUser(int id, string name, string email, string password, bool situacao, string registration,
+            DateTime registerDate)
+        {
+            Id = id;
+            Name = name;
+            Email = email;
+            Password = password;
+            Situacao = situacao;
+            Registration = registration;
+            RegisterDate = registerDate;
+        }
+
         [Column("USSI_TX_NOME", TypeName = "varchar")]
         [MaxLength(255)]
         [Required(ErrorMessage = "NOME USU is required")]

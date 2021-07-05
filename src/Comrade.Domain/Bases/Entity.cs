@@ -13,6 +13,6 @@ namespace Comrade.Domain.Bases
 
         public virtual int Key => Id;
 
-        public virtual string Value => ToString();
+        public virtual string Value => ToString()!;
     }
 }

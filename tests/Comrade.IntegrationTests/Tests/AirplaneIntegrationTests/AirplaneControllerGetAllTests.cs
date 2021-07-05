@@ -37,9 +37,9 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
             {
                 var actualResultValue = okResult.Value as PageResultDto<AirplaneDto>;
                 Assert.NotNull(actualResultValue);
-                Assert.Equal(200, actualResultValue.Code);
-                Assert.NotNull(actualResultValue.Data);
-                Assert.Equal(3, actualResultValue.Data.Count);
+                Assert.Equal(200, actualResultValue?.Code);
+                Assert.NotNull(actualResultValue?.Data);
+                Assert.Equal(3, actualResultValue?.Data?.Count);
             }
         }
     }

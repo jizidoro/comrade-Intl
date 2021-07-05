@@ -12,7 +12,7 @@ namespace Comrade.UnitTests.Helpers
     {
         public static ComradeContext Excute(ComradeContext context)
         {
-            context.Airplanes.Add(new Airplane()
+            context.Airplanes!.Add(new Airplane()
             {
                 Id = 70,
                 Code = "Test",

@@ -19,7 +19,7 @@ namespace Comrade.Core.SystemUserCore.Validations
             _repository = repository;
         }
 
-        public ISingleResult<SystemUser> Execute(SystemUser entity)
+        public static ISingleResult<SystemUser> Execute(SystemUser entity)
         {
             return new SingleResult<SystemUser>(entity);
         }

@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using AutoMapper;
 using Comrade.Application.BaseInterfaces;
@@ -10,6 +11,7 @@ using Comrade.Core.Helpers.Messages;
 using Comrade.Core.Utils;
 using Comrade.Domain.Bases;
 using Comrade.Domain.Enums;
+using FluentValidation.Results;
 
 #endregion
 
@@ -20,39 +22,46 @@ namespace Comrade.Application.Bases
     {
         public SingleResultDto(TDto data)
         {
-            Code = data == null ? (int) EnumResultadoAcao.ErroNaoEncontrado : (int) EnumResultadoAcao.Success;
+            Code = data == null ? (int) EnumResponse.ErrorNotFound : (int) EnumResponse.Success;
             Success = data != null;
-            Message = data == null ? BusinessMessage.ResourceManager.GetString("MSG04") : string.Empty;
+            Message = data == null ? BusinessMessage.ResourceManager.GetString("MSG04", CultureInfo.CurrentCulture) : string.Empty;
             Data = data;
         }
 
         public SingleResultDto()
         {
-            Code = (int) EnumResultadoAcao.ErroNaoEncontrado;
+            Code = (int) EnumResponse.ErrorBusinessValidation;
             Success = false;
-            Message = BusinessMessage.ResourceManager.GetString("MSG04");
-            Data = null;
+            Message = BusinessMessage.ResourceManager.GetString("MSG04", CultureInfo.CurrentCulture);
         }
 
-        public SingleResultDto(SecurityResult erroSecurity)
+        public SingleResultDto(ValidationResult validationResult)
         {
-            Code = erroSecurity.Code;
+            Code = (int) EnumResponse.ErrorBusinessValidation;
             Success = false;
-            Message = erroSecurity.ErrorMessage;
-            Data = null;
+            Messages = validationResult.Errors.Select(x => x.ErrorMessage).ToList();
+            ValidationResult = validationResult;
+        }
+
+        public SingleResultDto(SecurityResult errorSecurity)
+        {
+            Code = errorSecurity.Code;
+            Success = false;
+            Message = errorSecurity.ErrorMessage;
         }
 
 
         public SingleResultDto(Exception ex)
         {
-            Code = (int) EnumResultadoAcao.ErroServidor;
+            Code = (int) EnumResponse.ErrorServer;
             Success = false;
             Message = ex.Message;
+            ExceptionMessage = ex.Message;
         }
 
         public SingleResultDto(IEnumerable<string> listErrors)
         {
-            Code = (int) EnumResultadoAcao.ErroValidacaoNegocio;
+            Code = (int) EnumResponse.ErrorBusinessValidation;
             Success = false;
             Messages = listErrors.ToList();
         }
@@ -71,7 +80,8 @@ namespace Comrade.Application.Bases
             Message = message;
         }
 
-        public TDto Data { get; private set; }
+        public TDto? Data { get; private set; }
+        public ValidationResult? ValidationResult { get; private set; }
 
         public void SetData<TEntity>(ISingleResult<TEntity> result, IMapper mapper)
             where TEntity : Entity

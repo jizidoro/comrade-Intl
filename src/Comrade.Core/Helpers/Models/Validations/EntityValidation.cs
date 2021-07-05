@@ -22,7 +22,7 @@ namespace Comrade.Core.Helpers.Models.Validations
 
         public async Task<ISingleResult<TEntity>> RecordExists(int id, params string[] includes)
         {
-            var entity = await _repository.GetById(id, includes);
+            var entity = await _repository.GetById(id, includes).ConfigureAwait(false);
             if (entity == null) return new SingleResult<TEntity>(BusinessMessage.MSG04);
 
             return new SingleResult<TEntity>(entity);
@@ -30,7 +30,7 @@ namespace Comrade.Core.Helpers.Models.Validations
 
         public async Task<ISingleResult<TEntity>> RegisterWithSameCode (int id, string code)
         {
-            var result = await _repository.ValueExists(id, code);
+            var result = await _repository.ValueExists(id, code).ConfigureAwait(false);
             if (result) return new SingleResult<TEntity>(BusinessMessage.MSG08);
 
             return new SingleResult<TEntity>();

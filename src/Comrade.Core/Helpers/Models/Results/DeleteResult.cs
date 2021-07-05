@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Globalization;
 using Comrade.Core.Helpers.Messages;
 using Comrade.Domain.Bases;
 using Comrade.Domain.Enums;
@@ -14,24 +15,24 @@ namespace Comrade.Core.Helpers.Models.Results
     {
         public DeleteResult()
         {
-            Code = (int) EnumResultadoAcao.Success;
+            Code = (int) EnumResponse.Success;
             Success = true;
-            Message = BusinessMessage.ResourceManager.GetString("MSG03");
+            Message = BusinessMessage.ResourceManager.GetString("MSG03", CultureInfo.CurrentCulture);
         }
 
-        public DeleteResult(bool success, string message)
+        public DeleteResult(bool success, string? message)
         {
-            Code = success ? (int) EnumResultadoAcao.Success : (int) EnumResultadoAcao.ErroNaoEncontrado;
+            Code = success ? (int) EnumResponse.Success : (int) EnumResponse.ErrorNotFound;
             Success = success;
             Message = message;
         }
 
         public DeleteResult(Exception ex)
         {
-            Code = (int) EnumResultadoAcao.ErroServidor;
+            Code = (int) EnumResponse.ErrorServer;
             Success = false;
             ExceptionMessage = ex.Message;
-            Message = BusinessMessage.ResourceManager.GetString("MSG07");
+            Message = BusinessMessage.ResourceManager.GetString("MSG07", CultureInfo.CurrentCulture);
         }
     }
 }

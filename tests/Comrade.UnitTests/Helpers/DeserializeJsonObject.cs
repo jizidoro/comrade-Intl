@@ -10,7 +10,7 @@ namespace Comrade.UnitTests.Helpers
 {
     public class DeserializeJsonObject<TEntity> where TEntity : Entity
     {
-        public TEntity Excute(string inputJson)
+        public TEntity? Excute(string inputJson)
         {
             var options = new JsonSerializerOptions {PropertyNameCaseInsensitive = true};
             options.Converters.Add(new JsonStringEnumConverter());

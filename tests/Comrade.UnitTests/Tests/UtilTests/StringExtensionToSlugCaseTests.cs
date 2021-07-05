@@ -7,15 +7,15 @@ using Xunit;
 
 namespace Comrade.UnitTests.Tests.UtilTests
 {
-    public class StringExtensionToPascalCaseTests
+    public class StringExtensionToSlugCaseTests
     {
         [Fact]
-        public void StringExtension_ToPascalCase()
+        public void StringExtension_ToSlugCase()
         {
             var testObject = "Last in Line";
-            var goal = "LastInLine";
+            var goal = "last-in-line";
 
-            var result = testObject.ToPascalCase();
+            var result = testObject.ToSlug();
 
             Assert.NotEmpty(result);
             Assert.Equal(goal, result);

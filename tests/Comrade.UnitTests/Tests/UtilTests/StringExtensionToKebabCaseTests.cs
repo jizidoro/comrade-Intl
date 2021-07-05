@@ -13,12 +13,12 @@ namespace Comrade.UnitTests.Tests.UtilTests
         public void StringExtension_ToKebabCase()
         {
             var testObject = "Last in Line";
-            var objetivo = "last-in-line";
+            var goal = "last-in-line";
 
-            var restult = testObject.ToKebabCase();
+            var result = testObject.ToKebabCase();
 
-            Assert.NotEmpty(restult);
-            Assert.Equal(restult, objetivo);
+            Assert.NotEmpty(result);
+            Assert.Equal(goal, result);
         }
     }
 }

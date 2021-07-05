@@ -12,7 +12,7 @@ namespace Comrade.Application.Interfaces
 {
     public interface IAirplaneAppService : IAppService
     {
-        Task<IPageResultDto<AirplaneDto>> GetAll(PaginationFilter paginationFilter = null);
+        Task<IPageResultDto<AirplaneDto>> GetAll(PaginationFilter? paginationFilter = null);
         Task<ISingleResultDto<AirplaneDto>> GetById(int id);
         Task<ISingleResultDto<EntityDto>> Create(AirplaneCreateDto dto);
         Task<ISingleResultDto<EntityDto>> Edit(AirplaneEditDto dto);

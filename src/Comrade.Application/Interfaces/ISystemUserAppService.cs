@@ -13,7 +13,7 @@ namespace Comrade.Application.Interfaces
 {
     public interface ISystemUserAppService : IAppService
     {
-        Task<IPageResultDto<SystemUserDto>> GetAll(PaginationFilter paginationFilter = null);
+        Task<IPageResultDto<SystemUserDto>> GetAll(PaginationFilter? paginationFilter = null);
         Task<ListResultDto<LookupDto>> FindByName(string name);
         Task<ISingleResultDto<SystemUserDto>> GetById(int id);
         Task<ISingleResultDto<EntityDto>> Create(SystemUserCreateDto dto);

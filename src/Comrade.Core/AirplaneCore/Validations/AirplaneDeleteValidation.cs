@@ -21,7 +21,7 @@ namespace Comrade.Core.AirplaneCore.Validations
 
         public async Task<ISingleResult<Airplane>> Execute(int id)
         {
-            var recordExists = await RecordExists(id);
+            var recordExists = await RecordExists(id).ConfigureAwait(false);
             if (!recordExists.Success)
             {
                 return recordExists;

@@ -9,6 +9,6 @@ namespace Comrade.Domain.Bases
     public class LookupEntity : ILookupEntity
     {
         public int Key { get; set; }
-        public string Value { get; set; }
+        public string? Value { get; set; }
     }
 }

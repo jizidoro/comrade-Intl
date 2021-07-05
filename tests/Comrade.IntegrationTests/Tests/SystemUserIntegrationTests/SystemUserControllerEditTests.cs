@@ -51,7 +51,7 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
             {
                 var actualResultValue = okObjectResult.Value as SingleResultDto<EntityDto>;
                 Assert.NotNull(actualResultValue);
-                Assert.Equal(200, actualResultValue.Code);
+                Assert.Equal(200, actualResultValue?.Code);
             }
 
             var repository = new SystemUserRepository(context);
@@ -92,7 +92,7 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
             {
                 var actualResultValue = okObjectResult.Value as SingleResultDto<EntityDto>;
                 Assert.NotNull(actualResultValue);
-                Assert.Equal(400, actualResultValue.Code);
+                Assert.Equal(400, actualResultValue?.Code);
             }
 
             var repository = new SystemUserRepository(context);

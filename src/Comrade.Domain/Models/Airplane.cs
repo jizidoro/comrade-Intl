@@ -12,6 +12,21 @@ namespace Comrade.Domain.Models
     [Table("AIRP_AIRPLANE")]
     public class Airplane : Entity
     {
+        public Airplane()
+        {
+            Code = "";
+            Model = "";
+            PassengerQuantity = 0;
+        }
+
+        public Airplane(string code, string model, int passengerQuantity, DateTime registerDate)
+        {
+            Code = code;
+            Model = model;
+            PassengerQuantity = passengerQuantity;
+            RegisterDate = registerDate;
+        }
+
         [Column("AIRP_TX_CODIGO", TypeName = "varchar")]
         [MaxLength(255)]
         [Required(ErrorMessage = "Code is required")]

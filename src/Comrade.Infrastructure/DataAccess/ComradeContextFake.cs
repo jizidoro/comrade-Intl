@@ -25,7 +25,7 @@ namespace Comrade.Infrastructure.DataAccess
 
             var assembly = Assembly.GetAssembly(typeof(JsonUtilities));
 
-            if (context != null && context.Airplanes.Any())
+            if (context != null && context.Airplanes!.Any())
             {
                 return true;
             }
@@ -34,13 +34,13 @@ namespace Comrade.Infrastructure.DataAccess
             {
                 if (context != null && assembly is not null)
                 {
-                    context.Airplanes.AddRange(
-                        JsonUtilities.GetListFromJson<Airplane>(
-                            assembly.GetManifestResourceStream($"{JsonPath}.airplane.json")));
+                    var airplanes = assembly.GetManifestResourceStream($"{JsonPath}.airplane.json");
+                    var oto = JsonUtilities.GetListFromJson<Airplane>(airplanes);
+                    context.Airplanes!.AddRange(oto!);
 
-                    context.SystemUsers.AddRange(
-                        JsonUtilities.GetListFromJson<SystemUser>(
-                            assembly.GetManifestResourceStream($"{JsonPath}.systemUser.json")));
+                    var systemUsers = assembly.GetManifestResourceStream($"{JsonPath}.systemUser.json");
+                    var oto2 = JsonUtilities.GetListFromJson<SystemUser>(systemUsers);
+                    context.SystemUsers!.AddRange(oto2!);
 
                     context?.SaveChanges();
                 }

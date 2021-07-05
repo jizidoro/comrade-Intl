@@ -18,15 +18,12 @@ namespace Comrade.Core.SystemUserCore.UseCases
     {
         private readonly IPasswordHasher _passwordHasher;
         private readonly ISystemUserRepository _repository;
-        private readonly SystemUserCreateValidation _systemUserCreateValidation;
 
         public SystemUserCreateUseCase(ISystemUserRepository repository,
-            SystemUserCreateValidation systemUserCreateValidation,
             IPasswordHasher passwordHasher, IUnitOfWork uow)
             : base(uow)
         {
             _repository = repository;
-            _systemUserCreateValidation = systemUserCreateValidation;
             _passwordHasher = passwordHasher;
         }
 
@@ -34,21 +31,21 @@ namespace Comrade.Core.SystemUserCore.UseCases
         {
             try
             {
-                var isValid = ValidateEntidade(entity);
+                var isValid = ValidateEntity(entity);
                 if (!isValid.Success)
                 {
                     return isValid;
                 }
 
-                var validate = _systemUserCreateValidation.Execute(entity);
+                var validate = SystemUserCreateValidation.Execute(entity);
                 if (!validate.Success) return validate;
 
                 entity.Password = _passwordHasher.Hash(entity.Password);
                 entity.RegisterDate = DateTimeBrasilia.GetDateTimeBrasilia();
 
-                await _repository.Add(entity);
+                await _repository.Add(entity).ConfigureAwait(false);
 
-                var success = await Commit();
+                _ = await Commit().ConfigureAwait(false);
             }
             catch (Exception)
             {

@@ -30,12 +30,9 @@ namespace Comrade.IntegrationTests.Tests.LookupIntegrationTests
         private CommonController GetCommonControllerMemDb()
         {
             var mapper = MapperHelper.ConfigMapper();
-
             var serviceProvider = GetServiceProviderMemDb.Execute();
-
             var context = serviceProvider.GetService<ComradeContext>();
-
-            var baUsuAppService = _systemUserInjectionAppService.GetSystemUserAppService(context, mapper);
+            var baUsuAppService = _systemUserInjectionAppService.GetSystemUserAppService(context!, mapper);
 
             return new CommonController(serviceProvider, baUsuAppService);
         }
@@ -50,8 +47,8 @@ namespace Comrade.IntegrationTests.Tests.LookupIntegrationTests
             {
                 var actualResultValue = okResult.Value as ListResultDto<LookupDto>;
                 Assert.NotNull(actualResultValue);
-                Assert.NotNull(actualResultValue.Data);
-                Assert.Equal(4,actualResultValue.Data.Count);
+                Assert.NotNull(actualResultValue?.Data);
+                Assert.Equal(4, actualResultValue?.Data?.Count);
             }
         }
 
@@ -65,8 +62,8 @@ namespace Comrade.IntegrationTests.Tests.LookupIntegrationTests
             {
                 var actualResultValue = okResult.Value as ListResultDto<LookupDto>;
                 Assert.NotNull(actualResultValue);
-                Assert.NotNull(actualResultValue.Data);
-                Assert.Equal(1, actualResultValue.Data.Count);
+                Assert.NotNull(actualResultValue?.Data);
+                Assert.Equal(1, actualResultValue?.Data?.Count);
             }
         }
 
@@ -80,8 +77,8 @@ namespace Comrade.IntegrationTests.Tests.LookupIntegrationTests
             {
                 var actualResultValue = okResult.Value as ListResultDto<LookupDto>;
                 Assert.NotNull(actualResultValue);
-                Assert.NotNull(actualResultValue.Data);
-                Assert.Equal(1, actualResultValue.Data.Count);
+                Assert.NotNull(actualResultValue?.Data);
+                Assert.Equal(1, actualResultValue?.Data?.Count);
             }
         }
     }

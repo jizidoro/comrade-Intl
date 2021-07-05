@@ -34,16 +34,13 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests
                 .Options;
 
 
-            var testObject = new SystemUser
-            {
-                Id = 1,
-                Name = "111",
-                Email = "777@testObject",
-                Password = "100.SdwfwU4tDWbBkLlBNd7Vcg==.cGEYFjBRNpLrCxzYNIbSdnbbY1zFvBHcyIslMTSmwy8=",
-                Situacao = true,
-                Registration = "123",
-                RegisterDate = DateTimeBrasilia.GetDateTimeBrasilia()
-            };
+            var testObject = new SystemUser(1,
+                "111",
+                "777@testObject",
+                "100.SdwfwU4tDWbBkLlBNd7Vcg==.cGEYFjBRNpLrCxzYNIbSdnbbY1zFvBHcyIslMTSmwy8=",
+                true,
+                "123",
+                DateTimeBrasilia.GetDateTimeBrasilia());
 
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();

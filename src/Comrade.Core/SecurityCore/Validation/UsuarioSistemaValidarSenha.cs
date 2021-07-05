@@ -26,20 +26,20 @@ namespace Comrade.Core.SecurityCore.Validation
 
         public ISingleResult<SystemUser> Execute(int key, string password)
         {
-            var usuSelecionado = _systemUserRepository.GetById(key).Result;
-            var keyValida = usuSelecionado != null;
+            var usuSession = _systemUserRepository.GetById(key).Result;
+            var keyValidation = usuSession != null;
 
-            if (keyValida)
+            if (keyValidation)
             {
-                var passwordValida = _passwordHasher.Check(usuSelecionado.Password, password);
+                var passwordValidation = _passwordHasher.Check(usuSession!.Password, password);
 
-                if (!passwordValida.Verified)
+                if (!passwordValidation.Verified)
                 {
                     return new SingleResult<SystemUser>(1001, "Usuário ou password informados não são válidos");
                 }
 
 
-                return new SingleResult<SystemUser>(usuSelecionado);
+                return new SingleResult<SystemUser>(usuSession);
             }
 
 

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
 using Serilog;
 using Serilog.Extensions.Logging;
 
@@ -24,6 +26,8 @@ namespace Comrade.WebApi
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
+            BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+
             var hostBuilder = CreateHostBuilder(args).Build();
             try
             {
@@ -47,6 +51,7 @@ namespace Comrade.WebApi
                 .ConfigureAppConfiguration((hostContext, configApp) =>
                 {
                     configApp.AddCommandLine(args);
+                    LoggingExtensions.CreateLogMongoDb(Providers);
                 })
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); })
                 .UseSerilog(providers: Providers);

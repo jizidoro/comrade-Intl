@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,16 +41,11 @@ namespace Comrade.Core.SecurityCore.UseCases
 
                     if (resultPassword.Success)
                     {
-                        var selectedUser = resultPassword.Data;
+                        var selectedUser = resultPassword.Data!;
 
-                        var profile = "Role";
+                        var profile = new List<string>(){ "Role" };
 
-                        var user = new TokenUser
-                        {
-                            Key = key,
-                            Name = selectedUser.Name,
-                            Roles = new List<string> {string.IsNullOrEmpty(profile) ? "" : profile}
-                        };
+                        var user = new TokenUser(key, selectedUser.Name, "", profile);
 
                         user.Token = _generateToken.Execute(user);
 
@@ -57,7 +53,7 @@ namespace Comrade.Core.SecurityCore.UseCases
                     }
 
                     return new SecurityResult(resultPassword.Code, resultPassword.Message);
-                });
+                }).ConfigureAwait(false);
 
                 return result;
             }

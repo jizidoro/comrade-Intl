@@ -2,15 +2,29 @@
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
+		<NoWarn>$(NoWarn);CA1002;CA1014;CA1062;CA2227;1591</NoWarn>
+		<Nullable>enable</Nullable>
+		<NullableReferenceTypes>true</NullableReferenceTypes>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NeutralLanguage>en</NeutralLanguage>
+		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 	</PropertyGroup>
 
 	<ItemGroup>
+		<!-- Code Analyzers -->
+		<PackageReference Include="SonarAnalyzer.CSharp" Version="8.25.0.33663">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
 		<Compile Remove="EventSourcedNormalizers\**" />
-		<Compile Remove="Imports\ImportMappings\**" />
+		<Compile Remove="Spreadsheets\ImportMappings\**" />
 		<EmbeddedResource Remove="EventSourcedNormalizers\**" />
-		<EmbeddedResource Remove="Imports\ImportMappings\**" />
+		<EmbeddedResource Remove="Spreadsheets\ImportMappings\**" />
 		<None Remove="EventSourcedNormalizers\**" />
-		<None Remove="Imports\ImportMappings\**" />
+		<None Remove="Spreadsheets\ImportMappings\**" />
 	</ItemGroup>
 
 	<ItemGroup>

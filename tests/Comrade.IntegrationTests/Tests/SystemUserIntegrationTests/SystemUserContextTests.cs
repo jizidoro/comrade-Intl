@@ -23,14 +23,13 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_SystemUser_Context")
                 .Options;
-
-            SystemUser systemUser = null;
+            
 
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
             Utilities.InitializeDbForTests(context);
             var repository = new SystemUserRepository(context);
-            systemUser = await repository.GetById(1);
+            var systemUser = await repository.GetById(1);
             Assert.NotNull(systemUser);
         }
     }

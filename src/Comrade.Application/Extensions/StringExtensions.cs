@@ -22,7 +22,7 @@ namespace Comrade.Application.Extensions
                         string.Join(" ", pattern.Matches(source)).ToLower()
                     )
                     .Replace(@" ", "")
-                    .Select((x, i) => i == 0 ? char.ToLower(x) : x)
+                    .Select((x, i) => i == 0 ? char.ToLower(x, CultureInfo.CurrentCulture) : x)
                     .ToArray()
             );
         }
@@ -30,13 +30,13 @@ namespace Comrade.Application.Extensions
         public static string ToKebabCase(this string str)
         {
             var pattern = new Regex(@"[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+");
-            return string.Join("-", pattern.Matches(str)).ToLower();
+            return string.Join("-", pattern.Matches(str)).ToLower(CultureInfo.CurrentCulture);
         }
 
         public static string ToSnakeCase(this string str)
         {
             var pattern = new Regex(@"[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+");
-            return string.Join("_", pattern.Matches(str)).ToLower();
+            return string.Join("_", pattern.Matches(str)).ToLower(CultureInfo.CurrentCulture);
         }
 
         public static string ToTitleCase(this string str)
@@ -45,7 +45,7 @@ namespace Comrade.Application.Extensions
             return new CultureInfo("pt-BR", false)
                 .TextInfo
                 .ToTitleCase(
-                    string.Join(" ", pattern.Matches(str)).ToLower()
+                    string.Join(" ", pattern.Matches(str)).ToLower(CultureInfo.CurrentCulture)
                 );
         }
 
@@ -59,60 +59,48 @@ namespace Comrade.Application.Extensions
                         string.Join(" ", pattern.Matches(source)).ToLower()
                     )
                     .Replace(@" ", "")
-                    .Select((x, i) => i == 0 ? char.ToUpper(x) : x)
+                    .Select((x, i) => i == 0 ? char.ToUpper(x, CultureInfo.CurrentCulture) : x)
                     .ToArray()
             );
         }
 
         public static string ToProperCase(this string source)
         {
-            if (source == null) return source;
-            if (source.Length < 2) return source.ToUpper();
-
-            var words = source.ToLower().Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries);
-
-            var result = "";
-            foreach (var word in words)
-                result +=
-                    word.Substring(0, 1).ToUpper() +
-                    word.Substring(1) + " ";
-
-            return result.Trim();
+            CultureInfo cultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
+            TextInfo textInfo = cultureInfo.TextInfo;
+            return textInfo.ToTitleCase(source);
         }
 
-        public static string ToSlug(this string phrase)
+        public static string ToSlug(this string str)
         {
-            var str = phrase.RemoveAccent().ToLower();
-
-            str = Regex.Replace(str, @"[^a-z0-9\s-]", "");
-            str = Regex.Replace(str, @"\s+", " ").Trim();
-            str = str.Trim();
-            str = Regex.Replace(str, @"\s", "-");
+            str = Regex.Replace(str, @"\s+", "-");
+            str = Regex.Replace(str?.ToString() ?? string.Empty, "([a-z])([A-Z])", "$1-$2")
+                .ToLower(CultureInfo.CurrentCulture);
 
             return str;
         }
 
         public static string RemoveAccent(this string txt)
         {
-            var bytes = Encoding.GetEncoding("Cyrillic").GetBytes(txt);
+            var bytes = Encoding.GetEncoding("1251").GetBytes(txt);
             return Encoding.ASCII.GetString(bytes);
         }
 
         public static int ToInt32(this string s)
         {
-            int.TryParse(s, out var i);
+            _ = int.TryParse(s, out int i);
             return i;
         }
 
         public static double ToInt64(this string s)
         {
-            long.TryParse(s, out var i);
+            _ = long.TryParse(s, out long i);
             return i;
         }
 
         public static decimal ToDecimal(this string s)
         {
-            decimal.TryParse(s, out var i);
+            _ = decimal.TryParse(s, out decimal i);
             return i;
         }
 

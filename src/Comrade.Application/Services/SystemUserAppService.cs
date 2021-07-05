@@ -41,14 +41,14 @@ namespace Comrade.Application.Services
             _deleteSystemUserUseCase = deleteSystemUserUseCase;
         }
 
-        public async Task<IPageResultDto<SystemUserDto>> GetAll(PaginationFilter paginationFilter = null)
+        public async Task<IPageResultDto<SystemUserDto>> GetAll(PaginationFilter? paginationFilter = null)
         {
             List<SystemUserDto> list;
             if (paginationFilter == null)
             {
                 list = await Task.Run(() => _repository.GetAll()
                     .ProjectTo<SystemUserDto>(Mapper.ConfigurationProvider)
-                    .ToList());
+                    .ToList()).ConfigureAwait(false);
 
                 return new PageResultDto<SystemUserDto>(list);
             }
@@ -57,7 +57,7 @@ namespace Comrade.Application.Services
 
             list = await Task.Run(() => _repository.GetAll().Skip(skip).Take(paginationFilter.PageSize)
                 .ProjectTo<SystemUserDto>(Mapper.ConfigurationProvider)
-                .ToList());
+                .ToList()).ConfigureAwait(false);
 
             return new PageResultDto<SystemUserDto>(paginationFilter, list);
         }
@@ -69,7 +69,7 @@ namespace Comrade.Application.Services
 
             if (success)
             {
-                var entity = await _repository.GetById(number);
+                var entity = await _repository.GetById(number).ConfigureAwait(false);
                 if (entity != null)
                 {
                     var dto = Mapper.Map<LookupDto>(new LookupEntity {Key = entity.Id, Value = entity.Name});
@@ -80,7 +80,7 @@ namespace Comrade.Application.Services
             {
                 list = await Task.Run(() => _repository.FindByName(name)
                     .ProjectTo<LookupDto>(Mapper.ConfigurationProvider)
-                    .ToList());
+                    .ToList()).ConfigureAwait(false);
             }
 
             return new ListResultDto<LookupDto>(list);
@@ -88,7 +88,7 @@ namespace Comrade.Application.Services
 
         public async Task<ISingleResultDto<SystemUserDto>> GetById(int id)
         {
-            var entity = await _repository.GetById(id);
+            var entity = await _repository.GetById(id).ConfigureAwait(false);
             var dto = Mapper.Map<SystemUserDto>(entity);
             return new SingleResultDto<SystemUserDto>(dto);
         }
@@ -97,7 +97,7 @@ namespace Comrade.Application.Services
         {
             var validator = new SystemUserCreateValidation();
 
-            var results = await validator.ValidateAsync(dto);
+            var results = await validator.ValidateAsync(dto).ConfigureAwait(false);
 
             if (!results.IsValid)
             {
@@ -107,7 +107,7 @@ namespace Comrade.Application.Services
 
             var evento = Mapper.Map<SystemUser>(dto);
 
-            var result = await _createSystemUserUseCase.Execute(evento);
+            var result = await _createSystemUserUseCase.Execute(evento).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);
@@ -119,7 +119,7 @@ namespace Comrade.Application.Services
         {
             var validator = new SystemUserEditValidation();
 
-            var results = await validator.ValidateAsync(dto);
+            var results = await validator.ValidateAsync(dto).ConfigureAwait(false);
 
             if (!results.IsValid)
             {
@@ -129,7 +129,7 @@ namespace Comrade.Application.Services
 
             var evento = Mapper.Map<SystemUser>(dto);
 
-            var result = await _editSystemUserUseCase.Execute(evento);
+            var result = await _editSystemUserUseCase.Execute(evento).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);
@@ -139,7 +139,7 @@ namespace Comrade.Application.Services
 
         public async Task<ISingleResultDto<EntityDto>> Delete(int id)
         {
-            var result = await _deleteSystemUserUseCase.Execute(id);
+            var result = await _deleteSystemUserUseCase.Execute(id).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);

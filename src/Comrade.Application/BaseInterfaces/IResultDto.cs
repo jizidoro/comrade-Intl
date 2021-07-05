@@ -9,6 +9,6 @@ namespace Comrade.Application.BaseInterfaces
 {
     public interface IResultDto : IResult
     {
-        IList<string> Messages { get; set; }
+        
     }
 }

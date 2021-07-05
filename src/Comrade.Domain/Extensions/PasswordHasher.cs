@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 
@@ -43,7 +44,7 @@ namespace Comrade.Domain.Extensions
                                           "Should be formatted as `{iterations}.{salt}.{hash}`");
             }
 
-            var iterations = Convert.ToInt32(parts[0]);
+            var iterations = Convert.ToInt32(parts[0], CultureInfo.CurrentCulture);
             var salt = Convert.FromBase64String(parts[1]);
             var key = Convert.FromBase64String(parts[2]);
 

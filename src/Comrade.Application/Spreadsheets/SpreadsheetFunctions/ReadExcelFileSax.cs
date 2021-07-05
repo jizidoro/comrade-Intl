@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Comrade.Application.Extensions;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
@@ -11,24 +12,24 @@ using Microsoft.AspNetCore.Http;
 
 #endregion
 
-namespace Comrade.Application.Imports.ImportFunctions
+namespace Comrade.Application.Spreadsheets.SpreadsheetFunctions
 {
     public static class ReadExcelFileSax
     {
-        public static List<Dictionary<string, string>> Execute(IFormFile arqivoImportacao)
+        public static List<Dictionary<string, string>> Execute(IFormFile fileImport)
         {
             try
             {
-                using var streamArquivo = arqivoImportacao.OpenReadStream();
-                using var spreadsheetDocument = SpreadsheetDocument.Open(streamArquivo, false);
+                using var streamFile = fileImport.OpenReadStream();
+                using var spreadsheetDocument = SpreadsheetDocument.Open(streamFile, false);
                 var workbookPart = spreadsheetDocument.WorkbookPart;
 
-                var informacaoLinhas = new List<Dictionary<string, string>>();
+                var lineData = new List<Dictionary<string, string>>();
 
                 if (workbookPart != null)
                     foreach (var worksheetPart in workbookPart.WorksheetParts)
                     {
-                        var informacaoLinha = new Dictionary<string, string>();
+                        var lineInfo = new Dictionary<string, string>();
                         var reader = OpenXmlReader.Create(worksheetPart);
                         while (reader.Read())
                         {
@@ -40,48 +41,53 @@ namespace Comrade.Application.Imports.ImportFunctions
                                 {
                                     if (reader.ElementType == typeof(Cell))
                                     {
-                                        var celula = (Cell) reader.LoadCurrentElement();
+                                        var cell = (Cell) reader.LoadCurrentElement()!;
 
-                                        string cellValue;
+                                        string? cellValue;
 
-                                        if (celula != null && celula.DataType != null &&
-                                            celula.DataType == CellValues.SharedString)
+                                        if (cell.DataType != null && cell.DataType == CellValues.SharedString)
                                         {
-                                            var ssi = workbookPart.SharedStringTablePart.SharedStringTable
-                                                .Elements<SharedStringItem>()
-                                                .ElementAt(int.Parse(celula.CellValue.InnerText));
+                                            var cellPosition = cell.CellValue!.InnerText.ToInt32();
 
-                                            cellValue = ssi.Text?.Text;
+                                            var ssi = workbookPart.SharedStringTablePart?.SharedStringTable
+                                                .Elements<SharedStringItem>()
+                                                .ElementAt(cellPosition);
+
+                                            cellValue = ssi?.Text?.Text;
                                         }
                                         else
                                         {
-                                            cellValue = celula.CellValue?.InnerText;
+                                            cellValue = cell?.CellValue?.InnerText;
                                         }
 
-                                        var coluna = Regex.Replace(celula.CellReference, @"[\d-]", string.Empty);
+                                        var infoCell = cell?.CellReference;
+
+                                        var column = Regex.Replace(infoCell!, @"[\d-]", string.Empty);
                                         if (cellValue != null)
                                         {
-                                            informacaoLinha.Add(coluna, cellValue);
+                                            lineInfo.Add(column, cellValue);
                                         }
                                     }
                                 } while (reader.ReadNextSibling());
                             }
 
-                            if (informacaoLinha.Count > 0)
+                            if (lineInfo.Count > 0)
                             {
-                                var linhaConteudo = informacaoLinha.Select(x => x.Value != null).Any();
+                                var content = lineInfo.Select(x => x.Value != null).Any();
 
-                                if (linhaConteudo)
+                                if (content)
                                 {
-                                    informacaoLinhas.Add(informacaoLinha);
-                                    informacaoLinha = new Dictionary<string, string>();
+                                    lineData.Add(lineInfo);
+                                    lineInfo = new Dictionary<string, string>();
                                 }
                             }
                         }
+
+                        reader.Dispose();
                     }
 
-                streamArquivo.Close();
-                return informacaoLinhas;
+                streamFile.Close();
+                return lineData;
             }
             catch (Exception)
             {

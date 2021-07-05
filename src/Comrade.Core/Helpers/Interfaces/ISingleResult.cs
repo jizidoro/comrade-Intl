@@ -9,6 +9,6 @@ namespace Comrade.Core.Helpers.Interfaces
     public interface ISingleResult<TEntity> : IResult
         where TEntity : IEntity
     {
-        TEntity Data { get; set; }
+        TEntity? Data { get; set; }
     }
 }

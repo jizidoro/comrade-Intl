@@ -23,12 +23,12 @@ namespace Comrade.Core.Helpers.Bases
 
         public async Task<bool> Commit()
         {
-            if (await _uow.Commit()) return true;
+            if (await _uow.Commit().ConfigureAwait(false)) return true;
 
             return false;
         }
 
-        public ISingleResult<T> ValidateEntidade<T>(T entity) where T : IEntity
+        public static ISingleResult<T> ValidateEntity<T>(T entity) where T : IEntity
         {
             var context = new ValidationContext(entity, null, null);
             ICollection<ValidationResult> validationResults = new List<ValidationResult>();
@@ -36,7 +36,7 @@ namespace Comrade.Core.Helpers.Bases
             if (!valid)
             {
                 var listErrors = validationResults.Select(x => x.ErrorMessage);
-                return new SingleResult<T>(listErrors);
+                return new SingleResult<T>(listErrors!);
             }
 
             return new SingleResult<T>();

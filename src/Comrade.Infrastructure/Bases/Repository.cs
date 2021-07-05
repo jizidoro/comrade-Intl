@@ -19,6 +19,7 @@ namespace Comrade.Infrastructure.Bases
     {
         protected readonly ComradeContext Db;
         protected readonly DbSet<TEntity> DbSet;
+        private bool _disposed;
 
         public Repository(ComradeContext context)
         {
@@ -26,28 +27,45 @@ namespace Comrade.Infrastructure.Bases
             DbSet = Db.Set<TEntity>();
         }
 
+        public void Dispose()
+        {
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (!this._disposed && disposing)
+            {
+                this.Db.Dispose();
+            }
+
+            this._disposed = true;
+        }
+
+
         public virtual async Task Add(TEntity obj)
         {
-            await DbSet.AddAsync(obj);
+            await DbSet.AddAsync(obj).ConfigureAwait(false);
         }
 
         public virtual async Task<TEntity> GetById(int id)
         {
-            return await GetById(id, null, includes: null);
+            return await GetById(id, null, includes: null).ConfigureAwait(false);
         }
 
         public virtual async Task<TEntity> GetById(int id, params string[] includes)
         {
-            return await GetById(id, null, includes);
+            return await GetById(id, null, includes).ConfigureAwait(false);
         }
 
         public virtual async Task<TEntity> GetById(int id, Expression<Func<TEntity, TEntity>> projection)
         {
-            return await GetById(id, projection, null);
+            return await GetById(id, projection, null).ConfigureAwait(false);
         }
 
-        public virtual async Task<TEntity> GetById(int id, Expression<Func<TEntity, TEntity>> projection,
-            params string[] includes)
+        public virtual async Task<TEntity> GetById(int id, Expression<Func<TEntity, TEntity>>? projection,
+            params string[]? includes)
         {
             var query = GetAll();
             if (projection != null) query = query.Select(projection);
@@ -58,22 +76,22 @@ namespace Comrade.Infrastructure.Bases
 
             query = query.Where(p => p.Id == id);
 
-            return await query.FirstOrDefaultAsync();
+            return await query.FirstOrDefaultAsync().ConfigureAwait(false);
         }
 
         public virtual async Task<TEntity> GetByValue(string value)
         {
-            return await GetByValue(value, null);
+            return await GetByValue(value, null).ConfigureAwait(false);
         }
 
-        public virtual async Task<TEntity> GetByValue(string value, Expression<Func<TEntity, TEntity>> projection)
+        public virtual async Task<TEntity> GetByValue(string value, Expression<Func<TEntity, TEntity>>? projection)
         {
             var query = GetAll();
             if (projection != null) query = query.Select(projection);
 
             query = query.Where(p => p.Value == value);
 
-            return await query.FirstOrDefaultAsync();
+            return await query.FirstOrDefaultAsync().ConfigureAwait(false);
         }
 
         public virtual async Task<bool> ValueExists(int id, string value)
@@ -81,13 +99,13 @@ namespace Comrade.Infrastructure.Bases
             var exists = await GetAll()
                 .Where(p => p.Id != id
                             && p.Value == value)
-                .AnyAsync();
+                .AnyAsync().ConfigureAwait(false);
 
             return exists;
         }
 
         public virtual async Task<bool> ChildrenExists(int id, Expression<Func<TEntity, bool>> predicate,
-            string include = null)
+            string? include = null)
         {
             var query = GetAll();
             if (!string.IsNullOrEmpty(include)) query = query.Include(include);
@@ -95,13 +113,13 @@ namespace Comrade.Infrastructure.Bases
             var exists = await query
                 .Where(p => p.Id == id)
                 .Where(predicate)
-                .AnyAsync();
+                .AnyAsync().ConfigureAwait(false);
 
             return exists;
         }
 
         public virtual Task<bool> GetAllChildren(int id, Expression<Func<TEntity, bool>> predicate,
-            string include = null)
+            string? include = null)
         {
             var query = GetAll();
 
@@ -120,7 +138,7 @@ namespace Comrade.Infrastructure.Bases
 
             var exists = await query
                 .Where(predicate)
-                .AnyAsync();
+                .AnyAsync().ConfigureAwait(false);
 
             return !exists;
         }
@@ -130,17 +148,14 @@ namespace Comrade.Infrastructure.Bases
             return DbSet;
         }
 
-        public virtual IQueryable<LookupEntity> GetLookup()
-        {
-            return DbSet
-                .Take(100)
-                .Select(s => new LookupEntity {Key = s.Key, Value = s.Value});
-        }
 
         public virtual IQueryable<TEntity> GetLookupQuery(Expression<Func<TEntity, TEntity>> projection)
         {
             var query = GetAll();
-            if (projection != null) query = query.Select(projection);
+            if (projection != null)
+            {
+                query = query.Select(projection);
+            }
 
             return query;
         }
@@ -157,13 +172,7 @@ namespace Comrade.Infrastructure.Bases
 
         public async Task<int> SaveChanges()
         {
-            return await Db.SaveChangesAsync();
-        }
-
-        public void Dispose()
-        {
-            Db.Dispose();
-            GC.SuppressFinalize(this);
+            return await Db.SaveChangesAsync().ConfigureAwait(false);
         }
 
         public virtual IQueryable<TEntity> GetAllAsNoTracking()
@@ -176,9 +185,16 @@ namespace Comrade.Infrastructure.Bases
             return DbSet.AsNoTracking().Select(projection);
         }
 
-        public async Task<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
+        public async Task<TEntity> GetByPredicate(Expression<Func<TEntity, bool>> predicate)
         {
-            return await DbSet.SingleOrDefaultAsync(predicate);
+            return await DbSet.SingleOrDefaultAsync(predicate).ConfigureAwait(false);
+        }
+
+        public virtual IQueryable<LookupEntity> GetLookup()
+        {
+            return DbSet
+                .Take(100)
+                .Select(s => new LookupEntity {Key = s.Key, Value = s.Value});
         }
 
         public IQueryable<LookupEntity> GetLookup(Expression<Func<TEntity, bool>> predicate)

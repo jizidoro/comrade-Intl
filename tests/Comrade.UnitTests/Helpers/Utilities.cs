@@ -5,6 +5,7 @@ using System.Reflection;
 using Comrade.Domain.Models;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.Infrastructure.Extensions;
+using Microsoft.Extensions.Configuration.Json;
 
 #endregion
 
@@ -24,13 +25,13 @@ namespace Comrade.UnitTests.Helpers
 
                 if (assembly is not null)
                 {
-                    db.Airplanes.AddRange(
-                        JsonUtilities.GetListFromJson<Airplane>(
-                            assembly.GetManifestResourceStream($"{JsonPath}.airplane.json")));
+                    var airplanes = assembly.GetManifestResourceStream($"{JsonPath}.airplane.json");
+                    var oto = JsonUtilities.GetListFromJson<Airplane>(airplanes);
+                    db.Airplanes!.AddRange(oto!);
 
-                    db.SystemUsers.AddRange(
-                        JsonUtilities.GetListFromJson<SystemUser>(
-                            assembly.GetManifestResourceStream($"{JsonPath}.systemUser.json")));
+                    var systemUsers = assembly.GetManifestResourceStream($"{JsonPath}.systemUser.json");
+                    var oto2 = JsonUtilities.GetListFromJson<SystemUser>(systemUsers);
+                    db.SystemUsers!.AddRange(oto2!);
                 }
 
                 db.SaveChanges();

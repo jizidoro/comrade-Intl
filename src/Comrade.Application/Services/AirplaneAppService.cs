@@ -39,14 +39,14 @@ namespace Comrade.Application.Services
             _deleteAirplaneUseCase = deleteAirplaneUseCase;
         }
 
-        public async Task<IPageResultDto<AirplaneDto>> GetAll(PaginationFilter paginationFilter = null)
+        public async Task<IPageResultDto<AirplaneDto>> GetAll(PaginationFilter? paginationFilter = null)
         {
             List<AirplaneDto> list;
             if (paginationFilter == null)
             {
                 list = await Task.Run(() => _repository.GetAll()
                     .ProjectTo<AirplaneDto>(Mapper.ConfigurationProvider)
-                    .ToList());
+                    .ToList()).ConfigureAwait(false);
 
                 return new PageResultDto<AirplaneDto>(list);
             }
@@ -55,14 +55,14 @@ namespace Comrade.Application.Services
 
             list = await Task.Run(() => _repository.GetAll().Skip(skip).Take(paginationFilter.PageSize)
                 .ProjectTo<AirplaneDto>(Mapper.ConfigurationProvider)
-                .ToList());
+                .ToList()).ConfigureAwait(false);
 
             return new PageResultDto<AirplaneDto>(list);
         }
 
         public async Task<ISingleResultDto<AirplaneDto>> GetById(int id)
         {
-            var entity = await _repository.GetById(id);
+            var entity = await _repository.GetById(id).ConfigureAwait(false);
             var dto = Mapper.Map<AirplaneDto>(entity);
             return new SingleResultDto<AirplaneDto>(dto);
         }
@@ -71,17 +71,16 @@ namespace Comrade.Application.Services
         {
             var validator = new AirplaneCreateValidation();
 
-            var results = await validator.ValidateAsync(dto);
+            var results = await validator.ValidateAsync(dto).ConfigureAwait(false);
 
             if (!results.IsValid)
             {
-                var listErrors = results.Errors.Select(x => x.ErrorMessage);
-                return new SingleResultDto<EntityDto>(listErrors);
+                return new SingleResultDto<EntityDto>(results);
             }
 
             var evento = Mapper.Map<Airplane>(dto);
 
-            var result = await _createAirplaneUseCase.Execute(evento);
+            var result = await _createAirplaneUseCase.Execute(evento).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);
@@ -93,7 +92,7 @@ namespace Comrade.Application.Services
         {
             var validator = new AirplaneEditValidation();
 
-            var results = await validator.ValidateAsync(dto);
+            var results = await validator.ValidateAsync(dto).ConfigureAwait(false);
 
             if (!results.IsValid)
             {
@@ -103,7 +102,7 @@ namespace Comrade.Application.Services
 
             var evento = Mapper.Map<Airplane>(dto);
 
-            var result = await _editAirplaneUseCase.Execute(evento);
+            var result = await _editAirplaneUseCase.Execute(evento).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);
@@ -113,7 +112,7 @@ namespace Comrade.Application.Services
 
         public async Task<ISingleResultDto<EntityDto>> Delete(int id)
         {
-            var result = await _deleteAirplaneUseCase.Execute(id);
+            var result = await _deleteAirplaneUseCase.Execute(id).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);

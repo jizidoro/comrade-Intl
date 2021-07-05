@@ -32,26 +32,26 @@ namespace Comrade.Application.Services
 
         public async Task<ISingleResultDto<UserDto>> GenerateToken(AuthenticationDto dto)
         {
-            var result = await _validateLoginUseCase.Execute(dto.Key, dto.Password);
+            var result = await _validateLoginUseCase.Execute(dto.Key, dto.Password).ConfigureAwait(false);
 
-            if (result.Success)
+            if (!result.Success)
             {
-                var token = new UserDto
-                {
-                    Token = result.TokenUser.Token
-                };
-
-                return new SingleResultDto<UserDto>(token);
+                return new SingleResultDto<UserDto>(result);
             }
 
-            return new SingleResultDto<UserDto>(result);
+            var token = new UserDto
+            {
+                Token = result.TokenUser?.Token
+            };
+
+            return new SingleResultDto<UserDto>(token);
         }
 
         public async Task<ISingleResultDto<EntityDto>> ForgotPassword(AuthenticationDto dto)
         {
             var evento = Mapper.Map<SystemUser>(dto);
 
-            var result = await _forgotPasswordUseCase.Execute(evento);
+            var result = await _forgotPasswordUseCase.Execute(evento).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);
@@ -63,7 +63,7 @@ namespace Comrade.Application.Services
         {
             var evento = Mapper.Map<SystemUser>(dto);
 
-            var result = await _updatePasswordUseCase.Execute(evento);
+            var result = await _updatePasswordUseCase.Execute(evento).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);

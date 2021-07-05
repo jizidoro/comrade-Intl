@@ -6,9 +6,9 @@ using Comrade.Application.Bases;
 
 namespace Comrade.Application.BaseInterfaces
 {
-    public interface ISingleResultDto<TDto> : IResultDto
+    public interface ISingleResultDto<out TDto> : IResultDto
         where TDto : Dto
     {
-        TDto Data { get; }
+        TDto? Data { get; }
     }
 }

@@ -37,13 +37,13 @@ namespace Comrade.Core.SecurityCore.UseCases
                 var result = _systemUserForgotPasswordValidation.Execute(entity);
                 if (!result.Success) return result;
 
-                var obj = result.Data;
+                var obj = result.Data!;
 
-                HydrateValues(obj, entity);
+                HydrateValues(obj);
 
                 _repository.Update(obj);
 
-                _ = await Commit();
+                _ = await Commit().ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -53,10 +53,10 @@ namespace Comrade.Core.SecurityCore.UseCases
             return new EditResult<SystemUser>();
         }
 
-        private void HydrateValues(SystemUser target, SystemUser source)
+        private void HydrateValues(SystemUser target)
         {
-            var regraForgotPassword = "123456";
-            target.Password = _passwordHasher.Hash(regraForgotPassword);
+            var ruleForgotPassword = "123456";
+            target.Password = _passwordHasher.Hash(ruleForgotPassword);
         }
     }
 }

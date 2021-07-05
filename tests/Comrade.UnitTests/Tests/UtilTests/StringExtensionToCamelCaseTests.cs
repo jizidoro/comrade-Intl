@@ -13,12 +13,12 @@ namespace Comrade.UnitTests.Tests.UtilTests
         public void StringExtension_ToCamelCase()
         {
             var testObject = "Last in Line";
-            var objetivo = "lastInLine";
+            var goal = "lastInLine";
 
-            var restult = testObject.ToCamelCase();
+            var result = testObject.ToCamelCase();
 
-            Assert.NotEmpty(restult);
-            Assert.Equal(restult, objetivo);
+            Assert.NotEmpty(result);
+            Assert.Equal(goal, result);
         }
     }
 }

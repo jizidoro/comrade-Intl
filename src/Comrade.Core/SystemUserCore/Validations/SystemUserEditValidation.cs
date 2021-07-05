@@ -21,7 +21,7 @@ namespace Comrade.Core.SystemUserCore.Validations
 
         public async Task<ISingleResult<SystemUser>> Execute(SystemUser entity)
         {
-            var recordExists = await RecordExists(entity.Id);
+            var recordExists = await RecordExists(entity.Id).ConfigureAwait(false);
             if (!recordExists.Success)
             {
                 return recordExists;

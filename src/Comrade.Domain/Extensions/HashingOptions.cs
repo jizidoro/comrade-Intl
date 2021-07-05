@@ -12,7 +12,12 @@ namespace Comrade.Domain.Extensions
 
         public static implicit operator HashingOptions(int v)
         {
-            throw new NotImplementedException();
+            return new HashingOptions();
+        }
+
+        public static HashingOptions ToHashingOptions()
+        {
+            return new HashingOptions();
         }
     }
 }

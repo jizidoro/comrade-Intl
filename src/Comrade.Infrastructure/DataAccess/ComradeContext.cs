@@ -11,16 +11,14 @@ namespace Comrade.Infrastructure.DataAccess
 {
     public class ComradeContext : DbContext
     {
-        private const string JsonPath = "Comrade.Infrastructure.SeedData";
-
         public ComradeContext(DbContextOptions<ComradeContext> options)
             : base(options)
         {
         }
 
-        // Tabelas
-        public DbSet<Airplane> Airplanes { get; set; }
-        public DbSet<SystemUser> SystemUsers { get; set; }
+        // Tables
+        public DbSet<Airplane>? Airplanes { get; set; }
+        public DbSet<SystemUser>? SystemUsers { get; set; }
         
 
 
@@ -28,7 +26,7 @@ namespace Comrade.Infrastructure.DataAccess
         {
             base.OnModelCreating(modelBuilder);
 
-            // Tabelas
+            // Tables
             modelBuilder.ApplyConfiguration(new AirplaneConfiguration());
             modelBuilder.ApplyConfiguration(new SystemUserConfiguration());
         }
