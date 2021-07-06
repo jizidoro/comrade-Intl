@@ -2,7 +2,7 @@ must have
 
 Visual Studio support
 
-    Visual Studio 2019 (v16.4)
+    Visual Studio 2019 (v16.10)
     
 Framework
 
@@ -11,4 +11,4 @@ Framework
 
 to run
 
-go to tools=> nuget package managaer => package manager console select default project "AirplaneProject.Infrastructure" and execute "update-database" then select "AirplaneProject.WebApi" as startup project and run visual studio 2019
+go to tools=> nuget package managaer => package manager console select default project "Comrade.Infrastructure" and execute "update-database" then select "Comrade.WebApi" as startup project and run visual studio 2019
