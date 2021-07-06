@@ -48,7 +48,7 @@ namespace Comrade.ComponentTests.V1.AirplaneApi
             using JsonTextReader reader = new(stringReader) {DateParseHandling = DateParseHandling.None};
             JObject jsonResponse = await JObject.LoadAsync(reader)
                 .ConfigureAwait(false);
-
+            
             Assert.Equal(JTokenType.String, jsonResponse["data"]![0]!["model"]!.Type);
             Assert.Equal(JTokenType.Integer, jsonResponse["data"]![0]!["passengerQuantity"]!.Type);
 

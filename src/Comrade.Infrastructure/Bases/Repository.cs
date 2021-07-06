@@ -48,9 +48,8 @@ namespace Comrade.Infrastructure.Bases
             var query = GetAll();
             if (projection != null) query = query.Select(projection);
 
-            if (includes != null && includes.Length > 0)
-                foreach (var include in includes)
-                    query = query.Include(include);
+            if (includes is {Length: > 0})
+                query = includes.Aggregate(query, (current, include) => current.Include(include));
 
             query = query.Where(p => p.Id == id);
 

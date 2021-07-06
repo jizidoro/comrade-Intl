@@ -84,7 +84,7 @@ namespace Comrade.Application.Extensions
 
         public static decimal ToDecimal(this string s)
         {
-            _ = decimal.TryParse(s, out var i);
+            _ = decimal.TryParse(s, NumberStyles.Any, CultureInfo.InvariantCulture, out var i);
             return i;
         }
 
