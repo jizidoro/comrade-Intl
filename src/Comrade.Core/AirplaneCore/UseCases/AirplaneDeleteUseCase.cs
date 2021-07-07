@@ -1,12 +1,11 @@
 ﻿#region
 
-using System;
 using System.Globalization;
 using System.Threading.Tasks;
 using Comrade.Core.AirplaneCore.Validations;
 using Comrade.Core.Helpers.Bases;
-using Comrade.Core.Helpers.Interfaces;
 using Comrade.Core.Helpers.Messages;
+using Comrade.Core.Helpers.Models.Interfaces;
 using Comrade.Core.Helpers.Models.Results;
 using Comrade.Domain.Models;
 
@@ -19,7 +18,8 @@ namespace Comrade.Core.AirplaneCore.UseCases
         private readonly AirplaneDeleteValidation _airplaneDeleteValidation;
         private readonly IAirplaneRepository _repository;
 
-        public AirplaneDeleteUseCase(IAirplaneRepository repository, AirplaneDeleteValidation airplaneDeleteValidation,
+        public AirplaneDeleteUseCase(IAirplaneRepository repository,
+            AirplaneDeleteValidation airplaneDeleteValidation,
             IUnitOfWork uow)
             : base(uow)
         {

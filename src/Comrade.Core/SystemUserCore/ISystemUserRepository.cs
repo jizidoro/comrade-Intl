@@ -1,7 +1,7 @@
 ﻿#region
 
 using System.Linq;
-using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Models.Interfaces;
 using Comrade.Domain.Bases;
 using Comrade.Domain.Models;
 

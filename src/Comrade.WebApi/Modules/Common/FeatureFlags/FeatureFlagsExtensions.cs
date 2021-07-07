@@ -16,7 +16,8 @@ namespace Comrade.WebApi.Modules.Common.FeatureFlags
         /// <summary>
         ///     Add Feature Flags dependencies.
         /// </summary>
-        public static IServiceCollection AddFeatureFlags(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddFeatureFlags(this IServiceCollection services,
+            IConfiguration configuration)
         {
             services.AddFeatureManagement(configuration);
 

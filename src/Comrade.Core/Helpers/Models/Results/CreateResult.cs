@@ -1,6 +1,5 @@
 ﻿#region
 
-using System;
 using System.Globalization;
 using Comrade.Core.Helpers.Messages;
 using Comrade.Domain.Bases;
@@ -17,7 +16,8 @@ namespace Comrade.Core.Helpers.Models.Results
         {
             Code = (int) EnumResponse.Success;
             Success = true;
-            Message = BusinessMessage.ResourceManager.GetString("MSG01", CultureInfo.CurrentCulture);
+            Message = BusinessMessage.ResourceManager.GetString("MSG01",
+                CultureInfo.CurrentCulture);
         }
 
         public CreateResult(bool success, string? message)

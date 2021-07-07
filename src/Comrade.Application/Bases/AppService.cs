@@ -6,9 +6,9 @@ using AutoMapper;
 
 namespace Comrade.Application.Bases
 {
-    public class AppService
+    public class Service
     {
-        public AppService(IMapper mapper)
+        public Service(IMapper mapper)
         {
             Mapper = mapper;
         }

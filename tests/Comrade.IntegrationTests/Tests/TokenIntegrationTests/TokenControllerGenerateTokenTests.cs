@@ -2,7 +2,7 @@
 
 using System.Threading.Tasks;
 using Comrade.Application.Bases;
-using Comrade.Application.Dtos;
+using Comrade.Application.Services.AuthenticationServices.Dtos;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.AuthenticationTests.Bases;

@@ -2,8 +2,9 @@
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Comrade.Core.Helpers.Models.Results;
 using Comrade.Core.SecurityCore.Validation;
-using Comrade.Core.Utils;
+using Comrade.Domain.Token;
 
 #endregion
 
@@ -16,7 +17,8 @@ namespace Comrade.Core.SecurityCore.UseCases
 
 
         public ValidateLoginUseCase(
-            SystemUserPasswordValidation systemUserPasswordValidation, IGenerateTokenUseCase generateToken)
+            SystemUserPasswordValidation systemUserPasswordValidation,
+            IGenerateTokenUseCase generateToken)
         {
             _systemUserPasswordValidation = systemUserPasswordValidation;
             _generateToken = generateToken;

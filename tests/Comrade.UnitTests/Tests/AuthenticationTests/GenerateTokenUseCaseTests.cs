@@ -1,7 +1,7 @@
 #region
 
 using System.Threading.Tasks;
-using Comrade.Application.Dtos;
+using Comrade.Application.Services.AuthenticationServices.Dtos;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.AuthenticationTests.Bases;
@@ -30,14 +30,18 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests
         public async Task ValidateLoginUseCase_Test(int expected, AuthenticationDto testObjectInput)
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_ValidateLoginUseCase_Test" + testObjectInput.Key)
+                .UseInMemoryDatabase(
+                    "test_database_ValidateLoginUseCase_Test" + testObjectInput.Key)
                 .Options;
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
             Utilities.InitializeDbForTests(context);
 
-            var generateTokenLoginUseCase = _authenticationInjectionUseCase.GetValidateLoginUseCase(context);
-            var result = await generateTokenLoginUseCase.Execute(testObjectInput.Key, testObjectInput.Password);
+            var generateTokenLoginUseCase =
+                _authenticationInjectionUseCase.GetValidateLoginUseCase(context);
+            var result =
+                await generateTokenLoginUseCase.Execute(testObjectInput.Key,
+                    testObjectInput.Password);
             Assert.Equal(expected, result.Code);
         }
     }

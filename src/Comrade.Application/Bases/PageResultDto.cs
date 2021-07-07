@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using Comrade.Application.BaseInterfaces;
-using Comrade.Application.Filters;
+using Comrade.Application.Paginations;
 using Comrade.Core.Helpers.Messages;
 using Comrade.Domain.Enums;
 

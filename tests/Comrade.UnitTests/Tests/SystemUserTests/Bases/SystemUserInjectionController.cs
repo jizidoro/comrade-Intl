@@ -10,15 +10,16 @@ namespace Comrade.UnitTests.Tests.SystemUserTests.Bases
 {
     public class SystemUserInjectionController
     {
-        private readonly SystemUserInjectionAppService _systemUserInjectionAppService = new();
+        private readonly SystemUserInjectionService _systemUserInjectionService = new();
 
         public SystemUserController GetSystemUserController(ComradeContext context)
         {
             var mapper = MapperHelper.ConfigMapper();
-            var systemUserAppService =
-                _systemUserInjectionAppService.GetSystemUserAppService(context, mapper);
+            var systemUserCommand =
+                _systemUserInjectionService.GetSystemUserCommand(context, mapper);
+            var systemUserQuery = _systemUserInjectionService.GetSystemUserQuery(context, mapper);
 
-            return new SystemUserController(systemUserAppService, mapper);
+            return new SystemUserController(systemUserCommand, systemUserQuery, mapper);
         }
     }
 }

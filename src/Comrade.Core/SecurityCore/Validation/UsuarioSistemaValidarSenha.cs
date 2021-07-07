@@ -1,6 +1,6 @@
 ﻿#region
 
-using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Models.Interfaces;
 using Comrade.Core.Helpers.Models.Results;
 using Comrade.Core.Helpers.Models.Validations;
 using Comrade.Core.SystemUserCore;
@@ -35,7 +35,8 @@ namespace Comrade.Core.SecurityCore.Validation
 
                 if (!passwordValidation.Verified)
                 {
-                    return new SingleResult<SystemUser>(1001, "Usuário ou password informados não são válidos");
+                    return new SingleResult<SystemUser>(1001,
+                        "Usuário ou password informados não são válidos");
                 }
 
 
@@ -43,7 +44,8 @@ namespace Comrade.Core.SecurityCore.Validation
             }
 
 
-            return new SingleResult<SystemUser>(1001, "Usuário ou password informados não são válidos");
+            return new SingleResult<SystemUser>(1001,
+                "Usuário ou password informados não são válidos");
         }
     }
 }

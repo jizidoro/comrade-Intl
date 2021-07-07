@@ -1,6 +1,6 @@
 ﻿#region
 
-using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Models.Interfaces;
 
 #endregion
 

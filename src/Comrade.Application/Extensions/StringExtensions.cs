@@ -14,12 +14,14 @@ namespace Comrade.Application.Extensions
     {
         public static string ToCamelCase(this string source)
         {
-            var pattern = new Regex(@"[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+");
+            var pattern =
+                new Regex(@"[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+");
             return new string(
                 new CultureInfo("pt-BR", false)
                     .TextInfo
                     .ToTitleCase(
-                        string.Join(" ", pattern.Matches(source)).ToLower(CultureInfo.CurrentCulture)
+                        string.Join(" ", pattern.Matches(source))
+                            .ToLower(CultureInfo.CurrentCulture)
                     )
                     .Replace(@" ", "", StringComparison.CurrentCulture)
                     .Select((x, i) => i == 0 ? char.ToLower(x, CultureInfo.CurrentCulture) : x)
@@ -29,24 +31,28 @@ namespace Comrade.Application.Extensions
 
         public static string ToKebabCase(this string str)
         {
-            var pattern = new Regex(@"[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+");
+            var pattern =
+                new Regex(@"[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+");
             return string.Join("-", pattern.Matches(str)).ToLower(CultureInfo.CurrentCulture);
         }
 
         public static string ToSnakeCase(this string str)
         {
-            var pattern = new Regex(@"[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+");
+            var pattern =
+                new Regex(@"[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+");
             return string.Join("_", pattern.Matches(str)).ToLower(CultureInfo.CurrentCulture);
         }
 
         public static string ToPascalCase(this string source)
         {
-            var pattern = new Regex(@"[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+");
+            var pattern =
+                new Regex(@"[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+");
             return new string(
                 new CultureInfo("pt-BR", false)
                     .TextInfo
                     .ToTitleCase(
-                        string.Join(" ", pattern.Matches(source)).ToLower(CultureInfo.CurrentCulture)
+                        string.Join(" ", pattern.Matches(source))
+                            .ToLower(CultureInfo.CurrentCulture)
                     )
                     .Replace(@" ", "", StringComparison.CurrentCulture)
                     .Select((x, i) => i == 0 ? char.ToUpper(x, CultureInfo.CurrentCulture) : x)

@@ -1,9 +1,8 @@
 ﻿#region
 
-using System;
 using System.Threading.Tasks;
 using Comrade.Core.Helpers.Bases;
-using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Models.Interfaces;
 using Comrade.Core.Helpers.Models.Results;
 using Comrade.Core.SystemUserCore;
 using Comrade.Core.SystemUserCore.Validations;
@@ -42,7 +41,7 @@ namespace Comrade.Core.SecurityCore.UseCases
             _repository.Update(obj);
 
             _ = await Commit().ConfigureAwait(false);
-            
+
             return new EditResult<SystemUser>();
         }
 

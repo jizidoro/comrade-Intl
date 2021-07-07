@@ -36,7 +36,8 @@ namespace Comrade.WebApi.Modules.Common
                 .AddHttpContextAccessor()
                 .AddMvc(options =>
                 {
-                    options.Conventions.Add(new RouteTokenTransformerConvention(new SlugifyParameterTransformer()));
+                    options.Conventions.Add(
+                        new RouteTokenTransformerConvention(new SlugifyParameterTransformer()));
                     options.OutputFormatters.RemoveType<TextOutputFormatter>();
                     options.OutputFormatters.RemoveType<StreamOutputFormatter>();
                     options.RespectBrowserAcceptHeader = true;

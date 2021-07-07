@@ -2,8 +2,8 @@
 
 using System.Threading.Tasks;
 using Comrade.Application.Bases;
-using Comrade.Application.Dtos.AirplaneDtos;
-using Comrade.Application.Queries;
+using Comrade.Application.Paginations;
+using Comrade.Application.Services.AirplaneServices.Dtos;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.AirplaneTests.Bases;

@@ -1,9 +1,10 @@
 #region
 
-using Comrade.Application.Dtos.AirplaneDtos;
-using Comrade.Application.Interfaces;
-using Comrade.Application.Services;
-using Comrade.Application.Validations.AirplaneValidations;
+using Comrade.Application.Services.AirplaneServices.Commands;
+using Comrade.Application.Services.AirplaneServices.Queries;
+using Comrade.Application.Services.AuthenticationServices.Commands;
+using Comrade.Application.Services.SystemUserServices.Commands;
+using Comrade.Application.Services.SystemUserServices.Queries;
 using Comrade.Core.AirplaneCore;
 using Comrade.Core.AirplaneCore.UseCases;
 using Comrade.Core.AirplaneCore.Validations;
@@ -13,11 +14,7 @@ using Comrade.Core.SecurityCore.Validation;
 using Comrade.Core.SystemUserCore;
 using Comrade.Core.SystemUserCore.UseCases;
 using Comrade.Core.SystemUserCore.Validations;
-using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using AirplaneCreateValidation = Comrade.Core.AirplaneCore.Validations.AirplaneCreateValidation;
-using AirplaneDeleteValidation = Comrade.Core.AirplaneCore.Validations.AirplaneDeleteValidation;
-using AirplaneEditValidation = Comrade.Core.AirplaneCore.Validations.AirplaneEditValidation;
 
 #endregion
 
@@ -38,7 +35,7 @@ namespace Comrade.WebApi.Modules
             #region Authentication
 
             // Application - Services
-            services.AddScoped<IAuthenticationAppService, AuthenticationAppService>();
+            services.AddScoped<IAuthenticationCommand, AuthenticationCommand>();
 
             // Core - UseCases
             services.AddScoped<IUpdatePasswordUseCase, UpdatePasswordUseCase>();
@@ -51,7 +48,8 @@ namespace Comrade.WebApi.Modules
             #region Airplane
 
             // Application - Services
-            services.AddScoped<IAirplaneAppService, AirplaneAppService>();
+            services.AddScoped<IAirplaneCommand, AirplaneCommand>();
+            services.AddScoped<IAirplaneQuery, AirplaneQuery>();
 
             // Core - UseCases
             services.AddScoped<IAirplaneEditUseCase, AirplaneEditUseCase>();
@@ -69,7 +67,8 @@ namespace Comrade.WebApi.Modules
             #region SystemUser
 
             // Application - Services
-            services.AddScoped<ISystemUserAppService, SystemUserAppService>();
+            services.AddScoped<ISystemUserCommand, SystemUserCommand>();
+            services.AddScoped<ISystemUserQuery, SystemUserQuery>();
 
             // Core - UseCases
             services.AddScoped<ISystemUserEditUseCase, SystemUserEditUseCase>();

@@ -1,16 +1,12 @@
 #region
 
 using System;
-using System.Linq;
 using System.Threading.Tasks;
-using Comrade.Domain.Extensions;
 using Comrade.Domain.Models;
 using Comrade.Infrastructure.DataAccess;
-using Comrade.Infrastructure.Repositories;
 using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.AirplaneTests.Bases;
 using Comrade.UnitTests.Tests.AirplaneTests.TestDatas;
-using Comrade.UnitTests.Tests.AuthenticationTests.Bases;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 using Xunit.Abstractions;

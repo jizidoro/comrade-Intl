@@ -32,7 +32,8 @@ namespace Comrade.ComponentTests.V1.AirplaneApi
 
             var token = GenerateFakeToken.Execute();
 
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", token);
 
             HttpResponseMessage actualResponse = await client
                 .GetAsync("/api/v1/airplane/get-all")
@@ -45,14 +46,16 @@ namespace Comrade.ComponentTests.V1.AirplaneApi
             Assert.Equal(HttpStatusCode.OK, actualResponse.StatusCode);
 
             using StringReader stringReader = new(actualResponseString);
-            using JsonTextReader reader = new(stringReader) {DateParseHandling = DateParseHandling.None};
+            using JsonTextReader reader = new(stringReader)
+                {DateParseHandling = DateParseHandling.None};
             JObject jsonResponse = await JObject.LoadAsync(reader)
                 .ConfigureAwait(false);
-            
+
             Assert.Equal(JTokenType.String, jsonResponse["data"]![0]!["model"]!.Type);
             Assert.Equal(JTokenType.Integer, jsonResponse["data"]![0]!["passengerQuantity"]!.Type);
 
-            Assert.True(int.TryParse(jsonResponse["data"]![0]!["passengerQuantity"]!.Value<string>(),
+            Assert.True(int.TryParse(
+                jsonResponse["data"]![0]!["passengerQuantity"]!.Value<string>(),
                 out var _));
         }
     }

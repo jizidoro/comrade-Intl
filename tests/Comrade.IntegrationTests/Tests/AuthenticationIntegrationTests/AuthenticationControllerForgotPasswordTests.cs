@@ -2,7 +2,7 @@
 
 using System.Threading.Tasks;
 using Comrade.Application.Bases;
-using Comrade.Application.Dtos;
+using Comrade.Application.Services.AuthenticationServices.Dtos;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.AuthenticationTests.Bases;
@@ -16,7 +16,8 @@ namespace Comrade.IntegrationTests.Tests.AuthenticationIntegrationTests
 {
     public sealed class AuthenticationControllerForgotPasswordTests
     {
-        private readonly AuthenticationInjectionController _authenticationInjectionController = new();
+        private readonly AuthenticationInjectionController _authenticationInjectionController =
+            new();
 
         [Fact]
         public async Task AuthenticationController_ForgotPassword()
@@ -36,7 +37,8 @@ namespace Comrade.IntegrationTests.Tests.AuthenticationIntegrationTests
             await context.Database.EnsureCreatedAsync();
             Utilities.InitializeDbForTests(context);
 
-            var authenticationController = _authenticationInjectionController.GetAuthenticationController(context);
+            var authenticationController =
+                _authenticationInjectionController.GetAuthenticationController(context);
             var result = await authenticationController.ForgotPassword(testObject);
 
             if (result is OkObjectResult okResult)

@@ -16,7 +16,8 @@ namespace Comrade.Infrastructure.Mappings
             builder.HasKey(c => c.Id);
 
             builder.HasIndex(c => c.Email).HasDatabaseName("IX_USUARIO_SISTEMA_EMAIL").IsUnique();
-            builder.HasIndex(c => c.Registration).HasDatabaseName("IX_USUARIO_SISTEMA_MATRICULA").IsUnique();
+            builder.HasIndex(c => c.Registration).HasDatabaseName("IX_USUARIO_SISTEMA_MATRICULA")
+                .IsUnique();
         }
     }
 }

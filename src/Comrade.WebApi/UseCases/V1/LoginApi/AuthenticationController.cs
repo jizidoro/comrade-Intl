@@ -3,8 +3,8 @@
 using System;
 using System.Threading.Tasks;
 using Comrade.Application.Bases;
-using Comrade.Application.Dtos;
-using Comrade.Application.Interfaces;
+using Comrade.Application.Services.AuthenticationServices.Commands;
+using Comrade.Application.Services.AuthenticationServices.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,48 +19,50 @@ namespace Comrade.WebApi.UseCases.V1.LoginApi
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IAuthenticationAppService _authenticationAppService;
+        private readonly IAuthenticationCommand _authenticationCommand;
 
-        public AuthenticationController(
-            IAuthenticationAppService authenticationAppService
-        )
+        public AuthenticationController(IAuthenticationCommand authenticationCommand)
         {
-            _authenticationAppService = authenticationAppService;
+            _authenticationCommand = authenticationCommand;
         }
 
         [HttpPost]
         [Route("update-password")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(SingleResultDto<EntityDto>), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(SingleResultDto<EntityDto>),
+            StatusCodes.Status500InternalServerError)]
         [ProducesDefaultResponseType]
         public async Task<IActionResult> UpdatePassword([FromBody] AuthenticationDto dto)
         {
             try
             {
-                var result = await _authenticationAppService.UpdatePassword(dto).ConfigureAwait(false);
+                var result = await _authenticationCommand.UpdatePassword(dto).ConfigureAwait(false);
                 return Ok(result);
             }
             catch (Exception e)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new SingleResultDto<EntityDto>(e));
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    new SingleResultDto<EntityDto>(e));
             }
         }
 
         [HttpPost]
         [Route("forgot-password")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(SingleResultDto<EntityDto>), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(SingleResultDto<EntityDto>),
+            StatusCodes.Status500InternalServerError)]
         [ProducesDefaultResponseType]
         public async Task<IActionResult> ForgotPassword([FromBody] AuthenticationDto dto)
         {
             try
             {
-                var result = await _authenticationAppService.ForgotPassword(dto).ConfigureAwait(false);
+                var result = await _authenticationCommand.ForgotPassword(dto).ConfigureAwait(false);
                 return Ok(result);
             }
             catch (Exception e)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new SingleResultDto<EntityDto>(e));
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    new SingleResultDto<EntityDto>(e));
             }
         }
     }

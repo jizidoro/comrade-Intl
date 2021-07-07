@@ -52,7 +52,8 @@ namespace Comrade.WebApi.Modules.Common
                         {
                             ValidateIssuerSigningKey = true,
                             IssuerSigningKey =
-                                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["jwt:key"])),
+                                new SymmetricSecurityKey(
+                                    Encoding.UTF8.GetBytes(configuration["jwt:key"])),
                             ValidateIssuer = false,
                             ValidateAudience = false
                         };

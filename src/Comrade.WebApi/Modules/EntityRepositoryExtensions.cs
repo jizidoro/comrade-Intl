@@ -1,7 +1,7 @@
 #region
 
 using Comrade.Core.AirplaneCore;
-using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Models.Interfaces;
 using Comrade.Core.SystemUserCore;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.Infrastructure.Repositories;

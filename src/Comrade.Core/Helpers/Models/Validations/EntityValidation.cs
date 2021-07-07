@@ -1,8 +1,8 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using Comrade.Core.Helpers.Interfaces;
 using Comrade.Core.Helpers.Messages;
+using Comrade.Core.Helpers.Models.Interfaces;
 using Comrade.Core.Helpers.Models.Results;
 using Comrade.Domain.Bases;
 

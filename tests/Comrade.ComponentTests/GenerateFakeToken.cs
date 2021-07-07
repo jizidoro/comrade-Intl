@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 using Comrade.Core.SecurityCore.UseCases;
-using Comrade.Core.Utils;
+using Comrade.Domain.Token;
 using Microsoft.Extensions.Configuration;
 
 #endregion

@@ -1,7 +1,7 @@
 ﻿#region
 
 using AutoMapper;
-using Comrade.Application.MappingProfiles;
+using Comrade.Application.Paginations;
 
 #endregion
 
@@ -15,7 +15,7 @@ namespace Comrade.Application.AutoMapper
             {
                 cfg.AddProfile(new DomainToDtoMappingProfile());
                 cfg.AddProfile(new DtoToDomainMappingProfile());
-                cfg.AddProfile(new RequestToDomainProfile());
+                cfg.AddProfile(new PaginationProfile());
             });
         }
     }

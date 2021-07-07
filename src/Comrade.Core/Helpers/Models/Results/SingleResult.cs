@@ -1,10 +1,9 @@
 ﻿#region
 
-using System;
 using System.Collections.Generic;
 using System.Globalization;
-using Comrade.Core.Helpers.Interfaces;
 using Comrade.Core.Helpers.Messages;
+using Comrade.Core.Helpers.Models.Interfaces;
 using Comrade.Domain.Enums;
 using Comrade.Domain.Interfaces;
 

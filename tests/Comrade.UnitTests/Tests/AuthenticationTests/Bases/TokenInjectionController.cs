@@ -10,16 +10,16 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
 {
     public class TokenInjectionController
     {
-        private readonly AuthenticationInjectionAppService _authenticationInjectionAppService = new();
+        private readonly AuthenticationInjectionService _authenticationInjectionService = new();
 
         public TokenController GetTokenController(ComradeContext context)
         {
             var mapper = MapperHelper.ConfigMapper();
 
-            var authenticationAppService =
-                _authenticationInjectionAppService.GetAuthenticationAppService(context, mapper);
+            var authenticationCommand =
+                _authenticationInjectionService.GetAuthenticationCommand(context, mapper);
 
-            return new TokenController(authenticationAppService);
+            return new TokenController(authenticationCommand);
         }
     }
 }

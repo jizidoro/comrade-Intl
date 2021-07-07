@@ -1,6 +1,6 @@
 ﻿#region
 
-using Comrade.Core.Utils;
+using Comrade.Domain.Token;
 
 #endregion
 

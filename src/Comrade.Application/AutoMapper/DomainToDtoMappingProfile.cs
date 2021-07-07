@@ -2,10 +2,10 @@
 
 using AutoMapper;
 using Comrade.Application.Bases;
-using Comrade.Application.Dtos;
-using Comrade.Application.Dtos.AirplaneDtos;
-using Comrade.Application.Dtos.SystemUserDtos;
 using Comrade.Application.Lookups;
+using Comrade.Application.Services.AirplaneServices.Dtos;
+using Comrade.Application.Services.AuthenticationServices.Dtos;
+using Comrade.Application.Services.SystemUserServices.Dtos;
 using Comrade.Domain.Bases;
 using Comrade.Domain.Models;
 

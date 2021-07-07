@@ -1,7 +1,7 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Models.Interfaces;
 using Comrade.Core.Helpers.Models.Validations;
 using Comrade.Domain.Models;
 
@@ -21,7 +21,8 @@ namespace Comrade.Core.AirplaneCore.Validations
 
         public async Task<ISingleResult<Airplane>> Execute(Airplane entity)
         {
-            var result = await _repository.ValidateSameCode(entity.Id, entity.Code).ConfigureAwait(false);
+            var result = await _repository.ValidateSameCode(entity.Id, entity.Code)
+                .ConfigureAwait(false);
 
             return result;
         }

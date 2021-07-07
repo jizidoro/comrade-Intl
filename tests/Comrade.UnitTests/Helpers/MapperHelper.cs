@@ -2,7 +2,7 @@
 
 using AutoMapper;
 using Comrade.Application.AutoMapper;
-using Comrade.Application.MappingProfiles;
+using Comrade.Application.Paginations;
 
 #endregion
 
@@ -16,7 +16,7 @@ namespace Comrade.UnitTests.Helpers
             {
                 cfg.AddProfile(new DtoToDomainMappingProfile());
                 cfg.AddProfile(new DomainToDtoMappingProfile());
-                cfg.AddProfile(new RequestToDomainProfile());
+                cfg.AddProfile(new PaginationProfile());
             }).CreateMapper();
         }
     }

@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace Comrade.Application.BaseInterfaces
 {
-    public interface IAppService
+    public interface IService
     {
         IMapper Mapper { get; }
     }

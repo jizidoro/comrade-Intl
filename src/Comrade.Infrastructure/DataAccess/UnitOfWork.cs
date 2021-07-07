@@ -2,7 +2,7 @@
 
 using System;
 using System.Threading.Tasks;
-using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Models.Interfaces;
 
 #endregion
 
@@ -17,7 +17,13 @@ namespace Comrade.Infrastructure.DataAccess
         {
             _context = context;
         }
-        
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
         public async Task<bool> Commit()
         {
             return await _context.SaveChangesAsync().ConfigureAwait(false) > 0;
@@ -29,12 +35,6 @@ namespace Comrade.Infrastructure.DataAccess
                 .SaveChangesAsync()
                 .ConfigureAwait(false);
             return affectedRows;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
 
         private void Dispose(bool disposing)

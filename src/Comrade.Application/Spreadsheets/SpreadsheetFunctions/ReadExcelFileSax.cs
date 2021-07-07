@@ -1,6 +1,5 @@
 ﻿#region
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -43,11 +42,13 @@ namespace Comrade.Application.Spreadsheets.SpreadsheetFunctions
 
                                     string? cellValue;
 
-                                    if (cell.DataType != null && cell.DataType == CellValues.SharedString)
+                                    if (cell.DataType != null &&
+                                        cell.DataType == CellValues.SharedString)
                                     {
                                         var cellPosition = cell.CellValue!.InnerText.ToInt32();
 
-                                        var ssi = workbookPart.SharedStringTablePart?.SharedStringTable
+                                        var ssi = workbookPart.SharedStringTablePart
+                                            ?.SharedStringTable
                                             .Elements<SharedStringItem>()
                                             .ElementAt(cellPosition);
 

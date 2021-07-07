@@ -35,7 +35,8 @@ namespace Comrade.Infrastructure.DataAccess
                     var oto = JsonUtilities.GetListFromJson<Airplane>(airplanes);
                     context.Airplanes.AddRange(oto!);
 
-                    var systemUsers = assembly.GetManifestResourceStream($"{JsonPath}.systemUser.json");
+                    var systemUsers =
+                        assembly.GetManifestResourceStream($"{JsonPath}.systemUser.json");
                     var oto2 = JsonUtilities.GetListFromJson<SystemUser>(systemUsers);
                     context.SystemUsers.AddRange(oto2!);
 
@@ -47,8 +48,6 @@ namespace Comrade.Infrastructure.DataAccess
                     context.SaveChanges();
                 }
             }
-
-            return;
         }
     }
 }

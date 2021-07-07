@@ -1,8 +1,8 @@
 #region
 
 using System.Threading.Tasks;
-using Comrade.Application.Dtos;
-using Comrade.Application.Interfaces;
+using Comrade.Application.Services.AuthenticationServices.Commands;
+using Comrade.Application.Services.AuthenticationServices.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,13 +16,11 @@ namespace Comrade.WebApi.UseCases.V1.LoginApi
     [ApiController]
     public class TokenController : ControllerBase
     {
-        private readonly IAuthenticationAppService _authenticationAppService;
+        private readonly IAuthenticationCommand _authenticationCommand;
 
-        public TokenController(
-            IAuthenticationAppService authenticationAppService
-        )
+        public TokenController(IAuthenticationCommand authenticationCommand)
         {
-            _authenticationAppService = authenticationAppService;
+            _authenticationCommand = authenticationCommand;
         }
 
 
@@ -30,7 +28,7 @@ namespace Comrade.WebApi.UseCases.V1.LoginApi
         [Route("generate-token")]
         public async Task<ActionResult> GenerateToken([FromBody] AuthenticationDto dto)
         {
-            var result = await _authenticationAppService.GenerateToken(dto).ConfigureAwait(false);
+            var result = await _authenticationCommand.GenerateToken(dto).ConfigureAwait(false);
 
             return Ok(result);
         }

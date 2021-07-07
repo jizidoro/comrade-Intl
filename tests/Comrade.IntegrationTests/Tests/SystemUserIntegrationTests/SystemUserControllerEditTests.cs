@@ -2,7 +2,7 @@
 
 using System.Threading.Tasks;
 using Comrade.Application.Bases;
-using Comrade.Application.Dtos.SystemUserDtos;
+using Comrade.Application.Services.SystemUserServices.Dtos;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.Infrastructure.Repositories;
 using Comrade.UnitTests.Helpers;
@@ -43,7 +43,8 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
             Utilities.InitializeDbForTests(context);
-            var systemUserController = _systemUserInjectionController.GetSystemUserController(context);
+            var systemUserController =
+                _systemUserInjectionController.GetSystemUserController(context);
             var result = await systemUserController.Edit(testObject);
 
             if (result is OkObjectResult okObjectResult)
@@ -82,7 +83,8 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
             await context.Database.EnsureCreatedAsync();
             Utilities.InitializeDbForTests(context);
 
-            var systemUserController = _systemUserInjectionController.GetSystemUserController(context);
+            var systemUserController =
+                _systemUserInjectionController.GetSystemUserController(context);
             var result = await systemUserController.Edit(testObject);
 
             if (result is OkObjectResult okObjectResult)

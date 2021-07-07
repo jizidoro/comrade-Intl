@@ -1,14 +1,12 @@
 ﻿#region
 
 using System.Collections.Generic;
-using Comrade.Application.Services;
 using Comrade.Core.SecurityCore.UseCases;
 using Comrade.Core.SecurityCore.Validation;
 using Comrade.Core.SystemUserCore.Validations;
 using Comrade.Domain.Extensions;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.Infrastructure.Repositories;
-using Comrade.UnitTests.Helpers;
 using Microsoft.Extensions.Configuration;
 
 #endregion
@@ -37,11 +35,13 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
             var systemUserCoreRepository = new SystemUserRepository(context);
             var systemUserEditValidation = new SystemUserEditValidation(systemUserCoreRepository);
             var systemUserForgotPasswordValidation =
-                new SystemUserForgotPasswordValidation(systemUserCoreRepository, systemUserEditValidation
+                new SystemUserForgotPasswordValidation(systemUserCoreRepository,
+                    systemUserEditValidation
                 );
             var passwordHasher = new PasswordHasher(new HashingOptions());
 
-            return new ForgotPasswordUseCase(systemUserCoreRepository, systemUserForgotPasswordValidation,
+            return new ForgotPasswordUseCase(systemUserCoreRepository,
+                systemUserForgotPasswordValidation,
                 passwordHasher, uow);
         }
 
@@ -71,19 +71,6 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
                     generateTokenUseCase
                 );
             return generateTokenLoginUseCase;
-        }
-
-        private AuthenticationAppService GetSystemUserAppService(ComradeContext context)
-        {
-            var mapper = MapperHelper.ConfigMapper();
-
-            var getUpdatePasswordUseCase = GetUpdatePasswordUseCase(context);
-            var getForgotPasswordUseCase = GetForgotPasswordUseCase(context);
-            var getValidateLoginUseCaseUseCase = GetValidateLoginUseCase(context);
-
-            var authenticationAppService = new AuthenticationAppService(getUpdatePasswordUseCase,
-                getValidateLoginUseCaseUseCase, getForgotPasswordUseCase, mapper);
-            return authenticationAppService;
         }
     }
 }

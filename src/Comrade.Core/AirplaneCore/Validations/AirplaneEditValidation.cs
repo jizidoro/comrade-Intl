@@ -1,7 +1,7 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Models.Interfaces;
 using Comrade.Core.Helpers.Models.Validations;
 using Comrade.Domain.Models;
 
@@ -30,7 +30,8 @@ namespace Comrade.Core.AirplaneCore.Validations
                 return recordExists;
             }
 
-            var registerSameCode = await _airplaneValidateSameCode.Execute(entity).ConfigureAwait(false);
+            var registerSameCode =
+                await _airplaneValidateSameCode.Execute(entity).ConfigureAwait(false);
             if (!registerSameCode.Success)
             {
                 return registerSameCode;

@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 using Comrade.Application.Lookups;
-using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Models.Interfaces;
 using Comrade.Domain.Extensions;
 using Comrade.Infrastructure.Bases;
 using Comrade.WebApi.Modules;
@@ -31,11 +31,12 @@ namespace Comrade.UnitTests.Helpers
                 .Build();
 
             var mockProvider = new Mock<IApiVersionDescriptionProvider>();
-            mockProvider.Setup(foo => foo.ApiVersionDescriptions).Returns(new List<ApiVersionDescription>
-            {
-                new(new ApiVersion(1, 0), "v1", false),
-                new(new ApiVersion(2, 0), "v2", false)
-            });
+            mockProvider.Setup(foo => foo.ApiVersionDescriptions).Returns(
+                new List<ApiVersionDescription>
+                {
+                    new(new ApiVersion(1, 0), "v1", false),
+                    new(new ApiVersion(2, 0), "v2", false)
+                });
 
             @this.ConfigureServices(services =>
                 {

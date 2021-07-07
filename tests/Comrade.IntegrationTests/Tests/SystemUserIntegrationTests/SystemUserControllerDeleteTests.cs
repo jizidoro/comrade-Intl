@@ -27,7 +27,8 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
             await context.Database.EnsureCreatedAsync();
             Utilities.InitializeDbForTests(context);
 
-            var systemUserController = _systemUserInjectionController.GetSystemUserController(context);
+            var systemUserController =
+                _systemUserInjectionController.GetSystemUserController(context);
             _ = await systemUserController.Delete(1);
 
             var respository = new SystemUserRepository(context);

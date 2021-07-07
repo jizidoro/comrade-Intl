@@ -104,14 +104,16 @@ namespace Comrade.WebApi.Modules.Common.Swagger
 
                         if (!string.IsNullOrEmpty(basePath))
                         {
-                            swaggerEndpoint = $"{basePath}/swagger/{description.GroupName}/swagger.json";
+                            swaggerEndpoint =
+                                $"{basePath}/swagger/{description.GroupName}/swagger.json";
                         }
                         else
                         {
                             swaggerEndpoint = $"/swagger/{description.GroupName}/swagger.json";
                         }
 
-                        options.SwaggerEndpoint(swaggerEndpoint, description.GroupName.ToUpperInvariant());
+                        options.SwaggerEndpoint(swaggerEndpoint,
+                            description.GroupName.ToUpperInvariant());
                     }
                 });
 

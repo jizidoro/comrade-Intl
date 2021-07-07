@@ -23,7 +23,8 @@ namespace Comrade.ComponentTests
                         new Dictionary<string, string>
                         {
                             ["FeatureManagement:SQLServer"] = "false",
-                            ["JWT:Key"] = "afsdkjasjflxswafsdklk434orqiwup3457u-34oewir4irroqwiffv48mfs"
+                            ["JWT:Key"] =
+                                "afsdkjasjflxswafsdklk434orqiwup3457u-34oewir4irroqwiffv48mfs"
                         });
                 });
         }

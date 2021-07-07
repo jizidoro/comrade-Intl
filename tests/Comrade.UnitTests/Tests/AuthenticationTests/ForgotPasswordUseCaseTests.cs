@@ -46,7 +46,8 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests
             var returnBefore = await repository.GetById(testObject.Id);
             var passwordBefore = returnBefore!.Password;
 
-            var updatePasswordUseCase = _authenticationInjectionUseCase.GetForgotPasswordUseCase(context);
+            var updatePasswordUseCase =
+                _authenticationInjectionUseCase.GetForgotPasswordUseCase(context);
             var result = await updatePasswordUseCase.Execute(testObject);
             _output.WriteLine(result.Message);
 

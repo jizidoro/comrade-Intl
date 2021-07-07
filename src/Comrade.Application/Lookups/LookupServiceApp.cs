@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Comrade.Application.Bases;
-using Comrade.Core.Helpers.Interfaces;
+using Comrade.Core.Helpers.Models.Interfaces;
 using Comrade.Domain.Bases;
 
 #endregion
 
 namespace Comrade.Application.Lookups
 {
-    public class LookupServiceApp<TEntity> : AppService, ILookupServiceApp<TEntity>
+    public class LookupServiceApp<TEntity> : Service, ILookupServiceApp<TEntity>
         where TEntity : Entity
     {
         private readonly IRepository<TEntity> _repository;

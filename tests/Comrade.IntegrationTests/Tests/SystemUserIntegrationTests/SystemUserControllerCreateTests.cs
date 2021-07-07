@@ -3,7 +3,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Comrade.Application.Bases;
-using Comrade.Application.Dtos.SystemUserDtos;
+using Comrade.Application.Services.SystemUserServices.Dtos;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.Tests.SystemUserTests.Bases;
 using Microsoft.AspNetCore.Mvc;
@@ -37,7 +37,8 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
 
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
-            var systemUserController = _systemUserInjectionController.GetSystemUserController(context);
+            var systemUserController =
+                _systemUserInjectionController.GetSystemUserController(context);
             _ = await systemUserController.Create(testObject);
             Assert.Equal(1, context.SystemUsers.Count());
         }
@@ -59,7 +60,8 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
 
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
-            var systemUserController = _systemUserInjectionController.GetSystemUserController(context);
+            var systemUserController =
+                _systemUserInjectionController.GetSystemUserController(context);
             var result = await systemUserController.Create(testObject);
 
             if (result is OkObjectResult okObjectResult)

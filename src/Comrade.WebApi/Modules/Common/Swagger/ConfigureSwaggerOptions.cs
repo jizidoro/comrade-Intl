@@ -65,7 +65,8 @@ namespace Comrade.WebApi.Modules.Common.Swagger
                 }
             };
 
-            if (description.IsDeprecated) info.Description += " This API version has been deprecated.";
+            if (description.IsDeprecated)
+                info.Description += " This API version has been deprecated.";
 
             return info;
         }

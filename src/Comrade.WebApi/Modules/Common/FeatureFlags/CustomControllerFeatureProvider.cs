@@ -17,7 +17,8 @@ namespace Comrade.WebApi.Modules.Common.FeatureFlags
     /// <summary>
     ///     Custom Controller Feature Provider.
     /// </summary>
-    public sealed class CustomControllerFeatureProvider : IApplicationFeatureProvider<ControllerFeature>
+    public sealed class
+        CustomControllerFeatureProvider : IApplicationFeatureProvider<ControllerFeature>
     {
         private readonly IFeatureManager _featureManager;
 
@@ -39,7 +40,8 @@ namespace Comrade.WebApi.Modules.Common.FeatureFlags
                 Type controller = feature.Controllers[i].AsType();
                 foreach (CustomAttributeData customAttribute in controller.CustomAttributes)
                 {
-                    if (customAttribute.AttributeType.FullName != typeof(FeatureGateAttribute).FullName) continue;
+                    if (customAttribute.AttributeType.FullName !=
+                        typeof(FeatureGateAttribute).FullName) continue;
 
                     var constructorArgument = customAttribute.ConstructorArguments.First();
                     if (!(constructorArgument.Value is IEnumerable arguments)) continue;

@@ -4,8 +4,8 @@ using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Comrade.Application.Bases;
-using Comrade.Application.Interfaces;
 using Comrade.Application.Lookups;
+using Comrade.Application.Services.SystemUserServices.Queries;
 using Comrade.Domain.Models;
 using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Microsoft.AspNetCore.Mvc;
@@ -23,12 +23,12 @@ namespace Comrade.WebApi.UseCases.V1
     public class CommonController : Controller
     {
         private readonly IServiceProvider _serviceProvider;
-        private readonly ISystemUserAppService _systemUserAppService;
+        private readonly ISystemUserQuery _systemUserQuery;
 
-        public CommonController(IServiceProvider serviceProvider, ISystemUserAppService systemUserAppService)
+        public CommonController(IServiceProvider serviceProvider, ISystemUserQuery systemUserQuery)
         {
             _serviceProvider = serviceProvider;
-            _systemUserAppService = systemUserAppService;
+            _systemUserQuery = systemUserQuery;
         }
 
 
@@ -75,7 +75,7 @@ namespace Comrade.WebApi.UseCases.V1
         {
             try
             {
-                var result = await _systemUserAppService.FindByName(name).ConfigureAwait(false);
+                var result = await _systemUserQuery.FindByName(name).ConfigureAwait(false);
                 return Ok(result);
             }
             catch (Exception e)

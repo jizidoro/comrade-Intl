@@ -2,8 +2,8 @@
 
 using System.Threading.Tasks;
 using Comrade.Application.Bases;
-using Comrade.Application.Dtos.SystemUserDtos;
-using Comrade.Application.Queries;
+using Comrade.Application.Paginations;
+using Comrade.Application.Services.SystemUserServices.Dtos;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.SystemUserTests.Bases;
@@ -30,7 +30,8 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
             await context.Database.EnsureCreatedAsync();
             Utilities.InitializeDbForTests(context);
 
-            var systemUserController = _systemUserInjectionController.GetSystemUserController(context);
+            var systemUserController =
+                _systemUserInjectionController.GetSystemUserController(context);
             var pagination = new PaginationQuery(1, 3);
             var result = await systemUserController.GetAll(pagination);
 

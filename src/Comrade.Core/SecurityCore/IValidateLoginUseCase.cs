@@ -1,7 +1,7 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using Comrade.Core.Utils;
+using Comrade.Core.Helpers.Models.Results;
 
 #endregion
 
