@@ -15,7 +15,7 @@ namespace Comrade.Infrastructure.DataAccess
         private const string JsonPath = "Comrade.Infrastructure.SeedData";
         private static readonly object SyncLock = new();
 
-        public static bool AddDataFakeContext(IServiceCollection serviceCollection)
+        public static void AddDataFakeContext(IServiceCollection serviceCollection)
         {
             var context = serviceCollection.BuildServiceProvider()
                 .GetService<ComradeContext>();
@@ -24,7 +24,7 @@ namespace Comrade.Infrastructure.DataAccess
 
             if (context != null && context.Airplanes.Any())
             {
-                return true;
+                return;
             }
 
             lock (SyncLock)
@@ -41,14 +41,14 @@ namespace Comrade.Infrastructure.DataAccess
 
                     if (context.Airplanes.Any())
                     {
-                        return true;
+                        return;
                     }
 
                     context.SaveChanges();
                 }
             }
 
-            return true;
+            return;
         }
     }
 }
