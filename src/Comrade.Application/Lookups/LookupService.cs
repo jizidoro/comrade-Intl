@@ -15,12 +15,12 @@ using Comrade.Domain.Bases;
 
 namespace Comrade.Application.Lookups
 {
-    public class LookupServiceApp<TEntity> : Service, ILookupServiceApp<TEntity>
+    public class LookupService<TEntity> : Service, ILookupService<TEntity>
         where TEntity : Entity
     {
         private readonly IRepository<TEntity> _repository;
 
-        public LookupServiceApp(IRepository<TEntity> repository, IMapper mapper)
+        public LookupService(IRepository<TEntity> repository, IMapper mapper)
             : base(mapper)
         {
             _repository = repository;

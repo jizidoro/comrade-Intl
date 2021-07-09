@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Comrade.Core.Helpers.Models.Interfaces
 {
-    public interface IService
+    public interface ICoreService
     {
         Task<bool> Commit();
     }

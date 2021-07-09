@@ -13,7 +13,7 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.AirplaneCore.UseCases
 {
-    public class AirplaneDeleteUseCase : Service, IAirplaneDeleteUseCase
+    public class AirplaneDeleteUseCase : CoreCoreService, IAirplaneDeleteUseCase
     {
         private readonly AirplaneDeleteValidation _airplaneDeleteValidation;
         private readonly IAirplaneRepository _repository;

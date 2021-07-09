@@ -38,7 +38,7 @@ namespace Comrade.WebApi.UseCases.V1
         {
             try
             {
-                var service = _serviceProvider.GetService<ILookupServiceApp<SystemUser>>()!;
+                var service = _serviceProvider.GetService<ILookupService<SystemUser>>()!;
 
                 var result = await service.GetLookup().ConfigureAwait(false);
 
@@ -56,7 +56,7 @@ namespace Comrade.WebApi.UseCases.V1
         {
             try
             {
-                var service = _serviceProvider.GetService<ILookupServiceApp<SystemUser>>()!;
+                var service = _serviceProvider.GetService<ILookupService<SystemUser>>()!;
 
                 Expression<Func<SystemUser, bool>> expression = x => x.Name.Contains(name);
                 var result = await service.GetLookup(expression).ConfigureAwait(false);

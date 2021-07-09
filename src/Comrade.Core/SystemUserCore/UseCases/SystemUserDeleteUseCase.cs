@@ -11,7 +11,7 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.SystemUserCore.UseCases
 {
-    public class SystemUserDeleteUseCase : Service, ISystemUserDeleteUseCase
+    public class SystemUserDeleteUseCase : CoreCoreService, ISystemUserDeleteUseCase
     {
         private readonly ISystemUserRepository _repository;
         private readonly SystemUserDeleteValidation _systemUserDeleteValidation;

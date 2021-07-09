@@ -13,7 +13,7 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.SecurityCore.UseCases
 {
-    public class UpdatePasswordUseCase : Service, IUpdatePasswordUseCase
+    public class UpdatePasswordUseCase : CoreCoreService, IUpdatePasswordUseCase
     {
         private readonly IPasswordHasher _passwordHasher;
         private readonly ISystemUserRepository _repository;

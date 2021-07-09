@@ -10,7 +10,7 @@ using Comrade.Domain.Bases;
 
 namespace Comrade.Application.Lookups
 {
-    public interface ILookupServiceApp<TEntity>
+    public interface ILookupService<TEntity>
         where TEntity : Entity
     {
         Task<IList<LookupDto>> GetLookup();

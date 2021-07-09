@@ -58,7 +58,7 @@ namespace Comrade.WebApi
             services.AddAutoMapperSetup();
             services.AddLogging();
 
-            services.AddScoped(typeof(ILookupServiceApp<>), typeof(LookupServiceApp<>));
+            services.AddScoped(typeof(ILookupService<>), typeof(LookupService<>));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             services.AddScoped<IPasswordHasher, PasswordHasher>();

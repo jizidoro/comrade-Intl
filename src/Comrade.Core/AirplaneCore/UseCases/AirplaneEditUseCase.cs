@@ -13,7 +13,7 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.AirplaneCore.UseCases
 {
-    public class AirplaneEditUseCase : Service, IAirplaneEditUseCase
+    public class AirplaneEditUseCase : CoreCoreService, IAirplaneEditUseCase
     {
         private readonly AirplaneEditValidation _airplaneEditValidation;
         private readonly IAirplaneRepository _repository;

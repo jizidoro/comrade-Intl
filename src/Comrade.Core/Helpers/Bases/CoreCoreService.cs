@@ -12,11 +12,11 @@ using Comrade.Domain.Interfaces;
 
 namespace Comrade.Core.Helpers.Bases
 {
-    public class Service : IService
+    public class CoreCoreService : ICoreService
     {
         private readonly IUnitOfWork _uow;
 
-        public Service(IUnitOfWork uow)
+        public CoreCoreService(IUnitOfWork uow)
         {
             _uow = uow;
         }
