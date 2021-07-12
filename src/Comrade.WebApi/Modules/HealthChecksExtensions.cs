@@ -77,7 +77,11 @@ namespace Comrade.WebApi.Modules
         public static IApplicationBuilder UseHealthChecks(
             this IApplicationBuilder app)
         {
-            app.UseHealthChecks("/health", new HealthCheckOptions {ResponseWriter = WriteResponse});
+            app.UseHealthChecks("/health", new HealthCheckOptions
+            {
+                Predicate = _ => true,
+                ResponseWriter = WriteResponse
+            });
 
             app.UseHealthChecks("/healthcheck", new HealthCheckOptions
             {
