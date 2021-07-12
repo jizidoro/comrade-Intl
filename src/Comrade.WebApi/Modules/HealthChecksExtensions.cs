@@ -33,6 +33,8 @@ namespace Comrade.WebApi.Modules
             this IServiceCollection services,
             IConfiguration configuration)
         {
+            IHealthChecksBuilder healthChecks = services.AddHealthChecks();
+
             IFeatureManager featureManager = services
                 .BuildServiceProvider()
                 .GetRequiredService<IFeatureManager>();
@@ -55,19 +57,12 @@ namespace Comrade.WebApi.Modules
                     .AddDbContextCheck<ComradeContext>("ComradeContext")
                     .AddApplicationInsightsPublisher();
 
-                services.AddHealthChecksUI(opt =>
-                    {
-                        opt.SetEvaluationTimeInSeconds(15); //time in seconds between check
-                        opt.MaximumHistoryEntriesPerEndpoint(60); //maximum history of checks
-                        opt.SetApiMaxActiveRequests(1); //api requests concurrency
-                
-                        opt.AddHealthCheckEndpoint("default api", "/healthz"); //map health check api
-                    })
-                    .AddInMemoryStorage();
+                services.AddHealthChecksUI().AddInMemoryStorage();
 
                 if (sqlServerIsEnabled)
                 {
-                    services.AddHealthChecks().AddSqlServer(configuration.GetValue<string>("PersistenceModule:DefaultConnection"),
+                    healthChecks.AddSqlServer(
+                        configuration.GetValue<string>("PersistenceModule:DefaultConnection"),
                         name: "sql-server", tags: new[] {"db", "data"});
                 }
             }
@@ -82,6 +77,19 @@ namespace Comrade.WebApi.Modules
         public static IApplicationBuilder UseHealthChecks(
             this IApplicationBuilder app)
         {
+            app.UseHealthChecks("/health", new HealthCheckOptions {ResponseWriter = WriteResponse});
+
+            app.UseHealthChecks("/healthcheck", new HealthCheckOptions
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
+
+            app.UseHealthChecksUI(options =>
+            {
+                options.UIPath = "/monitor";
+                options.ApiPath = "/monitor-api";
+            });
 
             return app;
         }

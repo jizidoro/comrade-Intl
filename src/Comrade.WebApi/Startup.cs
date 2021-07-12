@@ -93,16 +93,6 @@ namespace Comrade.WebApi
                 .UseSerilogRequestLogging()
                 .UseEndpoints(endpoints =>
                 {
-                    //adding endpoint of health check for the health check ui in UI format
-                    endpoints.MapHealthChecks("/healthz", new HealthCheckOptions
-                    {
-                        Predicate = _ => true,
-                        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-                    });
-
-                    //map healthcheck ui endpoing - default is /healthchecks-ui/
-                    endpoints.MapHealthChecksUI();
-
                     endpoints.MapControllers();
                     endpoints.MapMetrics();
                 });
