@@ -5,6 +5,7 @@ using Comrade.Application.Bases;
 using Comrade.Application.Paginations;
 using Comrade.Application.Services.SystemUserServices.Dtos;
 using Comrade.Infrastructure.DataAccess;
+using Comrade.UnitTests.DataInjectors;
 using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.SystemUserTests.Bases;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +29,7 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
 
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
-            Utilities.InitializeDbForTests(context);
+            InjectDataOnContextBase.InitializeDbForTests(context);
 
             var systemUserController =
                 _systemUserInjectionController.GetSystemUserController(context);

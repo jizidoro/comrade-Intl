@@ -8,9 +8,9 @@ using Comrade.Infrastructure.Extensions;
 
 #endregion
 
-namespace Comrade.UnitTests.Helpers
+namespace Comrade.UnitTests.DataInjectors
 {
-    public static class Utilities
+    public static class InjectDataOnContextBase
     {
         private const string JsonPath = "Comrade.Infrastructure.SeedData";
 
@@ -24,14 +24,14 @@ namespace Comrade.UnitTests.Helpers
 
                 if (assembly is not null)
                 {
-                    var airplanes = assembly.GetManifestResourceStream($"{JsonPath}.airplane.json");
-                    var oto = JsonUtilities.GetListFromJson<Airplane>(airplanes);
-                    db.Airplanes.AddRange(oto!);
+                    var airplaneJson = assembly.GetManifestResourceStream($"{JsonPath}.airplane.json");
+                    var airplanes = JsonUtilities.GetListFromJson<Airplane>(airplaneJson);
+                    db.Airplanes.AddRange(airplanes!);
 
-                    var systemUsers =
+                    var systemUserJson =
                         assembly.GetManifestResourceStream($"{JsonPath}.systemUser.json");
-                    var oto2 = JsonUtilities.GetListFromJson<SystemUser>(systemUsers);
-                    db.SystemUsers.AddRange(oto2!);
+                    var systemUsers = JsonUtilities.GetListFromJson<SystemUser>(systemUserJson);
+                    db.SystemUsers.AddRange(systemUsers!);
                 }
 
                 db.SaveChanges();

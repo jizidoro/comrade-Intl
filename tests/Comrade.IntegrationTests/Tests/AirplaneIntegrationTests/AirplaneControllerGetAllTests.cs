@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Comrade.Application.Bases;
 using Comrade.Application.Services.AirplaneServices.Dtos;
 using Comrade.Infrastructure.DataAccess;
+using Comrade.UnitTests.DataInjectors;
 using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.AirplaneTests.Bases;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +29,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
 
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
-            Utilities.InitializeDbForTests(context);
+            InjectDataOnContextBase.InitializeDbForTests(context);
 
             var airplaneController = _airplaneInjectionController.GetAirplaneController(context);
             var result = await airplaneController.GetAll(null);

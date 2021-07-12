@@ -6,7 +6,7 @@ using Comrade.Domain.Bases;
 
 #endregion
 
-namespace Comrade.UnitTests.Helpers
+namespace Comrade.UnitTests.JsonConverters
 {
     public class DeserializeJsonObject<TEntity> where TEntity : Entity
     {

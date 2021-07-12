@@ -6,7 +6,7 @@ using Comrade.Infrastructure.DataAccess;
 
 #endregion
 
-namespace Comrade.UnitTests.Helpers
+namespace Comrade.UnitTests.DataInjectors
 {
     public static class GetContextWithData
     {

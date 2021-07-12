@@ -3,6 +3,7 @@
 using System.Threading.Tasks;
 using Comrade.Application.Services.AuthenticationServices.Dtos;
 using Comrade.Infrastructure.DataAccess;
+using Comrade.UnitTests.DataInjectors;
 using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.AuthenticationTests.Bases;
 using Comrade.UnitTests.Tests.AuthenticationTests.TestDatas;
@@ -35,7 +36,7 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests
                 .Options;
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
-            Utilities.InitializeDbForTests(context);
+            InjectDataOnContextBase.InitializeDbForTests(context);
 
             var generateTokenLoginUseCase =
                 _authenticationInjectionUseCase.GetValidateLoginUseCase(context);

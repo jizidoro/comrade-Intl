@@ -6,7 +6,7 @@ using System.Text.Json;
 
 #endregion
 
-namespace Comrade.UnitTests.Helpers
+namespace Comrade.UnitTests.JsonConverters
 {
     public class SaveJsonObjectToFile<TEntity>
     {

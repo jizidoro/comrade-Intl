@@ -8,7 +8,9 @@ using Comrade.WebApi.Modules;
 using Comrade.WebApi.Modules.Common;
 using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Comrade.WebApi.Modules.Common.Swagger;
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
@@ -91,6 +93,16 @@ namespace Comrade.WebApi
                 .UseSerilogRequestLogging()
                 .UseEndpoints(endpoints =>
                 {
+                    //adding endpoint of health check for the health check ui in UI format
+                    endpoints.MapHealthChecks("/healthz", new HealthCheckOptions
+                    {
+                        Predicate = _ => true,
+                        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                    });
+
+                    //map healthcheck ui endpoing - default is /healthchecks-ui/
+                    endpoints.MapHealthChecksUI();
+
                     endpoints.MapControllers();
                     endpoints.MapMetrics();
                 });

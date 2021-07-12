@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Comrade.Domain.Models;
 using Comrade.Infrastructure.DataAccess;
+using Comrade.UnitTests.DataInjectors;
 using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.AirplaneTests.Bases;
 using Comrade.UnitTests.Tests.AirplaneTests.TestDatas;
@@ -36,7 +37,7 @@ namespace Comrade.UnitTests.Tests.AirplaneTests
 
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
-            Utilities.InitializeDbForTests(context);
+            InjectDataOnContextBase.InitializeDbForTests(context);
 
             var airplaneEditUseCase = _airplaneInjectionUseCase.GetAirplaneEditUseCase(context);
             var result = await airplaneEditUseCase.Execute(testObjectInput);
