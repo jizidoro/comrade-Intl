@@ -87,14 +87,12 @@ namespace Comrade.WebApi.Modules
             {
                 Predicate = _ => true,
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-            });
-
-            app.UseHealthChecksUI(options =>
+            }).UseHealthChecksUI(options =>
             {
                 options.UIPath = "/monitor";
                 options.ApiPath = "/monitor-api";
             });
-
+            
             return app;
         }
 
