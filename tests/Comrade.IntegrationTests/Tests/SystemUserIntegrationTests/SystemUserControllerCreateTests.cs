@@ -23,7 +23,7 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_SystemUserController_Create")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
 
             var testObject = new SystemUserCreateDto
@@ -49,7 +49,7 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_SystemUserController_Create_Error")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
             var testObject = new SystemUserCreateDto
             {

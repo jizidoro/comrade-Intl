@@ -23,7 +23,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_AirplaneController_Create")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
 
             var testObject = new AirplaneCreateDto
@@ -53,7 +53,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_AirplaneController_Create_Error")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
 
             var testObject = new AirplaneCreateDto
@@ -82,7 +82,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseSqlServer("error")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
             var testObject = new AirplaneCreateDto
             {

@@ -25,7 +25,7 @@ namespace Comrade.IntegrationTests.Tests.AuthenticationIntegrationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_AuthenticationController_UpdatePassword")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
 
             var testObject = new AuthenticationDto

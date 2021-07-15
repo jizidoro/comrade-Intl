@@ -16,8 +16,11 @@ namespace Comrade.Core.Helpers.Models.Interfaces
         where TEntity : IEntity
     {
         Task Add(TEntity obj);
+        Task Add(IList<TEntity> obj);
         void Update(TEntity obj);
+        void Update(IList<TEntity> obj);
         void Remove(int id);
+        void Remove(IList<int> id);
         Task<TEntity?> GetById(int id);
         Task<TEntity?> GetById(int id, params string[] includes);
         Task<TEntity?> GetById(int id, Expression<Func<TEntity, TEntity>> projection);

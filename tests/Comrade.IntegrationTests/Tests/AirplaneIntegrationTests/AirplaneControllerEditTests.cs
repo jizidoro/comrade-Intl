@@ -25,7 +25,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_AirplaneController_Edit")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
             var changeCode = "Code testObject edit";
             var changeModel = "Model testObject edit";
@@ -63,7 +63,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_AirplaneController_Edit_Error")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
             var changeCode = "Code testObject edit";
             var changeModel = "Model testObject edit";

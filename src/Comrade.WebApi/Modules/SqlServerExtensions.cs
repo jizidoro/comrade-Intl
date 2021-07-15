@@ -42,7 +42,7 @@ namespace Comrade.WebApi.Modules
             else
             {
                 services.AddDbContext<ComradeContext>(options =>
-                    options.UseInMemoryDatabase("test_database"));
+                    options.UseInMemoryDatabase("test_database").EnableSensitiveDataLogging());
                 ComradeContextFake.AddDataFakeContext(services);
             }
 

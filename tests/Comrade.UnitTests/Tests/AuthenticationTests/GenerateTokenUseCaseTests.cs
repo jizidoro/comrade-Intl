@@ -33,7 +33,7 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase(
                     "test_database_ValidateLoginUseCase_Test" + testObjectInput.Key)
-                .Options;
+                .EnableSensitiveDataLogging().Options;
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
             InjectDataOnContextBase.InitializeDbForTests(context);

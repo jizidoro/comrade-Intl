@@ -22,7 +22,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_AirplaneController_Delete")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
 
             var idAirplane = 1;

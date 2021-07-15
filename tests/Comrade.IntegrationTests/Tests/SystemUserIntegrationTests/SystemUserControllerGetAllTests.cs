@@ -24,7 +24,7 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_SystemUserController_GetAll")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();

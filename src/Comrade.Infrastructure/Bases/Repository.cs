@@ -32,14 +32,30 @@ namespace Comrade.Infrastructure.Bases
             await _dbSet.AddAsync(obj).ConfigureAwait(false);
         }
 
+        public virtual async Task Add(IList<TEntity> obj)
+        {
+            await _dbSet.AddRangeAsync(obj).ConfigureAwait(false);
+        }
+
         public virtual void Update(TEntity obj)
         {
             _dbSet.Update(obj);
         }
 
+        public virtual void Update(IList<TEntity> obj)
+        {
+            _dbSet.UpdateRange(obj);
+        }
+
         public virtual void Remove(int id)
         {
             _dbSet.Remove(_dbSet.Find(id));
+        }
+
+        public virtual void Remove(IList<int> id)
+        {
+            var remove = _dbSet.Where(x => id.Contains(x.Id));
+            _dbSet.RemoveRange(remove);
         }
 
         public virtual async Task<TEntity?> GetById(int id)

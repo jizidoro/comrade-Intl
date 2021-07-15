@@ -24,7 +24,7 @@ namespace Comrade.IntegrationTests.Tests.TokenIntegrationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_TokenController_GenerateToken")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
 
             var testObject = new AuthenticationDto
@@ -53,7 +53,7 @@ namespace Comrade.IntegrationTests.Tests.TokenIntegrationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_TokenController_GenerateToken_Error")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
 
             var testObject = new AuthenticationDto

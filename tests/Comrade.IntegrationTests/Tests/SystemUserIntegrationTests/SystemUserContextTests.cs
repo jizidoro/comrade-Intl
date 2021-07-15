@@ -22,7 +22,7 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_SystemUser_Context")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
 
             await using var context = new ComradeContext(options);

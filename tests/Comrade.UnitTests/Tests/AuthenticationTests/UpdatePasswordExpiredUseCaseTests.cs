@@ -31,7 +31,7 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_UpdatePasswordUseCase_Test")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
 
             var testObject = new SystemUser(1, "111", "777@testObject",

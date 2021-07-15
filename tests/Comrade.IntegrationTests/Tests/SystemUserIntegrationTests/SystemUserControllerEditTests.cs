@@ -25,7 +25,7 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_SystemUserController_Edit")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
             var changeName = "Novo Name";
             var changeEmail = "novo@email.com";
@@ -68,7 +68,7 @@ namespace Comrade.IntegrationTests.Tests.SystemUserIntegrationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_Edit_SystemUser_Error")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
             var changeName = "Novo Name";
             var changeEmail = "novo@email.com";

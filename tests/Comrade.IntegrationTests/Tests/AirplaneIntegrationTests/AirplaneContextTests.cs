@@ -19,7 +19,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_Airplane_Context")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();

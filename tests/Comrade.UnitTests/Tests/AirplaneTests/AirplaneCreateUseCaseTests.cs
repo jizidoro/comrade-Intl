@@ -31,7 +31,7 @@ namespace Comrade.UnitTests.Tests.AirplaneTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase("test_database_AirplaneCreateUseCase_Test")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
@@ -47,7 +47,7 @@ namespace Comrade.UnitTests.Tests.AirplaneTests
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseSqlServer("error")
-                .Options;
+                .EnableSensitiveDataLogging().Options;
 
             var testObject = new Airplane
             {
