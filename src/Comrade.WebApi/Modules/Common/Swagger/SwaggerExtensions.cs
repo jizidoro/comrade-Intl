@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.EnableSensitiveDataLogging().Options;
+using Microsoft.Extensions.Options;
 using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.FeatureManagement;
 using Microsoft.OpenApi.Models;
