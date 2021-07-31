@@ -5,12 +5,12 @@ using System.Linq;
 using Comrade.Core.SystemUserCore;
 using Comrade.Domain.Bases;
 using Comrade.Domain.Models;
-using Comrade.Infrastructure.Bases;
-using Comrade.Infrastructure.DataAccess;
+using Comrade.Persistence.Bases;
+using Comrade.Persistence.DataAccess;
 
 #endregion
 
-namespace Comrade.Infrastructure.Repositories
+namespace Comrade.Persistence.Repositories
 {
     public class SystemUserRepository : Repository<SystemUser>, ISystemUserRepository
     {

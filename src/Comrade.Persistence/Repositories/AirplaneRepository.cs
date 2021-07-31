@@ -8,13 +8,13 @@ using Comrade.Core.Bases.Interfaces;
 using Comrade.Core.Bases.Results;
 using Comrade.Core.Messages;
 using Comrade.Domain.Models;
-using Comrade.Infrastructure.Bases;
-using Comrade.Infrastructure.DataAccess;
+using Comrade.Persistence.Bases;
+using Comrade.Persistence.DataAccess;
 using Microsoft.EntityFrameworkCore;
 
 #endregion
 
-namespace Comrade.Infrastructure.Repositories
+namespace Comrade.Persistence.Repositories
 {
     public class AirplaneRepository : Repository<Airplane>, IAirplaneRepository
     {

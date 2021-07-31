@@ -81,7 +81,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Comrade.Application\Comrade.Application.csproj" />
-		<ProjectReference Include="..\Comrade.Infrastructure\Comrade.Infrastructure.csproj" />
+		<ProjectReference Include="..\Comrade.Persistence\Comrade.Persistence.csproj" />
 	</ItemGroup>
 
 </Project>

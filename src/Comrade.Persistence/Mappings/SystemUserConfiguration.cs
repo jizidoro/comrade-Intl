@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 #endregion
 
-namespace Comrade.Infrastructure.Mappings
+namespace Comrade.Persistence.Mappings
 {
     public class SystemUserConfiguration : IEntityTypeConfiguration<SystemUser>
     {

@@ -3,8 +3,8 @@
 using Comrade.Core.AirplaneCore;
 using Comrade.Core.Bases.Interfaces;
 using Comrade.Core.SystemUserCore;
-using Comrade.Infrastructure.DataAccess;
-using Comrade.Infrastructure.Repositories;
+using Comrade.Persistence.DataAccess;
+using Comrade.Persistence.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 #endregion

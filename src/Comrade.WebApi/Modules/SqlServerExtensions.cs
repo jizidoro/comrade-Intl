@@ -1,6 +1,6 @@
 #region
 
-using Comrade.Infrastructure.DataAccess;
+using Comrade.Persistence.DataAccess;
 using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

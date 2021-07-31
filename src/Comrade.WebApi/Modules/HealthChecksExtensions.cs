@@ -6,7 +6,7 @@ using System.Net.Mime;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Comrade.Domain.Extensions;
-using Comrade.Infrastructure.DataAccess;
+using Comrade.Persistence.DataAccess;
 using Comrade.WebApi.Modules.Common.FeatureFlags;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;

@@ -8,7 +8,7 @@ using Newtonsoft.Json.Serialization;
 
 #endregion
 
-namespace Comrade.Infrastructure.Extensions
+namespace Comrade.Persistence.Extensions
 {
     public static class JsonUtilities
     {

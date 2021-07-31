@@ -6,7 +6,7 @@ using Comrade.Core.Bases.Interfaces;
 
 #endregion
 
-namespace Comrade.Infrastructure.DataAccess
+namespace Comrade.Persistence.DataAccess
 {
     public sealed class UnitOfWork : IUnitOfWork, IDisposable
     {

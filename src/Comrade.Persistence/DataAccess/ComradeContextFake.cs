@@ -3,16 +3,16 @@
 using System.Linq;
 using System.Reflection;
 using Comrade.Domain.Models;
-using Comrade.Infrastructure.Extensions;
+using Comrade.Persistence.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 
 #endregion
 
-namespace Comrade.Infrastructure.DataAccess
+namespace Comrade.Persistence.DataAccess
 {
     public static class ComradeContextFake
     {
-        private const string JsonPath = "Comrade.Infrastructure.SeedData";
+        private const string JsonPath = "Comrade.Persistence.SeedData";
         private static readonly object SyncLock = new();
 
         public static void AddDataFakeContext(IServiceCollection serviceCollection)

@@ -7,12 +7,12 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Comrade.Core.Bases.Interfaces;
 using Comrade.Domain.Bases;
-using Comrade.Infrastructure.DataAccess;
+using Comrade.Persistence.DataAccess;
 using Microsoft.EntityFrameworkCore;
 
 #endregion
 
-namespace Comrade.Infrastructure.Bases
+namespace Comrade.Persistence.Bases
 {
     public class Repository<TEntity> : IRepository<TEntity>
         where TEntity : Entity

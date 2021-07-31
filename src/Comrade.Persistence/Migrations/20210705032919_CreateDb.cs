@@ -2,7 +2,7 @@
 using System.IO;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Comrade.Infrastructure.Migrations
+namespace Comrade.Persistence.Migrations
 {
     public partial class CreateDb : Migration
     {
