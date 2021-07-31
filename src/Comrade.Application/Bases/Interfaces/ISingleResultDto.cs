@@ -1,10 +1,8 @@
 ﻿#region
 
-using Comrade.Application.Bases;
-
 #endregion
 
-namespace Comrade.Application.BaseInterfaces
+namespace Comrade.Application.Bases.Interfaces
 {
     public interface ISingleResultDto<out TDto> : IResultDto
         where TDto : Dto

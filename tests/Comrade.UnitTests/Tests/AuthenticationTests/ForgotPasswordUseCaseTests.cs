@@ -6,7 +6,6 @@ using Comrade.Domain.Models;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.Infrastructure.Repositories;
 using Comrade.UnitTests.DataInjectors;
-using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.AuthenticationTests.Bases;
 using Microsoft.EntityFrameworkCore;
 using Xunit;

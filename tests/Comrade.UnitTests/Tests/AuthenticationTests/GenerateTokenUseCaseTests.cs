@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Comrade.Application.Services.AuthenticationServices.Dtos;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.DataInjectors;
-using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.AuthenticationTests.Bases;
 using Comrade.UnitTests.Tests.AuthenticationTests.TestDatas;
 using Microsoft.EntityFrameworkCore;

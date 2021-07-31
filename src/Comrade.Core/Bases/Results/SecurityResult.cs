@@ -5,7 +5,7 @@ using Comrade.Domain.Token;
 
 #endregion
 
-namespace Comrade.Core.Helpers.Models.Results
+namespace Comrade.Core.Bases.Results
 {
     public class SecurityResult
     {

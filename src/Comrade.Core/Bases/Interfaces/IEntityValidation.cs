@@ -5,7 +5,7 @@ using Comrade.Domain.Interfaces;
 
 #endregion
 
-namespace Comrade.Core.Helpers.Models.Interfaces
+namespace Comrade.Core.Bases.Interfaces
 {
     public interface IEntityValidation<TEntity>
         where TEntity : IEntity

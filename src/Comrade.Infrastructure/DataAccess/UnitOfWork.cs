@@ -2,7 +2,7 @@
 
 using System;
 using System.Threading.Tasks;
-using Comrade.Core.Helpers.Models.Interfaces;
+using Comrade.Core.Bases.Interfaces;
 
 #endregion
 

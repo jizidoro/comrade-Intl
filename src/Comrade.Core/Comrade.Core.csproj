@@ -25,7 +25,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Update="Helpers\Messages\BusinessMessage.Designer.cs">
+		<Compile Update="Messages\BusinessMessage.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
 			<DependentUpon>BusinessMessage.resx</DependentUpon>
@@ -33,7 +33,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Update="Helpers\Messages\BusinessMessage.resx">
+		<EmbeddedResource Update="Messages\BusinessMessage.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>BusinessMessage.Designer.cs</LastGenOutput>
 		</EmbeddedResource>

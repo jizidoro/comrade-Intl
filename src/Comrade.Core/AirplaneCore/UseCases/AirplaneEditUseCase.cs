@@ -3,17 +3,17 @@
 using System.Globalization;
 using System.Threading.Tasks;
 using Comrade.Core.AirplaneCore.Validations;
-using Comrade.Core.Helpers.Bases;
-using Comrade.Core.Helpers.Messages;
-using Comrade.Core.Helpers.Models.Interfaces;
-using Comrade.Core.Helpers.Models.Results;
+using Comrade.Core.Bases;
+using Comrade.Core.Bases.Interfaces;
+using Comrade.Core.Bases.Results;
+using Comrade.Core.Messages;
 using Comrade.Domain.Models;
 
 #endregion
 
 namespace Comrade.Core.AirplaneCore.UseCases
 {
-    public class AirplaneEditUseCase : CoreCoreService, IAirplaneEditUseCase
+    public class AirplaneEditUseCase : CoreService, IAirplaneEditUseCase
     {
         private readonly AirplaneEditValidation _airplaneEditValidation;
         private readonly IAirplaneRepository _repository;

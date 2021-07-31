@@ -2,14 +2,14 @@
 
 using System.Collections.Generic;
 using System.Globalization;
-using Comrade.Core.Helpers.Messages;
-using Comrade.Core.Helpers.Models.Interfaces;
+using Comrade.Core.Bases.Interfaces;
+using Comrade.Core.Messages;
 using Comrade.Domain.Enums;
 using Comrade.Domain.Interfaces;
 
 #endregion
 
-namespace Comrade.Core.Helpers.Models.Results
+namespace Comrade.Core.Bases.Results
 {
     public class SingleResult<TEntity> : ISingleResult<TEntity>
         where TEntity : IEntity

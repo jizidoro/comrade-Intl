@@ -1,9 +1,9 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using Comrade.Core.Helpers.Bases;
-using Comrade.Core.Helpers.Models.Interfaces;
-using Comrade.Core.Helpers.Models.Results;
+using Comrade.Core.Bases;
+using Comrade.Core.Bases.Interfaces;
+using Comrade.Core.Bases.Results;
 using Comrade.Core.SystemUserCore.Validations;
 using Comrade.Domain.Extensions;
 using Comrade.Domain.Models;
@@ -12,7 +12,7 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.SystemUserCore.UseCases
 {
-    public class SystemUserCreateUseCase : CoreCoreService, ISystemUserCreateUseCase
+    public class SystemUserCreateUseCase : CoreService, ISystemUserCreateUseCase
     {
         private readonly IPasswordHasher _passwordHasher;
         private readonly ISystemUserRepository _repository;

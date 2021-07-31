@@ -5,8 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Comrade.Application.BaseInterfaces;
 using Comrade.Application.Bases;
+using Comrade.Application.Bases.Interfaces;
 using Comrade.Application.Lookups;
 using Comrade.Application.Paginations;
 using Comrade.Application.Services.SystemUserServices.Dtos;
@@ -61,7 +61,7 @@ namespace Comrade.Application.Services.SystemUserServices.Queries
                 var entity = await _repository.GetById(number).ConfigureAwait(false);
                 if (entity != null)
                 {
-                    var dto = Mapper.Map<LookupDto>(new LookupEntity
+                    var dto = Mapper.Map<LookupDto>(new Lookup
                         {Key = entity.Id, Value = entity.Name});
                     list = new List<LookupDto> {dto};
                 }

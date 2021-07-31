@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Comrade.Application.Bases;
-using Comrade.Core.Helpers.Models.Interfaces;
+using Comrade.Core.Bases.Interfaces;
 using Comrade.Domain.Bases;
 
 #endregion

@@ -4,7 +4,7 @@ using AutoMapper;
 
 #endregion
 
-namespace Comrade.Application.BaseInterfaces
+namespace Comrade.Application.Bases.Interfaces
 {
     public interface IService
     {

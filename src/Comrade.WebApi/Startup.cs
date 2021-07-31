@@ -1,16 +1,14 @@
 #region
 
 using Comrade.Application.Lookups;
-using Comrade.Core.Helpers.Models.Interfaces;
+using Comrade.Core.Bases.Interfaces;
 using Comrade.Domain.Extensions;
 using Comrade.Infrastructure.Bases;
 using Comrade.WebApi.Modules;
 using Comrade.WebApi.Modules.Common;
 using Comrade.WebApi.Modules.Common.FeatureFlags;
 using Comrade.WebApi.Modules.Common.Swagger;
-using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;

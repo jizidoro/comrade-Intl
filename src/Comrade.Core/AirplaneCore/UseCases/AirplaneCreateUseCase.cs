@@ -3,10 +3,10 @@
 using System.Globalization;
 using System.Threading.Tasks;
 using Comrade.Core.AirplaneCore.Validations;
-using Comrade.Core.Helpers.Bases;
-using Comrade.Core.Helpers.Messages;
-using Comrade.Core.Helpers.Models.Interfaces;
-using Comrade.Core.Helpers.Models.Results;
+using Comrade.Core.Bases;
+using Comrade.Core.Bases.Interfaces;
+using Comrade.Core.Bases.Results;
+using Comrade.Core.Messages;
 using Comrade.Domain.Extensions;
 using Comrade.Domain.Models;
 
@@ -14,7 +14,7 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.AirplaneCore.UseCases
 {
-    public class AirplaneCreateUseCase : CoreCoreService, IAirplaneCreateUseCase
+    public class AirplaneCreateUseCase : CoreService, IAirplaneCreateUseCase
     {
         private readonly AirplaneCreateValidation _airplaneCreateValidation;
         private readonly IAirplaneRepository _repository;

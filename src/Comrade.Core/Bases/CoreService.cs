@@ -4,19 +4,19 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using Comrade.Core.Helpers.Models.Interfaces;
-using Comrade.Core.Helpers.Models.Results;
+using Comrade.Core.Bases.Interfaces;
+using Comrade.Core.Bases.Results;
 using Comrade.Domain.Interfaces;
 
 #endregion
 
-namespace Comrade.Core.Helpers.Bases
+namespace Comrade.Core.Bases
 {
-    public class CoreCoreService : ICoreService
+    public class CoreService : ICoreService
     {
         private readonly IUnitOfWork _uow;
 
-        public CoreCoreService(IUnitOfWork uow)
+        public CoreService(IUnitOfWork uow)
         {
             _uow = uow;
         }

@@ -2,9 +2,9 @@
 
 using System.Collections.Generic;
 using System.Globalization;
-using Comrade.Application.BaseInterfaces;
+using Comrade.Application.Bases.Interfaces;
 using Comrade.Application.Paginations;
-using Comrade.Core.Helpers.Messages;
+using Comrade.Core.Messages;
 using Comrade.Domain.Enums;
 
 #endregion

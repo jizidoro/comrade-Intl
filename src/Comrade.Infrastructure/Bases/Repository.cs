@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Comrade.Core.Helpers.Models.Interfaces;
+using Comrade.Core.Bases.Interfaces;
 using Comrade.Domain.Bases;
 using Comrade.Infrastructure.DataAccess;
 using Microsoft.EntityFrameworkCore;
@@ -147,20 +147,20 @@ namespace Comrade.Infrastructure.Bases
             return await _dbSet.SingleOrDefaultAsync(predicate).ConfigureAwait(false);
         }
 
-        public virtual IQueryable<LookupEntity> GetLookup()
+        public virtual IQueryable<Lookup> GetLookup()
         {
             return _dbSet
                 .Take(100)
-                .Select(s => new LookupEntity {Key = s.Key, Value = s.Value});
+                .Select(s => new Lookup {Key = s.Key, Value = s.Value});
         }
 
-        public IQueryable<LookupEntity> GetLookup(Expression<Func<TEntity, bool>> predicate)
+        public IQueryable<Lookup> GetLookup(Expression<Func<TEntity, bool>> predicate)
         {
             return _dbSet
                 .AsNoTracking()
                 .Take(100)
                 .Where(predicate)
-                .Select(s => new LookupEntity {Key = s.Key, Value = s.Value});
+                .Select(s => new Lookup {Key = s.Key, Value = s.Value});
         }
 
 

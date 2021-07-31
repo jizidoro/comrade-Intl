@@ -1,7 +1,7 @@
 ﻿#region
 
 using System.Collections.Generic;
-using Comrade.Application.BaseInterfaces;
+using Comrade.Application.Bases.Interfaces;
 
 #endregion
 

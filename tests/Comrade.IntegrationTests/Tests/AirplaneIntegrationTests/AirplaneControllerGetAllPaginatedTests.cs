@@ -6,7 +6,6 @@ using Comrade.Application.Paginations;
 using Comrade.Application.Services.AirplaneServices.Dtos;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.DataInjectors;
-using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.AirplaneTests.Bases;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

@@ -1,8 +1,8 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using Comrade.Core.Helpers.Models.Interfaces;
-using Comrade.Core.Helpers.Models.Validations;
+using Comrade.Core.Bases.Interfaces;
+using Comrade.Core.Bases.Validations;
 using Comrade.Domain.Models;
 
 #endregion

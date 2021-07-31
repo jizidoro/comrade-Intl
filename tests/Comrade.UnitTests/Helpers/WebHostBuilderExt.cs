@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 using Comrade.Application.Lookups;
-using Comrade.Core.Helpers.Models.Interfaces;
+using Comrade.Core.Bases.Interfaces;
 using Comrade.Domain.Extensions;
 using Comrade.Infrastructure.Bases;
 using Comrade.WebApi.Modules;

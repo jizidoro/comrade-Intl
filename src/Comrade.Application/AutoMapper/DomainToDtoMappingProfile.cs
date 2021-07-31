@@ -18,7 +18,7 @@ namespace Comrade.Application.AutoMapper
         public DomainToDtoMappingProfile()
         {
             CreateMap<Entity, EntityDto>();
-            CreateMap<LookupEntity, LookupDto>();
+            CreateMap<Lookup, LookupDto>();
 
             CreateMap<Airplane, AirplaneEditDto>();
             CreateMap<Airplane, AirplaneDto>();

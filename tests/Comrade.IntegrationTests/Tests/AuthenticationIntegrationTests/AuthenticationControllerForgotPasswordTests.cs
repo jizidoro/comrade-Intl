@@ -5,7 +5,6 @@ using Comrade.Application.Bases;
 using Comrade.Application.Services.AuthenticationServices.Dtos;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.DataInjectors;
-using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.AuthenticationTests.Bases;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

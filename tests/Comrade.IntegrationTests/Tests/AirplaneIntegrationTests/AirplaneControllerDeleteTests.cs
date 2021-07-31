@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.Infrastructure.Repositories;
 using Comrade.UnitTests.DataInjectors;
-using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.AirplaneTests.Bases;
 using Microsoft.EntityFrameworkCore;
 using Xunit;

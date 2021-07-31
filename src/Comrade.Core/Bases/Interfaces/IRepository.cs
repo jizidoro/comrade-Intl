@@ -10,7 +10,7 @@ using Comrade.Domain.Interfaces;
 
 #endregion
 
-namespace Comrade.Core.Helpers.Models.Interfaces
+namespace Comrade.Core.Bases.Interfaces
 {
     public interface IRepository<TEntity> : IDisposable
         where TEntity : IEntity
@@ -32,8 +32,8 @@ namespace Comrade.Core.Helpers.Models.Interfaces
         Task<TEntity> GetByValue(string value, Expression<Func<TEntity, TEntity>>? projection);
         Task<bool> ValueExists(int id, string value);
         Task<bool> IsUnique(Expression<Func<TEntity, bool>> predicate);
-        IQueryable<LookupEntity> GetLookup();
-        IQueryable<LookupEntity> GetLookup(Expression<Func<TEntity, bool>> predicate);
+        IQueryable<Lookup> GetLookup();
+        IQueryable<Lookup> GetLookup(Expression<Func<TEntity, bool>> predicate);
         IQueryable<TEntity> GetLookupQuery(Expression<Func<TEntity, TEntity>> projection);
         IQueryable<TEntity> GetAll();
         IQueryable<TEntity> GetAllAsNoTracking();

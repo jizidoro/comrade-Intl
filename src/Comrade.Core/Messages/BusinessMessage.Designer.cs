@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Comrade.Core.Helpers.Messages {
+namespace Comrade.Core.Messages {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Comrade.Core.Helpers.Messages {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Comrade.Core.Helpers.Messages.BusinessMessage", typeof(BusinessMessage).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Comrade.Core.Messages.BusinessMessage", typeof(BusinessMessage).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

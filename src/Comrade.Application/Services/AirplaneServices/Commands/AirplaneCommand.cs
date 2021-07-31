@@ -2,8 +2,8 @@
 
 using System.Threading.Tasks;
 using AutoMapper;
-using Comrade.Application.BaseInterfaces;
 using Comrade.Application.Bases;
+using Comrade.Application.Bases.Interfaces;
 using Comrade.Application.Services.AirplaneServices.Dtos;
 using Comrade.Application.Services.AirplaneServices.Validations;
 using Comrade.Core.AirplaneCore;

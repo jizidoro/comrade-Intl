@@ -1,9 +1,9 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using Comrade.Core.Helpers.Bases;
-using Comrade.Core.Helpers.Models.Interfaces;
-using Comrade.Core.Helpers.Models.Results;
+using Comrade.Core.Bases;
+using Comrade.Core.Bases.Interfaces;
+using Comrade.Core.Bases.Results;
 using Comrade.Core.SystemUserCore;
 using Comrade.Core.SystemUserCore.Validations;
 using Comrade.Domain.Extensions;
@@ -13,7 +13,7 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.SecurityCore.UseCases
 {
-    public class UpdatePasswordUseCase : CoreCoreService, IUpdatePasswordUseCase
+    public class UpdatePasswordUseCase : CoreService, IUpdatePasswordUseCase
     {
         private readonly IPasswordHasher _passwordHasher;
         private readonly ISystemUserRepository _repository;

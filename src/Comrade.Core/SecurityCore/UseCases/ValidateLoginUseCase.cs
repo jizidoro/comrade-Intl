@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Comrade.Core.Helpers.Models.Results;
+using Comrade.Core.Bases.Results;
 using Comrade.Core.SecurityCore.Validation;
 using Comrade.Domain.Token;
 

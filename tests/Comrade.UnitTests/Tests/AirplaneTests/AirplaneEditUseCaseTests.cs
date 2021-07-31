@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Comrade.Domain.Models;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.UnitTests.DataInjectors;
-using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.AirplaneTests.Bases;
 using Comrade.UnitTests.Tests.AirplaneTests.TestDatas;
 using Microsoft.EntityFrameworkCore;

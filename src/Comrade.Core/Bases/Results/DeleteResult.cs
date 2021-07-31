@@ -1,26 +1,26 @@
 ﻿#region
 
 using System.Globalization;
-using Comrade.Core.Helpers.Messages;
+using Comrade.Core.Messages;
 using Comrade.Domain.Bases;
 using Comrade.Domain.Enums;
 
 #endregion
 
-namespace Comrade.Core.Helpers.Models.Results
+namespace Comrade.Core.Bases.Results
 {
-    public class EditResult<TEntity> : SingleResult<TEntity>
+    public class DeleteResult<TEntity> : SingleResult<TEntity>
         where TEntity : Entity
     {
-        public EditResult()
+        public DeleteResult()
         {
             Code = (int) EnumResponse.Success;
             Success = true;
-            Message = BusinessMessage.ResourceManager.GetString("MSG02",
+            Message = BusinessMessage.ResourceManager.GetString("MSG03",
                 CultureInfo.CurrentCulture);
         }
 
-        public EditResult(bool success, string? message)
+        public DeleteResult(bool success, string? message)
         {
             Code = success ? (int) EnumResponse.Success : (int) EnumResponse.ErrorNotFound;
             Success = success;

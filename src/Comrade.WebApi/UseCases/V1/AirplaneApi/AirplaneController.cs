@@ -3,8 +3,8 @@
 using System;
 using System.Threading.Tasks;
 using AutoMapper;
-using Comrade.Application.BaseInterfaces;
 using Comrade.Application.Bases;
+using Comrade.Application.Bases.Interfaces;
 using Comrade.Application.Paginations;
 using Comrade.Application.Services.AirplaneServices.Commands;
 using Comrade.Application.Services.AirplaneServices.Dtos;

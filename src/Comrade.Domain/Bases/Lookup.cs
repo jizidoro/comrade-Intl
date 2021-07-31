@@ -6,7 +6,7 @@ using Comrade.Domain.Interfaces;
 
 namespace Comrade.Domain.Bases
 {
-    public class LookupEntity : ILookupEntity
+    public class Lookup : ILookup
     {
         public int Key { get; set; }
         public string? Value { get; set; }

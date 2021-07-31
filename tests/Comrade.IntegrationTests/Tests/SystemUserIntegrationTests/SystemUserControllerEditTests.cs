@@ -6,7 +6,6 @@ using Comrade.Application.Services.SystemUserServices.Dtos;
 using Comrade.Infrastructure.DataAccess;
 using Comrade.Infrastructure.Repositories;
 using Comrade.UnitTests.DataInjectors;
-using Comrade.UnitTests.Helpers;
 using Comrade.UnitTests.Tests.SystemUserTests.Bases;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

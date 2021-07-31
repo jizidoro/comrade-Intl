@@ -28,7 +28,7 @@ namespace Comrade.WebApi.Modules
         /// <summary>
         ///     Adds Use Cases to the ServiceCollection.
         /// </summary>
-        /// <param name="services">CoreCoreService Collection.</param>
+        /// <param name="services">CoreService Collection.</param>
         /// <returns>The modified instance.</returns>
         public static IServiceCollection AddUseCases(this IServiceCollection services)
         {

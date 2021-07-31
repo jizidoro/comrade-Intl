@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 #endregion
 
-namespace Comrade.Core.Helpers.Models.Interfaces
+namespace Comrade.Core.Bases.Interfaces
 {
     public interface IUnitOfWork
     {

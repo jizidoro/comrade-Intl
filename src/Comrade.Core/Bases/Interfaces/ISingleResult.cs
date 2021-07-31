@@ -4,7 +4,7 @@ using Comrade.Domain.Interfaces;
 
 #endregion
 
-namespace Comrade.Core.Helpers.Models.Interfaces
+namespace Comrade.Core.Bases.Interfaces
 {
     public interface ISingleResult<TEntity> : IResult
         where TEntity : IEntity

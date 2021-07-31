@@ -1,8 +1,8 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using Comrade.Application.BaseInterfaces;
 using Comrade.Application.Bases;
+using Comrade.Application.Bases.Interfaces;
 using Comrade.Application.Services.AuthenticationServices.Dtos;
 
 #endregion
