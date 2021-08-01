@@ -15,8 +15,8 @@ namespace Comrade.Persistence.Mappings
             builder.Property(b => b.Id).HasColumnName("USSI_SQ_USUARIO_SISTEMA").IsRequired();
             builder.HasKey(c => c.Id);
 
-            builder.HasIndex(c => c.Email).HasDatabaseName("IX_USUARIO_SISTEMA_EMAIL").IsUnique();
-            builder.HasIndex(c => c.Registration).HasDatabaseName("IX_USUARIO_SISTEMA_MATRICULA")
+            builder.HasIndex(c => c.Email).HasDatabaseName("IX_UN_USSI_TX_EMAIL").IsUnique();
+            builder.HasIndex(c => c.Registration).HasDatabaseName("IX_UN_USSI_TX_MATRICULA")
                 .IsUnique();
         }
     }

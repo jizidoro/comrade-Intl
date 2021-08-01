@@ -1,7 +1,7 @@
 ﻿#region
 
 using System.ComponentModel.DataAnnotations;
-using Comrade.Domain.Interfaces;
+using Comrade.Domain.Bases.Interfaces;
 
 #endregion
 

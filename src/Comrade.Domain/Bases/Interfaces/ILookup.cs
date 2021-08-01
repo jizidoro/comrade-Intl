@@ -1,4 +1,4 @@
-﻿namespace Comrade.Domain.Interfaces
+﻿namespace Comrade.Domain.Bases.Interfaces
 {
     public interface ILookup
     {

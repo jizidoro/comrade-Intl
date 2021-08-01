@@ -14,7 +14,7 @@ namespace Comrade.WebApi.Modules
     /// <summary>
     ///     Persistence Extensions.
     /// </summary>
-    public static class SqlServerExtensions
+    public static class PersistenceExtensions
     {
         /// <summary>
         ///     Add Persistence dependencies varying on configuration.
@@ -27,17 +27,30 @@ namespace Comrade.WebApi.Modules
                 .BuildServiceProvider()
                 .GetRequiredService<IFeatureManager>();
 
-            var isEnabled = featureManager
-                .IsEnabledAsync(nameof(CustomFeature.SqlServer))
+            var isMsSqlServerEnabled = featureManager
+                .IsEnabledAsync(nameof(CustomFeature.MsSqlServer))
                 .ConfigureAwait(false)
                 .GetAwaiter()
                 .GetResult();
 
-            if (isEnabled)
+            var isPostgresSqlEnabled = featureManager
+                .IsEnabledAsync(nameof(CustomFeature.PostgresSql))
+                .ConfigureAwait(false)
+                .GetAwaiter()
+                .GetResult();
+
+
+            if (isMsSqlServerEnabled)
             {
                 services.AddDbContext<ComradeContext>(options =>
                     options.UseSqlServer(
-                        configuration.GetValue<string>("PersistenceModule:DefaultConnection")));
+                        configuration.GetValue<string>("PersistenceModule:MsSqlDb")));
+            }
+            else if (isPostgresSqlEnabled)
+            {
+                services.AddEntityFrameworkNpgsql().AddDbContext<ComradeContext>(options =>
+                    options.UseNpgsql(
+                        configuration.GetValue<string>("PersistenceModule:PostgresSqlDb")));
             }
             else
             {

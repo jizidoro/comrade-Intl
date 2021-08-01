@@ -3,8 +3,8 @@
 using System.Threading.Tasks;
 using Comrade.Domain.Extensions;
 using Comrade.Domain.Models;
-using Comrade.Infrastructure.DataAccess;
-using Comrade.Infrastructure.Repositories;
+using Comrade.Persistence.DataAccess;
+using Comrade.Persistence.Repositories;
 using Comrade.UnitTests.DataInjectors;
 using Comrade.UnitTests.Tests.AuthenticationTests.Bases;
 using Microsoft.EntityFrameworkCore;

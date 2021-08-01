@@ -15,7 +15,7 @@ namespace Comrade.Persistence.Mappings
             builder.Property(b => b.Id).HasColumnName("AIRP_SQ_AIRPLANE").IsRequired();
             builder.HasKey(c => c.Id);
 
-            builder.HasIndex(c => c.Code).HasDatabaseName("IX_AIRPLANE_CODIGO").IsUnique();
+            builder.HasIndex(c => c.Code).HasDatabaseName("IX_UN_AIRP_TX_CODIGO").IsUnique();
         }
     }
 }

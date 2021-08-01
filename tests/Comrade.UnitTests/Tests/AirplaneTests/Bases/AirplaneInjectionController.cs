@@ -1,6 +1,6 @@
 ﻿#region
 
-using Comrade.Infrastructure.DataAccess;
+using Comrade.Persistence.DataAccess;
 using Comrade.UnitTests.Helpers;
 using Comrade.WebApi.UseCases.V1.AirplaneApi;
 using Microsoft.Extensions.Logging;

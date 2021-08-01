@@ -5,8 +5,8 @@ using Comrade.Application.Services.AirplaneServices.Commands;
 using Comrade.Application.Services.AirplaneServices.Queries;
 using Comrade.Core.AirplaneCore.UseCases;
 using Comrade.Core.AirplaneCore.Validations;
-using Comrade.Infrastructure.DataAccess;
-using Comrade.Infrastructure.Repositories;
+using Comrade.Persistence.DataAccess;
+using Comrade.Persistence.Repositories;
 
 #endregion
 

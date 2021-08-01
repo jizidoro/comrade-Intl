@@ -25,11 +25,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="AngleSharp" Version="0.16.0" />
-		<PackageReference Include="Microsoft.AspNetCore.TestHost" Version="5.0.7" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.7" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.7" />
+		<PackageReference Include="Microsoft.AspNetCore.TestHost" Version="5.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.8" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
-		<PackageReference Include="coverlet.collector" Version="3.0.3">
+		<PackageReference Include="coverlet.collector" Version="3.1.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -42,7 +42,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\src\Comrade.Application\Comrade.Application.csproj" />
-		<ProjectReference Include="..\..\src\Comrade.Infrastructure\Comrade.Infrastructure.csproj" />
 		<ProjectReference Include="..\..\src\Comrade.WebApi\Comrade.WebApi.csproj" />
 		<ProjectReference Include="..\Comrade.UnitTests\Comrade.UnitTests.csproj" />
 	</ItemGroup>

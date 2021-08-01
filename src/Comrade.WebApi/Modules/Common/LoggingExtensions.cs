@@ -29,7 +29,7 @@ namespace Comrade.WebApi.Modules.Common
 
         public static void CreateLogSqlServer(LoggerProviderCollection providers, IConfigurationRoot configurationRoot)
         {
-            var connection = configurationRoot.GetValue<string>("ConnectionStrings:DefaultConnection");
+            var connection = configurationRoot.GetValue<string>("ConnectionStrings:MsSqlDb");
 
             var columnOptions = new ColumnOptions
             {

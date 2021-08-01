@@ -2,7 +2,7 @@
 
 using Comrade.Domain.Extensions;
 using Comrade.Domain.Models;
-using Comrade.Infrastructure.DataAccess;
+using Comrade.Persistence.DataAccess;
 
 #endregion
 

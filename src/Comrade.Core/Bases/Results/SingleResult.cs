@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using Comrade.Core.Bases.Interfaces;
 using Comrade.Core.Messages;
+using Comrade.Domain.Bases.Interfaces;
 using Comrade.Domain.Enums;
-using Comrade.Domain.Interfaces;
 
 #endregion
 

@@ -21,8 +21,8 @@
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="10.1.1" />
 		<PackageReference Include="DocumentFormat.OpenXml" Version="2.13.0" />
-		<PackageReference Include="FluentValidation" Version="10.2.3" />
-		<PackageReference Include="SonarAnalyzer.CSharp" Version="8.25.0.33663">
+		<PackageReference Include="FluentValidation" Version="10.3.0" />
+		<PackageReference Include="SonarAnalyzer.CSharp" Version="8.26.0.34506">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

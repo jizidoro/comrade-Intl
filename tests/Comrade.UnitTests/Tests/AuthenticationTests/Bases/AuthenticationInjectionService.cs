@@ -2,7 +2,7 @@
 
 using AutoMapper;
 using Comrade.Application.Services.AuthenticationServices.Commands;
-using Comrade.Infrastructure.DataAccess;
+using Comrade.Persistence.DataAccess;
 
 #endregion
 

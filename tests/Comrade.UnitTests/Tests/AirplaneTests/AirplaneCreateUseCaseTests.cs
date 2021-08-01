@@ -3,7 +3,7 @@
 using System;
 using System.Threading.Tasks;
 using Comrade.Domain.Models;
-using Comrade.Infrastructure.DataAccess;
+using Comrade.Persistence.DataAccess;
 using Comrade.UnitTests.Tests.AirplaneTests.Bases;
 using Comrade.UnitTests.Tests.AirplaneTests.TestDatas;
 using Microsoft.EntityFrameworkCore;

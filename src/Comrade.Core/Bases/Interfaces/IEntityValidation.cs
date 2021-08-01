@@ -1,7 +1,7 @@
 ﻿#region
 
 using System.Threading.Tasks;
-using Comrade.Domain.Interfaces;
+using Comrade.Domain.Bases.Interfaces;
 
 #endregion
 

@@ -5,8 +5,8 @@ using Comrade.Core.SecurityCore.UseCases;
 using Comrade.Core.SecurityCore.Validation;
 using Comrade.Core.SystemUserCore.Validations;
 using Comrade.Domain.Extensions;
-using Comrade.Infrastructure.DataAccess;
-using Comrade.Infrastructure.Repositories;
+using Comrade.Persistence.DataAccess;
+using Comrade.Persistence.Repositories;
 using Microsoft.Extensions.Configuration;
 
 #endregion

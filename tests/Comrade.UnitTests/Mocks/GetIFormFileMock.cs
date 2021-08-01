@@ -3,7 +3,7 @@
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
-using Comrade.Infrastructure.Extensions;
+using Comrade.Persistence.Extensions;
 using Microsoft.AspNetCore.Http;
 using Moq;
 
@@ -16,7 +16,7 @@ namespace Comrade.UnitTests.Mocks
         public async Task<IFormFile> Execute()
         {
             var fileMock = new Mock<IFormFile>();
-            var jsonPath = "Comrade.Infrastructure.SeedData.Sheets";
+            var jsonPath = "Comrade.Persistence.SeedData.Sheets";
             var filePath = $"{jsonPath}.basicSheet.xlsx";
             var fileName = "basicSheet.xlsx";
             var assembly = Assembly.GetAssembly(typeof(JsonUtilities));

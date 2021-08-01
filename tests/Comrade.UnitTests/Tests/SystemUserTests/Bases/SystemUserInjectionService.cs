@@ -6,8 +6,8 @@ using Comrade.Application.Services.SystemUserServices.Queries;
 using Comrade.Core.SystemUserCore.UseCases;
 using Comrade.Core.SystemUserCore.Validations;
 using Comrade.Domain.Extensions;
-using Comrade.Infrastructure.DataAccess;
-using Comrade.Infrastructure.Repositories;
+using Comrade.Persistence.DataAccess;
+using Comrade.Persistence.Repositories;
 
 #endregion
 

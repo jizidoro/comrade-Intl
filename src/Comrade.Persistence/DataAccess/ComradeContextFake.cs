@@ -36,7 +36,7 @@ namespace Comrade.Persistence.DataAccess
                     context.Airplanes.AddRange(oto!);
 
                     var systemUsers =
-                        assembly.GetManifestResourceStream($"{JsonPath}.systemUser.json");
+                        assembly.GetManifestResourceStream($"{JsonPath}.system-user.json");
                     var oto2 = JsonUtilities.GetListFromJson<SystemUser>(systemUsers);
                     context.SystemUsers.AddRange(oto2!);
 

@@ -39,7 +39,7 @@ namespace Comrade.Domain.Models
         [MaxLength(255)]
         public string? Email { get; set; } // varchar(255), null
 
-        [Column("USSI_TX_SENHA", TypeName = "varchar")]
+        [Column("USSI_PW_SENHA", TypeName = "varchar")]
         [MaxLength(1023)]
         [Required(ErrorMessage = "SENHA is required")]
         public string Password { get; set; } // varchar(1023), not null

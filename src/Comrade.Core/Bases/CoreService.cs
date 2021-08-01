@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Comrade.Core.Bases.Interfaces;
 using Comrade.Core.Bases.Results;
-using Comrade.Domain.Interfaces;
+using Comrade.Domain.Bases.Interfaces;
 
 #endregion
 

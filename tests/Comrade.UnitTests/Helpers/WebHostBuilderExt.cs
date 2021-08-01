@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Comrade.Application.Lookups;
 using Comrade.Core.Bases.Interfaces;
 using Comrade.Domain.Extensions;
-using Comrade.Infrastructure.Bases;
+using Comrade.Persistence.Bases;
 using Comrade.WebApi.Modules;
 using Comrade.WebApi.Modules.Common;
 using Comrade.WebApi.Modules.Common.FeatureFlags;

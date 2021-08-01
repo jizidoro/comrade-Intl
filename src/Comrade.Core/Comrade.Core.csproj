@@ -10,14 +10,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="FluentValidation.AspNetCore" Version="10.2.3" />
-		<PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.11.1" />
-		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.11.1" />
-		<PackageReference Include="SonarAnalyzer.CSharp" Version="8.25.0.33663">
+		<PackageReference Include="FluentValidation.AspNetCore" Version="10.3.0" />
+		<PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.12.0" />
+		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.12.0" />
+		<PackageReference Include="SonarAnalyzer.CSharp" Version="8.26.0.34506">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.1" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.12.0" />
 	</ItemGroup>
 
 	<ItemGroup>

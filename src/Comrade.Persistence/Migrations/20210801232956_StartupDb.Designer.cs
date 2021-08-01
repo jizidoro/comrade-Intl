@@ -2,42 +2,42 @@
 using Comrade.Persistence.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Comrade.Persistence.Migrations
 {
     [DbContext(typeof(ComradeContext))]
-    [Migration("20210705032919_CreateDb")]
-    partial class CreateDb
+    [Migration("20210801232956_StartupDb")]
+    partial class StartupDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.7")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63)
+                .HasAnnotation("ProductVersion", "5.0.8")
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             modelBuilder.Entity("Comrade.Domain.Models.Airplane", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("AIRP_SQ_AIRPLANE")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("varchar(255)")
+                        .HasColumnType("varchar")
                         .HasColumnName("AIRP_TX_CODIGO");
 
                     b.Property<string>("Model")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("varchar(255)")
+                        .HasColumnType("varchar")
                         .HasColumnName("AIRP_TX_MODELO");
 
                     b.Property<int>("PassengerQuantity")
@@ -46,14 +46,14 @@ namespace Comrade.Persistence.Migrations
 
                     b.Property<string>("RegisterDate")
                         .IsRequired()
-                        .HasColumnType("varchar(48)")
+                        .HasColumnType("varchar")
                         .HasColumnName("AIRP_DT_REGISTRO");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Code")
                         .IsUnique()
-                        .HasDatabaseName("IX_AIRPLANE_CODIGO");
+                        .HasDatabaseName("IX_UN_AIRP_TX_CODIGO");
 
                     b.ToTable("AIRP_AIRPLANE");
                 });
@@ -62,47 +62,46 @@ namespace Comrade.Persistence.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("USSI_SQ_USUARIO_SISTEMA")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Email")
                         .HasMaxLength(255)
-                        .HasColumnType("varchar(255)")
+                        .HasColumnType("varchar")
                         .HasColumnName("USSI_TX_EMAIL");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("varchar(255)")
+                        .HasColumnType("varchar")
                         .HasColumnName("USSI_TX_NOME");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(1023)
-                        .HasColumnType("varchar(1023)")
-                        .HasColumnName("USSI_TX_SENHA");
+                        .HasColumnType("varchar")
+                        .HasColumnName("USSI_PW_SENHA");
 
                     b.Property<string>("RegisterDate")
-                        .HasColumnType("varchar(48)")
+                        .HasColumnType("varchar")
                         .HasColumnName("USSI_DT_REGISTRO");
 
                     b.Property<string>("Registration")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("varchar(255)")
+                        .HasColumnType("varchar")
                         .HasColumnName("USSI_TX_MATRICULA");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Email")
                         .IsUnique()
-                        .HasDatabaseName("IX_USUARIO_SISTEMA_EMAIL")
-                        .HasFilter("[USSI_TX_EMAIL] IS NOT NULL");
+                        .HasDatabaseName("IX_UN_USSI_TX_EMAIL");
 
                     b.HasIndex("Registration")
                         .IsUnique()
-                        .HasDatabaseName("IX_USUARIO_SISTEMA_MATRICULA");
+                        .HasDatabaseName("IX_UN_USSI_TX_MATRICULA");
 
                     b.ToTable("USSI_USUARIO_SISTEMA");
                 });

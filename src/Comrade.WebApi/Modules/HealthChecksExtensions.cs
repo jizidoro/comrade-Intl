@@ -46,7 +46,7 @@ namespace Comrade.WebApi.Modules
                 .GetResult();
 
             var sqlServerIsEnabled = featureManager
-                .IsEnabledAsync(nameof(CustomFeature.SqlServer))
+                .IsEnabledAsync(nameof(CustomFeature.MsSqlServer))
                 .ConfigureAwait(false)
                 .GetAwaiter()
                 .GetResult();
@@ -62,7 +62,7 @@ namespace Comrade.WebApi.Modules
                 if (sqlServerIsEnabled)
                 {
                     healthChecks.AddSqlServer(
-                        configuration.GetValue<string>("PersistenceModule:DefaultConnection"),
+                        configuration.GetValue<string>("PersistenceModule:MsSqlDb"),
                         name: "sql-server", tags: new[] {"db", "data"});
                 }
             }

@@ -3,8 +3,8 @@
 using System;
 using System.Reflection;
 using Comrade.Domain.Models;
-using Comrade.Infrastructure.DataAccess;
-using Comrade.Infrastructure.Extensions;
+using Comrade.Persistence.DataAccess;
+using Comrade.Persistence.Extensions;
 
 #endregion
 
@@ -12,7 +12,7 @@ namespace Comrade.UnitTests.DataInjectors
 {
     public static class InjectDataOnContextBase
     {
-        private const string JsonPath = "Comrade.Infrastructure.SeedData";
+        private const string JsonPath = "Comrade.Persistence.SeedData";
 
         #region DadosIniciais
 
@@ -29,7 +29,7 @@ namespace Comrade.UnitTests.DataInjectors
                     db.Airplanes.AddRange(airplanes!);
 
                     var systemUserJson =
-                        assembly.GetManifestResourceStream($"{JsonPath}.systemUser.json");
+                        assembly.GetManifestResourceStream($"{JsonPath}.system-user.json");
                     var systemUsers = JsonUtilities.GetListFromJson<SystemUser>(systemUserJson);
                     db.SystemUsers.AddRange(systemUsers!);
                 }

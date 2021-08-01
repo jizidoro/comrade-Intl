@@ -36,9 +36,14 @@ namespace Comrade.WebApi.Modules.Common.FeatureFlags
         Swagger,
 
         /// <summary>
-        ///     Use SQL Server Persistence.
+        ///     Use Ms SQL Server Persistence.
         /// </summary>
-        SqlServer,
+        MsSqlServer,
+
+        /// <summary>
+        ///     Use Postgres Sql Persistence.
+        /// </summary>
+        PostgresSql,
 
 
         /// <summary>
