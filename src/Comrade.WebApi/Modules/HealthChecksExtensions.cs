@@ -51,6 +51,12 @@ namespace Comrade.WebApi.Modules
                 .GetAwaiter()
                 .GetResult();
 
+            var isPostgresSqlEnabled = featureManager
+                .IsEnabledAsync(nameof(CustomFeature.PostgresSql))
+                .ConfigureAwait(false)
+                .GetAwaiter()
+                .GetResult();
+
             if (healthChecksIsEnabled)
             {
                 services.AddHealthChecks()
@@ -63,7 +69,14 @@ namespace Comrade.WebApi.Modules
                 {
                     healthChecks.AddSqlServer(
                         configuration.GetValue<string>("PersistenceModule:MsSqlDb"),
-                        name: "sql-server", tags: new[] {"db", "data"});
+                        name: "ms-sql", tags: new[] {"db", "data"});
+                }
+
+                if (isPostgresSqlEnabled)
+                {
+                    healthChecks.AddNpgSql(
+                        configuration.GetValue<string>("PersistenceModule:PostgresSqlDb"),
+                        name: "postgres-sql", tags: new[] { "db", "data" });
                 }
             }
 
