@@ -8,8 +8,8 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.SystemUserCore
 {
-    public interface ISystemUserEditUseCase
+    public interface IUcSystemUserDelete
     {
-        Task<ISingleResult<SystemUser>> Execute(SystemUser entity);
+        Task<ISingleResult<SystemUser>> Execute(int id);
     }
 }

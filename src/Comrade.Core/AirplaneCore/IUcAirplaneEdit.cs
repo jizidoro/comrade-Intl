@@ -8,7 +8,7 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.AirplaneCore
 {
-    public interface IAirplaneCreateUseCase
+    public interface IUcAirplaneEdit
     {
         Task<ISingleResult<Airplane>> Execute(Airplane entity);
     }

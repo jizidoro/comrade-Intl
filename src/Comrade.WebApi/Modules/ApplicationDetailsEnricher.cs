@@ -18,7 +18,8 @@ namespace Comrade.WebApi.Modules
             var version = applicationAssembly?.GetName().Version;
 
             logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty("ApplicationName", name));
-            logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty("ApplicationVersion", version));
+            logEvent.AddPropertyIfAbsent(
+                propertyFactory.CreateProperty("ApplicationVersion", version));
         }
     }
 }

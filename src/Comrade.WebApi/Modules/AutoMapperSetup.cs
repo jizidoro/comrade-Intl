@@ -14,7 +14,8 @@ namespace Comrade.WebApi.Modules
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddAutoMapper(typeof(DomainToDtoMappingProfile), typeof(DtoToDomainMappingProfile));
+            services.AddAutoMapper(typeof(DomainToDtoMappingProfile),
+                typeof(DtoToDomainMappingProfile));
         }
     }
 }

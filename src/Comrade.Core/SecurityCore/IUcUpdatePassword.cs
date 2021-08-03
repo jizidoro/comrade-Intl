@@ -8,7 +8,7 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.SecurityCore
 {
-    public interface IForgotPasswordUseCase
+    public interface IUcUpdatePassword
     {
         Task<ISingleResult<SystemUser>> Execute(SystemUser entity);
     }

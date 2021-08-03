@@ -13,12 +13,12 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.AirplaneCore.UseCases
 {
-    public class AirplaneEditUseCase : CoreService, IAirplaneEditUseCase
+    public class UcAirplaneEdit : CoreService, IUcAirplaneEdit
     {
         private readonly AirplaneEditValidation _airplaneEditValidation;
         private readonly IAirplaneRepository _repository;
 
-        public AirplaneEditUseCase(IAirplaneRepository repository,
+        public UcAirplaneEdit(IAirplaneRepository repository,
             AirplaneEditValidation airplaneEditValidation,
             IUnitOfWork uow)
             : base(uow)

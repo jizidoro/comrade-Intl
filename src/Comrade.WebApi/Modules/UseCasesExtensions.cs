@@ -38,10 +38,10 @@ namespace Comrade.WebApi.Modules
             services.AddScoped<IAuthenticationCommand, AuthenticationCommand>();
 
             // Core - UseCases
-            services.AddScoped<IUpdatePasswordUseCase, UpdatePasswordUseCase>();
-            services.AddScoped<IValidateLoginUseCase, ValidateLoginUseCase>();
-            services.AddScoped<IForgotPasswordUseCase, ForgotPasswordUseCase>();
-            services.AddScoped<IGenerateTokenUseCase, GenerateTokenUseCase>();
+            services.AddScoped<IUcUpdatePassword, UcUpdatePassword>();
+            services.AddScoped<IUcValidateLogin, UcValidateLogin>();
+            services.AddScoped<IUcForgotPassword, UcForgotPassword>();
+            services.AddScoped<IUcGenerateToken, UcGenerateToken>();
 
             #endregion
 
@@ -52,9 +52,9 @@ namespace Comrade.WebApi.Modules
             services.AddScoped<IAirplaneQuery, AirplaneQuery>();
 
             // Core - UseCases
-            services.AddScoped<IAirplaneEditUseCase, AirplaneEditUseCase>();
-            services.AddScoped<IAirplaneCreateUseCase, AirplaneCreateUseCase>();
-            services.AddScoped<IAirplaneDeleteUseCase, AirplaneDeleteUseCase>();
+            services.AddScoped<IUcAirplaneEdit, UcAirplaneEdit>();
+            services.AddScoped<IUcAirplaneCreate, UcAirplaneCreate>();
+            services.AddScoped<IUcAirplaneDelete, UcAirplaneDelete>();
 
             // Core - Validations
             services.AddScoped<AirplaneEditValidation>();
@@ -71,9 +71,9 @@ namespace Comrade.WebApi.Modules
             services.AddScoped<ISystemUserQuery, SystemUserQuery>();
 
             // Core - UseCases
-            services.AddScoped<ISystemUserEditUseCase, SystemUserEditUseCase>();
-            services.AddScoped<ISystemUserCreateUseCase, SystemUserCreateUseCase>();
-            services.AddScoped<ISystemUserDeleteUseCase, SystemUserDeleteUseCase>();
+            services.AddScoped<IUcSystemUserEdit, UcSystemUserEdit>();
+            services.AddScoped<IUcSystemUserCreate, UcSystemUserCreate>();
+            services.AddScoped<IUcSystemUserDelete, UcSystemUserDelete>();
 
             // Core - Validations
             services.AddScoped<SystemUserForgotPasswordValidation>();

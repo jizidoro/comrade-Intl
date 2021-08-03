@@ -38,7 +38,7 @@ namespace Comrade.WebApi.Modules.Common
 
             if (isEnabled)
             {
-                services.AddScoped<IValidateLoginUseCase, ValidateLoginUseCase>();
+                services.AddScoped<IUcValidateLogin, UcValidateLogin>();
                 services.AddAuthentication(x =>
                     {
                         x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

@@ -6,9 +6,9 @@ using Comrade.Domain.Models;
 
 #endregion
 
-namespace Comrade.Core.SystemUserCore
+namespace Comrade.Core.SecurityCore
 {
-    public interface ISystemUserCreateUseCase
+    public interface IUcForgotPassword
     {
         Task<ISingleResult<SystemUser>> Execute(SystemUser entity);
     }

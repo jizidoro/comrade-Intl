@@ -7,7 +7,7 @@ using Comrade.Core.Bases.Results;
 
 namespace Comrade.Core.SecurityCore
 {
-    public interface IValidateLoginUseCase
+    public interface IUcValidateLogin
     {
         Task<SecurityResult> Execute(string key, string password);
     }

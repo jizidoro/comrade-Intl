@@ -13,42 +13,42 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.SecurityCore.UseCases
 {
-    public class ForgotPasswordUseCase : CoreService, IForgotPasswordUseCase
+    public class UcUpdatePassword : CoreService, IUcUpdatePassword
     {
         private readonly IPasswordHasher _passwordHasher;
         private readonly ISystemUserRepository _repository;
-        private readonly SystemUserForgotPasswordValidation _systemUserForgotPasswordValidation;
+        private readonly SystemUserEditValidation _systemUserEditValidation;
 
-        public ForgotPasswordUseCase(ISystemUserRepository repository,
-            SystemUserForgotPasswordValidation systemUserForgotPasswordValidation,
+        public UcUpdatePassword(ISystemUserRepository repository,
+            SystemUserEditValidation systemUserEditValidation,
             IPasswordHasher passwordHasher, IUnitOfWork uow)
             : base(uow)
         {
             _repository = repository;
-            _systemUserForgotPasswordValidation = systemUserForgotPasswordValidation;
+            _systemUserEditValidation = systemUserEditValidation;
             _passwordHasher = passwordHasher;
         }
 
         public async Task<ISingleResult<SystemUser>> Execute(SystemUser entity)
         {
-            var result = _systemUserForgotPasswordValidation.Execute(entity);
+            var result = await _systemUserEditValidation.Execute(entity).ConfigureAwait(false);
             if (!result.Success) return result;
 
             var obj = result.Data!;
 
-            HydrateValues(obj);
+            HydrateValues(obj, entity);
 
             _repository.Update(obj);
 
             _ = await Commit().ConfigureAwait(false);
 
-            return new EditResult<SystemUser>();
+
+            return new SingleResult<SystemUser>(entity);
         }
 
-        private void HydrateValues(SystemUser target)
+        private void HydrateValues(SystemUser target, SystemUser source)
         {
-            var ruleForgotPassword = "123456";
-            target.Password = _passwordHasher.Hash(ruleForgotPassword);
+            target.Password = _passwordHasher.Hash(source.Password);
         }
     }
 }

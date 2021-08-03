@@ -26,15 +26,15 @@ namespace Comrade.UnitTests.Tests.AirplaneTests.Bases
             var airplaneDeleteValidation = new AirplaneDeleteValidation(airplaneRepository);
             var airplaneCreateValidation =
                 new AirplaneCreateValidation(airplaneRepository, airplaneValidateSameCode);
-            var airplaneCreateUseCase =
-                new AirplaneCreateUseCase(airplaneRepository, airplaneCreateValidation, uow);
-            var airplaneDeleteUseCase =
-                new AirplaneDeleteUseCase(airplaneRepository, airplaneDeleteValidation, uow);
-            var airplaneEditUseCase =
-                new AirplaneEditUseCase(airplaneRepository, airplaneEditValidation, uow);
+            var ucAirplaneCreate =
+                new UcAirplaneCreate(airplaneRepository, airplaneCreateValidation, uow);
+            var ucAirplaneDelete =
+                new UcAirplaneDelete(airplaneRepository, airplaneDeleteValidation, uow);
+            var ucAirplaneEdit =
+                new UcAirplaneEdit(airplaneRepository, airplaneEditValidation, uow);
 
-            return new AirplaneCommand(airplaneEditUseCase, airplaneCreateUseCase,
-                airplaneDeleteUseCase, mapper);
+            return new AirplaneCommand(ucAirplaneEdit, ucAirplaneCreate,
+                ucAirplaneDelete, mapper);
         }
 
         public AirplaneQuery GetAirplaneQuery(ComradeContext context, IMapper mapper)

@@ -15,19 +15,19 @@ namespace Comrade.Application.Services.AirplaneServices.Commands
 {
     public class AirplaneCommand : Service, IAirplaneCommand
     {
-        private readonly IAirplaneCreateUseCase _createAirplaneUseCase;
-        private readonly IAirplaneDeleteUseCase _deleteAirplaneUseCase;
-        private readonly IAirplaneEditUseCase _editAirplaneUseCase;
+        private readonly IUcAirplaneCreate _createAirplane;
+        private readonly IUcAirplaneDelete _deleteAirplane;
+        private readonly IUcAirplaneEdit _editAirplane;
 
-        public AirplaneCommand(IAirplaneEditUseCase editAirplaneUseCase,
-            IAirplaneCreateUseCase createAirplaneUseCase,
-            IAirplaneDeleteUseCase deleteAirplaneUseCase,
+        public AirplaneCommand(IUcAirplaneEdit editAirplane,
+            IUcAirplaneCreate createAirplane,
+            IUcAirplaneDelete deleteAirplane,
             IMapper mapper)
             : base(mapper)
         {
-            _editAirplaneUseCase = editAirplaneUseCase;
-            _createAirplaneUseCase = createAirplaneUseCase;
-            _deleteAirplaneUseCase = deleteAirplaneUseCase;
+            _editAirplane = editAirplane;
+            _createAirplane = createAirplane;
+            _deleteAirplane = deleteAirplane;
         }
 
         public async Task<ISingleResultDto<EntityDto>> Create(AirplaneCreateDto dto)
@@ -42,7 +42,7 @@ namespace Comrade.Application.Services.AirplaneServices.Commands
 
             var mappedObject = Mapper.Map<Airplane>(dto);
 
-            var result = await _createAirplaneUseCase.Execute(mappedObject).ConfigureAwait(false);
+            var result = await _createAirplane.Execute(mappedObject).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);
@@ -62,7 +62,7 @@ namespace Comrade.Application.Services.AirplaneServices.Commands
 
             var mappedObject = Mapper.Map<Airplane>(dto);
 
-            var result = await _editAirplaneUseCase.Execute(mappedObject).ConfigureAwait(false);
+            var result = await _editAirplane.Execute(mappedObject).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);
@@ -72,7 +72,7 @@ namespace Comrade.Application.Services.AirplaneServices.Commands
 
         public async Task<ISingleResultDto<EntityDto>> Delete(int id)
         {
-            var result = await _deleteAirplaneUseCase.Execute(id).ConfigureAwait(false);
+            var result = await _deleteAirplane.Execute(id).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);

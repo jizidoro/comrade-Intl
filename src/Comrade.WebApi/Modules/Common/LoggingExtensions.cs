@@ -27,7 +27,8 @@ namespace Comrade.WebApi.Modules.Common
                 .CreateLogger();
         }
 
-        public static void CreateLogSqlServer(LoggerProviderCollection providers, IConfigurationRoot configurationRoot)
+        public static void CreateLogSqlServer(LoggerProviderCollection providers,
+            IConfigurationRoot configurationRoot)
         {
             var connection = configurationRoot.GetValue<string>("ConnectionStrings:MsSqlDb");
 

@@ -12,12 +12,12 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.SystemUserCore.UseCases
 {
-    public class SystemUserCreateUseCase : CoreService, ISystemUserCreateUseCase
+    public class UcSystemUserCreate : CoreService, IUcSystemUserCreate
     {
         private readonly IPasswordHasher _passwordHasher;
         private readonly ISystemUserRepository _repository;
 
-        public SystemUserCreateUseCase(ISystemUserRepository repository,
+        public UcSystemUserCreate(ISystemUserRepository repository,
             IPasswordHasher passwordHasher, IUnitOfWork uow)
             : base(uow)
         {

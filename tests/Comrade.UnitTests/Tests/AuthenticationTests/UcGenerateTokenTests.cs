@@ -14,33 +14,33 @@ using Xunit.Abstractions;
 
 namespace Comrade.UnitTests.Tests.AuthenticationTests
 {
-    public sealed class GenerateTokenUseCaseTests
+    public sealed class UcGenerateTokenTests
 
     {
-        private readonly AuthenticationInjectionUseCase _authenticationInjectionUseCase = new();
         private readonly ITestOutputHelper _output;
+        private readonly UcAuthenticationInjection _ucAuthenticationInjection = new();
 
-        public GenerateTokenUseCaseTests(ITestOutputHelper output)
+        public UcGenerateTokenTests(ITestOutputHelper output)
         {
             _output = output;
         }
 
         [Theory]
         [ClassData(typeof(AuthenticationDtoTestData))]
-        public async Task ValidateLoginUseCase_Test(int expected, AuthenticationDto testObjectInput)
+        public async Task UcValidateLogin_Test(int expected, AuthenticationDto testObjectInput)
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseInMemoryDatabase(
-                    "test_database_ValidateLoginUseCase_Test" + testObjectInput.Key)
+                    "test_database_UcValidateLogin_Test" + testObjectInput.Key)
                 .EnableSensitiveDataLogging().Options;
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
             InjectDataOnContextBase.InitializeDbForTests(context);
 
-            var generateTokenLoginUseCase =
-                _authenticationInjectionUseCase.GetValidateLoginUseCase(context);
+            var ucGenerateTokenLogin =
+                _ucAuthenticationInjection.GetUcValidateLogin(context);
             var result =
-                await generateTokenLoginUseCase.Execute(testObjectInput.Key,
+                await ucGenerateTokenLogin.Execute(testObjectInput.Key,
                     testObjectInput.Password);
             Assert.Equal(expected, result.Code);
         }

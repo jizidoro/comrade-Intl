@@ -11,12 +11,12 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.SystemUserCore.UseCases
 {
-    public class SystemUserDeleteUseCase : CoreService, ISystemUserDeleteUseCase
+    public class UcSystemUserDelete : CoreService, IUcSystemUserDelete
     {
         private readonly ISystemUserRepository _repository;
         private readonly SystemUserDeleteValidation _systemUserDeleteValidation;
 
-        public SystemUserDeleteUseCase(ISystemUserRepository repository,
+        public UcSystemUserDelete(ISystemUserRepository repository,
             SystemUserDeleteValidation systemUserDeleteValidation,
             IUnitOfWork uow)
             : base(uow)

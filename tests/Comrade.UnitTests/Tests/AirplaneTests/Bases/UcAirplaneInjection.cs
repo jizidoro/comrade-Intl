@@ -9,9 +9,9 @@ using Comrade.Persistence.Repositories;
 
 namespace Comrade.UnitTests.Tests.AirplaneTests.Bases
 {
-    public sealed class AirplaneInjectionUseCase
+    public sealed class UcAirplaneInjection
     {
-        public AirplaneCreateUseCase GetAirplaneCreateUseCase(ComradeContext context)
+        public UcAirplaneCreate GetUcAirplaneCreate(ComradeContext context)
         {
             var uow = new UnitOfWork(context);
             var airplaneRepository = new AirplaneRepository(context);
@@ -21,10 +21,10 @@ namespace Comrade.UnitTests.Tests.AirplaneTests.Bases
             var airplaneCreateValidation =
                 new AirplaneCreateValidation(airplaneRepository, airplaneValidateSameCode);
 
-            return new AirplaneCreateUseCase(airplaneRepository, airplaneCreateValidation, uow);
+            return new UcAirplaneCreate(airplaneRepository, airplaneCreateValidation, uow);
         }
 
-        public AirplaneEditUseCase GetAirplaneEditUseCase(ComradeContext context)
+        public UcAirplaneEdit GetUcAirplaneEdit(ComradeContext context)
         {
             var uow = new UnitOfWork(context);
             var airplaneRepository = new AirplaneRepository(context);
@@ -34,7 +34,7 @@ namespace Comrade.UnitTests.Tests.AirplaneTests.Bases
             var airplaneEditValidation =
                 new AirplaneEditValidation(airplaneRepository, airplaneValidateSameCode);
 
-            return new AirplaneEditUseCase(airplaneRepository, airplaneEditValidation, uow);
+            return new UcAirplaneEdit(airplaneRepository, airplaneEditValidation, uow);
         }
     }
 }

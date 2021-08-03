@@ -13,11 +13,11 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Comrade.Core.SecurityCore.UseCases
 {
-    public class GenerateTokenUseCase : IGenerateTokenUseCase
+    public class UcGenerateToken : IUcGenerateToken
     {
         private readonly IConfiguration _configuration;
 
-        public GenerateTokenUseCase(
+        public UcGenerateToken(
             IConfiguration configuration
         )
         {

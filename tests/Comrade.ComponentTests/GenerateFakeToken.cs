@@ -22,7 +22,7 @@ namespace Comrade.ComponentTests
                 .AddInMemoryCollection(myConfiguration)
                 .Build();
 
-            var generateTokenUseCase = new GenerateTokenUseCase(configuration);
+            var ucGenerateToken = new UcGenerateToken(configuration);
 
             var roles = new List<string>
             {
@@ -32,7 +32,7 @@ namespace Comrade.ComponentTests
             var user = new TokenUser("1", "Test", "", roles);
 
 
-            var token = generateTokenUseCase.Execute(user);
+            var token = ucGenerateToken.Execute(user);
             return token;
         }
     }

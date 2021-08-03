@@ -10,15 +10,15 @@ using Comrade.Domain.Token;
 
 namespace Comrade.Core.SecurityCore.UseCases
 {
-    public class ValidateLoginUseCase : IValidateLoginUseCase
+    public class UcValidateLogin : IUcValidateLogin
     {
-        private readonly IGenerateTokenUseCase _generateToken;
+        private readonly IUcGenerateToken _generateToken;
         private readonly SystemUserPasswordValidation _systemUserPasswordValidation;
 
 
-        public ValidateLoginUseCase(
+        public UcValidateLogin(
             SystemUserPasswordValidation systemUserPasswordValidation,
-            IGenerateTokenUseCase generateToken)
+            IUcGenerateToken generateToken)
         {
             _systemUserPasswordValidation = systemUserPasswordValidation;
             _generateToken = generateToken;

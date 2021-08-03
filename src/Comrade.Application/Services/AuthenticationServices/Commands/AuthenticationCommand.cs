@@ -14,24 +14,24 @@ namespace Comrade.Application.Services.AuthenticationServices.Commands
 {
     public class AuthenticationCommand : Service, IAuthenticationCommand
     {
-        private readonly IForgotPasswordUseCase _forgotPasswordUseCase;
-        private readonly IUpdatePasswordUseCase _updatePasswordUseCase;
-        private readonly IValidateLoginUseCase _validateLoginUseCase;
+        private readonly IUcForgotPassword _forgotPassword;
+        private readonly IUcUpdatePassword _updatePassword;
+        private readonly IUcValidateLogin _validateLogin;
 
-        public AuthenticationCommand(IUpdatePasswordUseCase updatePasswordUseCase,
-            IValidateLoginUseCase validateLoginUseCase,
-            IForgotPasswordUseCase forgotPasswordUseCase,
+        public AuthenticationCommand(IUcUpdatePassword updatePassword,
+            IUcValidateLogin validateLogin,
+            IUcForgotPassword forgotPassword,
             IMapper mapper) :
             base(mapper)
         {
-            _updatePasswordUseCase = updatePasswordUseCase;
-            _forgotPasswordUseCase = forgotPasswordUseCase;
-            _validateLoginUseCase = validateLoginUseCase;
+            _updatePassword = updatePassword;
+            _forgotPassword = forgotPassword;
+            _validateLogin = validateLogin;
         }
 
         public async Task<ISingleResultDto<UserDto>> GenerateToken(AuthenticationDto dto)
         {
-            var result = await _validateLoginUseCase.Execute(dto.Key, dto.Password)
+            var result = await _validateLogin.Execute(dto.Key, dto.Password)
                 .ConfigureAwait(false);
 
             if (!result.Success)
@@ -51,7 +51,7 @@ namespace Comrade.Application.Services.AuthenticationServices.Commands
         {
             var mappedObject = Mapper.Map<SystemUser>(dto);
 
-            var result = await _forgotPasswordUseCase.Execute(mappedObject).ConfigureAwait(false);
+            var result = await _forgotPassword.Execute(mappedObject).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);
@@ -63,7 +63,7 @@ namespace Comrade.Application.Services.AuthenticationServices.Commands
         {
             var mappedObject = Mapper.Map<SystemUser>(dto);
 
-            var result = await _updatePasswordUseCase.Execute(mappedObject).ConfigureAwait(false);
+            var result = await _updatePassword.Execute(mappedObject).ConfigureAwait(false);
 
             var resultDto = new SingleResultDto<EntityDto>(result);
             resultDto.SetData(result, Mapper);

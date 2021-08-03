@@ -76,7 +76,7 @@ namespace Comrade.WebApi.Modules
                 {
                     healthChecks.AddNpgSql(
                         configuration.GetValue<string>("PersistenceModule:PostgresSqlDb"),
-                        name: "postgres-sql", tags: new[] { "db", "data" });
+                        name: "postgres-sql", tags: new[] {"db", "data"});
                 }
             }
 
@@ -105,7 +105,7 @@ namespace Comrade.WebApi.Modules
                 options.UIPath = "/monitor";
                 options.ApiPath = "/monitor-api";
             });
-            
+
             return app;
         }
 

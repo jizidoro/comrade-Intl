@@ -13,9 +13,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
 {
-    public sealed class AuthenticationInjectionUseCase
+    public sealed class UcAuthenticationInjection
     {
-        public UpdatePasswordUseCase GetUpdatePasswordUseCase(ComradeContext context)
+        public UcUpdatePassword GetUcUpdatePassword(ComradeContext context)
         {
             var uow = new UnitOfWork(context);
             var systemUserCoreRepository = new SystemUserRepository(context);
@@ -25,11 +25,11 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
                 );
             var passwordHasher = new PasswordHasher(new HashingOptions());
 
-            return new UpdatePasswordUseCase(systemUserCoreRepository,
+            return new UcUpdatePassword(systemUserCoreRepository,
                 systemUserCoreEditValidation, passwordHasher, uow);
         }
 
-        public ForgotPasswordUseCase GetForgotPasswordUseCase(ComradeContext context)
+        public UcForgotPassword GetUcForgotPassword(ComradeContext context)
         {
             var uow = new UnitOfWork(context);
             var systemUserCoreRepository = new SystemUserRepository(context);
@@ -40,12 +40,12 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
                 );
             var passwordHasher = new PasswordHasher(new HashingOptions());
 
-            return new ForgotPasswordUseCase(systemUserCoreRepository,
+            return new UcForgotPassword(systemUserCoreRepository,
                 systemUserForgotPasswordValidation,
                 passwordHasher, uow);
         }
 
-        public ValidateLoginUseCase GetValidateLoginUseCase(ComradeContext context)
+        public UcValidateLogin GetUcValidateLogin(ComradeContext context)
         {
             var myConfiguration = new Dictionary<string, string>
             {
@@ -57,20 +57,20 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests.Bases
                 .Build();
 
             var systemUserCoreRepository = new SystemUserRepository(context);
-            var generateTokenUseCase = new GenerateTokenUseCase(configuration);
+            var ucGenerateToken = new UcGenerateToken(configuration);
 
             var passwordHasher = new PasswordHasher(new HashingOptions());
 
             var systemUserPasswordValidation =
                 new SystemUserPasswordValidation(systemUserCoreRepository, passwordHasher);
 
-            var generateTokenLoginUseCase =
-                new ValidateLoginUseCase
+            var ucGenerateTokenLogin =
+                new UcValidateLogin
                 (
                     systemUserPasswordValidation,
-                    generateTokenUseCase
+                    ucGenerateToken
                 );
-            return generateTokenLoginUseCase;
+            return ucGenerateTokenLogin;
         }
     }
 }

@@ -6,7 +6,7 @@ using Comrade.Domain.Token;
 
 namespace Comrade.Core.SecurityCore
 {
-    public interface IGenerateTokenUseCase
+    public interface IUcGenerateToken
     {
         string Execute(TokenUser tokenUser);
     }

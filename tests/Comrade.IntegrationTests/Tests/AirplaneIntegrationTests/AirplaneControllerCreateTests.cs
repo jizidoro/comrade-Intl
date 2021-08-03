@@ -78,7 +78,7 @@ namespace Comrade.IntegrationTests.Tests.AirplaneIntegrationTests
         }
 
         [Fact]
-        public async Task AirplaneCreateUseCase_Test_Exception()
+        public async Task UcAirplaneCreate_Test_Exception()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseSqlServer("error")

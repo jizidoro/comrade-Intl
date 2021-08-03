@@ -25,16 +25,16 @@ namespace Comrade.UnitTests.Tests.SystemUserTests.Bases
                 new SystemUserEditValidation(systemUserRepository);
             var systemUserDeleteValidation = new SystemUserDeleteValidation(systemUserRepository);
 
-            var systemUserCreateUseCase =
-                new SystemUserCreateUseCase(systemUserRepository, passwordHasher,
+            var ucSystemUserCreate =
+                new UcSystemUserCreate(systemUserRepository, passwordHasher,
                     uow);
-            var systemUserDeleteUseCase =
-                new SystemUserDeleteUseCase(systemUserRepository, systemUserDeleteValidation, uow);
-            var systemUserEditUseCase =
-                new SystemUserEditUseCase(systemUserRepository, systemUserEditValidation, uow);
+            var ucSystemUserDelete =
+                new UcSystemUserDelete(systemUserRepository, systemUserDeleteValidation, uow);
+            var ucSystemUserEdit =
+                new UcSystemUserEdit(systemUserRepository, systemUserEditValidation, uow);
 
-            return new SystemUserCommand(systemUserEditUseCase, systemUserCreateUseCase,
-                systemUserDeleteUseCase,
+            return new SystemUserCommand(ucSystemUserEdit, ucSystemUserCreate,
+                ucSystemUserDelete,
                 mapper);
         }
 

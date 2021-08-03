@@ -15,21 +15,21 @@ using Xunit.Abstractions;
 
 namespace Comrade.UnitTests.Tests.AuthenticationTests
 {
-    public sealed class UpdatePasswordUseCaseTests
+    public sealed class UcUpdatePasswordTests
     {
-        private readonly AuthenticationInjectionUseCase _authenticationInjectionUseCase = new();
         private readonly ITestOutputHelper _output;
+        private readonly UcAuthenticationInjection _ucAuthenticationInjection = new();
 
-        public UpdatePasswordUseCaseTests(ITestOutputHelper output)
+        public UcUpdatePasswordTests(ITestOutputHelper output)
         {
             _output = output;
         }
 
         [Fact]
-        public async Task UpdatePasswordUseCase_Test()
+        public async Task UcUpdatePassword_Test()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_UpdatePasswordUseCase_Test")
+                .UseInMemoryDatabase("test_database_UcUpdatePassword_Test")
                 .EnableSensitiveDataLogging().Options;
 
 
@@ -46,9 +46,9 @@ namespace Comrade.UnitTests.Tests.AuthenticationTests
             var returnBefore = await repository.GetById(testObject.Id);
             var passwordBefore = returnBefore!.Password;
 
-            var updatePasswordUseCase =
-                _authenticationInjectionUseCase.GetUpdatePasswordUseCase(context);
-            var result = await updatePasswordUseCase.Execute(testObject);
+            var ucUpdatePassword =
+                _ucAuthenticationInjection.GetUcUpdatePassword(context);
+            var result = await ucUpdatePassword.Execute(testObject);
             _output.WriteLine(result.Message);
 
             var returnAfter = await repository.GetById(testObject.Id);

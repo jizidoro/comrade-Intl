@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Comrade.Domain.Models;
 using Comrade.Persistence.DataAccess;
+using Comrade.UnitTests.DataInjectors;
 using Comrade.UnitTests.Tests.AirplaneTests.Bases;
 using Comrade.UnitTests.Tests.AirplaneTests.TestDatas;
 using Microsoft.EntityFrameworkCore;
@@ -14,36 +15,37 @@ using Xunit.Abstractions;
 
 namespace Comrade.UnitTests.Tests.AirplaneTests
 {
-    public sealed class AirplaneCreateUseCaseTests
+    public sealed class UcAirplaneEditTests
 
     {
-        private readonly AirplaneInjectionUseCase _airplaneInjectionUseCase = new();
         private readonly ITestOutputHelper _output;
+        private readonly UcAirplaneInjection _ucAirplaneInjection = new();
 
-        public AirplaneCreateUseCaseTests(ITestOutputHelper output)
+        public UcAirplaneEditTests(ITestOutputHelper output)
         {
             _output = output;
         }
 
         [Theory]
-        [ClassData(typeof(AirplaneCreateTestData))]
-        public async Task AirplaneCreateUseCase_Test(int expected, Airplane testObjectInput)
+        [ClassData(typeof(AirplaneEditTestData))]
+        public async Task UcAirplaneEdit_Test(int expected, Airplane testObjectInput)
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
-                .UseInMemoryDatabase("test_database_AirplaneCreateUseCase_Test")
+                .UseInMemoryDatabase("test_database_UcAirplaneEdit_Test" + testObjectInput.Id)
                 .EnableSensitiveDataLogging().Options;
 
             await using var context = new ComradeContext(options);
             await context.Database.EnsureCreatedAsync();
+            InjectDataOnContextBase.InitializeDbForTests(context);
 
-            var airplaneCreateUseCase = _airplaneInjectionUseCase.GetAirplaneCreateUseCase(context);
-            var result = await airplaneCreateUseCase.Execute(testObjectInput);
+            var ucAirplaneEdit = _ucAirplaneInjection.GetUcAirplaneEdit(context);
+            var result = await ucAirplaneEdit.Execute(testObjectInput);
 
             Assert.Equal(expected, result.Code);
         }
 
         [Fact]
-        public async Task AirplaneCreateUseCase_Test_Error()
+        public async Task UcAirplaneEdit_Test_Error()
         {
             var options = new DbContextOptionsBuilder<ComradeContext>()
                 .UseSqlServer("error")
@@ -59,10 +61,10 @@ namespace Comrade.UnitTests.Tests.AirplaneTests
 
             await using var context = new ComradeContext(options);
 
-            var airplaneCreateUseCase = _airplaneInjectionUseCase.GetAirplaneCreateUseCase(context);
+            var ucAirplaneEdit = _ucAirplaneInjection.GetUcAirplaneEdit(context);
             try
             {
-                var result = await airplaneCreateUseCase.Execute(testObject);
+                var result = await ucAirplaneEdit.Execute(testObject);
                 Assert.True(false);
             }
             catch (Exception e)

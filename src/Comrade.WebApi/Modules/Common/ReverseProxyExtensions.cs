@@ -31,7 +31,8 @@ namespace Comrade.WebApi.Modules.Common
         /// <summary>
         ///     Use Proxy.
         /// </summary>
-        public static IApplicationBuilder UseProxy(this IApplicationBuilder app, IConfiguration configuration)
+        public static IApplicationBuilder UseProxy(this IApplicationBuilder app,
+            IConfiguration configuration)
         {
             string basePath = configuration["ASPNETCORE_BASEPATH"];
             if (!string.IsNullOrEmpty(basePath))
@@ -42,7 +43,8 @@ namespace Comrade.WebApi.Modules.Common
                         .ConfigureAwait(false);
                 });
 
-            app.UseForwardedHeaders(new ForwardedHeadersOptions {ForwardedHeaders = ForwardedHeaders.All});
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+                {ForwardedHeaders = ForwardedHeaders.All});
 
             return app;
         }
