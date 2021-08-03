@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Comrade.Core.Bases.Interfaces
 {
-    public interface ICoreService
+    public interface IUseCase
     {
         Task<bool> Commit();
     }

@@ -14,7 +14,7 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.AirplaneCore.UseCases
 {
-    public class UcAirplaneCreate : CoreService, IUcAirplaneCreate
+    public class UcAirplaneCreate : UseCase, IUcAirplaneCreate
     {
         private readonly AirplaneCreateValidation _airplaneCreateValidation;
         private readonly IAirplaneRepository _repository;

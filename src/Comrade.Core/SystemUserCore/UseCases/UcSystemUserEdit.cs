@@ -11,7 +11,7 @@ using Comrade.Domain.Models;
 
 namespace Comrade.Core.SystemUserCore.UseCases
 {
-    public class UcSystemUserEdit : CoreService, IUcSystemUserEdit
+    public class UcSystemUserEdit : UseCase, IUcSystemUserEdit
     {
         private readonly ISystemUserRepository _repository;
         private readonly SystemUserEditValidation _systemUserEditValidation;
