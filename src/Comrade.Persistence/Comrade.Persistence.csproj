@@ -66,6 +66,7 @@
 
 	<ItemGroup>
 		<Folder Include="Mappings\Views\" />
+		<Folder Include="Migrations\" />
 		<Folder Include="Repositories\Views\" />
 	</ItemGroup>
 

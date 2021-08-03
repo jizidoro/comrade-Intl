@@ -9,7 +9,7 @@ using Comrade.Domain.Bases;
 
 namespace Comrade.Domain.Models
 {
-    [Table("AIRP_AIRPLANE")]
+    [Table("airp_airplane")]
     public class Airplane : Entity
     {
         public Airplane()
@@ -27,21 +27,21 @@ namespace Comrade.Domain.Models
             RegisterDate = registerDate;
         }
 
-        [Column("AIRP_TX_CODIGO", TypeName = "varchar")]
+        [Column("airp_tx_codigo", TypeName = "varchar")]
         [MaxLength(255)]
         [Required(ErrorMessage = "Code is required")]
         public string Code { get; set; }
 
-        [Column("AIRP_TX_MODELO", TypeName = "varchar")]
+        [Column("airp_tx_modelo", TypeName = "varchar")]
         [MaxLength(255)]
         [Required(ErrorMessage = "Model is required")]
         public string? Model { get; set; }
 
-        [Column("AIRP_QT_PASSAGEIRO", TypeName = "int")]
+        [Column("airp_qt_passageiro", TypeName = "int")]
         [Required(ErrorMessage = "PassengerQuantity is required")]
         public int PassengerQuantity { get; set; }
 
-        [Column("AIRP_DT_REGISTRO", TypeName = "varchar")]
+        [Column("airp_dt_registro", TypeName = "varchar")]
         [Required(ErrorMessage = "RegisterDate is required")]
         public DateTime RegisterDate { get; set; }
 

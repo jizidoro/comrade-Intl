@@ -12,10 +12,10 @@ namespace Comrade.Persistence.Mappings
     {
         public void Configure(EntityTypeBuilder<Airplane> builder)
         {
-            builder.Property(b => b.Id).HasColumnName("AIRP_SQ_AIRPLANE").IsRequired();
+            builder.Property(b => b.Id).HasColumnName("airp_sq_airplane").IsRequired();
             builder.HasKey(c => c.Id);
 
-            builder.HasIndex(c => c.Code).HasDatabaseName("IX_UN_AIRP_TX_CODIGO").IsUnique();
+            builder.HasIndex(c => c.Code).HasDatabaseName("ix_un_airp_tx_codigo").IsUnique();
         }
     }
 }

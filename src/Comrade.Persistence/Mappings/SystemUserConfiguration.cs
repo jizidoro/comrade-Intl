@@ -12,11 +12,11 @@ namespace Comrade.Persistence.Mappings
     {
         public void Configure(EntityTypeBuilder<SystemUser> builder)
         {
-            builder.Property(b => b.Id).HasColumnName("USSI_SQ_USUARIO_SISTEMA").IsRequired();
+            builder.Property(b => b.Id).HasColumnName("ussi_sq_usuario_sistema").IsRequired();
             builder.HasKey(c => c.Id);
 
-            builder.HasIndex(c => c.Email).HasDatabaseName("IX_UN_USSI_TX_EMAIL").IsUnique();
-            builder.HasIndex(c => c.Registration).HasDatabaseName("IX_UN_USSI_TX_MATRICULA")
+            builder.HasIndex(c => c.Email).HasDatabaseName("ix_un_ussi_tx_email").IsUnique();
+            builder.HasIndex(c => c.Registration).HasDatabaseName("ix_un_ussi_tx_matricula")
                 .IsUnique();
         }
     }

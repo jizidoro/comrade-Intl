@@ -23,37 +23,37 @@ namespace Comrade.Persistence.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("AIRP_SQ_AIRPLANE")
+                        .HasColumnName("airp_sq_airplane")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("varchar")
-                        .HasColumnName("AIRP_TX_CODIGO");
+                        .HasColumnName("airp_tx_codigo");
 
                     b.Property<string>("Model")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("varchar")
-                        .HasColumnName("AIRP_TX_MODELO");
+                        .HasColumnName("airp_tx_modelo");
 
                     b.Property<int>("PassengerQuantity")
                         .HasColumnType("int")
-                        .HasColumnName("AIRP_QT_PASSAGEIRO");
+                        .HasColumnName("airp_qt_passageiro");
 
                     b.Property<string>("RegisterDate")
                         .IsRequired()
                         .HasColumnType("varchar")
-                        .HasColumnName("AIRP_DT_REGISTRO");
+                        .HasColumnName("airp_dt_registro");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Code")
                         .IsUnique()
-                        .HasDatabaseName("IX_UN_AIRP_TX_CODIGO");
+                        .HasDatabaseName("ix_un_airp_tx_codigo");
 
-                    b.ToTable("AIRP_AIRPLANE");
+                    b.ToTable("airp_airplane");
                 });
 
             modelBuilder.Entity("Comrade.Domain.Models.SystemUser", b =>
@@ -61,47 +61,47 @@ namespace Comrade.Persistence.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("USSI_SQ_USUARIO_SISTEMA")
+                        .HasColumnName("ussi_sq_usuario_sistema")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Email")
                         .HasMaxLength(255)
                         .HasColumnType("varchar")
-                        .HasColumnName("USSI_TX_EMAIL");
+                        .HasColumnName("ussi_tx_email");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("varchar")
-                        .HasColumnName("USSI_TX_NOME");
+                        .HasColumnName("ussi_tx_nome");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(1023)
                         .HasColumnType("varchar")
-                        .HasColumnName("USSI_PW_SENHA");
+                        .HasColumnName("ussi_pw_senha");
 
                     b.Property<string>("RegisterDate")
                         .HasColumnType("varchar")
-                        .HasColumnName("USSI_DT_REGISTRO");
+                        .HasColumnName("ussi_dt_registro");
 
                     b.Property<string>("Registration")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("varchar")
-                        .HasColumnName("USSI_TX_MATRICULA");
+                        .HasColumnName("ussi_tx_matricula");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Email")
                         .IsUnique()
-                        .HasDatabaseName("IX_UN_USSI_TX_EMAIL");
+                        .HasDatabaseName("ix_un_ussi_tx_email");
 
                     b.HasIndex("Registration")
                         .IsUnique()
-                        .HasDatabaseName("IX_UN_USSI_TX_MATRICULA");
+                        .HasDatabaseName("ix_un_ussi_tx_matricula");
 
-                    b.ToTable("USSI_USUARIO_SISTEMA");
+                    b.ToTable("ussi_usuario_sistema");
                 });
 #pragma warning restore 612, 618
         }

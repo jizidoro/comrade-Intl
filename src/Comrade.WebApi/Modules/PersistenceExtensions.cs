@@ -48,7 +48,7 @@ namespace Comrade.WebApi.Modules
             }
             else if (isPostgresSqlEnabled)
             {
-                services.AddEntityFrameworkNpgsql().AddDbContext<ComradeContext>(options =>
+                services.AddDbContext<ComradeContext>(options =>
                     options.UseNpgsql(
                         configuration.GetValue<string>("PersistenceModule:PostgresSqlDb")));
             }

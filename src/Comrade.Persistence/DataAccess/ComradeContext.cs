@@ -25,7 +25,7 @@ namespace Comrade.Persistence.DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
+            
             // Tables
             modelBuilder.ApplyConfiguration(new AirplaneConfiguration());
             modelBuilder.ApplyConfiguration(new SystemUserConfiguration());
